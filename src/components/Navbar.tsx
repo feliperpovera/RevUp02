@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import revupLogo from "@/assets/revup-logo.png";
+import revupLogoFull from "@/assets/revup-logo-full.png";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,11 +28,8 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection("hero")}>
-            <img src={revupLogo} alt="RevUp Logo" className="h-10 w-10" />
-            <span className="text-xl font-heading font-bold">
-              Rev<span className="text-accent">Up</span> Agency Group
-            </span>
+          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
+            <img src={revupLogoFull} alt="RevUp Agency Group Logo" className="h-12" />
           </div>
 
           <div className="hidden md:flex items-center gap-8">
