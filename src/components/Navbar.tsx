@@ -40,6 +40,12 @@ export const Navbar = () => {
               Services
             </button>
             <button
+              onClick={() => scrollToSection("partners")}
+              className="text-foreground/80 hover:text-accent transition-colors font-medium"
+            >
+              Partners Oficiales
+            </button>
+            <button
               onClick={() => scrollToSection("insights")}
               className="text-foreground/80 hover:text-accent transition-colors font-medium"
             >
