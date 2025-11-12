@@ -48,10 +48,13 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Processing contact form submission:", { name, email, phone, company });
 
-    // Send notification email to info@revupagencygroup.com
+    // TEMPORARY: Sending to verified email until domain is verified
+    // Once you verify revupagencygroup.com at resend.com/domains:
+    // 1. Change from: "noreply@revupagencygroup.com" 
+    // 2. Change to: ["info@revupagencygroup.com"]
     const notificationResponse = await sendEmail(
       "RevUp Contact Form <onboarding@resend.dev>",
-      ["info@revupagencygroup.com"],
+      ["feliperesvera106@gmail.com"],
       `New Contact Form Submission from ${name}`,
       `
         <h2>New Contact Form Submission</h2>
@@ -66,12 +69,15 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Notification email sent successfully:", notificationResponse);
 
-    // Send confirmation email to the user
+    // Send confirmation email to the user (also to verified email temporarily)
     const confirmationResponse = await sendEmail(
       "RevUp Agency Group <onboarding@resend.dev>",
-      [email],
-      "We received your message!",
+      ["feliperesvera106@gmail.com"],
+      `Confirmation: Message from ${name}`,
       `
+        <h2>Form Submission Received</h2>
+        <p>This would be sent to: ${email}</p>
+        <hr>
         <h1>Thank you for contacting us, ${name}!</h1>
         <p>We have received your message and will get back to you as soon as possible.</p>
         <p><strong>Your message:</strong></p>
