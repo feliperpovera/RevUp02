@@ -15,32 +15,32 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+    <section id="testimonials" className="py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
             Client <span className="text-accent">Success Stories</span>
           </h2>
-          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
             Real results from real partnerships
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="glass-card rounded-xl p-8 relative"
+              className="glass-card rounded-xl p-6 md:p-8 relative"
             >
-              <Quote className="w-12 h-12 text-accent/20 absolute top-6 right-6" />
+              <Quote className="w-10 h-10 md:w-12 md:h-12 text-accent/20 absolute top-4 md:top-6 right-4 md:right-6" />
               
-              <p className="text-lg text-foreground/80 leading-relaxed mb-6 relative z-10">
+              <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-4 md:mb-6 relative z-10 pr-8">
                 "{testimonial.quote}"
               </p>
               
-              <div className="border-t border-border/30 pt-4">
-                <div className="font-semibold text-foreground">{testimonial.author}</div>
-                <div className="text-sm text-accent">{testimonial.role}</div>
+              <div className="border-t border-border/30 pt-3 md:pt-4">
+                <div className="font-semibold text-foreground text-sm md:text-base">{testimonial.author}</div>
+                <div className="text-xs md:text-sm text-accent">{testimonial.role}</div>
               </div>
             </div>
           ))}

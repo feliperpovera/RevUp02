@@ -13,15 +13,15 @@ export const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 animated-dots opacity-20" />
       
-      <div className="container mx-auto px-6 py-32 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-heading font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold mb-4 md:mb-6 leading-tight px-4">
             Grow <span className="text-accent text-glow">Smarter</span>.
             <br />
             Move <span className="text-accent text-glow">Faster</span>.
           </h1>
           
-          <p className="text-xl md:text-2xl text-foreground/70 mb-12 max-w-3xl mx-auto font-light">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 mb-8 md:mb-12 max-w-3xl mx-auto font-light px-4">
             RevUp helps businesses grow through data-driven media buying and intelligent web development.
           </p>
           
@@ -29,10 +29,10 @@ export const Hero = () => {
             variant="glow" 
             size="lg" 
             onClick={scrollToContact}
-            className="text-lg px-10 py-6 h-auto"
+            className="text-base md:text-lg px-6 md:px-10 py-4 md:py-6 h-auto"
           >
             Let's RevUp Your Growth
-            <ArrowRight className="ml-2" />
+            <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
           </Button>
         </div>
       </div>
