@@ -31,7 +31,7 @@ export const Hero = () => {
             onClick={scrollToContact}
             className="text-base md:text-lg px-6 md:px-10 py-4 md:py-6 h-auto"
           >
-            Let's RevUp Your Growth
+            Let&apos;s RevUp Your Growth
             <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
           </Button>
         </div>

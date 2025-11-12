@@ -49,7 +49,7 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold text-base md:text-lg mb-3 md:mb-4">Get In Touch</h3>
             <p className="text-sm md:text-base text-foreground/60">
               Ready to transform your digital presence?<br />
-              <span className="text-accent">Let's talk.</span>
+              <span className="text-accent">Let&apos;s talk.</span>
             </p>
           </div>
         </div>

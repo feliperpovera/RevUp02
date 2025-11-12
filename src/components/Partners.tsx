@@ -15,11 +15,11 @@ export const Partners = () => {
           <div className="inline-flex items-center gap-2 mb-3 md:mb-4">
             <Award className="text-accent" size={24} />
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">
-              Somos <span className="text-accent">Partners Oficiales</span>
+              We are <span className="text-accent">Official Partners</span>
             </h2>
           </div>
           <p className="text-foreground/70 text-base md:text-lg max-w-2xl mx-auto px-4">
-            Certificados y respaldados por las plataformas líderes en publicidad digital y e-commerce
+            Certified and backed by the leading platforms in digital advertising and e-commerce
           </p>
         </div>
 

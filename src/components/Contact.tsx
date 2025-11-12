@@ -9,6 +9,7 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     message: "",
   });
@@ -40,6 +41,7 @@ export const Contact = () => {
         body: {
           name: formData.name.trim(),
           email: formData.email.trim(),
+          phone: formData.phone.trim(),
           company: formData.company.trim(),
           message: formData.message.trim(),
         },
@@ -48,7 +50,7 @@ export const Contact = () => {
       if (error) throw error;
 
       toast.success("Message sent! We'll get back to you soon.");
-      setFormData({ name: "", email: "", company: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
     } catch (error) {
       console.error("Error sending message:", error);
       toast.error("Failed to send message. Please try again.");
@@ -65,7 +67,7 @@ export const Contact = () => {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
-              Let's Work <span className="text-accent text-glow">Together</span>
+              Let&apos;s Work <span className="text-accent text-glow">Together</span>
             </h2>
             <p className="text-lg md:text-xl text-foreground/70 px-4">
               Ready to accelerate your digital growth? Get in touch with us.
@@ -91,6 +93,16 @@ export const Contact = () => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
+                className="bg-background/50 border-border/50 focus:border-accent"
+              />
+            </div>
+
+            <div>
+              <Input
+                type="tel"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="bg-background/50 border-border/50 focus:border-accent"
               />
             </div>

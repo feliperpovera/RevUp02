@@ -10,6 +10,7 @@ const corsHeaders = {
 interface ContactEmailRequest {
   name: string;
   email: string;
+  phone?: string;
   company?: string;
   message: string;
 }
@@ -43,9 +44,9 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, company, message }: ContactEmailRequest = await req.json();
+    const { name, email, phone, company, message }: ContactEmailRequest = await req.json();
 
-    console.log("Processing contact form submission:", { name, email, company });
+    console.log("Processing contact form submission:", { name, email, phone, company });
 
     // Send notification email to info@revupagencygroup.com
     const notificationResponse = await sendEmail(
@@ -56,6 +57,7 @@ const handler = async (req: Request): Promise<Response> => {
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
         ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
