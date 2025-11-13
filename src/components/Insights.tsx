@@ -5,41 +5,41 @@ const steps = [
   {
     icon: Search,
     number: "1",
-    title: "Understand your Business",
-    description: "We start with a strategy call to understand your business, goals, and audience. This step ensures every action we take is aligned with your vision and built around your growth objectives.",
+    title: "Understand Your Business Goals",
+    description: "We begin with an in-depth strategy consultation to understand your business model, target audience, competitive landscape, and growth objectives. This ensures every marketing dollar is strategically invested for maximum impact.",
   },
   {
     icon: Map,
     number: "2",
-    title: "Strategy & Roadmap",
-    description: "Next, we create a tailored plan that connects all key areas — advertising, web, email, and funnels. You'll receive a clear roadmap outlining timelines, tools, and deliverables so you know exactly what to expect.",
+    title: "Custom Marketing Strategy & Roadmap",
+    description: "Our team develops a comprehensive digital marketing plan connecting paid advertising, website optimization, email campaigns, and conversion funnels. You receive a clear roadmap with timelines, platform recommendations, KPIs, and expected ROI.",
   },
   {
     icon: Rocket,
     number: "3",
-    title: "Build & Launch",
-    description: "Once the strategy is approved, our team gets to work — launching ad campaigns, designing or optimizing your website/store and setting up automations.",
+    title: "Build & Launch Campaigns",
+    description: "Once approved, we execute your strategy—launching Google Ads and Meta campaigns, optimizing your website for conversions, and implementing marketing automation to drive immediate results.",
   },
   {
     icon: TrendingUp,
     number: "4",
-    title: "Optimize & Scale",
-    description: "After launch, we continually monitor and refine your campaigns and systems using data and AI insights. We test, tweak, and improve performance to help you scale efficiently and exceed your growth goals.",
+    title: "Optimize & Scale for Growth",
+    description: "We continuously monitor campaign performance, conduct A/B testing, and leverage AI-driven insights to improve your advertising ROI, reduce cost-per-acquisition, and scale your business efficiently.",
   },
 ];
 
 export const Insights = () => {
   return (
-    <section id="insights" className="py-16 md:py-24 bg-graphite relative overflow-hidden">
-      <AngularLinesDecor className="absolute top-16 left-10 opacity-20" />
-      <RectangleCircleDecor className="absolute bottom-16 right-10 opacity-20 animate-pulse" />
+    <section id="insights" className="py-16 md:py-24 bg-graphite relative overflow-hidden" aria-labelledby="process-heading">
+      <AngularLinesDecor className="absolute top-16 left-10 opacity-20" aria-hidden="true" />
+      <RectangleCircleDecor className="absolute bottom-16 right-10 opacity-20 animate-pulse" aria-hidden="true" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2">
+        <header className="text-center mb-12 md:mb-20">
+          <h2 id="process-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2">
             Our <span className="text-accent">Process</span>
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto"></div>
-        </div>
+        </header>
 
         <div className="max-w-5xl mx-auto relative">
           {/* Vertical Timeline Line */}

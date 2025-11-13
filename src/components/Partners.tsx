@@ -14,37 +14,38 @@ export const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="py-16 md:py-20 bg-background relative overflow-hidden">
-      <CirclesDecor className="absolute top-20 left-10 opacity-20" />
-      <AngularLinesDecor className="absolute bottom-20 right-10 opacity-20" />
+    <section id="partners" className="py-16 md:py-20 bg-background relative overflow-hidden" aria-labelledby="partners-heading">
+      <CirclesDecor className="absolute top-20 left-10 opacity-20" aria-hidden="true" />
+      <AngularLinesDecor className="absolute bottom-20 right-10 opacity-20" aria-hidden="true" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-8 md:mb-12">
+        <header className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 mb-3 md:mb-4">
-            <Award className="text-accent" size={24} />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">
+            <Award className="text-accent" size={24} aria-hidden="true" />
+            <h2 id="partners-heading" className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold">
               We are <span className="text-accent">Official Partners</span>
             </h2>
           </div>
           <p className="text-foreground/70 text-base md:text-lg max-w-2xl mx-auto px-4">
-            Certified and backed by the leading platforms in digital advertising and e-commerce
+            Certified digital marketing partners with Meta, Google Ads, TikTok, and Shopify—delivering expert campaign management and e-commerce solutions
           </p>
-        </div>
+        </header>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 items-center justify-items-center max-w-5xl mx-auto">
           {partners.map((partner) => (
-            <div
+            <article
               key={partner.name}
               className="glass-card p-6 md:p-8 rounded-xl md:rounded-2xl hover-lift w-full flex flex-col items-center justify-center gap-4 min-h-[140px] group"
             >
               <img 
                 src={partner.logo} 
-                alt={`${partner.name} logo`}
+                alt={`${partner.name} certified partner - Professional ${partner.name} advertising and marketing management`}
                 className="max-w-[80px] md:max-w-[100px] max-h-12 md:max-h-14 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                loading="lazy"
               />
               <span className="text-base md:text-lg font-heading font-semibold text-foreground/70 group-hover:text-accent transition-colors">
                 {partner.name}
               </span>
-            </div>
+            </article>
           ))}
         </div>
       </div>
