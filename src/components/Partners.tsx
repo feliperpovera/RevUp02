@@ -1,15 +1,11 @@
 import { Award } from "lucide-react";
-import googleLogo from "@/assets/google-logo.png";
-import tiktokLogo from "@/assets/tiktok-logo.png";
-import metaLogo from "@/assets/meta-logo.png";
-import shopifyLogo from "@/assets/shopify-logo.svg";
 
 export const Partners = () => {
   const partners = [
-    { name: "Meta", logo: metaLogo },
-    { name: "Google", logo: googleLogo },
-    { name: "TikTok", logo: tiktokLogo },
-    { name: "Shopify", logo: shopifyLogo },
+    { name: "Meta" },
+    { name: "Google" },
+    { name: "TikTok" },
+    { name: "Shopify" },
   ];
 
   return (
@@ -31,13 +27,11 @@ export const Partners = () => {
           {partners.map((partner) => (
             <div
               key={partner.name}
-              className="glass-card p-6 md:p-8 rounded-xl md:rounded-2xl hover:scale-105 transition-transform duration-300 w-full flex items-center justify-center min-h-[120px]"
+              className="glass-card p-6 md:p-8 rounded-xl md:rounded-2xl hover-lift w-full flex items-center justify-center min-h-[100px] group"
             >
-              <img 
-                src={partner.logo} 
-                alt={`${partner.name} logo`}
-                className="max-w-full max-h-16 md:max-h-20 object-contain opacity-80 hover:opacity-100 transition-opacity"
-              />
+              <span className="text-xl md:text-2xl font-heading font-bold text-foreground/70 group-hover:text-accent transition-colors">
+                {partner.name}
+              </span>
             </div>
           ))}
         </div>
