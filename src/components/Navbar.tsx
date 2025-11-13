@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 
 export const Navbar = () => {
@@ -28,38 +29,56 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
+          <Link to="/" className="flex items-center">
             <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-20 md:h-24" />
-          </div>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("services")}
+            <Link
+              to="/about"
+              className="text-foreground/80 hover:text-accent transition-colors font-medium"
+            >
+              About
+            </Link>
+            <Link
+              to="/strategy"
+              className="text-foreground/80 hover:text-accent transition-colors font-medium"
+            >
+              Strategy
+            </Link>
+            <Link
+              to="/partners"
+              className="text-foreground/80 hover:text-accent transition-colors font-medium"
+            >
+              Partners
+            </Link>
+            <Link
+              to="/services"
               className="text-foreground/80 hover:text-accent transition-colors font-medium"
             >
               Services
-            </button>
-            <button
-              onClick={() => scrollToSection("partners")}
+            </Link>
+            <Link
+              to="/process"
               className="text-foreground/80 hover:text-accent transition-colors font-medium"
             >
-              Official Partners
-            </button>
-            <button
-              onClick={() => scrollToSection("insights")}
+              Process
+            </Link>
+            <Link
+              to="/testimonials"
               className="text-foreground/80 hover:text-accent transition-colors font-medium"
             >
-              Insights
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Contact
-            </button>
+              Testimonials
+            </Link>
           </div>
 
-          <Button variant="glow" size="lg" onClick={() => scrollToSection("contact")}>
+          <Button variant="glow" size="lg" onClick={() => {
+            if (window.location.pathname === '/') {
+              scrollToSection("contact");
+            } else {
+              window.location.href = "/#contact";
+            }
+          }}>
             Contact Us
           </Button>
         </div>
