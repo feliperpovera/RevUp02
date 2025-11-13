@@ -3,7 +3,6 @@ import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
-import { CirclesDecor, AngularLinesDecor } from "./decorative/GeometricShapes";
 
 export const Partners = () => {
   const partners = [
@@ -14,10 +13,8 @@ export const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="py-16 md:py-20 bg-background relative overflow-hidden" aria-labelledby="partners-heading">
-      <CirclesDecor className="absolute top-20 left-10 opacity-20" aria-hidden="true" />
-      <AngularLinesDecor className="absolute bottom-20 right-10 opacity-20" aria-hidden="true" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+    <section id="partners" className="py-16 md:py-20 bg-background" aria-labelledby="partners-heading">
+      <div className="container mx-auto px-4 md:px-6">
         <header className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 mb-3 md:mb-4">
             <Award className="text-accent" size={24} aria-hidden="true" />

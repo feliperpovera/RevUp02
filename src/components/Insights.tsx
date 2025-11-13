@@ -1,5 +1,4 @@
 import { Search, Map, Rocket, TrendingUp } from "lucide-react";
-import { AngularLinesDecor, RectangleCircleDecor } from "./decorative/GeometricShapes";
 
 const steps = [
   {
@@ -30,10 +29,8 @@ const steps = [
 
 export const Insights = () => {
   return (
-    <section id="insights" className="py-16 md:py-24 bg-graphite relative overflow-hidden" aria-labelledby="process-heading">
-      <AngularLinesDecor className="absolute top-16 left-10 opacity-20" aria-hidden="true" />
-      <RectangleCircleDecor className="absolute bottom-16 right-10 opacity-20 animate-pulse" aria-hidden="true" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+    <section id="insights" className="py-16 md:py-24 bg-graphite" aria-labelledby="process-heading">
+      <div className="container mx-auto px-4 md:px-6">
         <header className="text-center mb-12 md:mb-20">
           <h2 id="process-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2">
             Our <span className="text-accent">Process</span>
