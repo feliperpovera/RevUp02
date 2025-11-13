@@ -4,49 +4,49 @@ import { RectangleCircleDecor, AsteriskDecor } from "./decorative/GeometricShape
 const services = [
   {
     icon: ShoppingCart,
-    title: "Paid Media",
-    description: "We create & Manage ad campaigns that bring targeted traffic, increase visibility, and help your brand grow across all major platforms.",
+    title: "Paid Media Management",
+    description: "Expert Google Ads, Meta Ads (Facebook & Instagram), and TikTok advertising campaigns that drive targeted traffic, boost conversions, and maximize ROI for US businesses.",
   },
   {
     icon: Code,
-    title: "Website & Store Development",
-    description: "We build high-performing websites, e-commerce stores, and landing pages designed to convert.",
+    title: "Website & E-commerce Development",
+    description: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
   },
   {
     icon: Settings,
-    title: "Website & Store Management",
-    description: "Keep your website and store updated, optimized, and performing at their best.",
+    title: "Website & Store Optimization",
+    description: "Ongoing website maintenance, performance optimization, and conversion rate improvements to keep your digital presence competitive and profitable.",
   },
   {
     icon: Zap,
-    title: "AI Automation",
-    description: "Intelligent campaign flows that optimize performance and reduce manual work.",
+    title: "AI Marketing Automation",
+    description: "Intelligent campaign workflows, automated bidding strategies, and AI-powered optimization that reduce manual work while improving advertising performance.",
   },
 ];
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-background relative overflow-hidden">
-      <RectangleCircleDecor className="absolute top-16 left-8 opacity-20 animate-pulse" />
-      <AsteriskDecor className="absolute bottom-16 right-8 opacity-20" />
+    <section id="services" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="services-heading">
+      <RectangleCircleDecor className="absolute top-16 left-8 opacity-20 animate-pulse" aria-hidden="true" />
+      <AsteriskDecor className="absolute bottom-16 right-8 opacity-20" aria-hidden="true" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
+        <header className="text-center mb-10 md:mb-16">
+          <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
             Our <span className="text-accent">Services</span>
           </h2>
           <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
-            End-to-end digital solutions tailored to your business goals
+            Complete digital marketing solutions for businesses ready to grow online
           </p>
-        </div>
+        </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {services.map((service, index) => (
-            <div
+            <article
               key={index}
               className="glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group"
             >
               <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-accent" aria-hidden="true" />
               </div>
               
               <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors">
@@ -56,7 +56,7 @@ export const Services = () => {
               <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
                 {service.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
