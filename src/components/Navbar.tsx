@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +22,17 @@ export const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+    setMobileMenuOpen(false);
   };
+
+  const menuItems = [
+    { label: "About", path: "/about" },
+    { label: "Strategy", path: "/strategy" },
+    { label: "Partners", path: "/partners" },
+    { label: "Services", path: "/services" },
+    { label: "Process", path: "/process" },
+    { label: "Testimonials", path: "/testimonials" },
+  ];
 
   return (
     <nav
@@ -30,57 +43,74 @@ export const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-20 md:h-24" />
+            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-16 md:h-24" />
           </Link>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
-              to="/about"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              About
-            </Link>
-            <Link
-              to="/strategy"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Strategy
-            </Link>
-            <Link
-              to="/partners"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Partners
-            </Link>
-            <Link
-              to="/services"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Services
-            </Link>
-            <Link
-              to="/process"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Process
-            </Link>
-            <Link
-              to="/testimonials"
-              className="text-foreground/80 hover:text-accent transition-colors font-medium"
-            >
-              Testimonials
-            </Link>
+            {menuItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="text-foreground/80 hover:text-accent transition-colors font-medium"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          <Button variant="glow" size="lg" onClick={() => {
-            if (window.location.pathname === '/') {
-              scrollToSection("contact");
-            } else {
-              window.location.href = "/#contact";
-            }
-          }}>
+          {/* Desktop Contact Button */}
+          <Button 
+            variant="glow" 
+            size="lg" 
+            className="hidden md:flex"
+            onClick={() => {
+              if (window.location.pathname === '/') {
+                scrollToSection("contact");
+              } else {
+                window.location.href = "/#contact";
+              }
+            }}
+          >
             Contact Us
           </Button>
+
+          {/* Mobile Menu */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] bg-background/95 backdrop-blur-lg">
+              <div className="flex flex-col gap-6 mt-8">
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-lg text-foreground/80 hover:text-accent transition-colors font-medium"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Button 
+                  variant="glow" 
+                  size="lg" 
+                  className="mt-4"
+                  onClick={() => {
+                    if (window.location.pathname === '/') {
+                      scrollToSection("contact");
+                    } else {
+                      window.location.href = "/#contact";
+                    }
+                  }}
+                >
+                  Contact Us
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>

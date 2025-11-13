@@ -1,11 +1,7 @@
-import { CirclesDecor, AngularLinesDecor } from "./decorative/GeometricShapes";
-
 export const About = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-background to-graphite relative overflow-hidden" aria-labelledby="about-heading">
-      <CirclesDecor className="absolute top-12 right-8 opacity-20" aria-hidden="true" />
-      <AngularLinesDecor className="absolute bottom-12 left-8 opacity-20 animate-pulse" aria-hidden="true" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-background to-graphite" aria-labelledby="about-heading">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 md:mb-8 text-center">
             About <span className="text-accent">RevUp</span>
