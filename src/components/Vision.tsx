@@ -1,11 +1,7 @@
-import { AsteriskDecor, RectangleCircleDecor } from "./decorative/GeometricShapes";
-
 export const Vision = () => {
   return (
     <section id="vision" className="py-16 md:py-24 bg-graphite relative overflow-hidden">
       <div className="absolute inset-0 animated-dots opacity-10" />
-      <AsteriskDecor className="absolute top-10 right-10 opacity-30 animate-pulse" />
-      <RectangleCircleDecor className="absolute bottom-20 left-10 opacity-30" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
