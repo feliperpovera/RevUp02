@@ -1,14 +1,17 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Search, Map, Rocket, TrendingUp } from "lucide-react";
+import { CirclesDecor, AsteriskDecor } from "@/components/decorative/GeometricShapes";
 
 const ProcessPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <section className="py-24 md:py-32 bg-graphite">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-24 md:py-32 bg-graphite relative overflow-hidden">
+        <CirclesDecor className="absolute top-20 left-12 opacity-20" />
+        <AsteriskDecor className="absolute bottom-24 right-12 opacity-20 animate-pulse" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">

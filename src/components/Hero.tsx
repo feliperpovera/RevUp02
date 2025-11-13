@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { CirclesDecor, AsteriskDecor } from "./decorative/GeometricShapes";
 
 export const Hero = () => {
   const scrollToContact = () => {
@@ -12,6 +13,8 @@ export const Hero = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 animated-dots opacity-20" />
+      <CirclesDecor className="absolute top-20 left-10 opacity-20 animate-pulse" />
+      <AsteriskDecor className="absolute bottom-32 right-16 opacity-20" />
       
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">

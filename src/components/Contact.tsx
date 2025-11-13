@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { CirclesDecor, AngularLinesDecor } from "./decorative/GeometricShapes";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -62,6 +63,8 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-16 md:py-24 bg-graphite relative overflow-hidden">
       <div className="absolute inset-0 animated-dots opacity-10" />
+      <CirclesDecor className="absolute top-16 left-10 opacity-20" />
+      <AngularLinesDecor className="absolute bottom-16 right-10 opacity-20 animate-pulse" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-2xl mx-auto">
