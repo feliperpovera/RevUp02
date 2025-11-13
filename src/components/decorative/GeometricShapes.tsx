@@ -2,7 +2,7 @@ export const CirclesDecor = ({ className = "" }: { className?: string }) => {
   return (
     <svg
       viewBox="0 0 120 80"
-      className={`w-20 md:w-24 h-auto ${className}`}
+      className={`w-32 md:w-40 lg:w-48 h-auto ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -17,7 +17,7 @@ export const AngularLinesDecor = ({ className = "" }: { className?: string }) =>
   return (
     <svg
       viewBox="0 0 100 100"
-      className={`w-20 md:w-24 h-auto ${className}`}
+      className={`w-32 md:w-40 lg:w-48 h-auto ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -32,7 +32,7 @@ export const AsteriskDecor = ({ className = "" }: { className?: string }) => {
   return (
     <svg
       viewBox="0 0 100 100"
-      className={`w-16 md:w-20 h-auto ${className}`}
+      className={`w-28 md:w-36 lg:w-44 h-auto ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -48,7 +48,7 @@ export const RectangleCircleDecor = ({ className = "" }: { className?: string })
   return (
     <svg
       viewBox="0 0 100 100"
-      className={`w-20 md:w-24 h-auto ${className}`}
+      className={`w-32 md:w-40 lg:w-48 h-auto ${className}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

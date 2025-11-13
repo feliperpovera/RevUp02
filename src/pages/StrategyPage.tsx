@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Target, TrendingUp, Rocket } from "lucide-react";
+import { RectangleCircleDecor, AsteriskDecor } from "@/components/decorative/GeometricShapes";
 
 const StrategyPage = () => {
   return (
@@ -9,6 +10,8 @@ const StrategyPage = () => {
       
       <section className="py-24 md:py-32 bg-graphite relative overflow-hidden">
         <div className="absolute inset-0 animated-dots opacity-10" />
+        <RectangleCircleDecor className="absolute top-20 right-12 opacity-20 animate-pulse" />
+        <AsteriskDecor className="absolute bottom-20 left-12 opacity-20" />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto">

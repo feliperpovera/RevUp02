@@ -1,4 +1,5 @@
 import { ShoppingCart, Code, Settings, Zap } from "lucide-react";
+import { RectangleCircleDecor, AsteriskDecor } from "./decorative/GeometricShapes";
 
 const services = [
   {
@@ -25,8 +26,10 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="py-16 md:py-24 bg-background relative overflow-hidden">
+      <RectangleCircleDecor className="absolute top-16 left-8 opacity-20 animate-pulse" />
+      <AsteriskDecor className="absolute bottom-16 right-8 opacity-20" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
             Our <span className="text-accent">Services</span>
