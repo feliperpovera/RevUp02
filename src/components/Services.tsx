@@ -1,20 +1,20 @@
-import { ShoppingCart, Code, BarChart3, Zap } from "lucide-react";
+import { ShoppingCart, Code, Settings, Zap } from "lucide-react";
 
 const services = [
   {
     icon: ShoppingCart,
-    title: "Media Buying",
-    description: "Data-driven ad performance across all major platforms to maximize your ROI.",
+    title: "Paid Media",
+    description: "We create & Manage ad campaigns that bring targeted traffic, increase visibility, and help your brand grow across all major platforms.",
   },
   {
     icon: Code,
-    title: "Web Development",
-    description: "High-conversion websites built with modern technology and user-centric design.",
+    title: "Website & Store Development",
+    description: "We build high-performing websites, e-commerce stores, and landing pages designed to convert.",
   },
   {
-    icon: BarChart3,
-    title: "Data Strategy",
-    description: "Custom analytics dashboards and insights that drive informed business decisions.",
+    icon: Settings,
+    title: "Website & Store Management",
+    description: "Keep your website and store updated, optimized, and performing at their best.",
   },
   {
     icon: Zap,
