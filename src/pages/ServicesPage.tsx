@@ -2,7 +2,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ShoppingCart, Code, Settings, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AngularLinesDecor, CirclesDecor } from "@/components/decorative/GeometricShapes";
 
 const ServicesPage = () => {
   const scrollToContact = () => {
@@ -13,10 +12,8 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-graphite relative overflow-hidden">
-        <AngularLinesDecor className="absolute top-24 left-8 opacity-20 animate-pulse" />
-        <CirclesDecor className="absolute bottom-16 right-8 opacity-20" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-graphite">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4">
