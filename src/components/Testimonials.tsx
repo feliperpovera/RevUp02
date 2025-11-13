@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import { CirclesDecor, AsteriskDecor } from "./decorative/GeometricShapes";
 
 const testimonials = [
   {
@@ -15,8 +16,10 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="testimonials" className="py-16 md:py-24 bg-background relative overflow-hidden">
+      <CirclesDecor className="absolute top-10 right-20 opacity-20 animate-pulse" />
+      <AsteriskDecor className="absolute bottom-10 left-20 opacity-20" />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
             Client <span className="text-accent">Success Stories</span>
