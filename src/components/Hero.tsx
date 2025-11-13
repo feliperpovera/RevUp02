@@ -16,13 +16,11 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold mb-4 md:mb-6 leading-tight px-4">
-            Grow <span className="text-accent text-glow">Smarter</span>.
-            <br />
-            Move <span className="text-accent text-glow">Faster</span>.
+            Smart Growth <span className="text-accent text-glow">Fast Results</span>
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 mb-8 md:mb-12 max-w-3xl mx-auto font-light px-4">
-            RevUp helps businesses grow through data-driven media buying and intelligent web development.
+            Ready to increase revenue and efficiency? Let's build a marketing system that works for you.
           </p>
           
           <Button 
@@ -31,7 +29,7 @@ export const Hero = () => {
             onClick={scrollToContact}
             className="text-base md:text-lg px-6 md:px-10 py-4 md:py-6 h-auto"
           >
-            Let&apos;s RevUp Your Growth
+            Book a Free Consultation
             <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
           </Button>
         </div>
