@@ -8,13 +8,13 @@ const services = [
   },
   {
     icon: Code,
-    title: "Website & E-commerce Development",
-    description: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
+    title: "Management",
+    description: "Comprehensive account management, campaign oversight, and strategic optimization to ensure consistent growth and maximum performance across all platforms.",
   },
   {
     icon: Settings,
-    title: "Management",
-    description: "Comprehensive account management, campaign oversight, and strategic optimization to ensure consistent growth and maximum performance across all platforms.",
+    title: "Website & E-commerce Development",
+    description: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
   },
   {
     icon: Zap,
