@@ -26,6 +26,7 @@ export const Navbar = () => {
   };
 
   const menuItems = [
+    { label: "About", path: "/about" },
     { label: "Strategy", path: "/strategy" },
     { label: "Partners", path: "/partners" },
     { label: "Services", path: "/services" },

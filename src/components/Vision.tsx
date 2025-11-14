@@ -105,10 +105,6 @@ export const Vision = () => {
 
             {/* Right side - Content */}
             <div className="space-y-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-8">
-                About <span className="text-accent">RevUp</span>
-              </h2>
-
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-lg font-heading font-semibold text-accent">
