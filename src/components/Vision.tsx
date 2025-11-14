@@ -71,35 +71,6 @@ export const Vision = () => {
                 >
                   Purpose
                 </text>
-
-                {/* Connecting lines */}
-                <line
-                  x1="200"
-                  y1="140"
-                  x2="380"
-                  y2="140"
-                  stroke="hsl(var(--foreground))"
-                  strokeWidth="1"
-                  opacity="0.2"
-                />
-                <line
-                  x1="200"
-                  y1="200"
-                  x2="380"
-                  y2="200"
-                  stroke="hsl(var(--foreground))"
-                  strokeWidth="1"
-                  opacity="0.2"
-                />
-                <line
-                  x1="200"
-                  y1="260"
-                  x2="380"
-                  y2="260"
-                  stroke="hsl(var(--foreground))"
-                  strokeWidth="1"
-                  opacity="0.2"
-                />
               </svg>
             </div>
 
