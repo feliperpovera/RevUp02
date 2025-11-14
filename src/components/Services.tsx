@@ -13,8 +13,8 @@ const services = [
   },
   {
     icon: Settings,
-    title: "Website & Store Optimization",
-    description: "Ongoing website maintenance, performance optimization, and conversion rate improvements to keep your digital presence competitive and profitable.",
+    title: "Management",
+    description: "Comprehensive account management, campaign oversight, and strategic optimization to ensure consistent growth and maximum performance across all platforms.",
   },
   {
     icon: Zap,
