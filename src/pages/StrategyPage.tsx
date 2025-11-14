@@ -25,7 +25,7 @@ const StrategyPage = () => {
                   Purpose
                 </h2>
                 <p className="text-foreground/80 leading-relaxed">
-                  To empower businesses through data-driven, AI-powered marketing that drives measurable growth.
+                  To help businesses grow with purpose and strategy, powered by AI and driven by measurable impact.
                 </p>
               </div>
 
@@ -37,7 +37,7 @@ const StrategyPage = () => {
                   Mission
                 </h2>
                 <p className="text-foreground/80 leading-relaxed">
-                  Our mission is simple — to turn clicks into clients, ideas into high-performing websites/E-Commerce Stores, and marketing into measurable, efficient growth.
+                  We create data-driven digital marketing strategies that combine technology and human insight to deliver measurable results.
                 </p>
               </div>
 
