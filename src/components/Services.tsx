@@ -13,7 +13,7 @@ const services = [
   },
   {
     icon: Settings,
-    title: "Website & Store Optimization",
+    title: "Website & Store Management",
     description: "Ongoing website maintenance, performance optimization, and conversion rate improvements to keep your digital presence competitive and profitable.",
   },
   {
