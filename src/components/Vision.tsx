@@ -64,7 +64,7 @@ export const Vision = () => {
                 />
                 <text
                   x="200"
-                  y="150"
+                  y="205"
                   textAnchor="middle"
                   fill="hsl(var(--accent))"
                   className="text-sm font-heading font-bold"
