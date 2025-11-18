@@ -16,9 +16,9 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center animate-fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-bold mb-4 md:mb-6 leading-tight px-4">
-            Smart <span className="text-accent text-glow">Growth</span>
+            Smart <span className="text-accent">Growth</span>
             <br />
-            Fast <span className="text-accent text-glow">Results</span>
+            Fast <span className="text-accent">Results</span>
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 mb-8 md:mb-12 max-w-3xl mx-auto font-light px-4">

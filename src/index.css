@@ -133,8 +133,4 @@ All colors MUST be HSL.
     box-shadow: 0 12px 48px hsl(0 0% 0% / 0.6);
   }
   
-  /* Text glow */
-  .text-glow {
-    text-shadow: 0 0 20px hsl(var(--accent) / 0.6);
-  }
 }
