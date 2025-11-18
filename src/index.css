@@ -115,12 +115,6 @@ All colors MUST be HSL.
     background: hsl(var(--glass-bg) / 0.6);
     border: 1px solid hsl(var(--glass-border) / 0.3);
     backdrop-filter: blur(20px);
-    box-shadow: var(--shadow-card);
-  }
-  
-  /* Glow effect */
-  .glow-accent {
-    box-shadow: var(--glow-accent);
   }
   
   /* Hover scale */
@@ -130,7 +124,6 @@ All colors MUST be HSL.
   
   .hover-lift:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 48px hsl(0 0% 0% / 0.6);
   }
   
 }
