@@ -67,7 +67,7 @@ export const Contact = () => {
         <div className="max-w-2xl mx-auto">
           <header className="text-center mb-8 md:mb-12">
             <h2 id="contact-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
-              Let&apos;s Work <span className="text-accent text-glow">Together</span>
+              Let&apos;s Work <span className="text-accent">Together</span>
             </h2>
             <p className="text-lg md:text-xl text-foreground/70 px-4">
               Ready to accelerate your digital growth? Get a free consultation from our marketing experts.
