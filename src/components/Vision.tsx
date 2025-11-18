@@ -60,7 +60,6 @@ export const Vision = () => {
                   stroke="hsl(var(--accent))"
                   strokeWidth="2"
                   opacity="0.8"
-                  className="glow-accent"
                 />
                 <text
                   x="200"
