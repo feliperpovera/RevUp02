@@ -14,25 +14,16 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           
-          {/* Main heading with layered effect and animation */}
-          <div className="relative mb-12 md:mb-16">
-            <h1 className="relative animate-fade-in">
-              <span className="block text-7xl sm:text-8xl md:text-9xl lg:text-[180px] font-heading font-black text-accent leading-none mb-4">
-                GROWTH
-              </span>
+          {/* Main heading */}
+          <div className="relative mb-16 md:mb-20 animate-fade-in">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-tight">
+              <span className="text-foreground font-semibold block mb-4">Driven by data.</span>
+              <span className="text-accent font-semibold block">Powered by growth.</span>
             </h1>
           </div>
 
-          {/* Subtitle section */}
-          <div className="max-w-3xl mx-auto mb-16 md:mb-20 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-3xl md:text-5xl font-light leading-relaxed">
-              <span className="text-foreground font-semibold">Driven by data.</span>{" "}
-              <span className="text-accent font-semibold">Powered by growth.</span>
-            </p>
-          </div>
-
           {/* CTA Button */}
-          <div className="flex justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="flex justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Button 
               variant="glow" 
               size="lg" 
