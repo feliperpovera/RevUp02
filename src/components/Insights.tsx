@@ -1,4 +1,5 @@
 import { Search, Map, Rocket, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -52,8 +53,9 @@ export const Insights = () => {
               {/* Timeline Dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-graphite z-10 hidden md:block"></div>
               
-              <div
-                className={`glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group relative ${
+              <Link
+                to="/process"
+                className={`glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group relative block ${
                   index % 2 === 0 
                     ? 'md:mr-auto md:ml-0 md:mr-[calc(50%+2rem)]' 
                     : 'md:ml-auto md:mr-0 md:ml-[calc(50%+2rem)]'
@@ -70,7 +72,7 @@ export const Insights = () => {
                 <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
                   {step.description}
                 </p>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
