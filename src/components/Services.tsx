@@ -1,4 +1,5 @@
 import { ShoppingCart, Code, Settings, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -38,8 +39,9 @@ export const Services = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {services.map((service, index) => (
-            <article
+            <Link
               key={index}
+              to="/services"
               className="glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group"
             >
               <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
@@ -53,7 +55,7 @@ export const Services = () => {
               <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
                 {service.description}
               </p>
-            </article>
+            </Link>
           ))}
         </div>
       </div>

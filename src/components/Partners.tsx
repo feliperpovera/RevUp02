@@ -1,4 +1,5 @@
 import { Award } from "lucide-react";
+import { Link } from "react-router-dom";
 import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
@@ -29,8 +30,9 @@ export const Partners = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 items-center justify-items-center max-w-5xl mx-auto">
           {partners.map((partner) => (
-            <article
+            <Link
               key={partner.name}
+              to="/partners"
               className="glass-card p-6 md:p-8 rounded-xl md:rounded-2xl hover-lift w-full flex flex-col items-center justify-center gap-4 min-h-[140px] group"
             >
               <img 
@@ -42,7 +44,7 @@ export const Partners = () => {
               <span className="text-base md:text-lg font-heading font-semibold text-foreground/70 group-hover:text-accent transition-colors">
                 {partner.name}
               </span>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
