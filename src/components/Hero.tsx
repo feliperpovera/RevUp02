@@ -15,11 +15,18 @@ export const Hero = () => {
         <div className="max-w-6xl mx-auto text-center">
           
           {/* Main heading */}
-          <div className="relative mb-16 md:mb-20 animate-fade-in">
+          <div className="relative mb-8 md:mb-10 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-tight">
               <span className="text-foreground font-semibold block mb-4">Smart growth,</span>
               <span className="text-accent font-semibold block">fast results.</span>
             </h1>
+          </div>
+
+          {/* Subtitle */}
+          <div className="relative mb-12 md:mb-16 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 leading-relaxed max-w-4xl mx-auto">
+              Boost revenue, reduce workload, and scale faster & smarter with data and AI — let us show you how.
+            </p>
           </div>
 
           {/* CTA Button */}
