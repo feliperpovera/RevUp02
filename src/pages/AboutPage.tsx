@@ -50,6 +50,15 @@ const AboutPage = () => {
                 Our goal is to make digital growth simple, transparent, and accessible for businesses of all sizes. Whether you're a startup looking to establish your online presence or an established business ready to scale, RevUp is your partner for measurable, sustainable growth.
               </p>
             </div>
+
+            <div className="text-center mt-12">
+              <button 
+                onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold h-11 rounded-md px-8 text-base md:text-lg py-6"
+              >
+                Start Growing Today
+              </button>
+            </div>
           </div>
         </div>
       </section>
