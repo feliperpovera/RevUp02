@@ -15,40 +15,41 @@ const AboutPage = () => {
             
             <div className="space-y-8 text-base md:text-lg text-foreground/80 leading-relaxed">
               <p>
-                RevUp Agency Group is a results-driven digital marketing agency built for the modern business landscape. We combine AI technology, data-driven strategy, and intelligent web development to help brands grow smarter and faster.
+                RevUp is a <strong>modern digital marketing and automation agency</strong> helping businesses grow smarter and faster through data-driven strategy and AI-powered solutions. We specialize in <strong>Google Ads</strong>, <strong>Meta advertising</strong>, <strong>TikTok marketing</strong>, high-performance <strong>Shopify and website development</strong>, and custom <strong>automations</strong> that streamline operations and boost efficiency.
               </p>
               
               <p>
-                Founded with the vision of making digital marketing more accessible and effective, we specialize in media buying and web development, combining smart technology and human insight to deliver measurable results.
+                What sets us apart is our ability to blend <strong>AI</strong>, <strong>data</strong>, and <strong>performance marketing</strong> into one unified growth engine. Whether we're building your online presence, running your ads, or automating your workflows, our goal is simple: deliver measurable results, reduce workload, and make digital growth accessible to businesses of all sizes.
               </p>
               
-              <div className="bg-graphite/50 p-6 md:p-8 rounded-xl my-8">
-                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-accent">
-                  What Sets Us Apart
-                </h2>
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent text-xl">•</span>
-                    <span><strong>Data-Driven Approach:</strong> Every decision is backed by analytics and insights, ensuring your marketing budget works harder and smarter.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent text-xl">•</span>
-                    <span><strong>AI Integration:</strong> We leverage cutting-edge AI tools to optimize campaigns, automate workflows, and scale your business efficiently.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent text-xl">•</span>
-                    <span><strong>Full-Stack Solutions:</strong> From ad campaigns to website development, we provide end-to-end services that work seamlessly together.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-accent text-xl">•</span>
-                    <span><strong>Transparency:</strong> You'll always know where your money is going and what results it's generating through clear reporting and regular communication.</span>
-                  </li>
-                </ul>
-              </div>
+              <div className="space-y-8 mt-12">
+                <div className="bg-graphite/50 p-6 md:p-8 rounded-xl space-y-3">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-accent">
+                    Purpose
+                  </h2>
+                  <p>
+                    To empower businesses with data-driven, AI-powered systems that help them work smarter, operate more efficiently, and reach their full growth potential.
+                  </p>
+                </div>
 
-              <p>
-                Our goal is to make digital growth simple, transparent, and accessible for businesses of all sizes. Whether you're a startup looking to establish your online presence or an established business ready to scale, RevUp is your partner for measurable, sustainable growth.
-              </p>
+                <div className="bg-graphite/50 p-6 md:p-8 rounded-xl space-y-3">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-accent">
+                    Mission
+                  </h2>
+                  <p>
+                    To turn clicks into clients, ideas into high-performing websites and e-commerce stores, and marketing into measurable growth—using the perfect mix of strategy, creativity, automation, and performance-driven advertising.
+                  </p>
+                </div>
+
+                <div className="bg-graphite/50 p-6 md:p-8 rounded-xl space-y-3">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-accent">
+                    Vision
+                  </h2>
+                  <p>
+                    To shape the future of digital marketing by bringing together AI, data, and technology—helping businesses scale intelligently, sustainably, and with complete clarity on their results.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="text-center mt-12">
