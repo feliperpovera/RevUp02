@@ -38,7 +38,11 @@ export const Partners = () => {
               <img 
                 src={partner.logo} 
                 alt={`${partner.name} certified partner - Professional ${partner.name} advertising and marketing management`}
-                className="max-w-[80px] md:max-w-[100px] max-h-12 md:max-h-14 object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                className={`${
+                  partner.name === 'TikTok' 
+                    ? 'max-w-[120px] md:max-w-[140px] max-h-16 md:max-h-20' 
+                    : 'max-w-[80px] md:max-w-[100px] max-h-12 md:max-h-14'
+                } object-contain opacity-80 group-hover:opacity-100 transition-opacity`}
                 loading="lazy"
               />
               <span className="text-base md:text-lg font-heading font-semibold text-foreground/70 group-hover:text-accent transition-colors">
