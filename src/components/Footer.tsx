@@ -1,4 +1,4 @@
-import revupLogoNew from "@/assets/revup-logo-new.png";
+import revupLogoTransparent from "@/assets/revup-logo-transparent.png";
 
 export const Footer = () => {
   const scrollToSection = (id: string) => {
@@ -14,7 +14,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-6 md:mb-8">
           <div>
             <div className="flex items-center mb-3 md:mb-4">
-              <img src={revupLogoNew} alt="RevUp Agency Group Logo" className="h-16 md:h-20" />
+              <img src={revupLogoTransparent} alt="RevUp Agency Group Logo" className="h-16 md:h-20" />
             </div>
             <p className="text-sm md:text-base text-foreground/60">
               Grow smarter. Move faster. Data-driven digital marketing excellence.
