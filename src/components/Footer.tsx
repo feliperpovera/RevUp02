@@ -1,12 +1,7 @@
 import revupLogoMain from "@/assets/revup-logo-main.png";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <footer className="bg-background border-t border-accent/20 py-8 md:py-12">
@@ -24,24 +19,42 @@ export const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold text-base md:text-lg mb-3 md:mb-4">Quick Links</h3>
             <div className="space-y-2">
-              <button
-                onClick={() => scrollToSection("services")}
+              <Link
+                to="/about"
+                className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                to="/strategy"
+                className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
+              >
+                Strategy
+              </Link>
+              <Link
+                to="/partners"
+                className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
+              >
+                Partners
+              </Link>
+              <Link
+                to="/services"
                 className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
               >
                 Services
-              </button>
-              <button
-                onClick={() => scrollToSection("insights")}
+              </Link>
+              <Link
+                to="/process"
                 className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
               >
-                Insights
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
+                Process
+              </Link>
+              <Link
+                to="/testimonials"
                 className="block text-sm md:text-base text-foreground/60 hover:text-accent transition-colors"
               >
-                Contact
-              </button>
+                Testimonials
+              </Link>
             </div>
           </div>
 
