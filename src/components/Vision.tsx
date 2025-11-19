@@ -78,10 +78,10 @@ export const Vision = () => {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-lg font-heading font-semibold text-accent">
-                    Vision
+                    Purpose
                   </h3>
                   <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                    To shape the future of digital marketing by combining <span className="text-accent font-semibold">AI</span>, <span className="text-accent font-semibold">data</span>, and <span className="text-accent font-semibold">strategy</span> to help businesses grow smarter and achieve measurable results.
+                    To empower businesses with <span className="text-accent font-semibold">data-driven, AI-powered systems</span> that help them work smarter, operate more efficiently, and reach their full growth potential.
                   </p>
                 </div>
 
@@ -90,16 +90,16 @@ export const Vision = () => {
                     Mission
                   </h3>
                   <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                    We create <span className="text-accent font-semibold">data-driven</span> digital marketing strategies that combine technology and human insight to deliver <span className="text-accent font-semibold">measurable results</span>.
+                    To turn clicks into clients, ideas into high-performing websites and e-commerce stores, and marketing into <span className="text-accent font-semibold">measurable growth</span>—using the perfect mix of strategy, creativity, automation, and performance-driven advertising.
                   </p>
                 </div>
 
                 <div className="space-y-2">
                   <h3 className="text-lg font-heading font-semibold text-accent">
-                    Purpose
+                    Vision
                   </h3>
                   <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                    To help businesses grow with <span className="text-accent font-semibold">purpose</span> and <span className="text-accent font-semibold">strategy</span>, powered by AI and driven by measurable impact.
+                    To shape the future of digital marketing by bringing together <span className="text-accent font-semibold">AI, data, and technology</span>—helping businesses scale intelligently, sustainably, and with complete clarity on their results.
                   </p>
                 </div>
               </div>
