@@ -43,7 +43,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-20 sm:h-24 md:h-28 lg:h-32" />
+            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-24 sm:h-28 md:h-32 lg:h-36" />
           </Link>
 
           {/* Desktop Menu */}
