@@ -64,13 +64,7 @@ export const Navbar = () => {
             variant="glow" 
             size="lg" 
             className="hidden md:flex"
-            onClick={() => {
-              if (window.location.pathname === '/') {
-                scrollToSection("contact");
-              } else {
-                window.location.href = "/#contact";
-              }
-            }}
+            onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
           >
             Contact Us
           </Button>
@@ -98,13 +92,7 @@ export const Navbar = () => {
                   variant="glow" 
                   size="lg" 
                   className="mt-4"
-                  onClick={() => {
-                    if (window.location.pathname === '/') {
-                      scrollToSection("contact");
-                    } else {
-                      window.location.href = "/#contact";
-                    }
-                  }}
+                  onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
                 >
                   Contact Us
                 </Button>

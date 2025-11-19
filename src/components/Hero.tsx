@@ -28,7 +28,7 @@ export const Hero = () => {
           <Button 
             variant="glow" 
             size="lg" 
-            onClick={scrollToContact}
+            onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
             className="text-base md:text-lg px-6 md:px-10 py-4 md:py-6 h-auto"
             aria-label="Book a free digital marketing consultation"
           >
