@@ -17,8 +17,8 @@ export const Hero = () => {
           {/* Main heading */}
           <div className="relative mb-16 md:mb-20 animate-fade-in">
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-tight">
-              <span className="text-foreground font-semibold block mb-4">Driven by data.</span>
-              <span className="text-accent font-semibold block">Powered by growth.</span>
+              <span className="text-foreground font-semibold block mb-4">Smart growth,</span>
+              <span className="text-accent font-semibold block">fast results.</span>
             </h1>
           </div>
 
