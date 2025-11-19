@@ -25,16 +25,9 @@ export const Hero = () => {
 
           {/* Subtitle section */}
           <div className="max-w-3xl mx-auto mb-16 md:mb-20 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-2xl md:text-4xl font-light leading-relaxed mb-6">
+            <p className="text-3xl md:text-5xl font-light leading-relaxed">
               <span className="text-foreground font-semibold">Driven by data.</span>{" "}
               <span className="text-accent font-semibold">Powered by growth.</span>
-            </p>
-            <p className="text-lg md:text-xl text-foreground/60 leading-relaxed mb-4">
-              <span className="text-accent font-medium">Smart strategies.</span>{" "}
-              <span className="text-foreground/80">Fast results.</span>
-            </p>
-            <p className="text-base md:text-lg text-foreground/50 leading-relaxed">
-              AI-powered marketing and expert web development
             </p>
           </div>
 
