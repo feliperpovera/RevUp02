@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 
 export const Navbar = () => {
@@ -59,15 +60,17 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop Contact Button */}
-          <Button 
-            variant="glow" 
-            size="lg" 
-            className="hidden md:flex"
-            onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
-          >
-            Contact Us
-          </Button>
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
+            <Button 
+              variant="glow" 
+              size="lg"
+              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+            >
+              Contact Us
+            </Button>
+          </div>
 
           {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -78,6 +81,9 @@ export const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-background/95 backdrop-blur-lg">
               <div className="flex flex-col gap-6 mt-8">
+                <div className="flex justify-end mb-4">
+                  <ThemeToggle />
+                </div>
                 {menuItems.map((item) => (
                   <Link
                     key={item.path}
