@@ -75,10 +75,78 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  .light {
+    /* Light mode colors */
+    --background: 0 0% 98%;
+    --foreground: 0 2% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 2% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 2% 17%;
+
+    --primary: 73 91% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 2% 17%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 73 91% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 73 91% 45%;
+
+    --graphite: 0 0% 95%;
+    --graphite-light: 0 0% 90%;
+    --accent-glow: 73 91% 55%;
+    --glass-bg: 0 0% 100%;
+    --glass-border: 0 0% 90%;
+  }
+
   .dark {
-    /* Same as light mode for this dark-first design */
+    /* Dark mode colors */
     --background: 0 2% 17%;
     --foreground: 0 0% 95%;
+
+    --card: 0 2% 22%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 2% 19%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 73 91% 65%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 2% 24%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 2% 26%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 73 91% 65%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 2% 28%;
+    --input: 0 2% 22%;
+    --ring: 73 91% 65%;
+
+    --graphite: 0 2% 20%;
+    --graphite-light: 0 2% 28%;
+    --accent-glow: 73 91% 75%;
+    --glass-bg: 0 2% 19%;
+    --glass-border: 0 2% 32%;
   }
 }
 
