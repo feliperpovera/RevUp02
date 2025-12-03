@@ -76,40 +76,40 @@ All colors MUST be HSL.
   }
 
   .light {
-    /* Light mode colors */
-    --background: 0 0% 98%;
-    --foreground: 0 2% 17%;
+    /* Light mode colors - optimized for readability */
+    --background: 60 9% 98%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 2% 17%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 2% 17%;
+    --popover-foreground: 220 15% 15%;
 
-    --primary: 73 91% 45%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 73 70% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 2% 17%;
+    --secondary: 60 5% 94%;
+    --secondary-foreground: 220 15% 20%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 60 5% 92%;
+    --muted-foreground: 220 10% 40%;
 
-    --accent: 73 91% 45%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 73 70% 40%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 73 91% 45%;
+    --border: 60 5% 88%;
+    --input: 60 5% 92%;
+    --ring: 73 70% 40%;
 
-    --graphite: 0 0% 95%;
-    --graphite-light: 0 0% 90%;
-    --accent-glow: 73 91% 55%;
+    --graphite: 60 5% 96%;
+    --graphite-light: 60 5% 92%;
+    --accent-glow: 73 70% 50%;
     --glass-bg: 0 0% 100%;
-    --glass-border: 0 0% 90%;
+    --glass-border: 60 5% 88%;
   }
 
   .dark {
