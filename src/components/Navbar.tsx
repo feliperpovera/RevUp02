@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import revupLogoMain from "@/assets/revup-logo-main.png";
+import revupLogoAnimated from "@/assets/revup-logo-animated.gif";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -44,7 +44,7 @@ export const Navbar = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-24 sm:h-28 md:h-32 lg:h-36" />
+            <img src={revupLogoAnimated} alt="RevUp Agency Group Logo" className="h-24 sm:h-28 md:h-32 lg:h-36" />
           </Link>
 
           {/* Desktop Menu */}
