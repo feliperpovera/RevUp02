@@ -11,7 +11,12 @@ import revupLogoLight from "@/assets/revup-logo-light.png";
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +26,8 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const currentLogo = resolvedTheme === "light" ? revupLogoLight : revupLogoMain;
+  // Use dark logo as default until theme is resolved to prevent flickering
+  const currentLogo = mounted && resolvedTheme === "light" ? revupLogoLight : revupLogoMain;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
