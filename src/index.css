@@ -263,12 +263,11 @@ All colors MUST be HSL.
     100% { background-position: 200% 0; }
   }
 
-  /* Neon glow text */
+  /* Neon glow text - reduced */
   .neon-text {
     text-shadow: 
-      0 0 10px hsl(var(--accent) / 0.8),
-      0 0 20px hsl(var(--accent) / 0.6),
-      0 0 40px hsl(var(--accent) / 0.4);
+      0 0 5px hsl(var(--accent) / 0.4),
+      0 0 10px hsl(var(--accent) / 0.2);
   }
 
   /* Floating orb background */
