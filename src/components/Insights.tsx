@@ -30,18 +30,23 @@ const steps = [
 
 export const Insights = () => {
   return (
-    <section id="insights" className="py-16 md:py-24 bg-graphite" aria-labelledby="process-heading">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="insights" className="py-16 md:py-24 bg-graphite relative overflow-hidden" aria-labelledby="process-heading">
+      {/* Animated background */}
+      <div className="absolute inset-0 cyber-grid opacity-20" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '3s' }} />
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <header className="text-center mb-12 md:mb-20">
-          <h2 id="process-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2">
-            Our <span className="text-accent">Process</span>
+          <h2 id="process-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2 opacity-0 animate-fade-in">
+            Our <span className="text-accent gradient-text">Process</span>
           </h2>
-          <div className="w-24 h-1 bg-accent mx-auto"></div>
+          <div className="w-24 h-1 bg-accent mx-auto animate-glow-pulse"></div>
         </header>
 
         <div className="max-w-5xl mx-auto relative">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent hidden md:block"></div>
+          {/* Vertical Timeline Line - Animated */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent hidden md:block animate-border-glow"></div>
           
           {steps.map((step, index) => (
             <div
@@ -50,22 +55,23 @@ export const Insights = () => {
                 index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2'
               }`}
             >
-              {/* Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-graphite z-10 hidden md:block"></div>
+              {/* Timeline Dot - Animated */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-graphite z-10 hidden md:block animate-glow-pulse pulse-ring"></div>
               
               <Link
                 to="/process"
-                className={`glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group relative block ${
+                className={`futuristic-card rounded-xl p-6 md:p-8 cursor-pointer group relative block opacity-0 ${
                   index % 2 === 0 
-                    ? 'md:mr-auto md:ml-0 md:mr-[calc(50%+2rem)]' 
-                    : 'md:ml-auto md:mr-0 md:ml-[calc(50%+2rem)]'
+                    ? 'md:mr-auto md:ml-0 md:mr-[calc(50%+2rem)] animate-slide-in-left' 
+                    : 'md:ml-auto md:mr-0 md:ml-[calc(50%+2rem)] animate-slide-in-right'
                 }`}
+                style={{ animationDelay: `${0.2 + index * 0.2}s` }}
               >
-                <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                  <step.icon className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+                <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-all duration-500 group-hover:animate-float">
+                  <step.icon className="w-6 h-6 md:w-8 md:h-8 text-accent group-hover:drop-shadow-[0_0_10px_hsl(var(--accent))]" />
                 </div>
                 
-                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
                   {step.title}
                 </h3>
                 

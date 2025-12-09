@@ -26,13 +26,16 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-background" aria-labelledby="services-heading">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="services-heading">
+      {/* Background decoration */}
+      <div className="absolute inset-0 cyber-grid opacity-30" />
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <header className="text-center mb-10 md:mb-16">
-          <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4">
-            Our <span className="text-accent">Services</span>
+          <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4 opacity-0 animate-fade-in">
+            Our <span className="text-accent gradient-text">Services</span>
           </h2>
-          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4">
+          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4 opacity-0 animate-fade-in stagger-1">
             Complete digital marketing solutions for businesses ready to grow online
           </p>
         </header>
@@ -42,13 +45,14 @@ export const Services = () => {
             <Link
               key={index}
               to="/services"
-              className="glass-card rounded-xl p-6 md:p-8 hover-lift cursor-pointer group"
+              className={`futuristic-card rounded-xl p-6 md:p-8 cursor-pointer group opacity-0 animate-slide-up`}
+              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
             >
-              <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-accent" aria-hidden="true" />
+              <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-all duration-500 group-hover:animate-float">
+                <service.icon className="w-6 h-6 md:w-8 md:h-8 text-accent group-hover:drop-shadow-[0_0_10px_hsl(var(--accent))]" aria-hidden="true" />
               </div>
               
-              <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors">
+              <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
                 {service.title}
               </h3>
               
