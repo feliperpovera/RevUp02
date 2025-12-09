@@ -79,12 +79,12 @@ export default {
           "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(73 91% 65% / 0.5)" },
-          "50%": { boxShadow: "0 0 50px hsl(73 91% 65% / 0.8), 0 0 80px hsl(73 91% 65% / 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 15px hsl(73 91% 65% / 0.3)" },
+          "50%": { boxShadow: "0 0 30px hsl(73 91% 65% / 0.5), 0 0 50px hsl(73 91% 65% / 0.2)" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-15px)" },
+          "50%": { transform: "translateY(-10px)" },
         },
         "float-slow": {
           "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
@@ -100,16 +100,16 @@ export default {
           "100%": { backgroundPosition: "200% 0" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
-          "50%": { opacity: "0.7", transform: "scale(1.1)" },
+          "0%, 100%": { opacity: "0.2", transform: "scale(1)" },
+          "50%": { opacity: "0.4", transform: "scale(1.05)" },
         },
         "border-glow": {
-          "0%, 100%": { borderColor: "hsl(73 91% 65% / 0.2)" },
-          "50%": { borderColor: "hsl(73 91% 65% / 0.6)" },
+          "0%, 100%": { borderColor: "hsl(73 91% 65% / 0.1)" },
+          "50%": { borderColor: "hsl(73 91% 65% / 0.3)" },
         },
         "text-glow": {
-          "0%, 100%": { textShadow: "0 0 10px hsl(73 91% 65% / 0.5)" },
-          "50%": { textShadow: "0 0 30px hsl(73 91% 65% / 0.9), 0 0 60px hsl(73 91% 65% / 0.5)" },
+          "0%, 100%": { textShadow: "0 0 5px hsl(73 91% 65% / 0.3)" },
+          "50%": { textShadow: "0 0 15px hsl(73 91% 65% / 0.5), 0 0 30px hsl(73 91% 65% / 0.2)" },
         },
         "slide-up": {
           "0%": { opacity: "0", transform: "translateY(60px)" },
