@@ -4,7 +4,6 @@ import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
-import amazonLogo from "@/assets/amazon-logo.png";
 
 export const Partners = () => {
   const partners = [
@@ -12,7 +11,6 @@ export const Partners = () => {
     { name: "Google", logo: googleLogo },
     { name: "TikTok", logo: tiktokLogo },
     { name: "Shopify", logo: shopifyLogo },
-    { name: "Amazon", logo: amazonLogo },
   ];
 
   return (
