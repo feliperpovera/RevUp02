@@ -98,7 +98,7 @@ export const Hero = () => {
                 aria-label="Start onboarding process"
               >
                 <Rocket className="mr-2 w-5 h-5" aria-hidden="true" />
-                Iniciar Onboarding
+                Start Onboarding
               </Button>
             </Link>
           </div>
