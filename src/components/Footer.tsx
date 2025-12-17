@@ -1,7 +1,13 @@
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import { Link } from "react-router-dom";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 
 export const Footer = () => {
+  const socialLinks = [
+    { icon: Instagram, href: "https://instagram.com/revupagencygroup", label: "Instagram" },
+    { icon: Linkedin, href: "https://linkedin.com/company/revupagencygroup", label: "LinkedIn" },
+    { icon: Facebook, href: "https://facebook.com/revupagencygroup", label: "Facebook" },
+  ];
 
   return (
     <footer className="bg-background border-t border-accent/20 py-8 md:py-12">
@@ -11,9 +17,23 @@ export const Footer = () => {
             <div className="flex items-center mb-3 md:mb-4">
               <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-16 md:h-20" />
             </div>
-            <p className="text-sm md:text-base text-foreground/60">
+            <p className="text-sm md:text-base text-foreground/60 mb-4">
               Grow smarter. Move faster. Data-driven digital marketing excellence.
             </p>
+            <div className="flex gap-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-foreground/60 hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
