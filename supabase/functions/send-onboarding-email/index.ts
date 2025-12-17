@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
@@ -7,27 +8,46 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-interface FileAttachment {
-  name: string;
-  content: string; // base64
-  type: string;
-}
+// Security constants
+const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024; // 10MB in base64 is ~13.3MB
+const MAX_TEXT_LENGTH = 2000;
+const ALLOWED_MIME_TYPES = [
+  'application/pdf',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'text/csv',
+];
 
-interface OnboardingFormData {
-  hasStrategy: string;
-  strategyDetails: string;
-  googlePercentage: string;
-  metaPercentage: string;
-  activeSKUs: string;
-  focusOnCategories: string;
-  categoriesDetails: string;
-  hasDriveFolder: string;
-  driveFolderLink: string;
-  additionalInfo: string;
-  shopifyReport?: FileAttachment | null;
-  googleAdsReport?: FileAttachment | null;
-  metaAdsReport?: FileAttachment | null;
-}
+// Validation schema
+const fileSchema = z.object({
+  name: z.string().max(255),
+  content: z.string().max(MAX_FILE_SIZE_BYTES * 1.4), // base64 is ~1.37x larger
+  type: z.string().refine(t => ALLOWED_MIME_TYPES.includes(t), {
+    message: "Tipo de archivo no permitido"
+  }),
+}).nullable().optional();
+
+const formSchema = z.object({
+  hasStrategy: z.enum(['si', 'no', '']),
+  strategyDetails: z.string().max(MAX_TEXT_LENGTH).default(''),
+  googlePercentage: z.string().refine(v => !v || (parseFloat(v) >= 0 && parseFloat(v) <= 100), {
+    message: "Porcentaje inválido"
+  }),
+  metaPercentage: z.string().refine(v => !v || (parseFloat(v) >= 0 && parseFloat(v) <= 100), {
+    message: "Porcentaje inválido"
+  }),
+  activeSKUs: z.string().refine(v => !v || parseInt(v) >= 0, {
+    message: "Número de SKUs inválido"
+  }),
+  focusOnCategories: z.enum(['si', 'no', '']),
+  categoriesDetails: z.string().max(MAX_TEXT_LENGTH).default(''),
+  hasDriveFolder: z.enum(['si', 'no', '']),
+  driveFolderLink: z.string().max(500).default(''),
+  additionalInfo: z.string().max(MAX_TEXT_LENGTH).default(''),
+  shopifyReport: fileSchema,
+  googleAdsReport: fileSchema,
+  metaAdsReport: fileSchema,
+});
 
 const escapeHtml = (text: string): string => {
   if (!text) return '';
@@ -36,9 +56,27 @@ const escapeHtml = (text: string): string => {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '&#039;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
   };
-  return text.replace(/[&<>"']/g, (char) => map[char]);
+  return text.replace(/[&<>"'`=\/]/g, (char) => map[char]);
+};
+
+// Sanitize and validate URL
+const sanitizeUrl = (url: string): string => {
+  if (!url) return '';
+  try {
+    const parsed = new URL(url);
+    // Only allow http and https protocols
+    if (!['http:', 'https:'].includes(parsed.protocol)) {
+      return '';
+    }
+    return parsed.href;
+  } catch {
+    return '';
+  }
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -47,43 +85,65 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const data: OnboardingFormData = await req.json();
+    // Parse and validate input
+    const rawData = await req.json();
     
-    console.log("Processing onboarding form submission");
-    console.log("Files received:", {
-      shopify: data.shopifyReport?.name || 'none',
-      googleAds: data.googleAdsReport?.name || 'none',
-      metaAds: data.metaAdsReport?.name || 'none',
-    });
+    const validationResult = formSchema.safeParse(rawData);
+    
+    if (!validationResult.success) {
+      console.error("Validation errors:", validationResult.error.errors);
+      return new Response(
+        JSON.stringify({ 
+          error: "Datos inválidos",
+          details: validationResult.error.errors.map(e => ({
+            field: e.path.join('.'),
+            message: e.message
+          }))
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
 
-    // Build attachments array
+    const data = validationResult.data;
+    
+    console.log("Processing validated onboarding form submission");
+
+    // Build attachments array with validation
     const attachments: { filename: string; content: string }[] = [];
     
-    if (data.shopifyReport) {
+    if (data.shopifyReport?.content) {
       attachments.push({
-        filename: data.shopifyReport.name,
+        filename: escapeHtml(data.shopifyReport.name),
         content: data.shopifyReport.content,
       });
     }
     
-    if (data.googleAdsReport) {
+    if (data.googleAdsReport?.content) {
       attachments.push({
-        filename: data.googleAdsReport.name,
+        filename: escapeHtml(data.googleAdsReport.name),
         content: data.googleAdsReport.content,
       });
     }
     
-    if (data.metaAdsReport) {
+    if (data.metaAdsReport?.content) {
       attachments.push({
-        filename: data.metaAdsReport.name,
+        filename: escapeHtml(data.metaAdsReport.name),
         content: data.metaAdsReport.content,
       });
     }
+
+    // Sanitize URL
+    const sanitizedDriveLink = sanitizeUrl(data.driveFolderLink);
 
     const emailHtml = `
       <!DOCTYPE html>
       <html>
       <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
           body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
           .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -107,19 +167,19 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="section">
             <div class="field">
               <span class="label">Informe de Shopify:</span>
-              <span class="${data.shopifyReport ? 'file-info' : 'no-file'}">${data.shopifyReport?.name || 'No adjunto'} ${data.shopifyReport ? '✅ (adjunto en este email)' : ''}</span>
+              <span class="${data.shopifyReport ? 'file-info' : 'no-file'}">${data.shopifyReport ? escapeHtml(data.shopifyReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
             </div>
             <div class="field">
               <span class="label">Informe de Google Ads:</span>
-              <span class="${data.googleAdsReport ? 'file-info' : 'no-file'}">${data.googleAdsReport?.name || 'No adjunto'} ${data.googleAdsReport ? '✅ (adjunto en este email)' : ''}</span>
+              <span class="${data.googleAdsReport ? 'file-info' : 'no-file'}">${data.googleAdsReport ? escapeHtml(data.googleAdsReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
             </div>
             <div class="field">
               <span class="label">Informe de Meta Ads:</span>
-              <span class="${data.metaAdsReport ? 'file-info' : 'no-file'}">${data.metaAdsReport?.name || 'No adjunto'} ${data.metaAdsReport ? '✅ (adjunto en este email)' : ''}</span>
+              <span class="${data.metaAdsReport ? 'file-info' : 'no-file'}">${data.metaAdsReport ? escapeHtml(data.metaAdsReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
             </div>
             <div class="field">
               <span class="label">¿Tiene estrategia definida?:</span>
-              <span class="value highlight">${escapeHtml(data.hasStrategy) === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${data.hasStrategy === 'si' ? 'Sí' : 'No'}</span>
             </div>
             ${data.strategyDetails ? `
             <div class="field">
@@ -141,7 +201,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             <div class="field">
               <span class="label">¿Enfoque en categorías específicas?:</span>
-              <span class="value highlight">${escapeHtml(data.focusOnCategories) === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${data.focusOnCategories === 'si' ? 'Sí' : 'No'}</span>
             </div>
             ${data.categoriesDetails ? `
             <div class="field">
@@ -155,12 +215,12 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="section">
             <div class="field">
               <span class="label">¿Tiene carpeta Drive/Dropbox?:</span>
-              <span class="value highlight">${escapeHtml(data.hasDriveFolder) === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${data.hasDriveFolder === 'si' ? 'Sí' : 'No'}</span>
             </div>
-            ${data.driveFolderLink ? `
+            ${sanitizedDriveLink ? `
             <div class="field">
               <span class="label">Enlace a carpeta:</span>
-              <a href="${escapeHtml(data.driveFolderLink)}" target="_blank" style="color: #2563eb;">${escapeHtml(data.driveFolderLink)}</a>
+              <a href="${sanitizedDriveLink}" target="_blank" rel="noopener noreferrer" style="color: #2563eb;">${escapeHtml(sanitizedDriveLink)}</a>
             </div>
             ` : ''}
             ${data.additionalInfo ? `
@@ -182,15 +242,14 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Build email payload with attachments
-    const emailPayload: any = {
+    // Build email payload
+    const emailPayload: Record<string, unknown> = {
       from: "RevUp Onboarding <onboarding@resend.dev>",
-      to: ["feliperesvera106@gmail.com"], // Cambiar a info@revupagencygroup.com después de verificar dominio
+      to: ["feliperesvera106@gmail.com"], // Cambiar después de verificar dominio
       subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
       html: emailHtml,
     };
 
-    // Add attachments if any
     if (attachments.length > 0) {
       emailPayload.attachments = attachments;
     }
@@ -222,10 +281,11 @@ const handler = async (req: Request): Promise<Response> => {
         headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
-  } catch (error: any) {
-    console.error("Error in send-onboarding-email function:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Error desconocido";
+    console.error("Error in send-onboarding-email function:", errorMessage);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

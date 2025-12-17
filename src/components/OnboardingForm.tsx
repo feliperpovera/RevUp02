@@ -195,14 +195,48 @@ export const OnboardingForm = () => {
     }
   };
 
+  // Security constants
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+  const ALLOWED_FILE_TYPES = [
+    'application/pdf',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'text/csv',
+  ];
+  const MAX_TEXT_LENGTH = 2000;
+
+  const validateFile = (file: File): { valid: boolean; error?: string } => {
+    if (file.size > MAX_FILE_SIZE) {
+      return { valid: false, error: `El archivo ${file.name} excede el límite de 10MB` };
+    }
+    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+      return { valid: false, error: `Tipo de archivo no permitido: ${file.name}. Solo se aceptan PDF, CSV, XLS, XLSX` };
+    }
+    return { valid: true };
+  };
+
+  const sanitizeText = (text: string): string => {
+    return text
+      .slice(0, MAX_TEXT_LENGTH)
+      .replace(/<[^>]*>/g, '') // Remove HTML tags
+      .trim();
+  };
+
   const fileToBase64 = (file: File): Promise<{ name: string; content: string; type: string }> => {
     return new Promise((resolve, reject) => {
+      // Validate file before processing
+      const validation = validateFile(file);
+      if (!validation.valid) {
+        reject(new Error(validation.error));
+        return;
+      }
+
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
         const base64 = (reader.result as string).split(',')[1];
         resolve({
-          name: file.name,
+          name: file.name.slice(0, 255), // Limit filename length
           content: base64,
           type: file.type,
         });
@@ -217,27 +251,50 @@ export const OnboardingForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Validate files before upload
+      const filesToValidate = [
+        formData.shopifyReport,
+        formData.googleAdsReport,
+        formData.metaAdsReport,
+      ].filter(Boolean) as File[];
+
+      for (const file of filesToValidate) {
+        const validation = validateFile(file);
+        if (!validation.valid) {
+          toast({
+            title: "Error de validación",
+            description: validation.error,
+            variant: "destructive",
+          });
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
       // Convert files to base64
       const shopifyFile = formData.shopifyReport ? await fileToBase64(formData.shopifyReport) : null;
       const googleAdsFile = formData.googleAdsReport ? await fileToBase64(formData.googleAdsReport) : null;
       const metaAdsFile = formData.metaAdsReport ? await fileToBase64(formData.metaAdsReport) : null;
 
+      // Sanitize text inputs
+      const sanitizedData = {
+        hasStrategy: formData.hasStrategy,
+        strategyDetails: sanitizeText(formData.strategyDetails),
+        googlePercentage: formData.googlePercentage,
+        metaPercentage: formData.metaPercentage,
+        activeSKUs: formData.activeSKUs,
+        focusOnCategories: formData.focusOnCategories,
+        categoriesDetails: sanitizeText(formData.categoriesDetails),
+        hasDriveFolder: formData.hasDriveFolder,
+        driveFolderLink: formData.driveFolderLink.slice(0, 500),
+        additionalInfo: sanitizeText(formData.additionalInfo),
+        shopifyReport: shopifyFile,
+        googleAdsReport: googleAdsFile,
+        metaAdsReport: metaAdsFile,
+      };
+
       const { data, error } = await supabase.functions.invoke('send-onboarding-email', {
-        body: {
-          hasStrategy: formData.hasStrategy,
-          strategyDetails: formData.strategyDetails,
-          googlePercentage: formData.googlePercentage,
-          metaPercentage: formData.metaPercentage,
-          activeSKUs: formData.activeSKUs,
-          focusOnCategories: formData.focusOnCategories,
-          categoriesDetails: formData.categoriesDetails,
-          hasDriveFolder: formData.hasDriveFolder,
-          driveFolderLink: formData.driveFolderLink,
-          additionalInfo: formData.additionalInfo,
-          shopifyReport: shopifyFile,
-          googleAdsReport: googleAdsFile,
-          metaAdsReport: metaAdsFile,
-        },
+        body: sanitizedData,
       });
 
       if (error) throw error;
@@ -251,7 +308,7 @@ export const OnboardingForm = () => {
       console.error("Error submitting form:", error);
       toast({
         title: "Error",
-        description: "Hubo un problema al enviar el formulario. Por favor intenta de nuevo.",
+        description: error.message || "Hubo un problema al enviar el formulario. Por favor intenta de nuevo.",
         variant: "destructive",
       });
     } finally {
