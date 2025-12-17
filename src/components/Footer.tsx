@@ -4,7 +4,7 @@ import { Instagram } from "lucide-react";
 
 export const Footer = () => {
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/revupagencygroup", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/revupagencygroup/", label: "Instagram" },
   ];
 
   return (
