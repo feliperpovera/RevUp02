@@ -107,7 +107,9 @@ export const OnboardingForm = () => {
     const metaNum = parseFloat(formData.metaPercentage) || 0;
     const total = googleNum + metaNum;
     
-    if (formData.googlePercentage && formData.metaPercentage && Math.abs(total - 100) > 5) {
+    if (total > 100) {
+      newErrors.percentageSum = "La suma de los porcentajes no puede superar 100%";
+    } else if (formData.googlePercentage && formData.metaPercentage && total < 95) {
       newErrors.percentageSum = "La suma de los porcentajes debe ser aproximadamente 100%";
     }
     
@@ -454,7 +456,21 @@ export const OnboardingForm = () => {
                 min="0"
                 max="100"
                 value={formData.googlePercentage}
-                onChange={handleInputChange("googlePercentage")}
+                onChange={(e) => {
+                  const value = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
+                  const metaNum = parseFloat(formData.metaPercentage) || 0;
+                  if (value + metaNum > 100) {
+                    setFormData(prev => ({ 
+                      ...prev, 
+                      googlePercentage: String(Math.min(value, 100 - metaNum))
+                    }));
+                  } else {
+                    setFormData(prev => ({ ...prev, googlePercentage: e.target.value }));
+                  }
+                  if (errors.googlePercentage) {
+                    setErrors(prev => ({ ...prev, googlePercentage: "", percentageSum: "" }));
+                  }
+                }}
                 placeholder="Ej: 60"
                 className={cn(
                   "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
@@ -469,7 +485,21 @@ export const OnboardingForm = () => {
                 min="0"
                 max="100"
                 value={formData.metaPercentage}
-                onChange={handleInputChange("metaPercentage")}
+                onChange={(e) => {
+                  const value = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
+                  const googleNum = parseFloat(formData.googlePercentage) || 0;
+                  if (value + googleNum > 100) {
+                    setFormData(prev => ({ 
+                      ...prev, 
+                      metaPercentage: String(Math.min(value, 100 - googleNum))
+                    }));
+                  } else {
+                    setFormData(prev => ({ ...prev, metaPercentage: e.target.value }));
+                  }
+                  if (errors.metaPercentage) {
+                    setErrors(prev => ({ ...prev, metaPercentage: "", percentageSum: "" }));
+                  }
+                }}
                 placeholder="Ej: 40"
                 className={cn(
                   "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
@@ -478,8 +508,22 @@ export const OnboardingForm = () => {
               />
             </div>
           </div>
+          {/* Show current sum */}
+          {(formData.googlePercentage || formData.metaPercentage) && (
+            <p className={cn(
+              "text-sm flex items-center gap-1 animate-fade-in",
+              (parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0")) === 100 
+                ? "text-green-500" 
+                : "text-foreground/60"
+            )}>
+              Total: {(parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0"))}%
+              {(parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0")) === 100 && (
+                <Check className="w-4 h-4" />
+              )}
+            </p>
+          )}
           {errors.percentageSum && (
-            <p className="text-sm text-yellow-500 flex items-center gap-1 animate-fade-in">
+            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
               <AlertCircle className="w-4 h-4" />
               {errors.percentageSum}
             </p>
