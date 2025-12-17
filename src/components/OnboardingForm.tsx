@@ -40,8 +40,6 @@ interface FormData {
   // Step 3
   hasDriveFolder: string;
   driveFolderLink: string;
-  monthlyBudget: string;
-  noBudget: boolean;
   additionalInfo: string;
   consent: boolean;
 }
@@ -59,8 +57,6 @@ const initialFormData: FormData = {
   categoriesDetails: "",
   hasDriveFolder: "",
   driveFolderLink: "",
-  monthlyBudget: "",
-  noBudget: false,
   additionalInfo: "",
   consent: false,
 };
@@ -137,9 +133,6 @@ export const OnboardingForm = () => {
       newErrors.driveFolderLink = "El enlace es requerido";
     } else if (!isValidUrl(formData.driveFolderLink)) {
       newErrors.driveFolderLink = "Por favor ingresa una URL válida";
-    }
-    if (!formData.noBudget && !formData.monthlyBudget) {
-      newErrors.monthlyBudget = "El presupuesto es requerido o marca 'No cuento con presupuesto'";
     }
     if (!formData.consent) {
       newErrors.consent = "Debes aceptar el tratamiento de datos para continuar";
@@ -323,7 +316,7 @@ export const OnboardingForm = () => {
           Paso {currentStep} de 3: {
             currentStep === 1 ? "Archivos" : 
             currentStep === 2 ? "Datos de Operación" : 
-            "Contenido y Presupuesto"
+            "Contenido"
           }
         </span>
       </div>
@@ -358,7 +351,6 @@ export const OnboardingForm = () => {
             <li>✓ Informe de Meta Ads: {formData.metaAdsReport?.name}</li>
             <li>✓ Distribución: Google {formData.googlePercentage}% / Meta {formData.metaPercentage}%</li>
             <li>✓ SKUs activos: {formData.activeSKUs}</li>
-            <li>✓ Presupuesto mensual: {formData.noBudget ? "No definido" : `$${formData.monthlyBudget} USD`}</li>
           </ul>
         </div>
         
@@ -657,60 +649,7 @@ export const OnboardingForm = () => {
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            12. ¿Cuentan con un presupuesto mensual asignado para la creación de nuevo contenido?
-          </Label>
-          <div className="flex items-center gap-4">
-            <div className="relative flex-1">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/60">$</span>
-              <Input 
-                type="number"
-                min="0"
-                value={formData.monthlyBudget}
-                onChange={handleInputChange("monthlyBudget")}
-                placeholder="0"
-                disabled={formData.noBudget}
-                className={cn(
-                  "pl-8 transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-                  errors.monthlyBudget ? "border-destructive" : "",
-                  formData.noBudget ? "opacity-50" : ""
-                )}
-              />
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-foreground/60">USD</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <Checkbox 
-              id="noBudget" 
-              checked={formData.noBudget}
-              onCheckedChange={(checked) => {
-                setFormData(prev => ({ 
-                  ...prev, 
-                  noBudget: checked as boolean,
-                  monthlyBudget: checked ? "" : prev.monthlyBudget
-                }));
-                if (errors.monthlyBudget) {
-                  setErrors(prev => ({ ...prev, monthlyBudget: "" }));
-                }
-              }}
-            />
-            <label 
-              htmlFor="noBudget" 
-              className="text-sm text-foreground/70 cursor-pointer"
-            >
-              No cuento con presupuesto asignado
-            </label>
-          </div>
-          {errors.monthlyBudget && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.monthlyBudget}
-            </p>
-          )}
-        </div>
-        
-        <div className="space-y-2">
-          <Label className="text-foreground font-medium">
-            13. Compártenos cualquier otra información que consideren relevante (opcional)
+            12. Compártenos cualquier otra información que consideren relevante (opcional)
           </Label>
           <Textarea 
             value={formData.additionalInfo}
