@@ -129,9 +129,7 @@ export const OnboardingForm = () => {
     if (!formData.hasDriveFolder) {
       newErrors.hasDriveFolder = "Este campo es requerido";
     }
-    if (!formData.driveFolderLink) {
-      newErrors.driveFolderLink = "El enlace es requerido";
-    } else if (!isValidUrl(formData.driveFolderLink)) {
+    if (formData.driveFolderLink && !isValidUrl(formData.driveFolderLink)) {
       newErrors.driveFolderLink = "Por favor ingresa una URL válida";
     }
     if (!formData.consent) {
