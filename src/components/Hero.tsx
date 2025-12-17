@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Rocket } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   const [displayedText1, setDisplayedText1] = useState("");
@@ -77,8 +78,8 @@ export const Hero = () => {
             </p>
           </div>
 
-          {/* CTA Button */}
-          <div className={`flex justify-center transition-all duration-700 ${showButton ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row justify-center gap-4 transition-all duration-700 ${showButton ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             <Button 
               variant="glow" 
               size="lg" 
@@ -89,6 +90,17 @@ export const Hero = () => {
               Book a Free Consultation
               <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Button>
+            <Link to="/onboarding">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg md:text-xl px-10 md:px-14 py-7 md:py-9 h-auto hover:scale-105 transition-all duration-500 border-accent/50 hover:bg-accent/10 hover:border-accent w-full"
+                aria-label="Start onboarding process"
+              >
+                <Rocket className="mr-2 w-5 h-5" aria-hidden="true" />
+                Iniciar Onboarding
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
