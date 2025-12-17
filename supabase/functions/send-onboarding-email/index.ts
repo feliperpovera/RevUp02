@@ -7,6 +7,12 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+interface FileAttachment {
+  name: string;
+  content: string; // base64
+  type: string;
+}
+
 interface OnboardingFormData {
   hasStrategy: string;
   strategyDetails: string;
@@ -18,10 +24,9 @@ interface OnboardingFormData {
   hasDriveFolder: string;
   driveFolderLink: string;
   additionalInfo: string;
-  // File info (names only, not actual files)
-  shopifyReportName?: string;
-  googleAdsReportName?: string;
-  metaAdsReportName?: string;
+  shopifyReport?: FileAttachment | null;
+  googleAdsReport?: FileAttachment | null;
+  metaAdsReport?: FileAttachment | null;
 }
 
 const escapeHtml = (text: string): string => {
@@ -44,7 +49,36 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const data: OnboardingFormData = await req.json();
     
-    console.log("Processing onboarding form submission:", data);
+    console.log("Processing onboarding form submission");
+    console.log("Files received:", {
+      shopify: data.shopifyReport?.name || 'none',
+      googleAds: data.googleAdsReport?.name || 'none',
+      metaAds: data.metaAdsReport?.name || 'none',
+    });
+
+    // Build attachments array
+    const attachments: { filename: string; content: string }[] = [];
+    
+    if (data.shopifyReport) {
+      attachments.push({
+        filename: data.shopifyReport.name,
+        content: data.shopifyReport.content,
+      });
+    }
+    
+    if (data.googleAdsReport) {
+      attachments.push({
+        filename: data.googleAdsReport.name,
+        content: data.googleAdsReport.content,
+      });
+    }
+    
+    if (data.metaAdsReport) {
+      attachments.push({
+        filename: data.metaAdsReport.name,
+        content: data.metaAdsReport.content,
+      });
+    }
 
     const emailHtml = `
       <!DOCTYPE html>
@@ -73,15 +107,15 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="section">
             <div class="field">
               <span class="label">Informe de Shopify:</span>
-              <span class="${data.shopifyReportName ? 'file-info' : 'no-file'}">${data.shopifyReportName || 'No adjunto'}</span>
+              <span class="${data.shopifyReport ? 'file-info' : 'no-file'}">${data.shopifyReport?.name || 'No adjunto'} ${data.shopifyReport ? '✅ (adjunto en este email)' : ''}</span>
             </div>
             <div class="field">
               <span class="label">Informe de Google Ads:</span>
-              <span class="${data.googleAdsReportName ? 'file-info' : 'no-file'}">${data.googleAdsReportName || 'No adjunto'}</span>
+              <span class="${data.googleAdsReport ? 'file-info' : 'no-file'}">${data.googleAdsReport?.name || 'No adjunto'} ${data.googleAdsReport ? '✅ (adjunto en este email)' : ''}</span>
             </div>
             <div class="field">
               <span class="label">Informe de Meta Ads:</span>
-              <span class="${data.metaAdsReportName ? 'file-info' : 'no-file'}">${data.metaAdsReportName || 'No adjunto'}</span>
+              <span class="${data.metaAdsReport ? 'file-info' : 'no-file'}">${data.metaAdsReport?.name || 'No adjunto'} ${data.metaAdsReport ? '✅ (adjunto en este email)' : ''}</span>
             </div>
             <div class="field">
               <span class="label">¿Tiene estrategia definida?:</span>
@@ -140,29 +174,36 @@ const handler = async (req: Request): Promise<Response> => {
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
           <p style="color: #64748b; font-size: 12px;">
             Este email fue enviado automáticamente desde el formulario de onboarding de RevUp Agency Group.<br>
-            Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'America/New_York' })}
+            Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'America/New_York' })}<br>
+            <strong>Archivos adjuntos: ${attachments.length}</strong>
           </p>
         </div>
       </body>
       </html>
     `;
 
-    // NOTA: Temporalmente enviando a feliperesvera106@gmail.com 
-    // Una vez que verifiques tu dominio en resend.com/domains:
-    // 1. Cambia "to" a: ["info@revupagencygroup.com"]
-    // 2. Cambia "from" a: "RevUp Onboarding <noreply@revupagencygroup.com>"
+    // Build email payload with attachments
+    const emailPayload: any = {
+      from: "RevUp Onboarding <onboarding@resend.dev>",
+      to: ["feliperesvera106@gmail.com"], // Cambiar a info@revupagencygroup.com después de verificar dominio
+      subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
+      html: emailHtml,
+    };
+
+    // Add attachments if any
+    if (attachments.length > 0) {
+      emailPayload.attachments = attachments;
+    }
+
+    console.log("Sending email with", attachments.length, "attachments");
+
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: "RevUp Onboarding <onboarding@resend.dev>",
-        to: ["feliperesvera106@gmail.com"],
-        subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
-        html: emailHtml,
-      }),
+      body: JSON.stringify(emailPayload),
     });
 
     if (!response.ok) {

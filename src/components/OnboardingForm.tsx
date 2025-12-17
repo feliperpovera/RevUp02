@@ -195,12 +195,33 @@ export const OnboardingForm = () => {
     }
   };
 
+  const fileToBase64 = (file: File): Promise<{ name: string; content: string; type: string }> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64 = (reader.result as string).split(',')[1];
+        resolve({
+          name: file.name,
+          content: base64,
+          type: file.type,
+        });
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async () => {
     if (!validateStep3()) return;
 
     setIsSubmitting(true);
 
     try {
+      // Convert files to base64
+      const shopifyFile = formData.shopifyReport ? await fileToBase64(formData.shopifyReport) : null;
+      const googleAdsFile = formData.googleAdsReport ? await fileToBase64(formData.googleAdsReport) : null;
+      const metaAdsFile = formData.metaAdsReport ? await fileToBase64(formData.metaAdsReport) : null;
+
       const { data, error } = await supabase.functions.invoke('send-onboarding-email', {
         body: {
           hasStrategy: formData.hasStrategy,
@@ -213,9 +234,9 @@ export const OnboardingForm = () => {
           hasDriveFolder: formData.hasDriveFolder,
           driveFolderLink: formData.driveFolderLink,
           additionalInfo: formData.additionalInfo,
-          shopifyReportName: formData.shopifyReport?.name,
-          googleAdsReportName: formData.googleAdsReport?.name,
-          metaAdsReportName: formData.metaAdsReport?.name,
+          shopifyReport: shopifyFile,
+          googleAdsReport: googleAdsFile,
+          metaAdsReport: metaAdsFile,
         },
       });
 
