@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 interface FormData {
   // Step 1
@@ -200,16 +201,33 @@ export const OnboardingForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would send data to your Google Apps Script endpoint
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const { data, error } = await supabase.functions.invoke('send-onboarding-email', {
+        body: {
+          hasStrategy: formData.hasStrategy,
+          strategyDetails: formData.strategyDetails,
+          googlePercentage: formData.googlePercentage,
+          metaPercentage: formData.metaPercentage,
+          activeSKUs: formData.activeSKUs,
+          focusOnCategories: formData.focusOnCategories,
+          categoriesDetails: formData.categoriesDetails,
+          hasDriveFolder: formData.hasDriveFolder,
+          driveFolderLink: formData.driveFolderLink,
+          additionalInfo: formData.additionalInfo,
+          shopifyReportName: formData.shopifyReport?.name,
+          googleAdsReportName: formData.googleAdsReport?.name,
+          metaAdsReportName: formData.metaAdsReport?.name,
+        },
+      });
+
+      if (error) throw error;
       
       setIsSubmitted(true);
       toast({
         title: "¡Formulario enviado!",
         description: "Hemos recibido tu información correctamente.",
       });
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
       toast({
         title: "Error",
         description: "Hubo un problema al enviar el formulario. Por favor intenta de nuevo.",
