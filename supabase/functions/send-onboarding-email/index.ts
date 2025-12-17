@@ -147,6 +147,10 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
+    // NOTA: Temporalmente enviando a feliperesvera106@gmail.com 
+    // Una vez que verifiques tu dominio en resend.com/domains:
+    // 1. Cambia "to" a: ["info@revupagencygroup.com"]
+    // 2. Cambia "from" a: "RevUp Onboarding <noreply@revupagencygroup.com>"
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -155,7 +159,7 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "RevUp Onboarding <onboarding@resend.dev>",
-        to: ["info@revupagencygroup.com"],
+        to: ["feliperesvera106@gmail.com"],
         subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
         html: emailHtml,
       }),
