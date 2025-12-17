@@ -85,15 +85,6 @@ export const OnboardingForm = () => {
   const validateStep1 = (): boolean => {
     const newErrors: FormErrors = {};
     
-    if (!formData.shopifyReport) {
-      newErrors.shopifyReport = "El informe de ventas de Shopify es requerido";
-    }
-    if (!formData.googleAdsReport) {
-      newErrors.googleAdsReport = "El informe de Google Ads es requerido";
-    }
-    if (!formData.metaAdsReport) {
-      newErrors.metaAdsReport = "El informe de Meta Ads es requerido";
-    }
     if (!formData.hasStrategy) {
       newErrors.hasStrategy = "Este campo es requerido";
     }
@@ -392,18 +383,18 @@ export const OnboardingForm = () => {
         currentStep === 1 ? "opacity-100 translate-x-0" : "hidden"
       )}>
         <FileUploadField 
-          label="1. Sube el informe de ventas de Shopify en EE.UU. de los últimos 12 meses"
+          label="1. Sube el informe de ventas de Shopify en EE.UU. de los últimos 12 meses (opcional)"
           field="shopifyReport"
           description="Formato aceptado: CSV, XLSX, PDF"
         />
         
         <FileUploadField 
-          label="2. Sube los informes de tus campañas de Google Ads de los últimos 12 meses"
+          label="2. Sube los informes de tus campañas de Google Ads de los últimos 12 meses (opcional)"
           field="googleAdsReport"
         />
         
         <FileUploadField 
-          label="3. Sube los informes de tus campañas de Meta Ads de los últimos 12 meses"
+          label="3. Sube los informes de tus campañas de Meta Ads de los últimos 12 meses (opcional)"
           field="metaAdsReport"
         />
         
