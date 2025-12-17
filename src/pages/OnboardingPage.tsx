@@ -11,10 +11,10 @@ const OnboardingPage = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12 animate-fade-in">
               <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                Formulario de <span className="text-accent">Ingreso</span>
+                <span className="text-accent">Onboarding</span> Form
               </h1>
               <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
-                Completa el siguiente formulario para comenzar tu estrategia publicitaria personalizada.
+                Complete the following form to start your personalized advertising strategy.
               </p>
             </div>
             <OnboardingForm />
