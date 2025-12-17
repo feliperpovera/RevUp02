@@ -39,10 +39,8 @@ export const Navbar = () => {
 
   const menuItems = [
     { label: "About", path: "/about" },
-    { label: "Strategy", path: "/strategy" },
     { label: "Partners", path: "/partners" },
     { label: "Services", path: "/services" },
-    { label: "Process", path: "/process" },
     { label: "Testimonials", path: "/testimonials" },
     { label: "Onboarding", path: "/onboarding" },
   ];
