@@ -83,7 +83,7 @@ export const OnboardingForm = () => {
     const newErrors: FormErrors = {};
     
     if (!formData.hasStrategy) {
-      newErrors.hasStrategy = "Este campo es requerido";
+      newErrors.hasStrategy = "This field is required";
     }
 
     setErrors(newErrors);
@@ -94,10 +94,10 @@ export const OnboardingForm = () => {
     const newErrors: FormErrors = {};
     
     if (!formData.googlePercentage) {
-      newErrors.googlePercentage = "El porcentaje de Google es requerido";
+      newErrors.googlePercentage = "Google percentage is required";
     }
     if (!formData.metaPercentage) {
-      newErrors.metaPercentage = "El porcentaje de Meta es requerido";
+      newErrors.metaPercentage = "Meta percentage is required";
     }
     
     const googleNum = parseFloat(formData.googlePercentage) || 0;
@@ -105,19 +105,19 @@ export const OnboardingForm = () => {
     const total = googleNum + metaNum;
     
     if (total > 100) {
-      newErrors.percentageSum = "La suma de los porcentajes no puede superar 100%";
+      newErrors.percentageSum = "The sum of percentages cannot exceed 100%";
     } else if (formData.googlePercentage && formData.metaPercentage && total < 95) {
-      newErrors.percentageSum = "La suma de los porcentajes debe ser aproximadamente 100%";
+      newErrors.percentageSum = "The sum of percentages should be approximately 100%";
     }
     
     if (!formData.activeSKUs) {
-      newErrors.activeSKUs = "El número de SKUs es requerido";
+      newErrors.activeSKUs = "Number of SKUs is required";
     }
     if (!formData.focusOnCategories) {
-      newErrors.focusOnCategories = "Este campo es requerido";
+      newErrors.focusOnCategories = "This field is required";
     }
-    if (formData.focusOnCategories === "si" && !formData.categoriesDetails) {
-      newErrors.categoriesDetails = "Por favor especifica las categorías o productos";
+    if (formData.focusOnCategories === "yes" && !formData.categoriesDetails) {
+      newErrors.categoriesDetails = "Please specify the categories or products";
     }
 
     setErrors(newErrors);
@@ -128,13 +128,13 @@ export const OnboardingForm = () => {
     const newErrors: FormErrors = {};
     
     if (!formData.hasDriveFolder) {
-      newErrors.hasDriveFolder = "Este campo es requerido";
+      newErrors.hasDriveFolder = "This field is required";
     }
     if (formData.driveFolderLink && !isValidUrl(formData.driveFolderLink)) {
-      newErrors.driveFolderLink = "Por favor ingresa una URL válida";
+      newErrors.driveFolderLink = "Please enter a valid URL";
     }
     if (!formData.consent) {
-      newErrors.consent = "Debes aceptar el tratamiento de datos para continuar";
+      newErrors.consent = "You must accept data processing to continue";
     }
 
     setErrors(newErrors);
@@ -207,10 +207,10 @@ export const OnboardingForm = () => {
 
   const validateFile = (file: File): { valid: boolean; error?: string } => {
     if (file.size > MAX_FILE_SIZE) {
-      return { valid: false, error: `El archivo ${file.name} excede el límite de 10MB` };
+      return { valid: false, error: `File ${file.name} exceeds the 10MB limit` };
     }
     if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-      return { valid: false, error: `Tipo de archivo no permitido: ${file.name}. Solo se aceptan PDF, CSV, XLS, XLSX` };
+      return { valid: false, error: `File type not allowed: ${file.name}. Only PDF, CSV, XLS, XLSX are accepted` };
     }
     return { valid: true };
   };
@@ -262,7 +262,7 @@ export const OnboardingForm = () => {
         const validation = validateFile(file);
         if (!validation.valid) {
           toast({
-            title: "Error de validación",
+            title: "Validation Error",
             description: validation.error,
             variant: "destructive",
           });
@@ -301,14 +301,14 @@ export const OnboardingForm = () => {
       
       setIsSubmitted(true);
       toast({
-        title: "¡Formulario enviado!",
-        description: "Hemos recibido tu información correctamente.",
+        title: "Form submitted!",
+        description: "We have received your information successfully.",
       });
     } catch (error: any) {
       console.error("Error submitting form:", error);
       toast({
         title: "Error",
-        description: error.message || "Hubo un problema al enviar el formulario. Por favor intenta de nuevo.",
+        description: error.message || "There was a problem submitting the form. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -354,13 +354,13 @@ export const OnboardingForm = () => {
               <>
                 <FileText className="w-8 h-8 text-accent" />
                 <span className="text-sm font-medium text-foreground">{file.name}</span>
-                <span className="text-xs text-foreground/60">Click para cambiar archivo</span>
+                <span className="text-xs text-foreground/60">Click to change file</span>
               </>
             ) : (
               <>
                 <Upload className="w-8 h-8 text-foreground/40 group-hover:text-accent transition-colors" />
                 <span className="text-sm text-foreground/60">
-                  Arrastra tu archivo aquí o haz click para seleccionar
+                  Drag your file here or click to select
                 </span>
                 <span className="text-xs text-foreground/40">CSV, XLSX, PDF</span>
               </>
@@ -407,10 +407,10 @@ export const OnboardingForm = () => {
       </div>
       <div className="text-center">
         <span className="text-sm text-foreground/60">
-          Paso {currentStep} de 3: {
-            currentStep === 1 ? "Archivos" : 
-            currentStep === 2 ? "Datos de Operación" : 
-            "Contenido"
+          Step {currentStep} of 3: {
+            currentStep === 1 ? "Files" : 
+            currentStep === 2 ? "Operation Data" : 
+            "Content"
           }
         </span>
       </div>
@@ -431,27 +431,27 @@ export const OnboardingForm = () => {
         </div>
         
         <h2 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          ¡Gracias, recibimos tu información!
+          Thank you, we received your information!
         </h2>
         <p className="text-foreground/70 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          Nuestro equipo revisará tus datos y te contactará pronto para comenzar a desarrollar tu estrategia publicitaria personalizada.
+          Our team will review your data and contact you soon to start developing your personalized advertising strategy.
         </p>
         
         <div className="bg-muted/30 rounded-lg p-6 mb-8 text-left animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <h3 className="font-semibold mb-4 text-accent">Resumen de tu envío:</h3>
+          <h3 className="font-semibold mb-4 text-accent">Submission Summary:</h3>
           <ul className="space-y-2 text-sm text-foreground/70">
-            <li>✓ Informe de Shopify: {formData.shopifyReport?.name}</li>
-            <li>✓ Informe de Google Ads: {formData.googleAdsReport?.name}</li>
-            <li>✓ Informe de Meta Ads: {formData.metaAdsReport?.name}</li>
-            <li>✓ Distribución: Google {formData.googlePercentage}% / Meta {formData.metaPercentage}%</li>
-            <li>✓ SKUs activos: {formData.activeSKUs}</li>
+            <li>✓ Shopify Report: {formData.shopifyReport?.name}</li>
+            <li>✓ Google Ads Report: {formData.googleAdsReport?.name}</li>
+            <li>✓ Meta Ads Report: {formData.metaAdsReport?.name}</li>
+            <li>✓ Distribution: Google {formData.googlePercentage}% / Meta {formData.metaPercentage}%</li>
+            <li>✓ Active SKUs: {formData.activeSKUs}</li>
           </ul>
         </div>
         
         <Link to="/">
           <Button variant="glow" size="lg" className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <Home className="w-5 h-5 mr-2" />
-            Volver al inicio
+            Back to Home
           </Button>
         </Link>
       </div>
@@ -471,34 +471,34 @@ export const OnboardingForm = () => {
         currentStep === 1 ? "opacity-100 translate-x-0" : "hidden"
       )}>
         <FileUploadField 
-          label="1. Sube el informe de ventas de Shopify en EE.UU. de los últimos 12 meses (opcional)"
+          label="1. Upload your Shopify US sales report from the last 12 months (optional)"
           field="shopifyReport"
-          description="Formato aceptado: CSV, XLSX, PDF"
+          description="Accepted format: CSV, XLSX, PDF"
         />
         
         <FileUploadField 
-          label="2. Sube los informes de tus campañas de Google Ads de los últimos 12 meses (opcional)"
+          label="2. Upload your Google Ads campaign reports from the last 12 months (optional)"
           field="googleAdsReport"
         />
         
         <FileUploadField 
-          label="3. Sube los informes de tus campañas de Meta Ads de los últimos 12 meses (opcional)"
+          label="3. Upload your Meta Ads campaign reports from the last 12 months (optional)"
           field="metaAdsReport"
         />
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            4. ¿Tienen actualmente una estrategia publicitaria definida para Google y Meta Ads?
+            4. Do you currently have a defined advertising strategy for Google and Meta Ads?
           </Label>
           <Select value={formData.hasStrategy} onValueChange={handleSelectChange("hasStrategy")}>
             <SelectTrigger className={cn(
               "w-full transition-all duration-200",
               errors.hasStrategy ? "border-destructive" : ""
             )}>
-              <SelectValue placeholder="Selecciona una opción" />
+              <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="si">Sí</SelectItem>
+              <SelectItem value="yes">Yes</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectContent>
           </Select>
@@ -510,15 +510,15 @@ export const OnboardingForm = () => {
           )}
         </div>
         
-        {formData.hasStrategy === "si" && (
+        {formData.hasStrategy === "yes" && (
           <div className="space-y-2 animate-fade-in">
             <Label className="text-foreground font-medium">
-              5. Cuéntenos más sobre tu estrategia. ¿Priorizan categorías o productos específicos?
+              5. Tell us more about your strategy. Do you prioritize specific categories or products?
             </Label>
             <Textarea 
               value={formData.strategyDetails}
               onChange={handleInputChange("strategyDetails")}
-              placeholder="Describe tu estrategia actual..."
+              placeholder="Describe your current strategy..."
               className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50"
             />
           </div>
@@ -532,7 +532,7 @@ export const OnboardingForm = () => {
       )}>
         <div className="space-y-4">
           <Label className="text-foreground font-medium">
-            6. ¿Cuál es la distribución del gasto publicitario entre Google y Meta Ads?
+            6. What is the distribution of advertising spend between Google and Meta Ads?
           </Label>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -557,7 +557,7 @@ export const OnboardingForm = () => {
                     setErrors(prev => ({ ...prev, googlePercentage: "", percentageSum: "" }));
                   }
                 }}
-                placeholder="Ej: 60"
+                placeholder="E.g.: 60"
                 className={cn(
                   "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
                   errors.googlePercentage ? "border-destructive" : ""
@@ -586,7 +586,7 @@ export const OnboardingForm = () => {
                     setErrors(prev => ({ ...prev, metaPercentage: "", percentageSum: "" }));
                   }
                 }}
-                placeholder="Ej: 40"
+                placeholder="E.g.: 40"
                 className={cn(
                   "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
                   errors.metaPercentage ? "border-destructive" : ""
@@ -618,14 +618,14 @@ export const OnboardingForm = () => {
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            7. ¿Cuántos SKUs tiene activos en Shopify disponibles para la venta en EE.UU.?
+            7. How many active SKUs do you have on Shopify available for sale in the US?
           </Label>
           <Input 
             type="number"
             min="0"
             value={formData.activeSKUs}
             onChange={handleInputChange("activeSKUs")}
-            placeholder="Ej: 150"
+            placeholder="E.g.: 150"
             className={cn(
               "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
               errors.activeSKUs ? "border-destructive" : ""
@@ -641,17 +641,17 @@ export const OnboardingForm = () => {
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            8. ¿Desean enfocar esta nueva estrategia publicitaria en categorías específicas o en productos concretos?
+            8. Do you want to focus this new advertising strategy on specific categories or specific products?
           </Label>
           <Select value={formData.focusOnCategories} onValueChange={handleSelectChange("focusOnCategories")}>
             <SelectTrigger className={cn(
               "w-full transition-all duration-200",
               errors.focusOnCategories ? "border-destructive" : ""
             )}>
-              <SelectValue placeholder="Selecciona una opción" />
+              <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="si">Sí</SelectItem>
+              <SelectItem value="yes">Yes</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectContent>
           </Select>
@@ -663,15 +663,15 @@ export const OnboardingForm = () => {
           )}
         </div>
         
-        {formData.focusOnCategories === "si" && (
+        {formData.focusOnCategories === "yes" && (
           <div className="space-y-2 animate-fade-in">
             <Label className="text-foreground font-medium">
-              9. Comparte las categorías y productos a los que desean dirigirse principalmente con esta estrategia
+              9. Share the categories and products you want to mainly target with this strategy
             </Label>
             <Textarea 
               value={formData.categoriesDetails}
               onChange={handleInputChange("categoriesDetails")}
-              placeholder="Lista las categorías y/o productos..."
+              placeholder="List the categories and/or products..."
               className={cn(
                 "min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50",
                 errors.categoriesDetails ? "border-destructive" : ""
@@ -694,17 +694,17 @@ export const OnboardingForm = () => {
       )}>
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            10. ¿Tienen una carpeta en Google Drive o Dropbox con su contenido para redes sociales?
+            10. Do you have a Google Drive or Dropbox folder with your social media content?
           </Label>
           <Select value={formData.hasDriveFolder} onValueChange={handleSelectChange("hasDriveFolder")}>
             <SelectTrigger className={cn(
               "w-full transition-all duration-200",
               errors.hasDriveFolder ? "border-destructive" : ""
             )}>
-              <SelectValue placeholder="Selecciona una opción" />
+              <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="si">Sí</SelectItem>
+              <SelectItem value="yes">Yes</SelectItem>
               <SelectItem value="no">No</SelectItem>
             </SelectContent>
           </Select>
@@ -718,16 +718,16 @@ export const OnboardingForm = () => {
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            11. Por favor, comparte el acceso a su Drive o Dropbox con el correo: managementecaccess@gmail.com
+            11. Please share access to your Drive or Dropbox with the email: managementecaccess@gmail.com
           </Label>
           <p className="text-sm text-foreground/60 mb-2">
-            Además, pega el enlace aquí abajo.
+            Also, paste the link below.
           </p>
           <Input 
             type="url"
             value={formData.driveFolderLink}
             onChange={handleInputChange("driveFolderLink")}
-            placeholder="https://drive.google.com/... o https://dropbox.com/..."
+            placeholder="https://drive.google.com/... or https://dropbox.com/..."
             className={cn(
               "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
               errors.driveFolderLink ? "border-destructive" : ""
@@ -743,12 +743,12 @@ export const OnboardingForm = () => {
         
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            12. Compártenos cualquier otra información que consideren relevante (opcional)
+            12. Share any other information you consider relevant (optional)
           </Label>
           <Textarea 
             value={formData.additionalInfo}
             onChange={handleInputChange("additionalInfo")}
-            placeholder="Información adicional..."
+            placeholder="Additional information..."
             className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50"
           />
         </div>
@@ -770,7 +770,7 @@ export const OnboardingForm = () => {
               htmlFor="consent" 
               className="text-sm text-foreground/70 cursor-pointer leading-relaxed"
             >
-              Autorizo el tratamiento de datos y el uso de la información para el desarrollo de la estrategia publicitaria.
+              I authorize the processing of data and the use of information for the development of the advertising strategy.
             </label>
           </div>
           {errors.consent && (
@@ -791,7 +791,7 @@ export const OnboardingForm = () => {
             className="transition-all duration-200 hover:bg-muted"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Atrás
+            Back
           </Button>
         ) : (
           <div />
@@ -803,7 +803,7 @@ export const OnboardingForm = () => {
             onClick={handleNext}
             className="transition-all duration-200"
           >
-            Guardar y continuar
+            Save and continue
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         ) : (
@@ -819,11 +819,11 @@ export const OnboardingForm = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Enviando...
+                Submitting...
               </span>
             ) : (
               <>
-                Enviar
+                Submit
                 <Check className="w-4 h-4 ml-2" />
               </>
             )}
