@@ -62,7 +62,14 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold text-base md:text-lg mb-3 md:mb-4">Get In Touch</h3>
             <p className="text-sm md:text-base text-foreground/60">
               Ready to transform your digital presence?<br />
-              <span className="text-accent">Let&apos;s talk.</span>
+              <a 
+                href="https://calendly.com/revupagencygroup-info/30min?month=2025-11" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-accent hover:underline transition-all cursor-pointer"
+              >
+                Let&apos;s talk.
+              </a>
             </p>
           </div>
         </div>
