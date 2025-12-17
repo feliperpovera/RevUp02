@@ -17,148 +17,231 @@ export const ClientsMap = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-          {/* SVG Map of Americas */}
-          <div className="relative w-full max-w-md group">
+          {/* SVG Map of Americas - Detailed outline */}
+          <div className="relative w-full max-w-lg group">
             {/* Glow effect behind map */}
             <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full transform scale-75 group-hover:scale-90 transition-transform duration-700" />
             
             <svg
-              viewBox="0 0 400 500"
-              className="w-full h-auto relative z-10 drop-shadow-2xl"
+              viewBox="0 0 500 700"
+              className="w-full h-auto relative z-10"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                {/* Gradient for highlighted countries */}
                 <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />
                   <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.6" />
                 </linearGradient>
                 
-                {/* Gradient for non-highlighted countries */}
-                <linearGradient id="neutralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.1" />
-                </linearGradient>
-
-                {/* Glow filter */}
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
                   </feMerge>
                 </filter>
-
-                {/* Shadow filter */}
-                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="2" dy="4" stdDeviation="3" floodOpacity="0.15"/>
-                </filter>
               </defs>
-              
+
+              {/* Alaska */}
+              <path
+                d="M40 85 L55 70 L80 65 L95 75 L90 90 L75 100 L55 95 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
               {/* Canada */}
               <path
-                d="M50 80 L80 50 L150 40 L200 45 L250 50 L280 65 L260 80 L250 80 L220 75 L200 85 L180 70 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M95 50 L130 35 L180 30 L230 25 L280 30 L330 40 L370 55 L380 75 L365 95 L340 90 L310 85 L280 95 L250 90 L220 100 L190 95 L160 105 L130 100 L100 110 L90 95 L95 70 Z
+                   M200 35 L210 30 L225 35 L220 45 L205 45 Z
+                   M250 30 L265 25 L280 30 L275 40 L260 40 Z
+                   M300 35 L320 30 L340 40 L335 55 L315 55 L300 45 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
-              {/* USA - highlighted */}
+
+              {/* USA - Highlighted */}
               <path
-                d="M50 80 L180 70 L200 85 L220 75 L250 80 L260 100 L250 120 L220 130 L200 125 L180 135 L150 130 L120 140 L80 135 L60 120 L50 100 Z"
+                d="M90 110 L130 100 L160 105 L190 95 L220 100 L250 90 L280 95 L310 85 L340 90 L365 95 L375 115 L370 140 L350 155 L320 160 L290 155 L260 165 L230 160 L200 170 L170 165 L140 175 L110 170 L95 150 L85 130 Z"
                 fill="url(#highlightGradient)"
                 className="stroke-primary"
                 strokeWidth="2"
                 filter="url(#glow)"
               />
-              
+
               {/* Mexico */}
               <path
-                d="M80 135 L120 140 L130 160 L120 180 L100 190 L90 180 L70 170 L65 150 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M95 170 L140 175 L160 185 L155 210 L140 235 L120 250 L105 245 L95 225 L85 200 L80 180 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
-              {/* Central America */}
+
+              {/* Guatemala */}
               <path
-                d="M100 190 L115 200 L120 220 L115 240 L105 250 L95 240 L90 220 L95 200 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M120 250 L135 248 L145 260 L138 270 L125 268 L118 258 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
-              {/* Colombia - highlighted */}
+
+              {/* Honduras/El Salvador/Nicaragua */}
               <path
-                d="M95 260 L120 255 L140 265 L150 285 L145 310 L125 325 L100 320 L85 300 L80 275 Z"
+                d="M138 270 L155 265 L165 275 L160 290 L145 295 L135 285 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Costa Rica */}
+              <path
+                d="M145 295 L160 290 L165 305 L155 315 L145 310 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Panama */}
+              <path
+                d="M155 315 L175 310 L190 320 L185 330 L165 335 L155 325 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Colombia - Highlighted */}
+              <path
+                d="M165 335 L185 330 L210 340 L230 355 L235 380 L225 410 L200 420 L175 415 L155 395 L145 365 L150 345 Z"
                 fill="url(#highlightGradient)"
                 className="stroke-primary"
                 strokeWidth="2"
                 filter="url(#glow)"
               />
-              
+
               {/* Venezuela */}
               <path
-                d="M140 265 L170 260 L185 275 L175 290 L150 285 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M210 340 L250 330 L280 340 L290 360 L275 380 L250 385 L235 380 L230 355 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
+
+              {/* Guyana/Suriname/French Guiana */}
+              <path
+                d="M280 340 L310 335 L330 350 L325 375 L300 385 L290 360 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Ecuador */}
+              <path
+                d="M145 365 L155 395 L150 420 L130 425 L120 400 L125 375 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Peru */}
+              <path
+                d="M125 375 L145 365 L150 420 L155 460 L140 490 L115 495 L100 465 L105 420 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
               {/* Brazil */}
               <path
-                d="M150 285 L175 290 L200 300 L220 330 L230 370 L210 410 L170 420 L140 400 L120 360 L125 325 L145 310 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M200 420 L225 410 L250 385 L275 380 L300 385 L325 375 L350 390 L370 430 L380 480 L370 540 L340 580 L290 600 L240 590 L200 560 L180 510 L175 460 L175 415 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
-              {/* Peru/Ecuador */}
+
+              {/* Bolivia */}
               <path
-                d="M80 275 L100 320 L95 360 L70 370 L55 340 L60 300 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M175 460 L200 455 L225 470 L220 510 L195 520 L175 505 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
-              {/* Chile/Argentina */}
+
+              {/* Paraguay */}
               <path
-                d="M95 360 L120 360 L140 400 L130 450 L100 470 L85 450 L80 400 Z"
-                fill="url(#neutralGradient)"
-                className="stroke-muted-foreground/30"
-                strokeWidth="1"
-                filter="url(#shadow)"
+                d="M220 510 L250 505 L260 535 L240 550 L220 540 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
               />
-              
+
+              {/* Chile */}
+              <path
+                d="M140 490 L155 485 L160 530 L155 590 L145 640 L130 660 L120 640 L125 580 L130 530 L135 495 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Argentina */}
+              <path
+                d="M155 490 L195 520 L220 540 L240 550 L250 590 L235 640 L200 670 L165 665 L145 640 L155 590 L160 530 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Uruguay */}
+              <path
+                d="M260 535 L280 540 L285 565 L270 580 L250 575 L250 555 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Cuba */}
+              <path
+                d="M200 200 L240 195 L260 205 L250 215 L210 220 L195 210 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1.5"
+              />
+
+              {/* Caribbean islands simplified */}
+              <path
+                d="M280 220 L295 215 L300 225 L290 230 Z M310 235 L320 230 L325 240 L315 245 Z"
+                fill="none"
+                className="stroke-muted-foreground/40"
+                strokeWidth="1"
+              />
+
               {/* Location markers with pulse animation */}
               {/* USA marker */}
               <g className="cursor-pointer">
-                <circle cx="160" cy="105" r="16" className="fill-primary/20 animate-ping" style={{ animationDuration: "2s" }} />
-                <circle cx="160" cy="105" r="10" className="fill-background stroke-primary stroke-2 drop-shadow-lg" />
-                <circle cx="160" cy="105" r="4" className="fill-primary" />
+                <circle cx="230" cy="130" r="20" className="fill-primary/15 animate-ping" style={{ animationDuration: "2s" }} />
+                <circle cx="230" cy="130" r="12" className="fill-background stroke-primary stroke-2" />
+                <circle cx="230" cy="130" r="5" className="fill-primary" />
               </g>
               
               {/* Colombia marker */}
               <g className="cursor-pointer">
-                <circle cx="115" cy="290" r="16" className="fill-primary/20 animate-ping" style={{ animationDuration: "2s", animationDelay: "1s" }} />
-                <circle cx="115" cy="290" r="10" className="fill-background stroke-primary stroke-2 drop-shadow-lg" />
-                <circle cx="115" cy="290" r="4" className="fill-primary" />
+                <circle cx="190" cy="375" r="20" className="fill-primary/15 animate-ping" style={{ animationDuration: "2s", animationDelay: "1s" }} />
+                <circle cx="190" cy="375" r="12" className="fill-background stroke-primary stroke-2" />
+                <circle cx="190" cy="375" r="5" className="fill-primary" />
               </g>
 
-              {/* Connection line between markers */}
+              {/* Connection line */}
               <path
-                d="M160 115 Q 100 200 115 280"
+                d="M230 145 Q 180 260 190 360"
                 fill="none"
-                className="stroke-primary/30"
+                className="stroke-primary/40"
                 strokeWidth="2"
-                strokeDasharray="6 4"
+                strokeDasharray="8 5"
               />
+
+              {/* Country labels */}
+              <text x="230" cy="155" className="fill-primary text-[10px] font-semibold" textAnchor="middle">USA</text>
+              <text x="190" cy="400" className="fill-primary text-[10px] font-semibold" textAnchor="middle">COLOMBIA</text>
             </svg>
           </div>
 
