@@ -1,12 +1,10 @@
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 export const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/revupagencygroup", label: "Instagram" },
-    { icon: Linkedin, href: "https://linkedin.com/company/revupagencygroup", label: "LinkedIn" },
-    { icon: Facebook, href: "https://facebook.com/revupagencygroup", label: "Facebook" },
   ];
 
   return (
