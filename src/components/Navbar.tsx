@@ -38,10 +38,10 @@ export const Navbar = () => {
   };
 
   const menuItems = [
-    { label: "About", path: "/about" },
     { label: "Partners", path: "/partners" },
-    { label: "Services", path: "/services" },
     { label: "Testimonials", path: "/testimonials" },
+    { label: "Services", path: "/services" },
+    { label: "About", path: "/about" },
     { label: "Onboarding", path: "/onboarding" },
   ];
 
