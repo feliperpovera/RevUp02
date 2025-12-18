@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Zap } from "lucide-react";
 
 // Boost de RevUp sobre el mercado (mejoras en CRO, optimización, etc.)
-const REVUP_BOOST = 0.35; // 35% de mejora sobre el ROAS del mercado
+const REVUP_BOOST = 0.15; // 15% de mejora sobre el ROAS del mercado
 
 // Benchmarks por sector (fuentes: WordStream 2025, Dynamic Yield, Decile Q1 2025)
 const SECTORS = [
