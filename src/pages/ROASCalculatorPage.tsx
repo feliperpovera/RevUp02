@@ -322,24 +322,6 @@ const ROASCalculatorPage = () => {
             </Card>
           </div>
 
-          {/* CTA Section */}
-          <div className="mt-8 text-center p-8 bg-primary/5 rounded-xl border border-primary/20">
-            <h3 className="text-2xl font-bold mb-3">Ready to Maximize Your ROAS?</h3>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Let our experts help you achieve these projections and beyond. Book a free consultation to discuss your growth strategy.
-            </p>
-            <Button 
-              variant="glow" 
-              size="lg"
-              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
-              className="text-base md:text-lg px-8 py-6"
-            >
-              <Calendar className="mr-2 w-5 h-5" />
-              Book a Free Consultation
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </div>
-
           {/* Info Section */}
           <Card className="mt-8 border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
@@ -379,6 +361,24 @@ const ROASCalculatorPage = () => {
               factors such as product quality, marketing strategy, competition, seasonality, and 
               market conditions. RevUp is not responsible for decisions made based on these projections.
             </p>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-8 text-center p-8 bg-primary/5 rounded-xl border border-primary/20">
+            <h3 className="text-2xl font-bold mb-3">Ready to Maximize Your ROAS?</h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Let our experts help you achieve these projections and beyond. Book a free consultation to discuss your growth strategy.
+            </p>
+            <Button 
+              variant="glow" 
+              size="lg"
+              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+              className="text-base md:text-lg px-8 py-6"
+            >
+              <Calendar className="mr-2 w-5 h-5" />
+              Book a Free Consultation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </main>
