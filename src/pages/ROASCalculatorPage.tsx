@@ -350,6 +350,17 @@ const ROASCalculatorPage = () => {
               </p>
             </CardContent>
           </Card>
+
+          {/* Aviso Legal */}
+          <div className="mt-6 p-4 bg-muted/20 rounded-lg border border-border/30">
+            <p className="text-xs text-muted-foreground text-center">
+              <strong className="text-foreground">Aviso Legal:</strong> Los resultados mostrados en esta calculadora son 
+              <strong className="text-foreground"> estimaciones basadas en benchmarks de la industria</strong> y no constituyen 
+              garantías ni compromisos de rendimiento. Los resultados reales pueden variar significativamente dependiendo de 
+              factores como la calidad del producto, la estrategia de marketing, la competencia, la estacionalidad y las 
+              condiciones del mercado. RevUp no se responsabiliza por decisiones tomadas con base en estas proyecciones.
+            </p>
+          </div>
         </div>
       </main>
 
