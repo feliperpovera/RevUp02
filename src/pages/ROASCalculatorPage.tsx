@@ -5,8 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
-import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Percent, Zap } from "lucide-react";
+import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Zap } from "lucide-react";
 
 // Boost de RevUp sobre el mercado (mejoras en CRO, optimización, etc.)
 const REVUP_BOOST = 0.35; // 35% de mejora sobre el ROAS del mercado
@@ -37,7 +36,6 @@ const ROASCalculatorPage = () => {
   const [budget, setBudget] = useState<string>("");
   const [sectorId, setSectorId] = useState<string>("");
   const [locationId, setLocationId] = useState<string>("");
-  const [cvrBoost, setCvrBoost] = useState<number>(0);
 
   const results = useMemo(() => {
     const budgetNum = parseFloat(budget);
@@ -52,7 +50,6 @@ const ROASCalculatorPage = () => {
     const cpcAdjusted = sector.cpcUS * location.multCPC;
     const aovAdjusted = sector.aovUS * location.multAOV;
     const cvrBase = sector.cvr * 1.10; // Baseline ligeramente optimista (+10%)
-    const cvrAdjusted = cvrBase * (1 + cvrBoost / 100);
     const clicks = budgetNum / cpcAdjusted;
     
     // Cálculos para ROAS del mercado (sin optimización RevUp)
@@ -60,8 +57,8 @@ const ROASCalculatorPage = () => {
     const revenueMarket = ordersMarket * aovAdjusted;
     const roasMarket = revenueMarket / budgetNum;
     
-    // Cálculos para ROAS con RevUp (incluye boost de CVR + mejoras adicionales)
-    const ordersRevUp = clicks * cvrAdjusted * (1 + REVUP_BOOST);
+    // Cálculos para ROAS con RevUp (incluye boost adicional)
+    const ordersRevUp = clicks * cvrBase * (1 + REVUP_BOOST);
     const revenueRevUp = ordersRevUp * aovAdjusted;
     const roasRevUp = revenueRevUp / budgetNum;
 
@@ -76,10 +73,9 @@ const ROASCalculatorPage = () => {
       roasMarket,
       roasRevUp,
       cvr: cvrBase * 100,
-      cvrAdjusted: cvrAdjusted * 100,
       roasImprovement: ((roasRevUp / roasMarket - 1) * 100).toFixed(0),
     };
-  }, [budget, sectorId, locationId, cvrBoost]);
+  }, [budget, sectorId, locationId]);
 
   const getRoasStatus = (roasValue: number) => {
     if (roasValue >= 4) return { label: "Excelente", color: "text-green-500", bg: "bg-green-500/10" };
@@ -171,26 +167,6 @@ const ROASCalculatorPage = () => {
                   </Select>
                 </div>
 
-                <div className="space-y-3">
-                  <Label className="flex items-center gap-2">
-                    <Percent className="w-4 h-4" />
-                    Aumento de CVR
-                  </Label>
-                  <div className="flex items-center gap-4">
-                    <Slider
-                      value={[cvrBoost]}
-                      onValueChange={(value) => setCvrBoost(value[0])}
-                      max={100}
-                      step={5}
-                      className="flex-1"
-                    />
-                    <span className="text-sm font-medium w-14 text-right">+{cvrBoost}%</span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    Simula mejoras de CVR por optimización de landing pages, CRO, etc.
-                  </p>
-                </div>
-
                 {sectorId && locationId && (
                   <div className="pt-4 border-t border-border/50">
                     <p className="text-xs text-muted-foreground mb-3">Benchmarks aplicados:</p>
@@ -204,8 +180,7 @@ const ROASCalculatorPage = () => {
                       <div className="p-2 bg-muted/30 rounded">
                         <span className="text-muted-foreground">CVR:</span>
                         <span className="ml-1 font-medium">
-                          {((SECTORS.find(s => s.id === sectorId)!.cvr * (1 + cvrBoost / 100)) * 100).toFixed(2)}%
-                          {cvrBoost > 0 && <span className="text-green-500 ml-1">(+{cvrBoost}%)</span>}
+                          {(SECTORS.find(s => s.id === sectorId)!.cvr * 100 * 1.10).toFixed(2)}%
                         </span>
                       </div>
                       <div className="p-2 bg-muted/30 rounded col-span-2">
@@ -326,10 +301,7 @@ const ROASCalculatorPage = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Tasa de conversión (CVR)</span>
-                          <span className="font-mono">
-                            {results.cvrAdjusted.toFixed(2)}%
-                            {cvrBoost > 0 && <span className="text-green-500 ml-1">(+{cvrBoost}%)</span>}
-                          </span>
+                          <span className="font-mono">{results.cvr.toFixed(2)}%</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Boost RevUp</span>
