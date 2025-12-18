@@ -12,6 +12,7 @@ import ServicesPage from "./pages/ServicesPage";
 import ProcessPage from "./pages/ProcessPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
 import OnboardingPage from "./pages/OnboardingPage";
+import ROASCalculatorPage from "./pages/ROASCalculatorPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/process" element={<ProcessPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/onboarding" element={<OnboardingPage />} />
+            <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
