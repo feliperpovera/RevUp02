@@ -1,32 +1,66 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Calculator, TrendingUp, DollarSign, Target } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3 } from "lucide-react";
+
+// Benchmarks por sector (fuentes: WordStream 2025, Dynamic Yield, Decile Q1 2025)
+const SECTORS = [
+  { id: "fashion", name: "Fashion & Apparel", cpcUS: 4.31, cvr: 0.0313, aovUS: 191 },
+  { id: "home", name: "Home Goods", cpcUS: 3.86, cvr: 0.0146, aovUS: 266 },
+  { id: "health", name: "Health & Beauty", cpcUS: 5.70, cvr: 0.0489, aovUS: 151 },
+  { id: "food", name: "Food & Beverage", cpcUS: 2.05, cvr: 0.0602, aovUS: 69 },
+  { id: "supplements", name: "Supplements", cpcUS: 5.70, cvr: 0.0350, aovUS: 70 },
+  { id: "electronics", name: "Electronics", cpcUS: 3.50, cvr: 0.0220, aovUS: 320 },
+  { id: "pets", name: "Pet Supplies", cpcUS: 3.20, cvr: 0.0380, aovUS: 85 },
+];
+
+// Ajustes por país (WordStream CPC, PIB per cápita PPP para AOV)
+const LOCATIONS = [
+  { id: "us", name: "Estados Unidos", multCPC: 1.00, multAOV: 1.00 },
+  { id: "mx", name: "México", multCPC: 0.50, multAOV: 0.299 },
+  { id: "co", name: "Colombia", multCPC: 0.17, multAOV: 0.250 },
+  { id: "ar", name: "Argentina", multCPC: 0.25, multAOV: 0.280 },
+  { id: "cl", name: "Chile", multCPC: 0.40, multAOV: 0.320 },
+  { id: "pe", name: "Perú", multCPC: 0.20, multAOV: 0.180 },
+  { id: "es", name: "España", multCPC: 0.75, multAOV: 0.520 },
+];
 
 const ROASCalculatorPage = () => {
-  const [revenue, setRevenue] = useState<string>("");
-  const [adSpend, setAdSpend] = useState<string>("");
-  const [roas, setRoas] = useState<number | null>(null);
+  const [budget, setBudget] = useState<string>("");
+  const [sectorId, setSectorId] = useState<string>("");
+  const [locationId, setLocationId] = useState<string>("");
 
-  const calculateROAS = () => {
-    const revenueNum = parseFloat(revenue);
-    const adSpendNum = parseFloat(adSpend);
-    
-    if (revenueNum > 0 && adSpendNum > 0) {
-      const calculatedRoas = revenueNum / adSpendNum;
-      setRoas(calculatedRoas);
+  const results = useMemo(() => {
+    const budgetNum = parseFloat(budget);
+    const sector = SECTORS.find(s => s.id === sectorId);
+    const location = LOCATIONS.find(l => l.id === locationId);
+
+    if (!budgetNum || budgetNum <= 0 || !sector || !location) {
+      return null;
     }
-  };
 
-  const resetCalculator = () => {
-    setRevenue("");
-    setAdSpend("");
-    setRoas(null);
-  };
+    // Cálculos según las fórmulas
+    const cpcAdjusted = sector.cpcUS * location.multCPC;
+    const aovAdjusted = sector.aovUS * location.multAOV;
+    const clicks = budgetNum / cpcAdjusted;
+    const orders = clicks * sector.cvr;
+    const revenue = orders * aovAdjusted;
+    const roas = revenue / budgetNum;
+
+    return {
+      cpcAdjusted,
+      aovAdjusted,
+      clicks: Math.round(clicks),
+      orders: Math.round(orders * 10) / 10,
+      revenue,
+      roas,
+      cvr: sector.cvr * 100,
+    };
+  }, [budget, sectorId, locationId]);
 
   const getRoasStatus = (roasValue: number) => {
     if (roasValue >= 4) return { label: "Excelente", color: "text-green-500", bg: "bg-green-500/10" };
@@ -41,7 +75,7 @@ const ROASCalculatorPage = () => {
       <Navbar />
       
       <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-5xl">
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-6">
@@ -51,105 +85,193 @@ const ROASCalculatorPage = () => {
               Calculadora de <span className="text-primary">ROAS</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Calcula el retorno de tu inversión publicitaria y optimiza tus campañas de marketing digital.
+              Proyecta tu retorno publicitario con benchmarks actualizados por industria y región.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Calculator Card */}
-            <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <div className="grid lg:grid-cols-5 gap-8">
+            {/* Inputs Card */}
+            <Card className="lg:col-span-2 border-border/50 bg-card/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  Ingresa tus datos
+                  Configura tu escenario
                 </CardTitle>
                 <CardDescription>
-                  Introduce los ingresos generados y el gasto en publicidad
+                  Solo necesitas 3 datos para proyectar tus resultados
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="revenue">Ingresos generados ($)</Label>
+                  <Label htmlFor="budget">Presupuesto mensual (USD)</Label>
                   <Input
-                    id="revenue"
+                    id="budget"
                     type="number"
-                    placeholder="Ej: 10000"
-                    value={revenue}
-                    onChange={(e) => setRevenue(e.target.value)}
+                    placeholder="Ej: 5000"
+                    value={budget}
+                    onChange={(e) => setBudget(e.target.value)}
                     className="bg-background/50"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="adSpend">Gasto en publicidad ($)</Label>
-                  <Input
-                    id="adSpend"
-                    type="number"
-                    placeholder="Ej: 2500"
-                    value={adSpend}
-                    onChange={(e) => setAdSpend(e.target.value)}
-                    className="bg-background/50"
-                  />
+                  <Label htmlFor="sector" className="flex items-center gap-2">
+                    <ShoppingCart className="w-4 h-4" />
+                    Sector / Industria
+                  </Label>
+                  <Select value={sectorId} onValueChange={setSectorId}>
+                    <SelectTrigger className="bg-background/50">
+                      <SelectValue placeholder="Selecciona tu sector" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {SECTORS.map((sector) => (
+                        <SelectItem key={sector.id} value={sector.id}>
+                          {sector.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
-                <div className="flex gap-3">
-                  <Button onClick={calculateROAS} className="flex-1">
-                    Calcular ROAS
-                  </Button>
-                  <Button variant="outline" onClick={resetCalculator}>
-                    Limpiar
-                  </Button>
+                <div className="space-y-2">
+                  <Label htmlFor="location" className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    Ubicación / País
+                  </Label>
+                  <Select value={locationId} onValueChange={setLocationId}>
+                    <SelectTrigger className="bg-background/50">
+                      <SelectValue placeholder="Selecciona el país" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {LOCATIONS.map((location) => (
+                        <SelectItem key={location.id} value={location.id}>
+                          {location.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
-              </CardContent>
-            </Card>
 
-            {/* Results Card */}
-            <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-primary" />
-                  Resultado
-                </CardTitle>
-                <CardDescription>
-                  Tu retorno sobre la inversión publicitaria
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {roas !== null ? (
-                  <div className="space-y-6">
-                    <div className={`p-6 rounded-xl ${getRoasStatus(roas).bg} text-center`}>
-                      <p className="text-sm text-muted-foreground mb-2">Tu ROAS es</p>
-                      <p className={`text-5xl font-bold ${getRoasStatus(roas).color}`}>
-                        {roas.toFixed(2)}x
-                      </p>
-                      <p className={`mt-2 font-medium ${getRoasStatus(roas).color}`}>
-                        {getRoasStatus(roas).label}
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-3 text-sm">
-                      <div className="flex justify-between p-3 bg-muted/30 rounded-lg">
-                        <span className="text-muted-foreground">Por cada $1 invertido</span>
-                        <span className="font-semibold">${roas.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between p-3 bg-muted/30 rounded-lg">
-                        <span className="text-muted-foreground">Ganancia neta</span>
-                        <span className="font-semibold">
-                          ${(parseFloat(revenue) - parseFloat(adSpend)).toLocaleString()}
+                {sectorId && locationId && (
+                  <div className="pt-4 border-t border-border/50">
+                    <p className="text-xs text-muted-foreground mb-3">Benchmarks aplicados:</p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="p-2 bg-muted/30 rounded">
+                        <span className="text-muted-foreground">CPC:</span>
+                        <span className="ml-1 font-medium">
+                          ${(SECTORS.find(s => s.id === sectorId)!.cpcUS * LOCATIONS.find(l => l.id === locationId)!.multCPC).toFixed(2)}
                         </span>
                       </div>
-                      <div className="flex justify-between p-3 bg-muted/30 rounded-lg">
-                        <span className="text-muted-foreground">ROI</span>
-                        <span className="font-semibold">
-                          {((roas - 1) * 100).toFixed(0)}%
+                      <div className="p-2 bg-muted/30 rounded">
+                        <span className="text-muted-foreground">CVR:</span>
+                        <span className="ml-1 font-medium">
+                          {(SECTORS.find(s => s.id === sectorId)!.cvr * 100).toFixed(2)}%
+                        </span>
+                      </div>
+                      <div className="p-2 bg-muted/30 rounded col-span-2">
+                        <span className="text-muted-foreground">Ticket promedio:</span>
+                        <span className="ml-1 font-medium">
+                          ${(SECTORS.find(s => s.id === sectorId)!.aovUS * LOCATIONS.find(l => l.id === locationId)!.multAOV).toFixed(0)}
                         </span>
                       </div>
                     </div>
                   </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* Results Card */}
+            <Card className="lg:col-span-3 border-border/50 bg-card/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-primary" />
+                  Proyección de resultados
+                </CardTitle>
+                <CardDescription>
+                  Estimación basada en benchmarks de industria 2025
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {results ? (
+                  <div className="space-y-6">
+                    {/* ROAS Principal */}
+                    <div className={`p-6 rounded-xl ${getRoasStatus(results.roas).bg} text-center`}>
+                      <p className="text-sm text-muted-foreground mb-2">ROAS Proyectado</p>
+                      <p className={`text-5xl font-bold ${getRoasStatus(results.roas).color}`}>
+                        {results.roas.toFixed(2)}x
+                      </p>
+                      <p className={`mt-2 font-medium ${getRoasStatus(results.roas).color}`}>
+                        {getRoasStatus(results.roas).label}
+                      </p>
+                    </div>
+
+                    {/* Métricas Grid */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div className="p-4 bg-muted/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                          <TrendingUp className="w-4 h-4" />
+                          <span className="text-sm">Revenue estimado</span>
+                        </div>
+                        <p className="text-2xl font-bold text-primary">
+                          ${results.revenue.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                        </p>
+                      </div>
+                      
+                      <div className="p-4 bg-muted/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                          <ShoppingCart className="w-4 h-4" />
+                          <span className="text-sm">Órdenes estimadas</span>
+                        </div>
+                        <p className="text-2xl font-bold">
+                          {results.orders.toLocaleString('en-US', { maximumFractionDigits: 1 })}
+                        </p>
+                      </div>
+                      
+                      <div className="p-4 bg-muted/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                          <Target className="w-4 h-4" />
+                          <span className="text-sm">Clics estimados</span>
+                        </div>
+                        <p className="text-2xl font-bold">
+                          {results.clicks.toLocaleString('en-US')}
+                        </p>
+                      </div>
+                      
+                      <div className="p-4 bg-muted/30 rounded-lg">
+                        <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                          <DollarSign className="w-4 h-4" />
+                          <span className="text-sm">Ganancia neta</span>
+                        </div>
+                        <p className="text-2xl font-bold text-green-500">
+                          ${(results.revenue - parseFloat(budget)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Desglose detallado */}
+                    <div className="border-t border-border/50 pt-4">
+                      <p className="text-sm text-muted-foreground mb-3">Desglose del cálculo:</p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">CPC ajustado por región</span>
+                          <span className="font-mono">${results.cpcAdjusted.toFixed(2)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Ticket promedio ajustado</span>
+                          <span className="font-mono">${results.aovAdjusted.toFixed(0)}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Tasa de conversión (CVR)</span>
+                          <span className="font-mono">{results.cvr.toFixed(2)}%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="text-center py-12 text-muted-foreground">
-                    <TrendingUp className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                    <p>Ingresa tus datos para calcular el ROAS</p>
+                  <div className="text-center py-16 text-muted-foreground">
+                    <Calculator className="w-16 h-16 mx-auto mb-4 opacity-20" />
+                    <p className="text-lg">Completa los 3 campos para ver tu proyección</p>
+                    <p className="text-sm mt-2">Presupuesto + Sector + Ubicación</p>
                   </div>
                 )}
               </CardContent>
@@ -159,24 +281,30 @@ const ROASCalculatorPage = () => {
           {/* Info Section */}
           <Card className="mt-8 border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>¿Qué es el ROAS?</CardTitle>
+              <CardTitle>Metodología y fuentes</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-muted-foreground">
+            <CardContent className="space-y-4 text-muted-foreground text-sm">
               <p>
-                <strong className="text-foreground">ROAS (Return on Ad Spend)</strong> es una métrica que mide 
-                la efectividad de tus campañas publicitarias. Se calcula dividiendo los ingresos generados 
-                entre el gasto en publicidad.
+                Esta calculadora utiliza <strong className="text-foreground">benchmarks actualizados 2025</strong> de 
+                fuentes reconocidas en la industria para proyectar resultados realistas.
               </p>
-              <div className="grid sm:grid-cols-2 gap-4 pt-4">
+              <div className="grid sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 bg-muted/30 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">ROAS 2x - 3x</p>
-                  <p className="text-sm">Considerado aceptable para la mayoría de industrias</p>
+                  <p className="font-semibold text-foreground mb-1">CPC por industria</p>
+                  <p className="text-xs">WordStream Google Ads Benchmarks 2025</p>
                 </div>
                 <div className="p-4 bg-muted/30 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">ROAS 4x+</p>
-                  <p className="text-sm">Excelente rendimiento, campañas muy rentables</p>
+                  <p className="font-semibold text-foreground mb-1">Tasas de conversión</p>
+                  <p className="text-xs">Dynamic Yield eCommerce Benchmarks</p>
+                </div>
+                <div className="p-4 bg-muted/30 rounded-lg">
+                  <p className="font-semibold text-foreground mb-1">Ticket promedio (AOV)</p>
+                  <p className="text-xs">Decile Q1 2025 + Dynamic Yield</p>
                 </div>
               </div>
+              <p className="text-xs pt-2">
+                * Los ajustes por país se basan en diferencias de CPC (WordStream) y poder adquisitivo (PIB per cápita PPP 2024).
+              </p>
             </CardContent>
           </Card>
         </div>
