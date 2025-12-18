@@ -41,6 +41,7 @@ export const Navbar = () => {
     { label: "Partners", path: "/partners" },
     { label: "Testimonials", path: "/testimonials" },
     { label: "Services", path: "/services" },
+    { label: "ROAS Calculator", path: "/roas-calculator" },
     { label: "About", path: "/about" },
     { label: "Onboarding", path: "/onboarding" },
   ];
