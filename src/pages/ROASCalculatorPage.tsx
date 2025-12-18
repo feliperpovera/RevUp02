@@ -6,7 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
-import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Percent } from "lucide-react";
+import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Percent, Zap } from "lucide-react";
+
+// Boost de RevUp sobre el mercado (mejoras en CRO, optimización, etc.)
+const REVUP_BOOST = 0.35; // 35% de mejora sobre el ROAS del mercado
 
 // Benchmarks por sector (fuentes: WordStream 2025, Dynamic Yield, Decile Q1 2025)
 const SECTORS = [
@@ -48,21 +51,33 @@ const ROASCalculatorPage = () => {
     // Cálculos según las fórmulas
     const cpcAdjusted = sector.cpcUS * location.multCPC;
     const aovAdjusted = sector.aovUS * location.multAOV;
-    const cvrAdjusted = sector.cvr * (1 + cvrBoost / 100);
+    const cvrBase = sector.cvr * 1.10; // Baseline ligeramente optimista (+10%)
+    const cvrAdjusted = cvrBase * (1 + cvrBoost / 100);
     const clicks = budgetNum / cpcAdjusted;
-    const orders = clicks * cvrAdjusted;
-    const revenue = orders * aovAdjusted;
-    const roas = revenue / budgetNum;
+    
+    // Cálculos para ROAS del mercado (sin optimización RevUp)
+    const ordersMarket = clicks * cvrBase;
+    const revenueMarket = ordersMarket * aovAdjusted;
+    const roasMarket = revenueMarket / budgetNum;
+    
+    // Cálculos para ROAS con RevUp (incluye boost de CVR + mejoras adicionales)
+    const ordersRevUp = clicks * cvrAdjusted * (1 + REVUP_BOOST);
+    const revenueRevUp = ordersRevUp * aovAdjusted;
+    const roasRevUp = revenueRevUp / budgetNum;
 
     return {
       cpcAdjusted,
       aovAdjusted,
       clicks: Math.round(clicks),
-      orders: Math.round(orders * 10) / 10,
-      revenue,
-      roas,
-      cvr: sector.cvr * 100,
+      ordersMarket: Math.round(ordersMarket * 10) / 10,
+      ordersRevUp: Math.round(ordersRevUp * 10) / 10,
+      revenueMarket,
+      revenueRevUp,
+      roasMarket,
+      roasRevUp,
+      cvr: cvrBase * 100,
       cvrAdjusted: cvrAdjusted * 100,
+      roasImprovement: ((roasRevUp / roasMarket - 1) * 100).toFixed(0),
     };
   }, [budget, sectorId, locationId, cvrBoost]);
 
@@ -219,15 +234,33 @@ const ROASCalculatorPage = () => {
               <CardContent>
                 {results ? (
                   <div className="space-y-6">
-                    {/* ROAS Principal */}
-                    <div className={`p-6 rounded-xl ${getRoasStatus(results.roas).bg} text-center`}>
-                      <p className="text-sm text-muted-foreground mb-2">ROAS Proyectado</p>
-                      <p className={`text-5xl font-bold ${getRoasStatus(results.roas).color}`}>
-                        {results.roas.toFixed(2)}x
-                      </p>
-                      <p className={`mt-2 font-medium ${getRoasStatus(results.roas).color}`}>
-                        {getRoasStatus(results.roas).label}
-                      </p>
+                    {/* ROAS Comparativo */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      {/* ROAS Mercado */}
+                      <div className={`p-5 rounded-xl ${getRoasStatus(results.roasMarket).bg} text-center border border-border/30`}>
+                        <p className="text-xs text-muted-foreground mb-1">ROAS del Mercado</p>
+                        <p className={`text-3xl font-bold ${getRoasStatus(results.roasMarket).color}`}>
+                          {results.roasMarket.toFixed(2)}x
+                        </p>
+                        <p className={`mt-1 text-sm font-medium ${getRoasStatus(results.roasMarket).color}`}>
+                          {getRoasStatus(results.roasMarket).label}
+                        </p>
+                      </div>
+                      
+                      {/* ROAS RevUp */}
+                      <div className="p-5 rounded-xl bg-primary/10 text-center border-2 border-primary/30 relative">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full flex items-center gap-1">
+                          <Zap className="w-3 h-3" />
+                          +{results.roasImprovement}%
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-1">ROAS con RevUp</p>
+                        <p className="text-4xl font-bold text-primary">
+                          {results.roasRevUp.toFixed(2)}x
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-primary">
+                          Optimizado
+                        </p>
+                      </div>
                     </div>
 
                     {/* Métricas Grid */}
@@ -235,20 +268,26 @@ const ROASCalculatorPage = () => {
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <TrendingUp className="w-4 h-4" />
-                          <span className="text-sm">Revenue estimado</span>
+                          <span className="text-sm">Revenue con RevUp</span>
                         </div>
                         <p className="text-2xl font-bold text-primary">
-                          ${results.revenue.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                          ${results.revenueRevUp.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          vs ${results.revenueMarket.toLocaleString('en-US', { maximumFractionDigits: 0 })} mercado
                         </p>
                       </div>
                       
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <ShoppingCart className="w-4 h-4" />
-                          <span className="text-sm">Órdenes estimadas</span>
+                          <span className="text-sm">Órdenes con RevUp</span>
                         </div>
                         <p className="text-2xl font-bold">
-                          {results.orders.toLocaleString('en-US', { maximumFractionDigits: 1 })}
+                          {results.ordersRevUp.toLocaleString('en-US', { maximumFractionDigits: 1 })}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          vs {results.ordersMarket.toLocaleString('en-US', { maximumFractionDigits: 1 })} mercado
                         </p>
                       </div>
                       
@@ -265,10 +304,10 @@ const ROASCalculatorPage = () => {
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <DollarSign className="w-4 h-4" />
-                          <span className="text-sm">Ganancia neta</span>
+                          <span className="text-sm">Ganancia neta RevUp</span>
                         </div>
                         <p className="text-2xl font-bold text-green-500">
-                          ${(results.revenue - parseFloat(budget)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                          ${(results.revenueRevUp - parseFloat(budget)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
                         </p>
                       </div>
                     </div>
@@ -291,6 +330,10 @@ const ROASCalculatorPage = () => {
                             {results.cvrAdjusted.toFixed(2)}%
                             {cvrBoost > 0 && <span className="text-green-500 ml-1">(+{cvrBoost}%)</span>}
                           </span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Boost RevUp</span>
+                          <span className="font-mono text-primary">+{(REVUP_BOOST * 100).toFixed(0)}%</span>
                         </div>
                       </div>
                     </div>
