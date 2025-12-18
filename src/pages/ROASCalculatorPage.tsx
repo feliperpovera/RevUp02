@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Zap, ArrowRight, Calendar } from "lucide-react";
 
 // RevUp boost over market (CRO improvements, optimization, etc.)
 const REVUP_BOOST = 0.20; // 20% improvement over market ROAS
@@ -319,6 +320,24 @@ const ROASCalculatorPage = () => {
                 )}
               </CardContent>
             </Card>
+          </div>
+
+          {/* CTA Section */}
+          <div className="mt-8 text-center p-8 bg-primary/5 rounded-xl border border-primary/20">
+            <h3 className="text-2xl font-bold mb-3">Ready to Maximize Your ROAS?</h3>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              Let our experts help you achieve these projections and beyond. Book a free consultation to discuss your growth strategy.
+            </p>
+            <Button 
+              variant="glow" 
+              size="lg"
+              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+              className="text-base md:text-lg px-8 py-6"
+            >
+              <Calendar className="mr-2 w-5 h-5" />
+              Book a Free Consultation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
 
           {/* Info Section */}
