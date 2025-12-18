@@ -7,10 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Zap } from "lucide-react";
 
-// Boost de RevUp sobre el mercado (mejoras en CRO, optimización, etc.)
-const REVUP_BOOST = 0.15; // 15% de mejora sobre el ROAS del mercado
+// RevUp boost over market (CRO improvements, optimization, etc.)
+const REVUP_BOOST = 0.20; // 20% improvement over market ROAS
 
-// Benchmarks por sector (fuentes: WordStream 2025, Dynamic Yield, Decile Q1 2025)
+// Sector benchmarks (sources: WordStream 2025, Dynamic Yield, Decile Q1 2025)
 const SECTORS = [
   { id: "fashion", name: "Fashion & Apparel", cpcUS: 4.31, cvr: 0.0313, aovUS: 191 },
   { id: "home", name: "Home Goods", cpcUS: 3.86, cvr: 0.0146, aovUS: 266 },
@@ -21,15 +21,15 @@ const SECTORS = [
   { id: "pets", name: "Pet Supplies", cpcUS: 3.20, cvr: 0.0380, aovUS: 85 },
 ];
 
-// Ajustes por país (WordStream CPC, PIB per cápita PPP para AOV)
+// Country adjustments (WordStream CPC, GDP per capita PPP for AOV)
 const LOCATIONS = [
-  { id: "us", name: "Estados Unidos", multCPC: 1.00, multAOV: 1.00 },
-  { id: "mx", name: "México", multCPC: 0.50, multAOV: 0.299 },
+  { id: "us", name: "United States", multCPC: 1.00, multAOV: 1.00 },
+  { id: "mx", name: "Mexico", multCPC: 0.50, multAOV: 0.299 },
   { id: "co", name: "Colombia", multCPC: 0.17, multAOV: 0.250 },
   { id: "ar", name: "Argentina", multCPC: 0.25, multAOV: 0.280 },
   { id: "cl", name: "Chile", multCPC: 0.40, multAOV: 0.320 },
-  { id: "pe", name: "Perú", multCPC: 0.20, multAOV: 0.180 },
-  { id: "es", name: "España", multCPC: 0.75, multAOV: 0.520 },
+  { id: "pe", name: "Peru", multCPC: 0.20, multAOV: 0.180 },
+  { id: "es", name: "Spain", multCPC: 0.75, multAOV: 0.520 },
 ];
 
 const ROASCalculatorPage = () => {
@@ -46,18 +46,18 @@ const ROASCalculatorPage = () => {
       return null;
     }
 
-    // Cálculos según las fórmulas
+    // Calculations based on formulas
     const cpcAdjusted = sector.cpcUS * location.multCPC;
     const aovAdjusted = sector.aovUS * location.multAOV;
-    const cvrBase = sector.cvr * 1.10; // Baseline ligeramente optimista (+10%)
+    const cvrBase = sector.cvr * 1.10; // Slightly optimistic baseline (+10%)
     const clicks = budgetNum / cpcAdjusted;
     
-    // Cálculos para ROAS del mercado (sin optimización RevUp)
+    // Market ROAS calculations (without RevUp optimization)
     const ordersMarket = clicks * cvrBase;
     const revenueMarket = ordersMarket * aovAdjusted;
     const roasMarket = revenueMarket / budgetNum;
     
-    // Cálculos para ROAS con RevUp (incluye boost adicional)
+    // RevUp ROAS calculations (includes additional boost)
     const ordersRevUp = clicks * cvrBase * (1 + REVUP_BOOST);
     const revenueRevUp = ordersRevUp * aovAdjusted;
     const roasRevUp = revenueRevUp / budgetNum;
@@ -78,11 +78,11 @@ const ROASCalculatorPage = () => {
   }, [budget, sectorId, locationId]);
 
   const getRoasStatus = (roasValue: number) => {
-    if (roasValue >= 4) return { label: "Excelente", color: "text-green-500", bg: "bg-green-500/10" };
-    if (roasValue >= 3) return { label: "Muy Bueno", color: "text-emerald-500", bg: "bg-emerald-500/10" };
-    if (roasValue >= 2) return { label: "Bueno", color: "text-yellow-500", bg: "bg-yellow-500/10" };
+    if (roasValue >= 4) return { label: "Excellent", color: "text-green-500", bg: "bg-green-500/10" };
+    if (roasValue >= 3) return { label: "Very Good", color: "text-emerald-500", bg: "bg-emerald-500/10" };
+    if (roasValue >= 2) return { label: "Good", color: "text-yellow-500", bg: "bg-yellow-500/10" };
     if (roasValue >= 1) return { label: "Break-even", color: "text-orange-500", bg: "bg-orange-500/10" };
-    return { label: "Pérdida", color: "text-red-500", bg: "bg-red-500/10" };
+    return { label: "Loss", color: "text-red-500", bg: "bg-red-500/10" };
   };
 
   return (
@@ -97,10 +97,10 @@ const ROASCalculatorPage = () => {
               <Calculator className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Calculadora de <span className="text-primary">ROAS</span>
+              <span className="text-primary">ROAS</span> Calculator
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Proyecta tu retorno publicitario con benchmarks actualizados por industria y región.
+              Project your advertising return with updated benchmarks by industry and region.
             </p>
           </div>
 
@@ -110,19 +110,19 @@ const ROASCalculatorPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  Configura tu escenario
+                  Configure Your Scenario
                 </CardTitle>
                 <CardDescription>
-                  Solo necesitas 3 datos para proyectar tus resultados
+                  You only need 3 inputs to project your results
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="budget">Presupuesto mensual (USD)</Label>
+                  <Label htmlFor="budget">Monthly Budget (USD)</Label>
                   <Input
                     id="budget"
                     type="number"
-                    placeholder="Ej: 5000"
+                    placeholder="e.g. 5000"
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
                     className="bg-background/50"
@@ -132,11 +132,11 @@ const ROASCalculatorPage = () => {
                 <div className="space-y-2">
                   <Label htmlFor="sector" className="flex items-center gap-2">
                     <ShoppingCart className="w-4 h-4" />
-                    Sector / Industria
+                    Sector / Industry
                   </Label>
                   <Select value={sectorId} onValueChange={setSectorId}>
                     <SelectTrigger className="bg-background/50">
-                      <SelectValue placeholder="Selecciona tu sector" />
+                      <SelectValue placeholder="Select your sector" />
                     </SelectTrigger>
                     <SelectContent>
                       {SECTORS.map((sector) => (
@@ -151,11 +151,11 @@ const ROASCalculatorPage = () => {
                 <div className="space-y-2">
                   <Label htmlFor="location" className="flex items-center gap-2">
                     <MapPin className="w-4 h-4" />
-                    Ubicación / País
+                    Location / Country
                   </Label>
                   <Select value={locationId} onValueChange={setLocationId}>
                     <SelectTrigger className="bg-background/50">
-                      <SelectValue placeholder="Selecciona el país" />
+                      <SelectValue placeholder="Select the country" />
                     </SelectTrigger>
                     <SelectContent>
                       {LOCATIONS.map((location) => (
@@ -169,7 +169,7 @@ const ROASCalculatorPage = () => {
 
                 {sectorId && locationId && (
                   <div className="pt-4 border-t border-border/50">
-                    <p className="text-xs text-muted-foreground mb-3">Benchmarks aplicados:</p>
+                    <p className="text-xs text-muted-foreground mb-3">Applied benchmarks:</p>
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <div className="p-2 bg-muted/30 rounded">
                         <span className="text-muted-foreground">CPC:</span>
@@ -184,7 +184,7 @@ const ROASCalculatorPage = () => {
                         </span>
                       </div>
                       <div className="p-2 bg-muted/30 rounded col-span-2">
-                        <span className="text-muted-foreground">Ticket promedio:</span>
+                        <span className="text-muted-foreground">Avg. Order Value:</span>
                         <span className="ml-1 font-medium">
                           ${(SECTORS.find(s => s.id === sectorId)!.aovUS * LOCATIONS.find(l => l.id === locationId)!.multAOV).toFixed(0)}
                         </span>
@@ -200,10 +200,10 @@ const ROASCalculatorPage = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-primary" />
-                  Proyección de resultados
+                  Results Projection
                 </CardTitle>
                 <CardDescription>
-                  Estimación basada en benchmarks de industria 2025
+                  Estimation based on 2025 industry benchmarks
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -213,7 +213,7 @@ const ROASCalculatorPage = () => {
                     <div className="grid sm:grid-cols-2 gap-4">
                       {/* ROAS Mercado */}
                       <div className={`p-5 rounded-xl ${getRoasStatus(results.roasMarket).bg} text-center border border-border/30`}>
-                        <p className="text-xs text-muted-foreground mb-1">ROAS del Mercado</p>
+                        <p className="text-xs text-muted-foreground mb-1">Market ROAS</p>
                         <p className={`text-3xl font-bold ${getRoasStatus(results.roasMarket).color}`}>
                           {results.roasMarket.toFixed(2)}x
                         </p>
@@ -228,48 +228,48 @@ const ROASCalculatorPage = () => {
                           <Zap className="w-3 h-3" />
                           +{results.roasImprovement}%
                         </div>
-                        <p className="text-xs text-muted-foreground mb-1">ROAS con RevUp</p>
+                        <p className="text-xs text-muted-foreground mb-1">ROAS with RevUp</p>
                         <p className="text-4xl font-bold text-primary">
                           {results.roasRevUp.toFixed(2)}x
                         </p>
                         <p className="mt-1 text-sm font-medium text-primary">
-                          Optimizado
+                          Optimized
                         </p>
                       </div>
                     </div>
 
-                    {/* Métricas Grid */}
+                    {/* Metrics Grid */}
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <TrendingUp className="w-4 h-4" />
-                          <span className="text-sm">Revenue con RevUp</span>
+                          <span className="text-sm">Revenue with RevUp</span>
                         </div>
                         <p className="text-2xl font-bold text-primary">
                           ${results.revenueRevUp.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          vs ${results.revenueMarket.toLocaleString('en-US', { maximumFractionDigits: 0 })} mercado
+                          vs ${results.revenueMarket.toLocaleString('en-US', { maximumFractionDigits: 0 })} market
                         </p>
                       </div>
                       
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <ShoppingCart className="w-4 h-4" />
-                          <span className="text-sm">Órdenes con RevUp</span>
+                          <span className="text-sm">Orders with RevUp</span>
                         </div>
                         <p className="text-2xl font-bold">
                           {results.ordersRevUp.toLocaleString('en-US', { maximumFractionDigits: 1 })}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          vs {results.ordersMarket.toLocaleString('en-US', { maximumFractionDigits: 1 })} mercado
+                          vs {results.ordersMarket.toLocaleString('en-US', { maximumFractionDigits: 1 })} market
                         </p>
                       </div>
                       
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <Target className="w-4 h-4" />
-                          <span className="text-sm">Clics estimados</span>
+                          <span className="text-sm">Estimated Clicks</span>
                         </div>
                         <p className="text-2xl font-bold">
                           {results.clicks.toLocaleString('en-US')}
@@ -279,7 +279,7 @@ const ROASCalculatorPage = () => {
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <DollarSign className="w-4 h-4" />
-                          <span className="text-sm">Ganancia neta RevUp</span>
+                          <span className="text-sm">Net Profit with RevUp</span>
                         </div>
                         <p className="text-2xl font-bold text-green-500">
                           ${(results.revenueRevUp - parseFloat(budget)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
@@ -287,24 +287,24 @@ const ROASCalculatorPage = () => {
                       </div>
                     </div>
 
-                    {/* Desglose detallado */}
+                    {/* Detailed Breakdown */}
                     <div className="border-t border-border/50 pt-4">
-                      <p className="text-sm text-muted-foreground mb-3">Desglose del cálculo:</p>
+                      <p className="text-sm text-muted-foreground mb-3">Calculation breakdown:</p>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">CPC ajustado por región</span>
+                          <span className="text-muted-foreground">Region-adjusted CPC</span>
                           <span className="font-mono">${results.cpcAdjusted.toFixed(2)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">Ticket promedio ajustado</span>
+                          <span className="text-muted-foreground">Adjusted Avg. Order Value</span>
                           <span className="font-mono">${results.aovAdjusted.toFixed(0)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">Tasa de conversión (CVR)</span>
+                          <span className="text-muted-foreground">Conversion Rate (CVR)</span>
                           <span className="font-mono">{results.cvr.toFixed(2)}%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">Boost RevUp</span>
+                          <span className="text-muted-foreground">RevUp Boost</span>
                           <span className="font-mono text-primary">+{(REVUP_BOOST * 100).toFixed(0)}%</span>
                         </div>
                       </div>
@@ -313,8 +313,8 @@ const ROASCalculatorPage = () => {
                 ) : (
                   <div className="text-center py-16 text-muted-foreground">
                     <Calculator className="w-16 h-16 mx-auto mb-4 opacity-20" />
-                    <p className="text-lg">Completa los 3 campos para ver tu proyección</p>
-                    <p className="text-sm mt-2">Presupuesto + Sector + Ubicación</p>
+                    <p className="text-lg">Complete all 3 fields to see your projection</p>
+                    <p className="text-sm mt-2">Budget + Sector + Location</p>
                   </div>
                 )}
               </CardContent>
@@ -324,41 +324,41 @@ const ROASCalculatorPage = () => {
           {/* Info Section */}
           <Card className="mt-8 border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Metodología y fuentes</CardTitle>
+              <CardTitle>Methodology & Sources</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground text-sm">
               <p>
-                Esta calculadora utiliza <strong className="text-foreground">benchmarks actualizados 2025</strong> de 
-                fuentes reconocidas en la industria para proyectar resultados realistas.
+                This calculator uses <strong className="text-foreground">updated 2025 benchmarks</strong> from 
+                recognized industry sources to project realistic results.
               </p>
               <div className="grid sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 bg-muted/30 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">CPC por industria</p>
+                  <p className="font-semibold text-foreground mb-1">CPC by Industry</p>
                   <p className="text-xs">WordStream Google Ads Benchmarks 2025</p>
                 </div>
                 <div className="p-4 bg-muted/30 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Tasas de conversión</p>
+                  <p className="font-semibold text-foreground mb-1">Conversion Rates</p>
                   <p className="text-xs">Dynamic Yield eCommerce Benchmarks</p>
                 </div>
                 <div className="p-4 bg-muted/30 rounded-lg">
-                  <p className="font-semibold text-foreground mb-1">Ticket promedio (AOV)</p>
+                  <p className="font-semibold text-foreground mb-1">Avg. Order Value (AOV)</p>
                   <p className="text-xs">Decile Q1 2025 + Dynamic Yield</p>
                 </div>
               </div>
               <p className="text-xs pt-2">
-                * Los ajustes por país se basan en diferencias de CPC (WordStream) y poder adquisitivo (PIB per cápita PPP 2024).
+                * Country adjustments are based on CPC differences (WordStream) and purchasing power (GDP per capita PPP 2024).
               </p>
             </CardContent>
           </Card>
 
-          {/* Aviso Legal */}
+          {/* Legal Disclaimer */}
           <div className="mt-6 p-4 bg-muted/20 rounded-lg border border-border/30">
             <p className="text-xs text-muted-foreground text-center">
-              <strong className="text-foreground">Aviso Legal:</strong> Los resultados mostrados en esta calculadora son 
-              <strong className="text-foreground"> estimaciones basadas en benchmarks de la industria</strong> y no constituyen 
-              garantías ni compromisos de rendimiento. Los resultados reales pueden variar significativamente dependiendo de 
-              factores como la calidad del producto, la estrategia de marketing, la competencia, la estacionalidad y las 
-              condiciones del mercado. RevUp no se responsabiliza por decisiones tomadas con base en estas proyecciones.
+              <strong className="text-foreground">Legal Disclaimer:</strong> The results shown in this calculator are 
+              <strong className="text-foreground"> estimates based on industry benchmarks</strong> and do not constitute 
+              guarantees or performance commitments. Actual results may vary significantly depending on 
+              factors such as product quality, marketing strategy, competition, seasonality, and 
+              market conditions. RevUp is not responsible for decisions made based on these projections.
             </p>
           </div>
         </div>
