@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3 } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { Calculator, TrendingUp, DollarSign, Target, ShoppingCart, MapPin, BarChart3, Percent } from "lucide-react";
 
 // Benchmarks por sector (fuentes: WordStream 2025, Dynamic Yield, Decile Q1 2025)
 const SECTORS = [
@@ -33,6 +34,7 @@ const ROASCalculatorPage = () => {
   const [budget, setBudget] = useState<string>("");
   const [sectorId, setSectorId] = useState<string>("");
   const [locationId, setLocationId] = useState<string>("");
+  const [cvrBoost, setCvrBoost] = useState<number>(0);
 
   const results = useMemo(() => {
     const budgetNum = parseFloat(budget);
@@ -46,8 +48,9 @@ const ROASCalculatorPage = () => {
     // Cálculos según las fórmulas
     const cpcAdjusted = sector.cpcUS * location.multCPC;
     const aovAdjusted = sector.aovUS * location.multAOV;
+    const cvrAdjusted = sector.cvr * (1 + cvrBoost / 100);
     const clicks = budgetNum / cpcAdjusted;
-    const orders = clicks * sector.cvr;
+    const orders = clicks * cvrAdjusted;
     const revenue = orders * aovAdjusted;
     const roas = revenue / budgetNum;
 
@@ -59,8 +62,9 @@ const ROASCalculatorPage = () => {
       revenue,
       roas,
       cvr: sector.cvr * 100,
+      cvrAdjusted: cvrAdjusted * 100,
     };
-  }, [budget, sectorId, locationId]);
+  }, [budget, sectorId, locationId, cvrBoost]);
 
   const getRoasStatus = (roasValue: number) => {
     if (roasValue >= 4) return { label: "Excelente", color: "text-green-500", bg: "bg-green-500/10" };
@@ -152,6 +156,26 @@ const ROASCalculatorPage = () => {
                   </Select>
                 </div>
 
+                <div className="space-y-3">
+                  <Label className="flex items-center gap-2">
+                    <Percent className="w-4 h-4" />
+                    Aumento de CVR
+                  </Label>
+                  <div className="flex items-center gap-4">
+                    <Slider
+                      value={[cvrBoost]}
+                      onValueChange={(value) => setCvrBoost(value[0])}
+                      max={100}
+                      step={5}
+                      className="flex-1"
+                    />
+                    <span className="text-sm font-medium w-14 text-right">+{cvrBoost}%</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Simula mejoras de CVR por optimización de landing pages, CRO, etc.
+                  </p>
+                </div>
+
                 {sectorId && locationId && (
                   <div className="pt-4 border-t border-border/50">
                     <p className="text-xs text-muted-foreground mb-3">Benchmarks aplicados:</p>
@@ -165,7 +189,8 @@ const ROASCalculatorPage = () => {
                       <div className="p-2 bg-muted/30 rounded">
                         <span className="text-muted-foreground">CVR:</span>
                         <span className="ml-1 font-medium">
-                          {(SECTORS.find(s => s.id === sectorId)!.cvr * 100).toFixed(2)}%
+                          {((SECTORS.find(s => s.id === sectorId)!.cvr * (1 + cvrBoost / 100)) * 100).toFixed(2)}%
+                          {cvrBoost > 0 && <span className="text-green-500 ml-1">(+{cvrBoost}%)</span>}
                         </span>
                       </div>
                       <div className="p-2 bg-muted/30 rounded col-span-2">
@@ -262,7 +287,10 @@ const ROASCalculatorPage = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Tasa de conversión (CVR)</span>
-                          <span className="font-mono">{results.cvr.toFixed(2)}%</span>
+                          <span className="font-mono">
+                            {results.cvrAdjusted.toFixed(2)}%
+                            {cvrBoost > 0 && <span className="text-green-500 ml-1">(+{cvrBoost}%)</span>}
+                          </span>
                         </div>
                       </div>
                     </div>
