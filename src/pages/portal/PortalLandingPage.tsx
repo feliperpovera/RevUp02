@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gift, FileText, HelpCircle, UserPlus, LogIn, Sparkles, Calculator, ClipboardList } from 'lucide-react';
+import { ArrowRight, Gift, FileText, HelpCircle, UserPlus, LogIn, Sparkles, Calculator, ClipboardList, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import revUpLogoLight from '@/assets/revup-logo-light.png';
@@ -13,6 +13,13 @@ const features = [
     title: 'ROAS Calculator',
     description: 'Calculate your expected return on ad spend with our industry-benchmarked tool.',
     href: '/portal/roas-calculator',
+    public: true
+  },
+  {
+    icon: ShoppingCart,
+    title: 'Amazon FBA Calculator',
+    description: 'Full P&L, fees breakdown, PRO metrics & inventory planning for Amazon sellers.',
+    href: '/portal/amazon-calculator',
     public: true
   },
   {
