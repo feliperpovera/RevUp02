@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from 'next-themes';
-import { Menu, X, LayoutDashboard, Gift, FileText, HelpCircle, User, LogOut } from 'lucide-react';
+import { Menu, X, LayoutDashboard, Gift, FileText, HelpCircle, User, LogOut, Calculator, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth } from '@/contexts/AuthContext';
@@ -10,10 +10,11 @@ import revUpLogoMain from '@/assets/revup-logo-main.png';
 
 const navItems = [
   { name: 'Dashboard', href: '/portal/dashboard', icon: LayoutDashboard },
+  { name: 'ROAS Calculator', href: '/portal/roas-calculator', icon: Calculator },
+  { name: 'Onboarding', href: '/portal/onboarding-form', icon: ClipboardList },
   { name: 'Benefits', href: '/portal/beneficios', icon: Gift },
   { name: 'Resources', href: '/portal/recursos', icon: FileText },
   { name: 'Support', href: '/portal/soporte', icon: HelpCircle },
-  { name: 'Profile', href: '/portal/perfil', icon: User },
 ];
 
 const PortalNavbar = () => {
@@ -66,7 +67,16 @@ const PortalNavbar = () => {
 
           {/* User & Sign Out */}
           <div className="hidden md:flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">{user?.email}</span>
+            <Link
+              to="/portal/perfil"
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-300 ${
+                isActive('/portal/perfil')
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+              }`}
+            >
+              <User className="h-4 w-4" />
+            </Link>
             <Button 
               variant="ghost" 
               size="sm" 

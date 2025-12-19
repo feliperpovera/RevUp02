@@ -26,6 +26,8 @@ import PortalResourcesPage from "./pages/portal/PortalResourcesPage";
 import PortalSupportPage from "./pages/portal/PortalSupportPage";
 import PortalProfilePage from "./pages/portal/PortalProfilePage";
 import PortalOnboardingPage from "./pages/portal/PortalOnboardingPage";
+import PortalROASCalculatorPage from "./pages/portal/PortalROASCalculatorPage";
+import PortalOnboardingFormPage from "./pages/portal/PortalOnboardingFormPage";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,8 @@ const App = () => (
               <Route path="/portal/soporte" element={<PortalSupportPage />} />
               <Route path="/portal/perfil" element={<PortalProfilePage />} />
               <Route path="/portal/onboarding" element={<PortalOnboardingPage />} />
+              <Route path="/portal/roas-calculator" element={<PortalROASCalculatorPage />} />
+              <Route path="/portal/onboarding-form" element={<PortalOnboardingFormPage />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
