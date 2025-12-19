@@ -14,23 +14,36 @@ const REVUP_BOOST = 0.20; // 20% improvement over market ROAS
 // Sector benchmarks (sources: WordStream 2025, Dynamic Yield, Decile Q1 2025)
 const SECTORS = [
   { id: "fashion", name: "Fashion & Apparel", cpcUS: 4.31, cvr: 0.0313, aovUS: 191 },
-  { id: "home", name: "Home Goods", cpcUS: 3.86, cvr: 0.0146, aovUS: 266 },
+  { id: "home", name: "Home & Furniture", cpcUS: 3.86, cvr: 0.0146, aovUS: 266 },
   { id: "health", name: "Health & Beauty", cpcUS: 5.70, cvr: 0.0489, aovUS: 151 },
   { id: "food", name: "Food & Beverage", cpcUS: 2.05, cvr: 0.0602, aovUS: 69 },
-  { id: "supplements", name: "Supplements", cpcUS: 5.70, cvr: 0.0350, aovUS: 70 },
-  { id: "electronics", name: "Electronics", cpcUS: 3.50, cvr: 0.0220, aovUS: 320 },
+  { id: "supplements", name: "Supplements & Vitamins", cpcUS: 5.70, cvr: 0.0350, aovUS: 70 },
+  { id: "electronics", name: "Electronics & Tech", cpcUS: 3.50, cvr: 0.0220, aovUS: 320 },
   { id: "pets", name: "Pet Supplies", cpcUS: 3.20, cvr: 0.0380, aovUS: 85 },
+  { id: "jewelry", name: "Jewelry & Watches", cpcUS: 4.80, cvr: 0.0180, aovUS: 350 },
+  { id: "sports", name: "Sports & Outdoors", cpcUS: 3.40, cvr: 0.0290, aovUS: 145 },
+  { id: "baby", name: "Baby & Kids", cpcUS: 3.10, cvr: 0.0420, aovUS: 95 },
+  { id: "automotive", name: "Automotive & Parts", cpcUS: 4.20, cvr: 0.0180, aovUS: 220 },
+  { id: "office", name: "Office & School Supplies", cpcUS: 2.80, cvr: 0.0350, aovUS: 75 },
+  { id: "garden", name: "Garden & Outdoor Living", cpcUS: 3.50, cvr: 0.0250, aovUS: 130 },
+  { id: "travel", name: "Travel & Luggage", cpcUS: 4.00, cvr: 0.0200, aovUS: 180 },
+  { id: "fitness", name: "Fitness & Gym Equipment", cpcUS: 4.50, cvr: 0.0280, aovUS: 200 },
+  { id: "books", name: "Books & Media", cpcUS: 1.80, cvr: 0.0450, aovUS: 45 },
+  { id: "toys", name: "Toys & Games", cpcUS: 2.90, cvr: 0.0380, aovUS: 65 },
+  { id: "software", name: "Software & SaaS", cpcUS: 6.50, cvr: 0.0150, aovUS: 150 },
+  { id: "education", name: "Education & Courses", cpcUS: 5.80, cvr: 0.0200, aovUS: 250 },
+  { id: "legal", name: "Legal Services", cpcUS: 8.50, cvr: 0.0120, aovUS: 500 },
+  { id: "realestate", name: "Real Estate", cpcUS: 7.20, cvr: 0.0100, aovUS: 1000 },
+  { id: "finance", name: "Finance & Insurance", cpcUS: 9.00, cvr: 0.0110, aovUS: 400 },
+  { id: "medical", name: "Medical & Healthcare", cpcUS: 7.50, cvr: 0.0130, aovUS: 300 },
+  { id: "construction", name: "Construction & Tools", cpcUS: 4.80, cvr: 0.0160, aovUS: 280 },
+  { id: "restaurants", name: "Restaurants & Delivery", cpcUS: 2.50, cvr: 0.0550, aovUS: 35 },
 ];
 
 // Country adjustments (WordStream CPC, GDP per capita PPP for AOV)
 const LOCATIONS = [
   { id: "us", name: "United States", multCPC: 1.00, multAOV: 1.00 },
-  { id: "mx", name: "Mexico", multCPC: 0.50, multAOV: 0.299 },
   { id: "co", name: "Colombia", multCPC: 0.17, multAOV: 0.250 },
-  { id: "ar", name: "Argentina", multCPC: 0.25, multAOV: 0.280 },
-  { id: "cl", name: "Chile", multCPC: 0.40, multAOV: 0.320 },
-  { id: "pe", name: "Peru", multCPC: 0.20, multAOV: 0.180 },
-  { id: "es", name: "Spain", multCPC: 0.75, multAOV: 0.520 },
 ];
 
 const PortalROASCalculatorPage = () => {
