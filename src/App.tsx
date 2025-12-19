@@ -28,6 +28,7 @@ import PortalProfilePage from "./pages/portal/PortalProfilePage";
 import PortalOnboardingPage from "./pages/portal/PortalOnboardingPage";
 import PortalROASCalculatorPage from "./pages/portal/PortalROASCalculatorPage";
 import PortalOnboardingFormPage from "./pages/portal/PortalOnboardingFormPage";
+import PortalAmazonCalculatorPage from "./pages/portal/PortalAmazonCalculatorPage";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ const App = () => (
               <Route path="/portal/onboarding" element={<PortalOnboardingPage />} />
               <Route path="/portal/roas-calculator" element={<PortalROASCalculatorPage />} />
               <Route path="/portal/onboarding-form" element={<PortalOnboardingFormPage />} />
+              <Route path="/portal/amazon-calculator" element={<PortalAmazonCalculatorPage />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

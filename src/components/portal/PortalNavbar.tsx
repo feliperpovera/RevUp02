@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from 'next-themes';
-import { Menu, X, LayoutDashboard, Gift, FileText, HelpCircle, User, LogOut, Calculator, ClipboardList } from 'lucide-react';
+import { Menu, X, LayoutDashboard, Gift, FileText, HelpCircle, User, LogOut, Calculator, ClipboardList, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth } from '@/contexts/AuthContext';
@@ -11,6 +11,7 @@ import revUpLogoMain from '@/assets/revup-logo-main.png';
 const navItems = [
   { name: 'Dashboard', href: '/portal/dashboard', icon: LayoutDashboard },
   { name: 'ROAS Calculator', href: '/portal/roas-calculator', icon: Calculator },
+  { name: 'Amazon FBA', href: '/portal/amazon-calculator', icon: ShoppingCart },
   { name: 'Onboarding', href: '/portal/onboarding-form', icon: ClipboardList },
   { name: 'Benefits', href: '/portal/beneficios', icon: Gift },
   { name: 'Resources', href: '/portal/recursos', icon: FileText },
