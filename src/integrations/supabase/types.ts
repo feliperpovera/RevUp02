@@ -14,7 +14,219 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      benefits: {
+        Row: {
+          category: string
+          code: string | null
+          conditions: string | null
+          created_at: string
+          description: string
+          id: string
+          image_url: string | null
+          is_featured: boolean | null
+          title: string
+          valid_until: string | null
+        }
+        Insert: {
+          category: string
+          code?: string | null
+          conditions?: string | null
+          created_at?: string
+          description: string
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          title: string
+          valid_until?: string | null
+        }
+        Update: {
+          category?: string
+          code?: string | null
+          conditions?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          title?: string
+          valid_until?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          attachments: string[] | null
+          budget_range: string | null
+          city: string | null
+          company: string
+          consent: boolean
+          country: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          main_goal: string | null
+          phone: string | null
+          project_description: string | null
+          services: string[] | null
+          status: string
+          website: string | null
+        }
+        Insert: {
+          attachments?: string[] | null
+          budget_range?: string | null
+          city?: string | null
+          company: string
+          consent?: boolean
+          country?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          main_goal?: string | null
+          phone?: string | null
+          project_description?: string | null
+          services?: string[] | null
+          status?: string
+          website?: string | null
+        }
+        Update: {
+          attachments?: string[] | null
+          budget_range?: string | null
+          city?: string | null
+          company?: string
+          consent?: boolean
+          country?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          main_goal?: string | null
+          phone?: string | null
+          project_description?: string | null
+          services?: string[] | null
+          status?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          city: string | null
+          company: string | null
+          country: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+          website: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          city?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+          website?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          city?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          downloads: number | null
+          file_type: string | null
+          file_url: string
+          id: string
+          thumbnail_url: string | null
+          title: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          downloads?: number | null
+          file_type?: string | null
+          file_url: string
+          id?: string
+          thumbnail_url?: string | null
+          title: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          downloads?: number | null
+          file_type?: string | null
+          file_url?: string
+          id?: string
+          thumbnail_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          attachments: string[] | null
+          category: string
+          created_at: string
+          description: string
+          id: string
+          priority: string
+          status: string
+          subject: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          attachments?: string[] | null
+          category: string
+          created_at?: string
+          description: string
+          id?: string
+          priority?: string
+          status?: string
+          subject: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          attachments?: string[] | null
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          priority?: string
+          status?: string
+          subject?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
