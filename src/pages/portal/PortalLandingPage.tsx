@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
-import { ArrowRight, Gift, FileText, HelpCircle, UserPlus, LogIn, Sparkles } from 'lucide-react';
+import { ArrowRight, Gift, FileText, HelpCircle, UserPlus, LogIn, Sparkles, Calculator, ClipboardList } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import revUpLogoLight from '@/assets/revup-logo-light.png';
@@ -9,19 +9,32 @@ import revUpLogoMain from '@/assets/revup-logo-main.png';
 
 const features = [
   {
+    icon: Calculator,
+    title: 'ROAS Calculator',
+    description: 'Calculate your expected return on ad spend with our industry-benchmarked tool.',
+    href: '/portal/roas-calculator',
+    public: true
+  },
+  {
     icon: Gift,
     title: 'Exclusive Benefits',
-    description: 'Access special discounts, partner offers, and exclusive promotions for our clients.'
+    description: 'Access special discounts, partner offers, and exclusive promotions for our clients.',
+    href: '/portal/beneficios',
+    public: false
   },
   {
     icon: FileText,
     title: 'Resources & Templates',
-    description: 'Download guides, templates, and tools to optimize your marketing efforts.'
+    description: 'Download guides, templates, and tools to optimize your marketing efforts.',
+    href: '/portal/recursos',
+    public: false
   },
   {
     icon: HelpCircle,
     title: 'Priority Support',
-    description: 'Get dedicated support with quick response times and personalized assistance.'
+    description: 'Get dedicated support with quick response times and personalized assistance.',
+    href: '/portal/soporte',
+    public: false
   }
 ];
 
@@ -42,7 +55,13 @@ const PortalLandingPage = () => {
           <Link to="/" className="flex items-center gap-2">
             <img src={currentLogo} alt="RevUp Agency" className="h-10 w-auto" />
           </Link>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Link to="/portal/roas-calculator">
+              <Button variant="ghost" className="text-foreground hidden sm:flex">
+                <Calculator className="h-4 w-4 mr-2" />
+                ROAS Calculator
+              </Button>
+            </Link>
             <Link to="/portal/login">
               <Button variant="ghost" className="text-foreground">
                 <LogIn className="h-4 w-4 mr-2" />
@@ -76,7 +95,7 @@ const PortalLandingPage = () => {
               <span className="gradient-text block mt-2">Exclusive Portal</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Access exclusive benefits, resources, and support designed to help you scale your e-commerce business.
+              Access exclusive benefits, resources, tools, and support designed to help you scale your e-commerce business.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/portal/login">
@@ -103,7 +122,7 @@ const PortalLandingPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {features.map((feature, index) => (
               <motion.div
@@ -112,20 +131,54 @@ const PortalLandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               >
-                <Card className="glass-card h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                      <feature.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-foreground">{feature.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground">
-                      {feature.description}
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                <Link to={feature.public ? feature.href : '/portal/login'}>
+                  <Card className="glass-card h-full group cursor-pointer">
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                        <feature.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <CardTitle className="text-foreground group-hover:text-primary transition-colors">
+                        {feature.title}
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground">
+                        {feature.description}
+                      </CardDescription>
+                      {!feature.public && (
+                        <span className="text-xs text-muted-foreground mt-2 inline-block">
+                          (Login required)
+                        </span>
+                      )}
+                    </CardHeader>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ROAS Calculator CTA */}
+      <section className="relative z-10 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
+            <CardContent className="p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <Calculator className="h-7 w-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-heading font-bold text-foreground">Free ROAS Calculator</h3>
+                  <p className="text-muted-foreground">Estimate your expected returns with our industry-benchmarked tool.</p>
+                </div>
+              </div>
+              <Link to="/portal/roas-calculator">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 whitespace-nowrap">
+                  Try Calculator
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
