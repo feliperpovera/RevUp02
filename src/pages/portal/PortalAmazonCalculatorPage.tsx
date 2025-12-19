@@ -14,7 +14,7 @@ import PortalLayout from "@/components/portal/PortalLayout";
 const PRODUCTS = [
   {
     id: "sunglasses",
-    name: "Gafas de Sol",
+    name: "Sunglasses",
     asp: 29.99,
     cogs: 8.50,
     referralPct: 0.15,
@@ -28,7 +28,7 @@ const PRODUCTS = [
   },
   {
     id: "phone_case",
-    name: "Funda de Teléfono",
+    name: "Phone Case",
     asp: 14.99,
     cogs: 2.80,
     referralPct: 0.15,
@@ -42,7 +42,7 @@ const PRODUCTS = [
   },
   {
     id: "yoga_mat",
-    name: "Mat de Yoga",
+    name: "Yoga Mat",
     asp: 34.99,
     cogs: 12.00,
     referralPct: 0.15,
@@ -56,7 +56,7 @@ const PRODUCTS = [
   },
   {
     id: "supplements",
-    name: "Suplementos",
+    name: "Supplements",
     asp: 24.99,
     cogs: 6.00,
     referralPct: 0.15,
@@ -70,7 +70,7 @@ const PRODUCTS = [
   },
   {
     id: "kitchen_gadget",
-    name: "Gadget de Cocina",
+    name: "Kitchen Gadget",
     asp: 19.99,
     cogs: 5.50,
     referralPct: 0.15,
@@ -86,11 +86,11 @@ const PRODUCTS = [
 
 // Marketplace multipliers
 const MARKETPLACES = [
-  { id: "US", name: "Estados Unidos", priceMultiplier: 1.0, costMultiplier: 1.0 },
-  { id: "CA", name: "Canadá", priceMultiplier: 0.95, costMultiplier: 1.05 },
-  { id: "UK", name: "Reino Unido", priceMultiplier: 1.10, costMultiplier: 1.15 },
-  { id: "DE", name: "Alemania", priceMultiplier: 1.05, costMultiplier: 1.10 },
-  { id: "MX", name: "México", priceMultiplier: 0.85, costMultiplier: 0.90 },
+  { id: "US", name: "United States", priceMultiplier: 1.0, costMultiplier: 1.0 },
+  { id: "CA", name: "Canada", priceMultiplier: 0.95, costMultiplier: 1.05 },
+  { id: "UK", name: "United Kingdom", priceMultiplier: 1.10, costMultiplier: 1.15 },
+  { id: "DE", name: "Germany", priceMultiplier: 1.05, costMultiplier: 1.10 },
+  { id: "MX", name: "Mexico", priceMultiplier: 0.85, costMultiplier: 0.90 },
 ];
 
 // Category benchmarks for ACoS and Funnel modes
@@ -121,6 +121,10 @@ export default function PortalAmazonCalculatorPage() {
   const [season, setSeason] = useState<string>("standard");
   const [calcMode, setCalcMode] = useState<string>("acos");
   
+  // Custom product overrides
+  const [customAsp, setCustomAsp] = useState<string>("29.99");
+  const [customCogs, setCustomCogs] = useState<string>("8.50");
+  
   // Custom overrides (advanced)
   const [customAcos, setCustomAcos] = useState<string>("");
   const [customCpc, setCustomCpc] = useState<string>("");
@@ -131,15 +135,26 @@ export default function PortalAmazonCalculatorPage() {
   const [bufferDays, setBufferDays] = useState<number>(7);
   const [safetyStock, setSafetyStock] = useState<number>(50);
 
+  // Update custom fields when product changes
+  const handleProductChange = (newProductId: string) => {
+    setProductId(newProductId);
+    const product = PRODUCTS.find(p => p.id === newProductId);
+    if (product) {
+      setCustomAsp(product.asp.toString());
+      setCustomCogs(product.cogs.toString());
+    }
+  };
+
+
   const results = useMemo(() => {
     const product = PRODUCTS.find(p => p.id === productId)!;
     const marketplace = MARKETPLACES.find(m => m.id === marketplaceId)!;
     const benchmark = BENCHMARKS[productId as keyof typeof BENCHMARKS];
     const storageRate = STORAGE_RATES[season as keyof typeof STORAGE_RATES];
 
-    // Adjusted values by marketplace
-    const asp = product.asp * marketplace.priceMultiplier;
-    const cogs = product.cogs * marketplace.costMultiplier;
+    // Use custom values if provided, otherwise use product defaults with marketplace multiplier
+    const asp = customAsp ? parseFloat(customAsp) : product.asp * marketplace.priceMultiplier;
+    const cogs = customCogs ? parseFloat(customCogs) : product.cogs * marketplace.costMultiplier;
     const fbaFee = product.fbaFee * marketplace.costMultiplier;
     const inboundUnit = product.inboundUnit * marketplace.costMultiplier;
 
@@ -279,7 +294,7 @@ export default function PortalAmazonCalculatorPage() {
       totalAdSpend: budget,
       grossProfit: profitTotal,
     };
-  }, [budget, productId, marketplaceId, season, calcMode, customAcos, customCpc, customCvr, leadTimeDays, bufferDays, safetyStock]);
+  }, [budget, productId, marketplaceId, season, calcMode, customAsp, customCogs, customAcos, customCpc, customCvr, leadTimeDays, bufferDays, safetyStock]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
@@ -290,9 +305,9 @@ export default function PortalAmazonCalculatorPage() {
   };
 
   const getProfitStatus = (profit: number) => {
-    if (profit > 0) return { label: "Rentable", color: "text-green-400", bg: "bg-green-500/10" };
+    if (profit > 0) return { label: "Profitable", color: "text-green-400", bg: "bg-green-500/10" };
     if (profit === 0) return { label: "Break-even", color: "text-yellow-400", bg: "bg-yellow-500/10" };
-    return { label: "Pérdida", color: "text-red-400", bg: "bg-red-500/10" };
+    return { label: "Loss", color: "text-red-400", bg: "bg-red-500/10" };
   };
 
   const profitStatus = getProfitStatus(results.profitTotal);
@@ -312,7 +327,7 @@ export default function PortalAmazonCalculatorPage() {
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">Amazon FBA Calculator</h1>
-              <p className="text-muted-foreground">Calcula rentabilidad, P&L y métricas PRO para tu negocio en Amazon</p>
+              <p className="text-muted-foreground">Calculate profitability, P&L and PRO metrics for your Amazon business</p>
             </div>
           </motion.div>
 
@@ -335,13 +350,13 @@ export default function PortalAmazonCalculatorPage() {
                   {/* Budget */}
                   <div className="space-y-2">
                     <Label htmlFor="budget" className="flex items-center gap-2">
-                      Presupuesto Ads (USD/mes)
+                      Ad Budget (USD/month)
                       <Tooltip>
                         <TooltipTrigger>
                           <Info className="h-3.5 w-3.5 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>Tu inversión mensual en publicidad de Amazon</p>
+                          <p>Your monthly Amazon advertising investment</p>
                         </TooltipContent>
                       </Tooltip>
                     </Label>
@@ -360,19 +375,75 @@ export default function PortalAmazonCalculatorPage() {
 
                   {/* Product */}
                   <div className="space-y-2">
-                    <Label>Producto</Label>
-                    <Select value={productId} onValueChange={setProductId}>
+                    <Label>Product Template</Label>
+                    <Select value={productId} onValueChange={handleProductChange}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         {PRODUCTS.map(product => (
                           <SelectItem key={product.id} value={product.id}>
-                            {product.name} (ASP: ${product.asp})
+                            {product.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
+                  </div>
+
+                  {/* Custom ASP */}
+                  <div className="space-y-2">
+                    <Label htmlFor="asp" className="flex items-center gap-2">
+                      Price (ASP)
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-3.5 w-3.5 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Average Selling Price of your product</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </Label>
+                    <div className="relative">
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="asp"
+                        type="number"
+                        step="0.01"
+                        value={customAsp}
+                        onChange={(e) => setCustomAsp(e.target.value)}
+                        className="pl-9"
+                        min={0}
+                        placeholder="29.99"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Custom COGS */}
+                  <div className="space-y-2">
+                    <Label htmlFor="cogs" className="flex items-center gap-2">
+                      COGS / Landed Cost
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-3.5 w-3.5 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Cost of goods delivered to Amazon warehouse</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </Label>
+                    <div className="relative">
+                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        id="cogs"
+                        type="number"
+                        step="0.01"
+                        value={customCogs}
+                        onChange={(e) => setCustomCogs(e.target.value)}
+                        className="pl-9"
+                        min={0}
+                        placeholder="8.50"
+                      />
+                    </div>
                   </div>
 
                   {/* Marketplace */}
@@ -395,13 +466,13 @@ export default function PortalAmazonCalculatorPage() {
                   {/* Season */}
                   <div className="space-y-2">
                     <Label className="flex items-center gap-2">
-                      Temporada
+                      Season
                       <Tooltip>
                         <TooltipTrigger>
                           <Info className="h-3.5 w-3.5 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p>El storage fee de Amazon varía por temporada</p>
+                          <p>Amazon storage fees vary by season</p>
                         </TooltipContent>
                       </Tooltip>
                     </Label>
@@ -410,8 +481,8 @@ export default function PortalAmazonCalculatorPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="standard">Ene–Sep (${STORAGE_RATES.standard}/ft³)</SelectItem>
-                        <SelectItem value="peak">Oct–Dic (${STORAGE_RATES.peak}/ft³)</SelectItem>
+                        <SelectItem value="standard">Jan–Sep (${STORAGE_RATES.standard}/ft³)</SelectItem>
+                        <SelectItem value="peak">Oct–Dec (${STORAGE_RATES.peak}/ft³)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -420,7 +491,7 @@ export default function PortalAmazonCalculatorPage() {
 
                   {/* Calculation Mode */}
                   <div className="space-y-3">
-                    <Label>Modo de Cálculo</Label>
+                    <Label>Calculation Mode</Label>
                     <Tabs value={calcMode} onValueChange={setCalcMode} className="w-full">
                       <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="acos">ACoS</TabsTrigger>
@@ -430,7 +501,7 @@ export default function PortalAmazonCalculatorPage() {
                       <TabsContent value="acos" className="mt-3 space-y-3">
                         <div className="space-y-2">
                           <Label className="text-sm text-muted-foreground">
-                            ACoS % (dejar vacío para benchmark: {(BENCHMARKS[productId as keyof typeof BENCHMARKS]?.acos * 100).toFixed(0)}%)
+                            ACoS % (leave empty for benchmark: {(BENCHMARKS[productId as keyof typeof BENCHMARKS]?.acos * 100).toFixed(0)}%)
                           </Label>
                           <Input
                             type="number"
@@ -516,19 +587,19 @@ export default function PortalAmazonCalculatorPage() {
                       {formatCurrency(results.revenueAds)}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {formatNumber(results.unitsAds)} unidades
+                      {formatNumber(results.unitsAds)} units
                     </p>
                   </CardContent>
                 </Card>
 
                 <Card className="bg-card/50 border-border/50">
                   <CardContent className="pt-4 pb-3">
-                    <p className="text-xs text-muted-foreground mb-1">Profit/unidad</p>
+                    <p className="text-xs text-muted-foreground mb-1">Profit/unit</p>
                     <p className={`text-xl font-bold ${results.profitUnit >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                       {formatCurrency(results.profitUnit)}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Margen: {results.profitMarginPct.toFixed(1)}%
+                      Margin: {results.profitMarginPct.toFixed(1)}%
                     </p>
                   </CardContent>
                 </Card>
@@ -539,7 +610,7 @@ export default function PortalAmazonCalculatorPage() {
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-primary" />
-                    P&L por Unidad
+                    P&L per Unit
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -547,7 +618,7 @@ export default function PortalAmazonCalculatorPage() {
                     {/* Left: Costs breakdown */}
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Precio (ASP)</span>
+                        <span className="text-muted-foreground">Price (ASP)</span>
                         <span className="font-medium text-green-400">{formatCurrency(results.asp)}</span>
                       </div>
                       <Separator />
@@ -585,18 +656,18 @@ export default function PortalAmazonCalculatorPage() {
                       </div>
                       <Separator />
                       <div className="flex justify-between text-sm font-medium">
-                        <span>CM1 (antes de ads)</span>
+                        <span>CM1 (before ads)</span>
                         <span className={results.cm1Unit >= 0 ? 'text-green-400' : 'text-red-400'}>
                           {formatCurrency(results.cm1Unit)} ({results.cm1Pct.toFixed(1)}%)
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Ad Cost/unidad</span>
+                        <span className="text-muted-foreground">Ad Cost/unit</span>
                         <span className="text-red-400">-{formatCurrency(results.adCostPerUnit)}</span>
                       </div>
                       <Separator />
                       <div className="flex justify-between font-bold">
-                        <span>Profit/unidad</span>
+                        <span>Profit/unit</span>
                         <span className={results.profitUnit >= 0 ? 'text-green-400' : 'text-red-400'}>
                           {formatCurrency(results.profitUnit)}
                         </span>
@@ -605,7 +676,7 @@ export default function PortalAmazonCalculatorPage() {
 
                     {/* Right: Monthly totals */}
                     <div className="space-y-2">
-                      <h4 className="font-medium text-sm text-muted-foreground mb-3">Totales Mensuales</h4>
+                      <h4 className="font-medium text-sm text-muted-foreground mb-3">Monthly Totals</h4>
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Revenue Total</span>
                         <span className="text-green-400">{formatCurrency(results.totalRevenue)}</span>
@@ -653,7 +724,7 @@ export default function PortalAmazonCalculatorPage() {
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-primary" />
-                      Métricas PRO
+                      PRO Metrics
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -665,7 +736,7 @@ export default function PortalAmazonCalculatorPage() {
                             <Info className="h-3.5 w-3.5 text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>ACoS máximo para no perder dinero</p>
+                            <p>Maximum ACoS to avoid losing money</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -682,7 +753,7 @@ export default function PortalAmazonCalculatorPage() {
                             <Info className="h-3.5 w-3.5 text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>CPC máximo para no perder (basado en CVR)</p>
+                            <p>Maximum CPC to avoid loss (based on CVR)</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -699,7 +770,7 @@ export default function PortalAmazonCalculatorPage() {
                             <Info className="h-3.5 w-3.5 text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Total Ad Cost of Sales (salud del negocio)</p>
+                            <p>Total Ad Cost of Sales (business health)</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -726,7 +797,7 @@ export default function PortalAmazonCalculatorPage() {
                       <div className="flex items-start gap-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                         <AlertTriangle className="h-4 w-4 text-red-400 mt-0.5 shrink-0" />
                         <p className="text-xs text-red-400">
-                          Tu ACoS ({results.acosUsed.toFixed(1)}%) supera el break-even ({results.breakEvenAcos.toFixed(1)}%). Estás perdiendo dinero por cada venta.
+                          Your ACoS ({results.acosUsed.toFixed(1)}%) exceeds break-even ({results.breakEvenAcos.toFixed(1)}%). You're losing money on every sale.
                         </p>
                       </div>
                     )}
@@ -738,7 +809,7 @@ export default function PortalAmazonCalculatorPage() {
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
                       <Truck className="h-5 w-5 text-primary" />
-                      Inventario
+                      Inventory
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -778,8 +849,8 @@ export default function PortalAmazonCalculatorPage() {
                     <Separator />
 
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">Ventas diarias (est.)</span>
-                      <span className="font-medium">{results.dailyUnits.toFixed(1)} unidades</span>
+                      <span className="text-sm text-muted-foreground">Daily Sales (est.)</span>
+                      <span className="font-medium">{results.dailyUnits.toFixed(1)} units</span>
                     </div>
                     
                     <div className="flex justify-between items-center">
@@ -790,12 +861,12 @@ export default function PortalAmazonCalculatorPage() {
                             <Info className="h-3.5 w-3.5 text-muted-foreground" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>Punto de reorden recomendado para evitar stockouts</p>
+                            <p>Recommended reorder point to avoid stockouts</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
                       <span className="font-bold text-primary text-lg">
-                        {formatNumber(results.reorderPoint)} unidades
+                        {formatNumber(results.reorderPoint)} units
                       </span>
                     </div>
                   </CardContent>
@@ -812,8 +883,8 @@ export default function PortalAmazonCalculatorPage() {
             className="text-center text-xs text-muted-foreground mt-8 p-4 bg-muted/20 rounded-lg"
           >
             <p>
-              <strong>Nota:</strong> Los fees de Amazon (FBA, referral, storage) son aproximados y pueden variar según tamaño, peso y actualizaciones de Amazon.
-              Verifica siempre los valores actuales en tu Seller Central y la Revenue Calculator oficial.
+              <strong>Note:</strong> Amazon fees (FBA, referral, storage) are approximate and may vary by size, weight, and Amazon updates.
+              Always verify current values in your Seller Central and the official Revenue Calculator.
             </p>
           </motion.div>
         </div>
