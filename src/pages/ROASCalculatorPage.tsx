@@ -37,6 +37,7 @@ const ROASCalculatorPage = () => {
   const [budget, setBudget] = useState<string>("");
   const [sectorId, setSectorId] = useState<string>("");
   const [locationId, setLocationId] = useState<string>("");
+  const [customRoas, setCustomRoas] = useState<string>("");
 
   const results = useMemo(() => {
     const budgetNum = parseFloat(budget);
@@ -56,12 +57,22 @@ const ROASCalculatorPage = () => {
     // Market ROAS calculations (without RevUp optimization)
     const ordersMarket = clicks * cvrBase;
     const revenueMarket = ordersMarket * aovAdjusted;
-    const roasMarket = revenueMarket / budgetNum;
+    let roasMarket = revenueMarket / budgetNum;
+    
+    // Allow custom ROAS override for market
+    if (customRoas && parseFloat(customRoas) > 0) {
+      roasMarket = parseFloat(customRoas);
+    }
     
     // RevUp ROAS calculations (includes additional boost)
     const ordersRevUp = clicks * cvrBase * (1 + REVUP_BOOST);
     const revenueRevUp = ordersRevUp * aovAdjusted;
-    const roasRevUp = revenueRevUp / budgetNum;
+    let roasRevUp = revenueRevUp / budgetNum;
+    
+    // If custom ROAS was set, apply RevUp boost to that instead
+    if (customRoas && parseFloat(customRoas) > 0) {
+      roasRevUp = parseFloat(customRoas) * (1 + REVUP_BOOST);
+    }
 
     return {
       cpcAdjusted,
@@ -69,14 +80,14 @@ const ROASCalculatorPage = () => {
       clicks: Math.round(clicks),
       ordersMarket: Math.round(ordersMarket * 10) / 10,
       ordersRevUp: Math.round(ordersRevUp * 10) / 10,
-      revenueMarket,
-      revenueRevUp,
+      revenueMarket: customRoas ? budgetNum * roasMarket : revenueMarket,
+      revenueRevUp: customRoas ? budgetNum * roasRevUp : revenueRevUp,
       roasMarket,
       roasRevUp,
       cvr: cvrBase * 100,
       roasImprovement: ((roasRevUp / roasMarket - 1) * 100).toFixed(0),
     };
-  }, [budget, sectorId, locationId]);
+  }, [budget, sectorId, locationId, customRoas]);
 
   const getRoasStatus = (roasValue: number) => {
     if (roasValue >= 4) return { label: "Excellent", color: "text-green-500", bg: "bg-green-500/10" };
@@ -166,6 +177,26 @@ const ROASCalculatorPage = () => {
                       ))}
                     </SelectContent>
                   </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="customRoas" className="flex items-center gap-2">
+                    <Target className="w-4 h-4" />
+                    Custom ROAS (optional)
+                  </Label>
+                  <Input
+                    id="customRoas"
+                    type="number"
+                    step="0.1"
+                    placeholder="e.g. 3.5 (leave empty for benchmark)"
+                    value={customRoas}
+                    onChange={(e) => setCustomRoas(e.target.value)}
+                    className="bg-background/50"
+                    min={0.1}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    Override calculated ROAS with your target value
+                  </p>
                 </div>
 
                 {sectorId && locationId && (
