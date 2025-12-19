@@ -560,7 +560,7 @@ export default function PortalAmazonCalculatorPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Card className={`${profitStatus.bg} border-border/50`}>
                   <CardContent className="pt-4 pb-3">
-                    <p className="text-xs text-muted-foreground mb-1">Profit/mes</p>
+                    <p className="text-xs text-muted-foreground mb-1">Profit/Month</p>
                     <p className={`text-xl font-bold ${profitStatus.color}`}>
                       {formatCurrency(results.profitTotal)}
                     </p>
