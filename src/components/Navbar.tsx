@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
@@ -72,7 +72,13 @@ export const Navbar = () => {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            <Link to="/portal">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2">
+                <User className="h-4 w-4" />
+                Portal
+              </Button>
+            </Link>
             <ThemeToggle />
             <Button 
               variant="glow" 
@@ -105,6 +111,14 @@ export const Navbar = () => {
                     {item.label}
                   </Link>
                 ))}
+                <Link
+                  to="/portal"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-lg text-foreground/80 hover:text-accent transition-colors font-medium flex items-center gap-2"
+                >
+                  <User className="h-5 w-5" />
+                  Client Portal
+                </Link>
                 <Button 
                   variant="glow" 
                   size="lg" 
