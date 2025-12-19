@@ -127,6 +127,7 @@ export default function PortalAmazonCalculatorPage() {
   
   // Custom overrides (advanced)
   const [customAcos, setCustomAcos] = useState<string>("");
+  const [customRoas, setCustomRoas] = useState<string>("");
   const [customCpc, setCustomCpc] = useState<string>("");
   const [customCvr, setCustomCvr] = useState<string>("");
   
@@ -190,10 +191,15 @@ export default function PortalAmazonCalculatorPage() {
     let cvrUsed = 0;
 
     if (calcMode === "acos") {
-      // ACoS Mode
-      acosUsed = customAcos ? parseFloat(customAcos) / 100 : benchmark.acos;
+      // ACoS Mode - can use either ACoS or ROAS as input
+      if (customRoas) {
+        roas = parseFloat(customRoas);
+        acosUsed = roas > 0 ? 1 / roas : benchmark.acos;
+      } else {
+        acosUsed = customAcos ? parseFloat(customAcos) / 100 : benchmark.acos;
+        roas = 1 / acosUsed;
+      }
       revenueAds = budget / acosUsed;
-      roas = 1 / acosUsed;
       unitsAds = revenueAds / asp;
       adCostPerUnit = asp * acosUsed;
     } else {
@@ -294,7 +300,7 @@ export default function PortalAmazonCalculatorPage() {
       totalAdSpend: budget,
       grossProfit: profitTotal,
     };
-  }, [budget, productId, marketplaceId, season, calcMode, customAsp, customCogs, customAcos, customCpc, customCvr, leadTimeDays, bufferDays, safetyStock]);
+  }, [budget, productId, marketplaceId, season, calcMode, customAsp, customCogs, customAcos, customRoas, customCpc, customCvr, leadTimeDays, bufferDays, safetyStock]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
@@ -507,9 +513,28 @@ export default function PortalAmazonCalculatorPage() {
                             type="number"
                             placeholder={`${(BENCHMARKS[productId as keyof typeof BENCHMARKS]?.acos * 100).toFixed(0)}%`}
                             value={customAcos}
-                            onChange={(e) => setCustomAcos(e.target.value)}
+                            onChange={(e) => {
+                              setCustomAcos(e.target.value);
+                              setCustomRoas(""); // Clear ROAS when ACoS is set
+                            }}
                             min={1}
                             max={100}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-sm text-muted-foreground">
+                            ROAS (alternative to ACoS)
+                          </Label>
+                          <Input
+                            type="number"
+                            step="0.1"
+                            placeholder={`${(1 / BENCHMARKS[productId as keyof typeof BENCHMARKS]?.acos).toFixed(2)}`}
+                            value={customRoas}
+                            onChange={(e) => {
+                              setCustomRoas(e.target.value);
+                              setCustomAcos(""); // Clear ACoS when ROAS is set
+                            }}
+                            min={0.1}
                           />
                         </div>
                       </TabsContent>
