@@ -1,15 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
+import frogIconDark from "@/assets/frog-icon-dark.png";
+import frogIconLight from "@/assets/frog-icon-light.png";
 
 export const Hero = () => {
   const [displayedText1, setDisplayedText1] = useState("");
   const [displayedText2, setDisplayedText2] = useState("");
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const { resolvedTheme } = useTheme();
   
   const text1 = "Smart growth,";
   const text2 = "fast results.";
+  
+  const currentFrogIcon = resolvedTheme === 'light' ? frogIconLight : frogIconDark;
 
   useEffect(() => {
     let index = 0;
@@ -51,6 +57,11 @@ export const Hero = () => {
       
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
+          
+          {/* Frog Icon */}
+          <div className="flex justify-center mb-8">
+            <img src={currentFrogIcon} alt="RevUp Mascot" className="h-16 w-auto drop-shadow-lg" />
+          </div>
           
           {/* Main heading with typewriter effect */}
           <div className="relative mb-8 md:mb-10">
