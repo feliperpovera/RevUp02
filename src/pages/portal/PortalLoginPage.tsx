@@ -12,8 +12,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { z } from 'zod';
 import revUpLogoLight from '@/assets/revup-logo-light.png';
 import revUpLogoMain from '@/assets/revup-logo-main.png';
-import frogIconDark from '@/assets/frog-icon-dark.png';
-import frogIconLight from '@/assets/frog-icon-light.png';
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -35,7 +33,6 @@ const PortalLoginPage = () => {
   const navigate = useNavigate();
 
   const currentLogo = resolvedTheme === 'light' ? revUpLogoMain : revUpLogoLight;
-  const currentFrogIcon = resolvedTheme === 'light' ? frogIconLight : frogIconDark;
 
   useEffect(() => {
     if (user) {
@@ -119,9 +116,8 @@ const PortalLoginPage = () => {
       >
         <Card className="glass-card border-border/50">
           <CardHeader className="text-center pb-2">
-            <Link to="/portal" className="inline-flex items-center justify-center gap-3 mb-6">
-              <img src={currentLogo} alt="RevUp Agency" className="h-12 w-auto" />
-              <img src={currentFrogIcon} alt="RevUp Mascot" className="h-10 w-auto" />
+            <Link to="/portal" className="inline-block mb-6">
+              <img src={currentLogo} alt="RevUp Agency" className="h-12 w-auto mx-auto" />
             </Link>
             <CardTitle className="text-2xl font-heading text-foreground">
               {showResetForm ? 'Reset Password' : 'Welcome Back'}

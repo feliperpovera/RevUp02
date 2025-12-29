@@ -6,8 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import revUpLogoLight from '@/assets/revup-logo-light.png';
 import revUpLogoMain from '@/assets/revup-logo-main.png';
-import frogIconDark from '@/assets/frog-icon-dark.png';
-import frogIconLight from '@/assets/frog-icon-light.png';
 
 const features = [
   {
@@ -50,7 +48,6 @@ const features = [
 const PortalLandingPage = () => {
   const { resolvedTheme } = useTheme();
   const currentLogo = resolvedTheme === 'light' ? revUpLogoMain : revUpLogoLight;
-  const currentFrogIcon = resolvedTheme === 'light' ? frogIconLight : frogIconDark;
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -62,9 +59,8 @@ const PortalLandingPage = () => {
       {/* Header */}
       <header className="relative z-10 py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2">
             <img src={currentLogo} alt="RevUp Agency" className="h-10 w-auto" />
-            <img src={currentFrogIcon} alt="RevUp Mascot" className="h-8 w-auto" />
           </Link>
           <div className="flex items-center gap-2 sm:gap-4">
             <Link to="/portal/roas-calculator">
@@ -97,12 +93,9 @@ const PortalLandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex flex-col items-center gap-4 mb-8">
-              <img src={currentFrogIcon} alt="RevUp Mascot" className="h-16 w-auto" />
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary">
-                <Sparkles className="h-4 w-4" />
-                <span className="text-sm font-medium">Client Portal</span>
-              </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary mb-8">
+              <Sparkles className="h-4 w-4" />
+              <span className="text-sm font-medium">Client Portal</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
               Welcome to Your
