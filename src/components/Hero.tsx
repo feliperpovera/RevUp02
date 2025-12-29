@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import frogIconTransparent from "@/assets/frog-icon-dark-transparent.png";
+import frogMascot from "@/assets/frog-logo.png";
 
 export const Hero = () => {
   const [displayedText1, setDisplayedText1] = useState("");
@@ -54,9 +53,13 @@ export const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           
-          {/* Frog Icon */}
+          {/* Frog Icon with bounce animation */}
           <div className="flex justify-center mb-8">
-            <img src={frogIconTransparent} alt="RevUp Mascot" className="h-20 md:h-24 w-auto drop-shadow-lg" />
+            <img 
+              src={frogMascot} 
+              alt="RevUp Mascot" 
+              className="h-20 md:h-28 w-auto drop-shadow-[0_4px_20px_rgba(200,230,100,0.4)] animate-frog-bounce" 
+            />
           </div>
           
           {/* Main heading with typewriter effect */}
