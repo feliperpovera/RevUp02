@@ -7,8 +7,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import revupLogoLight from "@/assets/revup-logo-light.png";
-import frogIconDark from "@/assets/frog-icon-dark.png";
-import frogIconLight from "@/assets/frog-icon-light.png";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +28,6 @@ export const Navbar = () => {
 
   // Use dark logo as default until theme is resolved to prevent flickering
   const currentLogo = mounted && resolvedTheme === "light" ? revupLogoLight : revupLogoMain;
-  const currentFrogIcon = mounted && resolvedTheme === "light" ? frogIconLight : frogIconDark;
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -55,9 +52,8 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center">
             <img src={currentLogo} alt="RevUp Agency Group Logo" className="h-24 sm:h-28 md:h-32 lg:h-36" />
-            <img src={currentFrogIcon} alt="RevUp Mascot" className="h-8 sm:h-10 md:h-12 w-auto" />
           </Link>
 
           {/* Desktop Menu */}

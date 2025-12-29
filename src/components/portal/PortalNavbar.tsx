@@ -7,8 +7,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth } from '@/contexts/AuthContext';
 import revUpLogoLight from '@/assets/revup-logo-light.png';
 import revUpLogoMain from '@/assets/revup-logo-main.png';
-import frogIconDark from '@/assets/frog-icon-dark.png';
-import frogIconLight from '@/assets/frog-icon-light.png';
 
 const navItems = [
   { name: 'Dashboard', href: '/portal/dashboard', icon: LayoutDashboard },
@@ -28,7 +26,6 @@ const PortalNavbar = () => {
   const navigate = useNavigate();
   
   const currentLogo = resolvedTheme === 'light' ? revUpLogoMain : revUpLogoLight;
-  const currentFrogIcon = resolvedTheme === 'light' ? frogIconLight : frogIconDark;
 
   const handleSignOut = async () => {
     await signOut();
@@ -42,16 +39,11 @@ const PortalNavbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/portal/dashboard" className="flex items-center gap-3">
+          <Link to="/portal/dashboard" className="flex items-center gap-2">
             <img 
               src={currentLogo} 
               alt="RevUp Agency" 
               className="h-8 w-auto"
-            />
-            <img 
-              src={currentFrogIcon} 
-              alt="RevUp Mascot" 
-              className="h-6 w-auto"
             />
             <span className="text-sm font-medium text-primary">Portal</span>
           </Link>

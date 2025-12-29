@@ -1,14 +1,8 @@
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
-import { useTheme } from "next-themes";
-import frogIconDark from "@/assets/frog-icon-dark.png";
-import frogIconLight from "@/assets/frog-icon-light.png";
 
 export const Footer = () => {
-  const { resolvedTheme } = useTheme();
-  const currentFrogIcon = resolvedTheme === 'light' ? frogIconLight : frogIconDark;
-  
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/revupagencygroup/", label: "Instagram" },
   ];
@@ -18,9 +12,8 @@ export const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-6 md:mb-8">
           <div>
-            <div className="flex items-center gap-3 mb-3 md:mb-4">
+            <div className="flex items-center mb-3 md:mb-4">
               <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-16 md:h-20" />
-              <img src={currentFrogIcon} alt="RevUp Mascot" className="h-10 md:h-12 w-auto" />
             </div>
             <p className="text-sm md:text-base text-foreground/60 mb-4">
               Grow smarter. Move faster. Data-driven digital marketing excellence.
