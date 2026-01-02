@@ -7,7 +7,6 @@ const testimonials = [
     type: "featured",
     company: "TJR",
     stats: { publications: "56", followers: "688 K", surveys: "83" },
-    tall: true,
   },
   {
     type: "result",
@@ -22,7 +21,6 @@ const testimonials = [
     company: "TAI LOPEZ",
     subtitle: "INVESTOR. ENTREPRENEUR. AUTHOR.",
     stats: { publications: "3,661", followers: "2.9 M", surveys: "4,415" },
-    tall: true,
   },
   {
     type: "result",
@@ -37,7 +35,6 @@ const testimonials = [
     company: "S&T SECTION8",
     subtitle: "TRAINING BY SECTION 8 KARIM",
     stats: { publications: "746", followers: "546 K", surveys: "0" },
-    tall: true,
   },
   {
     type: "result",
@@ -45,20 +42,6 @@ const testimonials = [
     description: "We Helped Them Generate An Additional",
     result: "$500K",
     period: "In 3 Months",
-  },
-  {
-    type: "quote",
-    quote: "We had no idea what Google Ads was or how it worked. They took over and exceeded all expectations—our site got tons of traffic, sales went up, and ROI was quick and impressive.",
-    author: "Ian Greenberg",
-    role: "Business Owner",
-    initials: "IG",
-  },
-  {
-    type: "quote",
-    quote: "Before working with this team, our Google Ads campaigns were going nowhere. In just a short time, they completely turned things around—our traffic and sales increased significantly.",
-    author: "Laura Castro",
-    role: "Marketing Director",
-    initials: "LC",
   },
 ];
 
@@ -166,52 +149,29 @@ export const Testimonials = () => {
               );
             }
 
-            if (item.type === "result") {
-              return (
-                <article
-                  key={index}
-                  className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
-                >
-                  {/* Company */}
-                  <div>
-                    <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-1">
-                      {item.company}
-                    </h3>
-                    {item.subtitle && (
-                      <p className="text-[10px] uppercase tracking-wider text-accent/70">{item.subtitle}</p>
-                    )}
-                  </div>
-                  
-                  {/* Result */}
-                  <div className="mt-auto">
-                    <p className="text-xs text-foreground/50 mb-2 leading-relaxed">{item.description}</p>
-                    <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-1">
-                      {item.result}
-                    </div>
-                    <p className="text-xs text-foreground/40">{item.period}</p>
-                  </div>
-                </article>
-              );
-            }
-
-            // Quote type
+            // Result type
             return (
               <article
                 key={index}
-                className="flex-shrink-0 w-[260px] md:w-[300px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+                className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
               >
-                <p className="text-sm text-foreground/60 leading-relaxed flex-1 line-clamp-[8]">
-                  "{item.quote}"
-                </p>
+                {/* Company */}
+                <div>
+                  <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-1">
+                    {item.company}
+                  </h3>
+                  {item.subtitle && (
+                    <p className="text-[10px] uppercase tracking-wider text-accent/70">{item.subtitle}</p>
+                  )}
+                </div>
                 
-                <div className="mt-4 pt-4 border-t border-border/20 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent font-semibold text-sm">
-                    {item.initials}
+                {/* Result */}
+                <div className="mt-auto">
+                  <p className="text-xs text-foreground/50 mb-2 leading-relaxed">{item.description}</p>
+                  <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-1">
+                    {item.result}
                   </div>
-                  <div>
-                    <div className="font-medium text-foreground text-sm">{item.author}</div>
-                    <div className="text-xs text-foreground/40">{item.role}</div>
-                  </div>
+                  <p className="text-xs text-foreground/40">{item.period}</p>
                 </div>
               </article>
             );
