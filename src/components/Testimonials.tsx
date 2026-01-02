@@ -1,58 +1,168 @@
-import { Quote } from "lucide-react";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
+    type: "result",
+    company: "TechStart Co",
+    logo: "TS",
+    description: "We Helped Them Go From $15K/Month To",
+    result: "+$180K",
+    period: "Per Month",
+    bgColor: "bg-gradient-to-br from-accent/20 to-accent/5",
+  },
+  {
+    type: "quote",
     quote: "We had no idea what Google Ads was or how it worked. They took over and exceeded all expectations—our site got tons of traffic, sales went up, and ROI was quick and impressive.",
     author: "Ian Greenberg",
     role: "Business Owner",
-    rating: 5
+    avatar: "IG",
   },
   {
+    type: "result",
+    company: "V CRÉATION",
+    logo: "VC",
+    description: "We Helped Them Go From $40K/Month To",
+    result: "+$280K",
+    period: "Per Month",
+    bgColor: "bg-gradient-to-br from-card to-muted",
+  },
+  {
+    type: "quote",
     quote: "Before working with this team, our Google Ads campaigns were going nowhere. In just a short time, they completely turned things around—our traffic and sales increased significantly.",
     author: "Laura Castro",
     role: "Marketing Director",
-    rating: 5
+    avatar: "LC",
+  },
+  {
+    type: "result",
+    company: "(code)word",
+    logo: "CW",
+    subtitle: "Garments That Give™",
+    description: "We Helped Them Go From $40K/Month To",
+    result: "+$225K",
+    period: "Per Month",
+    bgColor: "bg-gradient-to-br from-accent/20 to-accent/5",
+  },
+  {
+    type: "result",
+    company: "Golightly Cashmere",
+    logo: "GC",
+    description: "We Helped Them Generate An Additional",
+    result: "$500K",
+    period: "In 3 Months",
+    bgColor: "bg-gradient-to-br from-card to-muted",
   },
 ];
 
 export const Testimonials = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 350;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="testimonials-heading">
-      {/* Animated background */}
-      <div className="absolute inset-0 cyber-grid opacity-20" />
-      <div className="absolute top-1/3 left-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse-glow floating-orb" />
-      <div className="absolute bottom-1/3 right-10 w-48 h-48 bg-accent/5 rounded-full blur-3xl animate-pulse-glow floating-orb" style={{ animationDelay: '2s' }} />
+      {/* Background elements */}
+      <div className="absolute inset-0 cyber-grid opacity-10" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <header className="text-center mb-10 md:mb-16">
-          <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4 opacity-0 animate-fade-in">
-            Client <span className="text-accent gradient-text">Success Stories</span>
+        {/* Header */}
+        <header className="text-center mb-6">
+          <p className="text-sm uppercase tracking-widest text-foreground/50 mb-3">
+            Our Clients And Results
+          </p>
+          <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+            Meet Our Amazing <span className="text-accent">Clients And Partners.</span>
           </h2>
-          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto px-4 opacity-0 animate-fade-in stagger-1">
-            Real results from businesses that trust our digital marketing expertise
+          <p className="text-base md:text-lg text-foreground/60 max-w-3xl mx-auto">
+            We collaborate with driven brands and entrepreneurs who are ready to scale. With every partnership, our goal stays the same: deliver paid advertising that fuels real growth and lasting impact.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+        {/* Navigation arrows */}
+        <div className="flex justify-end gap-2 mb-6">
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("left")}
+            className="rounded-full border-border/50 hover:border-accent hover:bg-accent/10"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("right")}
+            className="rounded-full border-border/50 hover:border-accent hover:bg-accent/10"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
+
+        {/* Scrolling carousel */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {testimonials.map((item, index) => (
             <article
               key={index}
-              className="futuristic-card rounded-xl p-6 md:p-8 relative opacity-0 animate-slide-up group"
-              style={{ animationDelay: `${0.2 + index * 0.15}s` }}
+              className={`flex-shrink-0 w-[280px] md:w-[320px] snap-start rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 ${
+                item.type === "result" ? item.bgColor : "bg-card"
+              } border border-border/30`}
               itemScope
               itemType="https://schema.org/Review"
             >
-              <Quote className="w-10 h-10 md:w-12 md:h-12 text-accent/20 absolute top-4 md:top-6 right-4 md:right-6 group-hover:text-accent/40 transition-colors duration-500" aria-hidden="true" />
-              
-              <p itemProp="reviewBody" className="text-base md:text-lg text-foreground/80 leading-relaxed mb-4 md:mb-6 relative z-10 pr-8">
-                &quot;{testimonial.quote}&quot;
-              </p>
-              
-              <div className="border-t border-accent/20 pt-3 md:pt-4" itemProp="author" itemScope itemType="https://schema.org/Person">
-                <div className="font-semibold text-foreground text-sm md:text-base group-hover:text-accent transition-colors duration-300" itemProp="name">{testimonial.author}</div>
-                <div className="text-xs md:text-sm text-accent/80" itemProp="jobTitle">{testimonial.role}</div>
-                <meta itemProp="ratingValue" content={testimonial.rating.toString()} />
-              </div>
+              {item.type === "result" ? (
+                <div className="p-6 h-full flex flex-col justify-between min-h-[280px]">
+                  {/* Company info */}
+                  <div>
+                    <div className="text-xl md:text-2xl font-heading font-bold text-foreground mb-1">
+                      {item.company}
+                    </div>
+                    {item.subtitle && (
+                      <p className="text-xs text-foreground/50 mb-4">{item.subtitle}</p>
+                    )}
+                  </div>
+                  
+                  {/* Result */}
+                  <div className="mt-auto">
+                    <p className="text-sm text-foreground/60 mb-2">{item.description}</p>
+                    <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-1">
+                      {item.result}
+                    </div>
+                    <p className="text-sm text-foreground/50">{item.period}</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-6 h-full flex flex-col min-h-[280px]">
+                  {/* Quote */}
+                  <p itemProp="reviewBody" className="text-sm md:text-base text-foreground/70 leading-relaxed flex-1 line-clamp-6">
+                    "{item.quote}"
+                  </p>
+                  
+                  {/* Author */}
+                  <div className="mt-4 pt-4 border-t border-border/30 flex items-center gap-3" itemProp="author" itemScope itemType="https://schema.org/Person">
+                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-semibold text-sm">
+                      {item.avatar}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground text-sm" itemProp="name">{item.author}</div>
+                      <div className="text-xs text-foreground/50" itemProp="jobTitle">{item.role}</div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </article>
           ))}
         </div>
