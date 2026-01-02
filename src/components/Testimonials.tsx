@@ -4,55 +4,61 @@ import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
+    type: "featured",
+    company: "TJR",
+    stats: { publications: "56", followers: "688 K", surveys: "83" },
+    tall: true,
+  },
+  {
     type: "result",
-    company: "TechStart Co",
-    logo: "TS",
-    description: "We Helped Them Go From $15K/Month To",
-    result: "+$180K",
+    company: "V CRÉATION",
+    subtitle: "BIJOUX",
+    description: "We Helped Them Go From $40K/Month To",
+    result: "+$280K",
     period: "Per Month",
-    bgColor: "bg-gradient-to-br from-accent/20 to-accent/5",
+  },
+  {
+    type: "featured",
+    company: "TAI LOPEZ",
+    subtitle: "INVESTOR. ENTREPRENEUR. AUTHOR.",
+    stats: { publications: "3,661", followers: "2.9 M", surveys: "4,415" },
+    tall: true,
+  },
+  {
+    type: "result",
+    company: "(code)word",
+    subtitle: "Garments That Give™",
+    description: "We Helped Them Go From $40K/Month To",
+    result: "+$225K",
+    period: "Per Month",
+  },
+  {
+    type: "featured",
+    company: "S&T SECTION8",
+    subtitle: "TRAINING BY SECTION 8 KARIM",
+    stats: { publications: "746", followers: "546 K", surveys: "0" },
+    tall: true,
+  },
+  {
+    type: "result",
+    company: "Golightly Cashmere",
+    description: "We Helped Them Generate An Additional",
+    result: "$500K",
+    period: "In 3 Months",
   },
   {
     type: "quote",
     quote: "We had no idea what Google Ads was or how it worked. They took over and exceeded all expectations—our site got tons of traffic, sales went up, and ROI was quick and impressive.",
     author: "Ian Greenberg",
     role: "Business Owner",
-    avatar: "IG",
-  },
-  {
-    type: "result",
-    company: "V CRÉATION",
-    logo: "VC",
-    description: "We Helped Them Go From $40K/Month To",
-    result: "+$280K",
-    period: "Per Month",
-    bgColor: "bg-gradient-to-br from-card to-muted",
+    initials: "IG",
   },
   {
     type: "quote",
     quote: "Before working with this team, our Google Ads campaigns were going nowhere. In just a short time, they completely turned things around—our traffic and sales increased significantly.",
     author: "Laura Castro",
     role: "Marketing Director",
-    avatar: "LC",
-  },
-  {
-    type: "result",
-    company: "(code)word",
-    logo: "CW",
-    subtitle: "Garments That Give™",
-    description: "We Helped Them Go From $40K/Month To",
-    result: "+$225K",
-    period: "Per Month",
-    bgColor: "bg-gradient-to-br from-accent/20 to-accent/5",
-  },
-  {
-    type: "result",
-    company: "Golightly Cashmere",
-    logo: "GC",
-    description: "We Helped Them Generate An Additional",
-    result: "$500K",
-    period: "In 3 Months",
-    bgColor: "bg-gradient-to-br from-card to-muted",
+    initials: "LC",
   },
 ];
 
@@ -71,100 +77,145 @@ export const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="testimonials-heading">
-      {/* Background elements */}
-      <div className="absolute inset-0 cyber-grid opacity-10" />
+      <div className="absolute inset-0 cyber-grid opacity-5" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header */}
-        <header className="text-center mb-6">
-          <p className="text-sm uppercase tracking-widest text-foreground/50 mb-3">
+        <header className="text-center mb-8">
+          <p className="text-xs uppercase tracking-[0.2em] text-foreground/40 mb-4">
             Our Clients And Results
           </p>
           <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
             Meet Our Amazing <span className="text-accent">Clients And Partners.</span>
           </h2>
-          <p className="text-base md:text-lg text-foreground/60 max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-foreground/50 max-w-3xl mx-auto leading-relaxed">
             We collaborate with driven brands and entrepreneurs who are ready to scale. With every partnership, our goal stays the same: deliver paid advertising that fuels real growth and lasting impact.
           </p>
         </header>
 
-        {/* Navigation arrows */}
+        {/* Navigation */}
         <div className="flex justify-end gap-2 mb-6">
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
             onClick={() => scroll("left")}
-            className="rounded-full border-border/50 hover:border-accent hover:bg-accent/10"
+            className="rounded-full border border-border/30 hover:border-accent/50 hover:bg-accent/5 h-10 w-10"
           >
-            <ChevronLeft className="h-5 w-5" />
+            <ChevronLeft className="h-4 w-4" />
           </Button>
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
             onClick={() => scroll("right")}
-            className="rounded-full border-border/50 hover:border-accent hover:bg-accent/10"
+            className="rounded-full border border-border/30 hover:border-accent/50 hover:bg-accent/5 h-10 w-10"
           >
-            <ChevronRight className="h-5 w-5" />
+            <ChevronRight className="h-4 w-4" />
           </Button>
         </div>
 
-        {/* Scrolling carousel */}
+        {/* Carousel */}
         <div 
           ref={scrollContainerRef}
-          className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory -mx-4 px-4"
         >
-          {testimonials.map((item, index) => (
-            <article
-              key={index}
-              className={`flex-shrink-0 w-[280px] md:w-[320px] snap-start rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-accent/10 ${
-                item.type === "result" ? item.bgColor : "bg-card"
-              } border border-border/30`}
-              itemScope
-              itemType="https://schema.org/Review"
-            >
-              {item.type === "result" ? (
-                <div className="p-6 h-full flex flex-col justify-between min-h-[280px]">
-                  {/* Company info */}
-                  <div>
-                    <div className="text-xl md:text-2xl font-heading font-bold text-foreground mb-1">
+          {testimonials.map((item, index) => {
+            if (item.type === "featured") {
+              return (
+                <article
+                  key={index}
+                  className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-gradient-to-b from-muted/80 to-card border border-border/20 transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+                >
+                  {/* Placeholder for client image */}
+                  <div className="h-[280px] md:h-[340px] bg-gradient-to-br from-muted to-card flex items-end p-4">
+                    <div className="text-2xl md:text-3xl font-heading font-bold text-foreground/20">
                       {item.company}
                     </div>
+                  </div>
+                  
+                  {/* Stats footer */}
+                  <div className="p-4 bg-card/80 backdrop-blur-sm border-t border-border/20">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground/60">
+                        {item.company.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="text-xs font-medium text-foreground">{item.company}</div>
+                        {item.subtitle && (
+                          <div className="text-[10px] text-foreground/40">{item.subtitle}</div>
+                        )}
+                      </div>
+                    </div>
+                    {item.stats && (
+                      <div className="flex justify-between text-[10px] text-foreground/50">
+                        <div className="text-center">
+                          <div className="font-semibold text-foreground/70">{item.stats.publications}</div>
+                          <div>publications</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-semibold text-foreground/70">{item.stats.followers}</div>
+                          <div>followers</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="font-semibold text-foreground/70">{item.stats.surveys}</div>
+                          <div>surveys</div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            }
+
+            if (item.type === "result") {
+              return (
+                <article
+                  key={index}
+                  className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+                >
+                  {/* Company */}
+                  <div>
+                    <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-1">
+                      {item.company}
+                    </h3>
                     {item.subtitle && (
-                      <p className="text-xs text-foreground/50 mb-4">{item.subtitle}</p>
+                      <p className="text-[10px] uppercase tracking-wider text-accent/70">{item.subtitle}</p>
                     )}
                   </div>
                   
                   {/* Result */}
                   <div className="mt-auto">
-                    <p className="text-sm text-foreground/60 mb-2">{item.description}</p>
+                    <p className="text-xs text-foreground/50 mb-2 leading-relaxed">{item.description}</p>
                     <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-1">
                       {item.result}
                     </div>
-                    <p className="text-sm text-foreground/50">{item.period}</p>
+                    <p className="text-xs text-foreground/40">{item.period}</p>
+                  </div>
+                </article>
+              );
+            }
+
+            // Quote type
+            return (
+              <article
+                key={index}
+                className="flex-shrink-0 w-[260px] md:w-[300px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
+              >
+                <p className="text-sm text-foreground/60 leading-relaxed flex-1 line-clamp-[8]">
+                  "{item.quote}"
+                </p>
+                
+                <div className="mt-4 pt-4 border-t border-border/20 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent font-semibold text-sm">
+                    {item.initials}
+                  </div>
+                  <div>
+                    <div className="font-medium text-foreground text-sm">{item.author}</div>
+                    <div className="text-xs text-foreground/40">{item.role}</div>
                   </div>
                 </div>
-              ) : (
-                <div className="p-6 h-full flex flex-col min-h-[280px]">
-                  {/* Quote */}
-                  <p itemProp="reviewBody" className="text-sm md:text-base text-foreground/70 leading-relaxed flex-1 line-clamp-6">
-                    "{item.quote}"
-                  </p>
-                  
-                  {/* Author */}
-                  <div className="mt-4 pt-4 border-t border-border/30 flex items-center gap-3" itemProp="author" itemScope itemType="https://schema.org/Person">
-                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center text-accent font-semibold text-sm">
-                      {item.avatar}
-                    </div>
-                    <div>
-                      <div className="font-semibold text-foreground text-sm" itemProp="name">{item.author}</div>
-                      <div className="text-xs text-foreground/50" itemProp="jobTitle">{item.role}</div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
