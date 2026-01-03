@@ -12,36 +12,31 @@ const features = [
     icon: Calculator,
     title: 'ROAS Calculator',
     description: 'Calculate your expected return on ad spend with our industry-benchmarked tool.',
-    href: '/portal/roas-calculator',
-    public: true
+    href: '/portal/roas-calculator'
   },
   {
     icon: ShoppingCart,
     title: 'Amazon FBA Calculator',
     description: 'Full P&L, fees breakdown, PRO metrics & inventory planning for Amazon sellers.',
-    href: '/portal/amazon-calculator',
-    public: true
+    href: '/portal/amazon-calculator'
   },
   {
     icon: Gift,
     title: 'Exclusive Benefits',
-    description: 'Access special discounts, partner offers, and exclusive promotions for our clients.',
-    href: '/portal/beneficios',
-    public: false
+    description: 'Access special discounts, partner offers, and exclusive promotions.',
+    href: '/portal/benefits'
   },
   {
     icon: FileText,
     title: 'Resources & Templates',
     description: 'Download guides, templates, and tools to optimize your marketing efforts.',
-    href: '/portal/recursos',
-    public: false
+    href: '/portal/resources'
   },
   {
     icon: HelpCircle,
-    title: 'Priority Support',
+    title: 'Support Center',
     description: 'Get dedicated support with quick response times and personalized assistance.',
-    href: '/portal/soporte',
-    public: false
+    href: '/portal/support'
   }
 ];
 
@@ -95,26 +90,26 @@ const PortalLandingPage = () => {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary mb-8">
               <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">Client Portal</span>
+              <span className="text-sm font-medium">Tools & Resources Portal</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
               Welcome to Your
-              <span className="gradient-text block mt-2">Exclusive Portal</span>
+              <span className="gradient-text block mt-2">Marketing Hub</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-              Access exclusive benefits, resources, tools, and support designed to help you scale your e-commerce business.
+              Access powerful tools, resources, and support designed to help you scale your e-commerce business.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/portal/login">
+              <Link to="/portal/dashboard">
                 <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 glow-border">
-                  <LogIn className="h-5 w-5 mr-2" />
-                  Client Login
+                  <Sparkles className="h-5 w-5 mr-2" />
+                  Explore Portal
                 </Button>
               </Link>
               <Link to="/portal/onboarding">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto border-border hover:bg-muted">
                   <UserPlus className="h-5 w-5 mr-2" />
-                  Request Access
+                  Request Consultation
                 </Button>
               </Link>
             </div>
@@ -129,7 +124,7 @@ const PortalLandingPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {features.map((feature, index) => (
               <motion.div
@@ -138,7 +133,7 @@ const PortalLandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               >
-                <Link to={feature.public ? feature.href : '/portal/login'}>
+                <Link to={feature.href}>
                   <Card className="glass-card h-full group cursor-pointer">
                     <CardHeader>
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
@@ -150,11 +145,6 @@ const PortalLandingPage = () => {
                       <CardDescription className="text-muted-foreground">
                         {feature.description}
                       </CardDescription>
-                      {!feature.public && (
-                        <span className="text-xs text-muted-foreground mt-2 inline-block">
-                          (Login required)
-                        </span>
-                      )}
                     </CardHeader>
                   </Card>
                 </Link>
@@ -189,16 +179,16 @@ const PortalLandingPage = () => {
         </div>
       </section>
 
-      {/* CTA for Potential Clients */}
+      {/* CTA for Consultation */}
       <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <Card className="futuristic-card overflow-hidden">
             <CardContent className="p-8 sm:p-12 text-center">
               <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground mb-4">
-                Not a Client Yet?
+                Ready to Scale Your Business?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Fill out our onboarding form and let us know about your project. Our team will review your information and get in touch within 24-48 hours.
+                Fill out our consultation form and let us know about your project. Our team will review your information and get in touch within 24-48 hours.
               </p>
               <Link to="/portal/onboarding">
                 <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">

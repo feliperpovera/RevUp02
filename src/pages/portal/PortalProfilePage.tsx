@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, Save, Loader2 } from 'lucide-react';
+import { User, Save, Loader2, LogIn } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import PortalLayout from '@/components/portal/PortalLayout';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 interface Profile {
   full_name: string | null;
@@ -36,7 +37,10 @@ const PortalProfilePage = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!user) return;
+      if (!user) {
+        setLoading(false);
+        return;
+      }
       
       setLoading(true);
       const { data, error } = await supabase
@@ -88,6 +92,39 @@ const PortalProfilePage = () => {
       });
     }
   };
+
+  if (!user) {
+    return (
+      <PortalLayout>
+        <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <Card className="glass-card">
+              <CardContent className="py-16 text-center">
+                <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-foreground mb-2">Sign in to view your profile</h3>
+                <p className="text-muted-foreground mb-6">
+                  Create an account or sign in to manage your profile information.
+                </p>
+                <div className="flex justify-center gap-4">
+                  <Link to="/portal/login">
+                    <Button className="bg-primary text-primary-foreground">
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link to="/portal/register">
+                    <Button variant="outline">
+                      Create Account
+                    </Button>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </PortalLayout>
+    );
+  }
 
   return (
     <PortalLayout>

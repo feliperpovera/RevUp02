@@ -9,6 +9,7 @@ import {
   HelpCircle, 
   User, 
   LogOut, 
+  LogIn,
   Calculator, 
   ShoppingCart,
   ChevronDown,
@@ -42,9 +43,9 @@ const toolsItems = [
 
 // Resources dropdown items  
 const resourcesItems = [
-  { name: 'Benefits', href: '/portal/beneficios', icon: Gift },
-  { name: 'Resources', href: '/portal/recursos', icon: FileText },
-  { name: 'Support', href: '/portal/soporte', icon: HelpCircle },
+  { name: 'Benefits', href: '/portal/benefits', icon: Gift },
+  { name: 'Resources', href: '/portal/resources', icon: FileText },
+  { name: 'Support', href: '/portal/support', icon: HelpCircle },
 ];
 
 const PortalNavbar = () => {
@@ -171,41 +172,51 @@ const PortalNavbar = () => {
               <Home className="h-4 w-4" />
             </Link>
 
-            {/* User Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className={`flex items-center gap-2 ${
-                    isActive('/portal/perfil') ? 'bg-primary text-primary-foreground' : ''
-                  }`}
-                >
-                  <User className="h-4 w-4" />
-                  <ChevronDown className="h-3 w-3" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="px-2 py-1.5">
-                  <p className="text-sm font-medium truncate">{user?.email}</p>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/portal/perfil" className="flex items-center gap-2 cursor-pointer">
+            {user ? (
+              /* User Dropdown - Authenticated */
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    className={`flex items-center gap-2 ${
+                      isActive('/portal/profile') ? 'bg-primary text-primary-foreground' : ''
+                    }`}
+                  >
                     <User className="h-4 w-4" />
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem 
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2 cursor-pointer text-destructive focus:text-destructive"
-                >
-                  <LogOut className="h-4 w-4" />
-                  Sign Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    <ChevronDown className="h-3 w-3" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <div className="px-2 py-1.5">
+                    <p className="text-sm font-medium truncate">{user?.email}</p>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/portal/profile" className="flex items-center gap-2 cursor-pointer">
+                      <User className="h-4 w-4" />
+                      Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem 
+                    onClick={handleSignOut}
+                    className="flex items-center gap-2 cursor-pointer text-destructive focus:text-destructive"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              /* Login Button - Not Authenticated */
+              <Link to="/portal/login">
+                <Button variant="outline" size="sm" className="flex items-center gap-2">
+                  <LogIn className="h-4 w-4" />
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -281,19 +292,40 @@ const PortalNavbar = () => {
 
                   {/* User Section */}
                   <div className="border-t border-border pt-4 mt-4">
-                    <p className="text-sm text-muted-foreground px-4 mb-2">{user?.email}</p>
-                    <Link
-                      to="/portal/perfil"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
-                        isActive('/portal/perfil')
-                          ? 'bg-primary text-primary-foreground'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-                      }`}
-                    >
-                      <User className="h-5 w-5" />
-                      Profile
-                    </Link>
+                    {user ? (
+                      <>
+                        <p className="text-sm text-muted-foreground px-4 mb-2">{user?.email}</p>
+                        <Link
+                          to="/portal/profile"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                            isActive('/portal/profile')
+                              ? 'bg-primary text-primary-foreground'
+                              : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                          }`}
+                        >
+                          <User className="h-5 w-5" />
+                          Profile
+                        </Link>
+                        <Button 
+                          variant="ghost" 
+                          className="w-full justify-start px-4 py-3 h-auto text-destructive hover:text-destructive hover:bg-destructive/10" 
+                          onClick={handleSignOut}
+                        >
+                          <LogOut className="h-5 w-5 mr-3" />
+                          Sign Out
+                        </Button>
+                      </>
+                    ) : (
+                      <Link
+                        to="/portal/login"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-primary hover:bg-muted transition-all"
+                      >
+                        <LogIn className="h-5 w-5" />
+                        Sign In
+                      </Link>
+                    )}
                     <Link
                       to="/"
                       onClick={() => setMobileMenuOpen(false)}
@@ -302,14 +334,6 @@ const PortalNavbar = () => {
                       <Home className="h-5 w-5" />
                       Back to Home
                     </Link>
-                    <Button 
-                      variant="ghost" 
-                      className="w-full justify-start px-4 py-3 h-auto text-destructive hover:text-destructive hover:bg-destructive/10" 
-                      onClick={handleSignOut}
-                    >
-                      <LogOut className="h-5 w-5 mr-3" />
-                      Sign Out
-                    </Button>
                   </div>
                 </div>
               </SheetContent>
