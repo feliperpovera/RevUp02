@@ -54,12 +54,12 @@ const App = () => (
               {/* Portal Routes */}
               <Route path="/portal" element={<PortalLandingPage />} />
               <Route path="/portal/login" element={<PortalLoginPage />} />
-              <Route path="/portal/registro" element={<PortalRegisterPage />} />
+              <Route path="/portal/register" element={<PortalRegisterPage />} />
               <Route path="/portal/dashboard" element={<PortalDashboardPage />} />
-              <Route path="/portal/beneficios" element={<PortalBenefitsPage />} />
-              <Route path="/portal/recursos" element={<PortalResourcesPage />} />
-              <Route path="/portal/soporte" element={<PortalSupportPage />} />
-              <Route path="/portal/perfil" element={<PortalProfilePage />} />
+              <Route path="/portal/benefits" element={<PortalBenefitsPage />} />
+              <Route path="/portal/resources" element={<PortalResourcesPage />} />
+              <Route path="/portal/support" element={<PortalSupportPage />} />
+              <Route path="/portal/profile" element={<PortalProfilePage />} />
               <Route path="/portal/onboarding" element={<PortalOnboardingPage />} />
               <Route path="/portal/roas-calculator" element={<PortalROASCalculatorPage />} />
               <Route path="/portal/onboarding-form" element={<PortalOnboardingFormPage />} />
