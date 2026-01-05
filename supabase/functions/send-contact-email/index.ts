@@ -8,6 +8,10 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Rate limiting constants
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
 interface ContactEmailRequest {
   name: string;
   email: string;
@@ -33,6 +37,47 @@ const escapeHtml = (text: string): string => {
     "'": '&#039;'
   };
   return text.replace(/[&<>"']/g, (char) => map[char]);
+};
+
+// Rate limiting function using Deno KV
+const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; retryAfter?: number }> => {
+  try {
+    const kv = await Deno.openKv();
+    const key = ['rate_limit', 'contact_form', identifier];
+    const result = await kv.get<{ count: number; resetAt: number }>(key);
+    
+    const now = Date.now();
+    
+    if (result.value) {
+      // Check if window has expired
+      if (result.value.resetAt <= now) {
+        // Window expired, start new window
+        await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
+        return { allowed: true };
+      }
+      
+      // Check if limit exceeded
+      if (result.value.count >= RATE_LIMIT_MAX_REQUESTS) {
+        const retryAfter = Math.ceil((result.value.resetAt - now) / 1000);
+        return { allowed: false, retryAfter };
+      }
+      
+      // Increment counter
+      await kv.set(key, { 
+        count: result.value.count + 1, 
+        resetAt: result.value.resetAt 
+      }, { expireIn: result.value.resetAt - now });
+      return { allowed: true };
+    }
+    
+    // First request, create new entry
+    await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
+    return { allowed: true };
+  } catch (error) {
+    // If KV fails, log and allow request (fail open for availability)
+    console.error("Rate limiting error:", error);
+    return { allowed: true };
+  }
 };
 
 const sendEmail = async (from: string, to: string[], subject: string, html: string) => {
@@ -64,6 +109,32 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Get client IP for rate limiting
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    
+    // Check rate limit
+    const rateLimitResult = await checkRateLimit(clientIP);
+    
+    if (!rateLimitResult.allowed) {
+      console.log(`Rate limit exceeded for IP: ${clientIP}`);
+      return new Response(
+        JSON.stringify({ 
+          error: "Too many requests. Please try again later.",
+          retryAfter: rateLimitResult.retryAfter
+        }),
+        {
+          status: 429,
+          headers: { 
+            "Content-Type": "application/json",
+            "Retry-After": String(rateLimitResult.retryAfter),
+            ...corsHeaders 
+          },
+        }
+      );
+    }
+
     const rawData = await req.json();
     
     // Validate input
@@ -92,7 +163,7 @@ const handler = async (req: Request): Promise<Response> => {
     const safeCompany = company ? escapeHtml(company) : '';
     const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
-    console.log("Processing contact form submission");
+    console.log("Processing contact form submission from IP:", clientIP);
 
     // TEMPORARY: Sending to verified email until domain is verified
     // Once you verify revupagencygroup.com at resend.com/domains:
@@ -152,7 +223,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An error occurred. Please try again later." }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
