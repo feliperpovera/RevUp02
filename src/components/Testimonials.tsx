@@ -19,6 +19,14 @@ const testimonials = [
     result: "7.4x",
     period: "ROAS",
   },
+  {
+    type: "result",
+    company: "Houst U",
+    subtitle: "Web Development",
+    description: "We Created A Complete Web Presence",
+    result: "Website",
+    period: "Creation",
+  },
 ];
 
 export const Testimonials = () => {
