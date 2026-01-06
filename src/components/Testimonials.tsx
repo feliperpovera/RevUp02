@@ -27,6 +27,14 @@ const testimonials = [
     result: "Website",
     period: "Creation",
   },
+  {
+    type: "result",
+    company: "European Luxury Wall Finishes",
+    subtitle: "Web Development",
+    description: "We Created A Complete Web Presence",
+    result: "Website",
+    period: "Creation",
+  },
 ];
 
 export const Testimonials = () => {
