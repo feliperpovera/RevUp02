@@ -4,9 +4,12 @@ import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
-    type: "featured",
-    company: "TJR",
-    stats: { publications: "56", followers: "688 K", surveys: "83" },
+    type: "result",
+    company: "MIAN",
+    subtitle: "E-commerce",
+    description: "We Achieved A Return On Ad Spend Of",
+    result: "20.2x",
+    period: "ROAS",
   },
   {
     type: "result",
