@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     type: "result",
-    company: "Houst U",
+    company: "Host U",
     subtitle: "Web Development",
     description: "We Created A Complete Web Presence",
     result: "Website",
