@@ -24,11 +24,11 @@ const testimonials = [
   },
   {
     type: "result",
-    company: "(code)word",
-    subtitle: "Garments That Give™",
-    description: "We Helped Them Go From $40K/Month To",
-    result: "+$225K",
-    period: "Per Month",
+    company: "New Life Furniture",
+    subtitle: "Home & Living",
+    description: "We Achieved A Return On Ad Spend Of",
+    result: "7.4x",
+    period: "ROAS",
   },
   {
     type: "featured",
