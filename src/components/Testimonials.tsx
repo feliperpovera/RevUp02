@@ -12,6 +12,15 @@ import velezLogo from "@/assets/clients/velez-logo.png";
 const testimonials = [
   {
     type: "result",
+    company: "Vélez",
+    subtitle: "Retail & Fashion",
+    description: "We Supported Them Through The Entire Advertising Process In The USA",
+    result: "Full",
+    period: "Support",
+    logo: velezLogo,
+  },
+  {
+    type: "result",
     company: "MIAN",
     subtitle: "E-commerce",
     description: "We Achieved A Return On Ad Spend Of",
@@ -27,15 +36,6 @@ const testimonials = [
     result: "7.4x",
     period: "ROAS",
     logo: newlifeLogo,
-  },
-  {
-    type: "result",
-    company: "Vélez",
-    subtitle: "Retail & Fashion",
-    description: "We Supported Them Through The Entire Advertising Process In The USA",
-    result: "Full",
-    period: "Support",
-    logo: velezLogo,
   },
   {
     type: "result",
@@ -120,7 +120,7 @@ export const Testimonials = () => {
             >
               {/* Logo */}
               <div className="mb-4 flex justify-center">
-                <div className="w-20 h-20 flex items-center justify-center bg-white rounded-lg p-2">
+                <div className="w-28 h-28 flex items-center justify-center p-2">
                   <img 
                     src={item.logo} 
                     alt={`${item.company} logo`}
