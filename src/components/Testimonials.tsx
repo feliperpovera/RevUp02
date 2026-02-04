@@ -119,8 +119,8 @@ export const Testimonials = () => {
               className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
             >
               {/* Logo */}
-              <div className="mb-4">
-                <div className="w-full h-16 flex items-center justify-center bg-white rounded-lg p-2">
+              <div className="mb-4 flex justify-center">
+                <div className="w-20 h-20 flex items-center justify-center bg-white rounded-lg p-2">
                   <img 
                     src={item.logo} 
                     alt={`${item.company} logo`}
