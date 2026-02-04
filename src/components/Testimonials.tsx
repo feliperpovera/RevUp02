@@ -130,7 +130,7 @@ export const Testimonials = () => {
             >
               {/* Logo */}
               <div className="mb-4 flex justify-center">
-                <div className="w-24 h-24 flex items-center justify-center p-3 bg-white rounded-full">
+                <div className="w-24 h-24 flex items-center justify-center p-3 bg-white rounded-full overflow-hidden shadow-sm">
                   <img 
                     src={item.logo} 
                     alt={`${item.company} logo`}
