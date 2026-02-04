@@ -8,8 +8,8 @@ export const Hero = () => {
   const [showSubtitle, setShowSubtitle] = useState(false);
   const [showButton, setShowButton] = useState(false);
   
-  const text1 = "Smart growth,";
-  const text2 = "fast results.";
+  const text1 = "Better results,";
+  const text2 = "fast growth.";
 
   useEffect(() => {
     let index = 0;
