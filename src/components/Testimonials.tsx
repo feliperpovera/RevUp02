@@ -8,6 +8,7 @@ import newlifeLogo from "@/assets/clients/newlife-logo.png";
 import hostuLogo from "@/assets/clients/hostu-logo.jpeg";
 import europeanLogo from "@/assets/clients/european-logo.png";
 import velezLogo from "@/assets/clients/velez-logo.png";
+import intrawestLogo from "@/assets/clients/intrawest-logo.png";
 
 const testimonials = [
   {
@@ -18,6 +19,15 @@ const testimonials = [
     result: "Full",
     period: "Support",
     logo: velezLogo,
+  },
+  {
+    type: "result",
+    company: "IntraWest Management",
+    subtitle: "Retail & Fashion",
+    description: "We Supported Them Through The Entire Advertising Process In The USA",
+    result: "Full",
+    period: "Support",
+    logo: intrawestLogo,
   },
   {
     type: "result",
