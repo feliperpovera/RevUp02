@@ -2,6 +2,13 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+// Import client logos
+import mianLogo from "@/assets/clients/mian-logo.jpg";
+import newlifeLogo from "@/assets/clients/newlife-logo.png";
+import hostuLogo from "@/assets/clients/hostu-logo.jpeg";
+import europeanLogo from "@/assets/clients/european-logo.png";
+import velezLogo from "@/assets/clients/velez-logo.png";
+
 const testimonials = [
   {
     type: "result",
@@ -10,6 +17,7 @@ const testimonials = [
     description: "We Achieved A Return On Ad Spend Of",
     result: "20.2x",
     period: "ROAS",
+    logo: mianLogo,
   },
   {
     type: "result",
@@ -18,6 +26,16 @@ const testimonials = [
     description: "We Achieved A Return On Ad Spend Of",
     result: "7.4x",
     period: "ROAS",
+    logo: newlifeLogo,
+  },
+  {
+    type: "result",
+    company: "Vélez",
+    subtitle: "Retail & Fashion",
+    description: "We Supported Them Through The Entire Advertising Process In The USA",
+    result: "Full",
+    period: "Support",
+    logo: velezLogo,
   },
   {
     type: "result",
@@ -26,6 +44,7 @@ const testimonials = [
     description: "We Created A Complete Web Presence",
     result: "Website",
     period: "Creation",
+    logo: hostuLogo,
   },
   {
     type: "result",
@@ -34,6 +53,7 @@ const testimonials = [
     description: "We Created A Complete Web Presence",
     result: "Website",
     period: "Creation",
+    logo: europeanLogo,
   },
 ];
 
@@ -98,6 +118,17 @@ export const Testimonials = () => {
               key={index}
               className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
             >
+              {/* Logo */}
+              <div className="mb-4">
+                <div className="w-full h-16 flex items-center justify-center bg-white rounded-lg p-2">
+                  <img 
+                    src={item.logo} 
+                    alt={`${item.company} logo`}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+              </div>
+
               {/* Company */}
               <div>
                 <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-1">
