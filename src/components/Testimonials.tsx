@@ -134,7 +134,7 @@ export const Testimonials = () => {
                   <img 
                     src={item.logo} 
                     alt={`${item.company} logo`}
-                    className="max-h-full max-w-full object-contain"
+                    className="max-h-full max-w-full object-contain mix-blend-multiply dark:mix-blend-screen dark:invert"
                   />
                 </div>
               </div>
