@@ -23,7 +23,7 @@ const testimonials = [
   {
     type: "result",
     company: "IntraWest Management",
-    subtitle: "Retail & Fashion",
+    subtitle: "Real Estate",
     description: "We Supported Them Through The Entire Advertising Process In The USA",
     result: "Full",
     period: "Support",
