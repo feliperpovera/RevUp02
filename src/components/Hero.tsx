@@ -76,8 +76,7 @@ export const Hero = () => {
         throw new Error("Failed to save lead");
       }
 
-      // Send notification email
-      const { error: emailError } = await supabase.functions.invoke("send-contact-email", {
+      const { data: emailResult, error: emailError } = await supabase.functions.invoke("send-contact-email", {
         body: {
           name: name.trim(),
           email: email.trim(),
@@ -87,10 +86,14 @@ export const Hero = () => {
 
       if (emailError) {
         console.error("Email error:", emailError);
-        // Don't throw - lead is already saved
+        throw new Error("No se pudo enviar el correo de notificación");
       }
 
-      toast.success("Quote request sent! We'll get back to you soon.");
+      if (emailResult?.sandbox_mode) {
+        toast.success("Solicitud enviada. El envío de correos está en modo de prueba.");
+      } else {
+        toast.success("Quote request sent! We'll get back to you soon.");
+      }
       setName("");
       setEmail("");
       setService("");
