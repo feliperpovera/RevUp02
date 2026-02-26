@@ -5,7 +5,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 // Rate limiting constants
@@ -80,6 +80,8 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
   }
 };
 
+const RESEND_TEST_RECIPIENT = "feliperesvera106@gmail.com";
+
 const sendEmail = async (from: string, to: string[], subject: string, html: string) => {
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -101,6 +103,10 @@ const sendEmail = async (from: string, to: string[], subject: string, html: stri
   }
 
   return await response.json();
+};
+
+const isResendSandboxRestriction = (error: unknown) => {
+  return error instanceof Error && error.message.includes("You can only send testing emails to your own email address");
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -165,53 +171,83 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Processing contact form submission from IP:", clientIP);
 
-    // TEMPORARY: Sending to verified email until domain is verified
-    // Once you verify revupagencygroup.com at resend.com/domains:
-    // 1. Change from: "noreply@revupagencygroup.com" 
-    // 2. Change to: ["info@revupagencygroup.com"]
-    const notificationResponse = await sendEmail(
-      "RevUp Contact Form <onboarding@resend.dev>",
-      ["feliperesvera106@gmail.com"],
-      `New Contact Form Submission from ${safeName}`,
-      `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
-        ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
-        <p><strong>Message:</strong></p>
-        <p>${safeMessage}</p>
-      `
-    );
+    let sandboxMode = false;
+
+    // Send notification email to RevUp inbox (fallback to test recipient if domain is not verified)
+    let notificationResponse: any;
+    try {
+      notificationResponse = await sendEmail(
+        "RevUp Contact Form <onboarding@resend.dev>",
+        ["info@revupagencygroup.com"],
+        `New Contact Form Submission from ${safeName}`,
+        `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
+          ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
+          <p><strong>Message:</strong></p>
+          <p>${safeMessage}</p>
+        `
+      );
+    } catch (error) {
+      if (!isResendSandboxRestriction(error)) throw error;
+      sandboxMode = true;
+      console.warn("Resend sandbox restriction detected. Using fallback recipient.");
+      notificationResponse = await sendEmail(
+        "RevUp Contact Form <onboarding@resend.dev>",
+        [RESEND_TEST_RECIPIENT],
+        `New Contact Form Submission from ${safeName}`,
+        `
+          <h2>New Contact Form Submission (Sandbox Mode)</h2>
+          <p><strong>Intended inbox:</strong> info@revupagencygroup.com</p>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
+          ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
+          <p><strong>Message:</strong></p>
+          <p>${safeMessage}</p>
+        `
+      );
+    }
 
     console.log("Notification email sent successfully:", notificationResponse);
 
-    // Send confirmation email to the user (also to verified email temporarily)
-    const confirmationResponse = await sendEmail(
-      "RevUp Agency Group <onboarding@resend.dev>",
-      ["feliperesvera106@gmail.com"],
-      `Confirmation: Message from ${safeName}`,
-      `
-        <h2>Form Submission Received</h2>
-        <p>This would be sent to: ${safeEmail}</p>
-        <hr>
-        <h1>Thank you for contacting us, ${safeName}!</h1>
-        <p>We have received your message and will get back to you as soon as possible.</p>
-        <p><strong>Your message:</strong></p>
-        <p>${safeMessage}</p>
-        <br>
-        <p>Best regards,<br>The RevUp Agency Group Team</p>
-      `
-    );
+    // Send confirmation email only when not in sandbox mode
+    let confirmationResponse: any = null;
+    let confirmationDeliveredTo: string | null = null;
 
-    console.log("Confirmation email sent successfully:", confirmationResponse);
+    if (!sandboxMode) {
+      try {
+        confirmationResponse = await sendEmail(
+          "RevUp Agency Group <onboarding@resend.dev>",
+          [safeEmail],
+          `Confirmation: Message from ${safeName}`,
+          `
+            <h2>Form Submission Received</h2>
+            <h1>Thank you for contacting us, ${safeName}!</h1>
+            <p>We have received your message and will get back to you as soon as possible.</p>
+            <p><strong>Your message:</strong></p>
+            <p>${safeMessage}</p>
+            <br>
+            <p>Best regards,<br>The RevUp Agency Group Team</p>
+          `
+        );
+        confirmationDeliveredTo = safeEmail;
+        console.log("Confirmation email sent successfully:", confirmationResponse);
+      } catch (confirmationError) {
+        console.error("Confirmation email failed, but lead notification was sent:", confirmationError);
+      }
+    }
 
     return new Response(
       JSON.stringify({ 
         success: true,
+        sandbox_mode: sandboxMode,
         notificationId: notificationResponse.id,
-        confirmationId: confirmationResponse.id
-      }), 
+        confirmationId: confirmationResponse?.id ?? null,
+        confirmationDeliveredTo,
+      }),
       {
         status: 200,
         headers: {
