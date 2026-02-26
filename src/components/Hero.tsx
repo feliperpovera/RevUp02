@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Hero = () => {
   const [displayedText1, setDisplayedText1] = useState("");
@@ -58,14 +59,48 @@ export const Hero = () => {
       return;
     }
     setSubmitting(true);
-    // Simulate submission
-    await new Promise(r => setTimeout(r, 1000));
-    toast.success("Quote request sent! We'll get back to you soon.");
-    setName("");
-    setEmail("");
-    setService("");
-    setBudget("");
-    setSubmitting(false);
+    try {
+      // Save lead to database
+      const { error: dbError } = await supabase.from("leads").insert({
+        full_name: name.trim(),
+        email: email.trim(),
+        company: "Quick Quote",
+        services: [service],
+        budget_range: budget,
+        project_description: `Quick quote request - Service: ${service}, Budget: ${budget}`,
+        consent: true,
+      });
+
+      if (dbError) {
+        console.error("DB error:", dbError);
+        throw new Error("Failed to save lead");
+      }
+
+      // Send notification email
+      const { error: emailError } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          name: name.trim(),
+          email: email.trim(),
+          message: `Quick Quote Request\n\nService: ${service}\nMonthly Budget: ${budget}`,
+        },
+      });
+
+      if (emailError) {
+        console.error("Email error:", emailError);
+        // Don't throw - lead is already saved
+      }
+
+      toast.success("Quote request sent! We'll get back to you soon.");
+      setName("");
+      setEmail("");
+      setService("");
+      setBudget("");
+    } catch (error) {
+      console.error("Submit error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
