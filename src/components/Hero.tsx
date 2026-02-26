@@ -107,16 +107,6 @@ export const Hero = () => {
               </p>
             </div>
 
-            <div className={`flex justify-center lg:justify-start transition-all duration-700 ${showButton ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-              <Button 
-                onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-full text-lg md:text-xl px-10 md:px-14 py-6 md:py-7 h-auto hover:scale-105 transition-all duration-500 shadow-xl"
-                aria-label="Book a free digital marketing consultation"
-              >
-                Book a Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
-              </Button>
-            </div>
           </div>
 
           {/* Right side - Mini quote form */}
