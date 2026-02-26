@@ -18,6 +18,7 @@ export const Hero = () => {
   // Form state
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [service, setService] = useState("");
   const [budget, setBudget] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -61,15 +62,16 @@ export const Hero = () => {
     setSubmitting(true);
     try {
       // Save lead to database
-      const { error: dbError } = await supabase.from("leads").insert({
+      const { error: dbError } = await supabase.from("leads").insert([{
         full_name: name.trim(),
         email: email.trim(),
+        phone: phone.trim() || null,
         company: "Quick Quote",
         services: [service],
         budget_range: budget,
         project_description: `Quick quote request - Service: ${service}, Budget: ${budget}`,
         consent: true,
-      });
+      }]);
 
       if (dbError) {
         console.error("DB error:", dbError);
@@ -80,6 +82,7 @@ export const Hero = () => {
         body: {
           name: name.trim(),
           email: email.trim(),
+          phone: phone.trim(),
           message: `Quick Quote Request\n\nService: ${service}\nMonthly Budget: ${budget}`,
         },
       });
@@ -96,6 +99,7 @@ export const Hero = () => {
       }
       setName("");
       setEmail("");
+      setPhone("");
       setService("");
       setBudget("");
     } catch (error) {
@@ -174,6 +178,14 @@ export const Hero = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   maxLength={255}
+                  className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-accent/50"
+                />
+                <Input
+                  type="tel"
+                  placeholder="Your phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  maxLength={20}
                   className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-accent/50"
                 />
                 <Select value={service} onValueChange={setService}>
