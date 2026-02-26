@@ -79,7 +79,7 @@ export const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-accent/3 rounded-full animate-rotate-slow" style={{ animationDirection: 'reverse' }} />
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 py-24 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 pt-32 pb-24 md:py-32 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left side - Text content */}
