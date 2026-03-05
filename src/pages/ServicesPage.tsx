@@ -9,10 +9,10 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar />
-      
-      <section className="py-24 md:py-32 bg-gradient-to-b from-background to-graphite">
+
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
@@ -167,9 +167,9 @@ const ServicesPage = () => {
             </div>
 
             <div className="text-center mt-12">
-              <Button 
-                variant="glow" 
-                size="lg" 
+              <Button
+                variant="glow"
+                size="lg"
                 onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
                 className="text-base md:text-lg px-8 py-6"
               >
@@ -180,7 +180,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

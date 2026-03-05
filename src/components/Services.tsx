@@ -26,10 +26,9 @@ const services = [
 
 export const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="services-heading">
-      {/* Background decoration */}
-      <div className="absolute inset-0 cyber-grid opacity-30" />
-      
+    <section id="services" className="py-16 md:py-24 bg-transparent relative overflow-hidden" aria-labelledby="services-heading">
+
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <header className="text-center mb-10 md:mb-16">
           <h2 id="services-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-3 md:mb-4 opacity-0 animate-fade-in">
@@ -51,11 +50,11 @@ export const Services = () => {
               <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-all duration-500 group-hover:animate-float">
                 <service.icon className="w-6 h-6 md:w-8 md:h-8 text-accent group-hover:drop-shadow-[0_0_10px_hsl(var(--accent))]" aria-hidden="true" />
               </div>
-              
+
               <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
                 {service.title}
               </h3>
-              
+
               <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
                 {service.description}
               </p>

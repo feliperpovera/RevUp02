@@ -46,7 +46,7 @@ const PortalRegisterPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const validation = registerSchema.safeParse({ fullName, email, password, confirmPassword });
     if (!validation.success) {
       toast({
@@ -81,7 +81,7 @@ const PortalRegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-transparent flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 cyber-grid opacity-20" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
@@ -93,7 +93,7 @@ const PortalRegisterPage = () => {
         transition={{ duration: 0.6 }}
         className="w-full max-w-md relative z-10"
       >
-        <Card className="glass-card border-border/50">
+        <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
           <CardHeader className="text-center pb-2">
             <Link to="/portal" className="inline-block mb-6">
               <img src={currentLogo} alt="RevUp Agency" className="h-12 w-auto mx-auto" />
@@ -113,7 +113,7 @@ const PortalRegisterPage = () => {
                   placeholder="John Doe"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="bg-input border-border text-foreground"
+                  className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                   required
                 />
               </div>
@@ -125,7 +125,7 @@ const PortalRegisterPage = () => {
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-input border-border text-foreground"
+                  className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                   required
                 />
               </div>
@@ -138,7 +138,7 @@ const PortalRegisterPage = () => {
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="bg-input border-border text-foreground pr-10"
+                    className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground pr-10"
                     required
                   />
                   <button
@@ -158,13 +158,13 @@ const PortalRegisterPage = () => {
                   placeholder="••••••••"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="bg-input border-border text-foreground"
+                  className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                   required
                 />
               </div>
-              <Button 
-                type="submit" 
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base hover:scale-[1.02] transition-all duration-300"
                 disabled={loading}
               >
                 {loading ? (

@@ -81,7 +81,7 @@ export const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-background relative overflow-hidden" aria-labelledby="testimonials-heading">
+    <section id="testimonials" className="py-16 md:py-24 bg-transparent relative overflow-hidden" aria-labelledby="testimonials-heading">
       <div className="absolute inset-0 cyber-grid opacity-5" />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">

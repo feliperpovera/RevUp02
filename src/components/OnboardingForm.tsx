@@ -12,40 +12,52 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  ArrowLeft, 
-  ArrowRight, 
-  Upload, 
-  Check, 
+import {
+  ArrowLeft,
+  ArrowRight,
+  Upload,
+  Check,
   AlertCircle,
   FileText,
-  Home
+  Home,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 
+// ── Constants ────────────────────────────────────────────────────────────────
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+const ALLOWED_TYPES = [
+  "application/pdf",
+  "application/vnd.ms-excel",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "text/csv",
+];
+const MAX_TEXT = 2000;
+
+// ── Types ────────────────────────────────────────────────────────────────────
 interface FormData {
-  // Step 1
   shopifyReport: File | null;
   googleAdsReport: File | null;
   metaAdsReport: File | null;
   hasStrategy: string;
   strategyDetails: string;
-  // Step 2
   googlePercentage: string;
   metaPercentage: string;
   activeSKUs: string;
   focusOnCategories: string;
   categoriesDetails: string;
-  // Step 3
   hasDriveFolder: string;
   driveFolderLink: string;
   additionalInfo: string;
   consent: boolean;
 }
 
-const initialFormData: FormData = {
+interface FormErrors {
+  [key: string]: string;
+}
+
+const INITIAL: FormData = {
   shopifyReport: null,
   googleAdsReport: null,
   metaAdsReport: null,
@@ -62,280 +74,183 @@ const initialFormData: FormData = {
   consent: false,
 };
 
-interface FormErrors {
-  [key: string]: string;
-}
+// ── Helpers ──────────────────────────────────────────────────────────────────
+const validFile = (f: File): { ok: boolean; error?: string } => {
+  if (f.size > MAX_FILE_SIZE)
+    return { ok: false, error: `"${f.name}" exceeds the 10 MB limit` };
+  if (!ALLOWED_TYPES.includes(f.type))
+    return { ok: false, error: `"${f.name}": only PDF, CSV, XLS, XLSX are accepted` };
+  return { ok: true };
+};
 
+const sanitize = (text: string) =>
+  text.replace(/<[^>]*>/g, "").trim().slice(0, MAX_TEXT);
+
+const isUrl = (s: string) => {
+  try {
+    new URL(s);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// ── Component ────────────────────────────────────────────────────────────────
 export const OnboardingForm = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [step, setStep] = useState(1);
+  const [data, setData] = useState<FormData>(INITIAL);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [visible, setVisible] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  useEffect(() => setVisible(true), []);
 
-  const validateStep1 = (): boolean => {
-    const newErrors: FormErrors = {};
-    
-    if (!formData.hasStrategy) {
-      newErrors.hasStrategy = "This field is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const validateStep2 = (): boolean => {
-    const newErrors: FormErrors = {};
-    
-    if (!formData.googlePercentage) {
-      newErrors.googlePercentage = "Google percentage is required";
-    }
-    if (!formData.metaPercentage) {
-      newErrors.metaPercentage = "Meta percentage is required";
-    }
-    
-    const googleNum = parseFloat(formData.googlePercentage) || 0;
-    const metaNum = parseFloat(formData.metaPercentage) || 0;
-    const total = googleNum + metaNum;
-    
-    if (total > 100) {
-      newErrors.percentageSum = "The sum of percentages cannot exceed 100%";
-    } else if (formData.googlePercentage && formData.metaPercentage && total < 95) {
-      newErrors.percentageSum = "The sum of percentages should be approximately 100%";
-    }
-    
-    if (!formData.activeSKUs) {
-      newErrors.activeSKUs = "Number of SKUs is required";
-    }
-    if (!formData.focusOnCategories) {
-      newErrors.focusOnCategories = "This field is required";
-    }
-    if (formData.focusOnCategories === "yes" && !formData.categoriesDetails) {
-      newErrors.categoriesDetails = "Please specify the categories or products";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const validateStep3 = (): boolean => {
-    const newErrors: FormErrors = {};
-    
-    if (!formData.hasDriveFolder) {
-      newErrors.hasDriveFolder = "This field is required";
-    }
-    if (formData.driveFolderLink && !isValidUrl(formData.driveFolderLink)) {
-      newErrors.driveFolderLink = "Please enter a valid URL";
-    }
-    if (!formData.consent) {
-      newErrors.consent = "You must accept data processing to continue";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const isValidUrl = (string: string): boolean => {
-    try {
-      new URL(string);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  };
-
-  const handleNext = () => {
-    let isValid = false;
-    
-    if (currentStep === 1) {
-      isValid = validateStep1();
-    } else if (currentStep === 2) {
-      isValid = validateStep2();
-    }
-    
-    if (isValid) {
-      setCurrentStep(prev => prev + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  const handleBack = () => {
-    setCurrentStep(prev => prev - 1);
-    setErrors({});
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleFileChange = (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    setFormData(prev => ({ ...prev, [field]: file }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: "" }));
-    }
-  };
-
-  const handleInputChange = (field: keyof FormData) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData(prev => ({ ...prev, [field]: e.target.value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: "" }));
-    }
-  };
-
-  const handleSelectChange = (field: keyof FormData) => (value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: "" }));
-    }
-  };
-
-  // Security constants
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-  const ALLOWED_FILE_TYPES = [
-    'application/pdf',
-    'application/vnd.ms-excel',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    'text/csv',
-  ];
-  const MAX_TEXT_LENGTH = 2000;
-
-  const validateFile = (file: File): { valid: boolean; error?: string } => {
-    if (file.size > MAX_FILE_SIZE) {
-      return { valid: false, error: `File ${file.name} exceeds the 10MB limit` };
-    }
-    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
-      return { valid: false, error: `File type not allowed: ${file.name}. Only PDF, CSV, XLS, XLSX are accepted` };
-    }
-    return { valid: true };
-  };
-
-  const sanitizeText = (text: string): string => {
-    return text
-      .slice(0, MAX_TEXT_LENGTH)
-      .replace(/<[^>]*>/g, '') // Remove HTML tags
-      .trim();
-  };
-
-  const fileToBase64 = (file: File): Promise<{ name: string; content: string; type: string }> => {
-    return new Promise((resolve, reject) => {
-      // Validate file before processing
-      const validation = validateFile(file);
-      if (!validation.valid) {
-        reject(new Error(validation.error));
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const base64 = (reader.result as string).split(',')[1];
-        resolve({
-          name: file.name.slice(0, 255), // Limit filename length
-          content: base64,
-          type: file.type,
-        });
+  // ── Setters ────────────────────────────────────────────────────────────────
+  const set =
+    (field: keyof FormData) =>
+      (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setData((p) => ({ ...p, [field]: e.target.value }));
+        setErrors((p) => ({ ...p, [field]: "" }));
       };
-      reader.onerror = error => reject(error);
-    });
+
+  const setFile =
+    (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const f = e.target.files?.[0] ?? null;
+      setData((p) => ({ ...p, [field]: f }));
+      setErrors((p) => ({ ...p, [field]: "" }));
+    };
+
+  const setSel =
+    (field: keyof FormData) => (val: string) => {
+      setData((p) => ({ ...p, [field]: val }));
+      setErrors((p) => ({ ...p, [field]: "" }));
+    };
+
+  // ── Validators ────────────────────────────────────────────────────────────
+  const validateStep1 = () => {
+    const e: FormErrors = {};
+    if (!data.hasStrategy) e.hasStrategy = "This field is required";
+    setErrors(e);
+    return !Object.keys(e).length;
   };
 
+  const validateStep2 = () => {
+    const e: FormErrors = {};
+    if (!data.googlePercentage) e.googlePercentage = "Google % is required";
+    if (!data.metaPercentage) e.metaPercentage = "Meta % is required";
+    const total =
+      (parseFloat(data.googlePercentage) || 0) +
+      (parseFloat(data.metaPercentage) || 0);
+    if (total > 100) e.percentageSum = "Total cannot exceed 100%";
+    else if (data.googlePercentage && data.metaPercentage && total < 95)
+      e.percentageSum = "Total should be approximately 100%";
+    if (!data.activeSKUs) e.activeSKUs = "Number of SKUs is required";
+    if (!data.focusOnCategories) e.focusOnCategories = "This field is required";
+    if (data.focusOnCategories === "yes" && !data.categoriesDetails)
+      e.categoriesDetails = "Please specify the categories or products";
+    setErrors(e);
+    return !Object.keys(e).length;
+  };
+
+  const validateStep3 = () => {
+    const e: FormErrors = {};
+    if (!data.hasDriveFolder) e.hasDriveFolder = "This field is required";
+    if (data.driveFolderLink && !isUrl(data.driveFolderLink))
+      e.driveFolderLink = "Please enter a valid URL";
+    if (!data.consent) e.consent = "You must accept data processing to continue";
+    setErrors(e);
+    return !Object.keys(e).length;
+  };
+
+  // ── Navigation ─────────────────────────────────────────────────────────────
+  const next = () => {
+    const valid = step === 1 ? validateStep1() : validateStep2();
+    if (valid) {
+      setStep((s) => s + 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const back = () => {
+    setStep((s) => s - 1);
+    setErrors({});
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // ── Submit ─────────────────────────────────────────────────────────────────
   const handleSubmit = async () => {
     if (!validateStep3()) return;
-
-    setIsSubmitting(true);
+    setSubmitting(true);
 
     try {
-      // Validate files before upload
-      const filesToValidate = [
-        formData.shopifyReport,
-        formData.googleAdsReport,
-        formData.metaAdsReport,
-      ].filter(Boolean) as File[];
-
-      for (const file of filesToValidate) {
-        const validation = validateFile(file);
-        if (!validation.valid) {
-          toast({
-            title: "Validation Error",
-            description: validation.error,
-            variant: "destructive",
-          });
-          setIsSubmitting(false);
-          return;
-        }
+      // Validate files
+      for (const f of [data.shopifyReport, data.googleAdsReport, data.metaAdsReport].filter(Boolean) as File[]) {
+        const { ok, error } = validFile(f);
+        if (!ok) throw new Error(error);
       }
 
-      // Convert files to base64
-      const shopifyFile = formData.shopifyReport ? await fileToBase64(formData.shopifyReport) : null;
-      const googleAdsFile = formData.googleAdsReport ? await fileToBase64(formData.googleAdsReport) : null;
-      const metaAdsFile = formData.metaAdsReport ? await fileToBase64(formData.metaAdsReport) : null;
-
-      // Sanitize text inputs
-      const sanitizedData = {
-        hasStrategy: formData.hasStrategy,
-        strategyDetails: sanitizeText(formData.strategyDetails),
-        googlePercentage: formData.googlePercentage,
-        metaPercentage: formData.metaPercentage,
-        activeSKUs: formData.activeSKUs,
-        focusOnCategories: formData.focusOnCategories,
-        categoriesDetails: sanitizeText(formData.categoriesDetails),
-        hasDriveFolder: formData.hasDriveFolder,
-        driveFolderLink: formData.driveFolderLink.slice(0, 500),
-        additionalInfo: sanitizeText(formData.additionalInfo),
-        shopifyReport: shopifyFile,
-        googleAdsReport: googleAdsFile,
-        metaAdsReport: metaAdsFile,
-      };
-
-      const { data, error } = await supabase.functions.invoke('send-onboarding-email', {
-        body: sanitizedData,
+      // ── 1. Call secure Edge Function ──────────────────────────────────────
+      const { data: result, error: fnError } = await supabase.functions.invoke("send-onboarding-email", {
+        body: {
+          hasStrategy: data.hasStrategy,
+          strategyDetails: sanitize(data.strategyDetails),
+          googlePercentage: data.googlePercentage,
+          metaPercentage: data.metaPercentage,
+          activeSKUs: data.activeSKUs,
+          focusOnCategories: data.focusOnCategories,
+          categoriesDetails: sanitize(data.categoriesDetails),
+          hasDriveFolder: data.hasDriveFolder,
+          driveFolderLink: data.driveFolderLink,
+          additionalInfo: sanitize(data.additionalInfo),
+          consent: data.consent,
+          shopifyReportName: data.shopifyReport?.name,
+          googleAdsReportName: data.googleAdsReport?.name,
+          metaAdsReportName: data.metaAdsReport?.name,
+          sourceForm: "onboarding_form",
+        },
       });
 
-      if (error) throw error;
-      
-      setIsSubmitted(true);
+      if (fnError || (result && result.error)) {
+        throw new Error(fnError?.message || result?.error || "Could not save your information. Please try again.");
+      }
+
+      setSubmitted(true);
       toast({
         title: "Form submitted!",
-        description: "We have received your information successfully.",
+        description: "We received your information and will contact you soon.",
       });
-    } catch (error: any) {
-      console.error("Error submitting form:", error);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error
+        ? err.message
+        : "There was a problem submitting the form. Please try again.";
       toast({
         title: "Error",
-        description: error.message || "There was a problem submitting the form. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setSubmitting(false);
     }
   };
 
-  const FileUploadField = ({ 
-    label, 
-    field, 
-    accept = ".csv,.xlsx,.pdf",
-    description 
-  }: { 
-    label: string; 
+  // ── Sub-components ─────────────────────────────────────────────────────────
+  const FileField = ({
+    label,
+    field,
+    description,
+  }: {
+    label: string;
     field: keyof FormData;
-    accept?: string;
     description?: string;
   }) => {
-    const file = formData[field] as File | null;
-    
+    const file = data[field] as File | null;
     return (
       <div className="space-y-2">
         <Label className="text-foreground font-medium">{label}</Label>
-        {description && (
-          <p className="text-sm text-foreground/60">{description}</p>
-        )}
-        <div 
+        {description && <p className="text-sm text-foreground/60">{description}</p>}
+        <div
           className={cn(
             "relative border-2 border-dashed rounded-lg p-6 transition-all duration-300 cursor-pointer group",
             "hover:border-accent/50 hover:bg-accent/5",
@@ -345,11 +260,12 @@ export const OnboardingForm = () => {
         >
           <input
             type="file"
-            accept={accept}
-            onChange={handleFileChange(field)}
+            accept=".csv,.xlsx,.xls,.pdf"
+            onChange={setFile(field)}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            aria-label={label}
           />
-          <div className="flex flex-col items-center gap-2 text-center">
+          <div className="flex flex-col items-center gap-2 text-center pointer-events-none">
             {file ? (
               <>
                 <FileText className="w-8 h-8 text-accent" />
@@ -359,16 +275,14 @@ export const OnboardingForm = () => {
             ) : (
               <>
                 <Upload className="w-8 h-8 text-foreground/40 group-hover:text-accent transition-colors" />
-                <span className="text-sm text-foreground/60">
-                  Drag your file here or click to select
-                </span>
-                <span className="text-xs text-foreground/40">CSV, XLSX, PDF</span>
+                <span className="text-sm text-foreground/60">Drag here or click to select</span>
+                <span className="text-xs text-foreground/40">CSV, XLSX, PDF · Max 10 MB</span>
               </>
             )}
           </div>
         </div>
         {errors[field] && (
-          <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
+          <p className="text-sm text-destructive flex items-center gap-1">
             <AlertCircle className="w-4 h-4" />
             {errors[field]}
           </p>
@@ -377,28 +291,28 @@ export const OnboardingForm = () => {
     );
   };
 
-  const ProgressBar = () => (
+  const StepBar = () => (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
-        {[1, 2, 3].map((step) => (
-          <div key={step} className="flex items-center">
-            <div 
+        {[1, 2, 3].map((s) => (
+          <div key={s} className="flex items-center">
+            <div
               className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-500",
-                step < currentStep 
-                  ? "bg-accent text-accent-foreground scale-100" 
-                  : step === currentStep 
-                    ? "bg-accent text-accent-foreground scale-110 shadow-lg shadow-accent/30" 
+                s < step
+                  ? "bg-accent text-accent-foreground"
+                  : s === step
+                    ? "bg-accent text-accent-foreground scale-110 shadow-lg shadow-accent/30"
                     : "bg-muted text-muted-foreground"
               )}
             >
-              {step < currentStep ? <Check className="w-5 h-5" /> : step}
+              {s < step ? <Check className="w-5 h-5" /> : s}
             </div>
-            {step < 3 && (
-              <div 
+            {s < 3 && (
+              <div
                 className={cn(
                   "w-16 sm:w-24 md:w-32 h-1 mx-2 rounded transition-all duration-500",
-                  step < currentStep ? "bg-accent" : "bg-muted"
+                  s < step ? "bg-accent" : "bg-muted"
                 )}
               />
             )}
@@ -407,49 +321,49 @@ export const OnboardingForm = () => {
       </div>
       <div className="text-center">
         <span className="text-sm text-foreground/60">
-          Step {currentStep} of 3: {
-            currentStep === 1 ? "Files" : 
-            currentStep === 2 ? "Operation Data" : 
-            "Content"
-          }
+          Step {step} of 3:{" "}
+          {step === 1 ? "Reports & Strategy" : step === 2 ? "Ad Performance" : "Content & Access"}
         </span>
       </div>
     </div>
   );
 
-  if (isSubmitted) {
+  // ── Success Screen ─────────────────────────────────────────────────────────
+  if (submitted) {
     return (
-      <div className={cn(
-        "futuristic-card p-8 md:p-12 text-center transition-all duration-700",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      )}>
+      <div
+        className={cn(
+          "futuristic-card p-8 md:p-12 text-center transition-all duration-700",
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        )}
+      >
         <div className="mb-6 relative">
           <div className="w-20 h-20 mx-auto bg-accent/20 rounded-full flex items-center justify-center animate-scale-in">
-            <Check className="w-10 h-10 text-accent animate-fade-in" style={{ animationDelay: '0.3s' }} />
+            <Check className="w-10 h-10 text-accent animate-fade-in" style={{ animationDelay: "0.3s" }} />
           </div>
           <div className="absolute inset-0 w-20 h-20 mx-auto border-4 border-accent/30 rounded-full animate-ping" />
         </div>
-        
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           Thank you, we received your information!
         </h2>
-        <p className="text-foreground/70 mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <p className="text-foreground/70 mb-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
           Our team will review your data and contact you soon to start developing your personalized advertising strategy.
         </p>
-        
-        <div className="bg-muted/30 rounded-lg p-6 mb-8 text-left animate-fade-in" style={{ animationDelay: '0.5s' }}>
+
+        <div className="bg-muted/30 rounded-lg p-6 mb-8 text-left animate-fade-in" style={{ animationDelay: "0.5s" }}>
           <h3 className="font-semibold mb-4 text-accent">Submission Summary:</h3>
           <ul className="space-y-2 text-sm text-foreground/70">
-            <li>✓ Shopify Report: {formData.shopifyReport?.name}</li>
-            <li>✓ Google Ads Report: {formData.googleAdsReport?.name}</li>
-            <li>✓ Meta Ads Report: {formData.metaAdsReport?.name}</li>
-            <li>✓ Distribution: Google {formData.googlePercentage}% / Meta {formData.metaPercentage}%</li>
-            <li>✓ Active SKUs: {formData.activeSKUs}</li>
+            {data.shopifyReport && <li>✓ Shopify Report: {data.shopifyReport.name}</li>}
+            {data.googleAdsReport && <li>✓ Google Ads Report: {data.googleAdsReport.name}</li>}
+            {data.metaAdsReport && <li>✓ Meta Ads Report: {data.metaAdsReport.name}</li>}
+            <li>✓ Distribution: Google {data.googlePercentage}% / Meta {data.metaPercentage}%</li>
+            <li>✓ Active SKUs: {data.activeSKUs}</li>
           </ul>
         </div>
-        
+
         <Link to="/">
-          <Button variant="glow" size="lg" className="animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <Button variant="glow" size="lg" className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <Home className="w-5 h-5 mr-2" />
             Back to Home
           </Button>
@@ -458,43 +372,39 @@ export const OnboardingForm = () => {
     );
   }
 
+  // ── Main Form ──────────────────────────────────────────────────────────────
   return (
-    <div className={cn(
-      "futuristic-card p-6 md:p-8 transition-all duration-700",
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-    )}>
-      <ProgressBar />
-      
-      {/* Step 1 */}
-      <div className={cn(
-        "space-y-6 transition-all duration-500",
-        currentStep === 1 ? "opacity-100 translate-x-0" : "hidden"
-      )}>
-        <FileUploadField 
-          label="1. Upload your Shopify US sales report from the last 12 months (optional)"
+    <div
+      className={cn(
+        "futuristic-card p-6 md:p-8 transition-all duration-700",
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      )}
+    >
+      <StepBar />
+
+      {/* ── Step 1: Reports & Strategy ──────────────────────────────────── */}
+      <div className={cn("space-y-6 transition-all duration-500", step === 1 ? "block" : "hidden")}>
+        <FileField
+          label="1. Upload your Shopify US sales report (last 12 months) — optional"
           field="shopifyReport"
-          description="Accepted format: CSV, XLSX, PDF"
+          description="Accepted: CSV, XLSX, PDF · Max 10 MB"
         />
-        
-        <FileUploadField 
-          label="2. Upload your Google Ads campaign reports from the last 12 months (optional)"
+        <FileField
+          label="2. Upload your Google Ads campaign reports (last 12 months) — optional"
           field="googleAdsReport"
         />
-        
-        <FileUploadField 
-          label="3. Upload your Meta Ads campaign reports from the last 12 months (optional)"
+        <FileField
+          label="3. Upload your Meta Ads campaign reports (last 12 months) — optional"
           field="metaAdsReport"
         />
-        
+
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
             4. Do you currently have a defined advertising strategy for Google and Meta Ads?
+            <span className="text-accent ml-1">*</span>
           </Label>
-          <Select value={formData.hasStrategy} onValueChange={handleSelectChange("hasStrategy")}>
-            <SelectTrigger className={cn(
-              "w-full transition-all duration-200",
-              errors.hasStrategy ? "border-destructive" : ""
-            )}>
+          <Select value={data.hasStrategy} onValueChange={setSel("hasStrategy")}>
+            <SelectTrigger className={cn("w-full", errors.hasStrategy && "border-destructive")}>
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
@@ -503,151 +413,134 @@ export const OnboardingForm = () => {
             </SelectContent>
           </Select>
           {errors.hasStrategy && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.hasStrategy}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.hasStrategy}
             </p>
           )}
         </div>
-        
-        {formData.hasStrategy === "yes" && (
+
+        {data.hasStrategy === "yes" && (
           <div className="space-y-2 animate-fade-in">
             <Label className="text-foreground font-medium">
-              5. Tell us more about your strategy. Do you prioritize specific categories or products?
+              5. Tell us more about your current strategy:
             </Label>
-            <Textarea 
-              value={formData.strategyDetails}
-              onChange={handleInputChange("strategyDetails")}
-              placeholder="Describe your current strategy..."
-              className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50"
+            <Textarea
+              value={data.strategyDetails}
+              onChange={set("strategyDetails")}
+              placeholder="Describe your current strategy…"
+              maxLength={MAX_TEXT}
+              className="min-h-[100px]"
             />
           </div>
         )}
       </div>
 
-      {/* Step 2 */}
-      <div className={cn(
-        "space-y-6 transition-all duration-500",
-        currentStep === 2 ? "opacity-100 translate-x-0" : "hidden"
-      )}>
+      {/* ── Step 2: Ad Performance ──────────────────────────────────────── */}
+      <div className={cn("space-y-6 transition-all duration-500", step === 2 ? "block" : "hidden")}>
         <div className="space-y-4">
           <Label className="text-foreground font-medium">
-            6. What is the distribution of advertising spend between Google and Meta Ads?
+            6. Distribution of ad spend between Google and Meta Ads
+            <span className="text-accent ml-1">*</span>
           </Label>
           <div className="grid grid-cols-2 gap-4">
+            {/* Google */}
             <div className="space-y-2">
               <Label className="text-sm text-foreground/70">Google Ads (%)</Label>
-              <Input 
+              <Input
                 type="number"
                 min="0"
                 max="100"
-                value={formData.googlePercentage}
+                placeholder="e.g. 60"
+                value={data.googlePercentage}
                 onChange={(e) => {
-                  const value = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
-                  const metaNum = parseFloat(formData.metaPercentage) || 0;
-                  if (value + metaNum > 100) {
-                    setFormData(prev => ({ 
-                      ...prev, 
-                      googlePercentage: String(Math.min(value, 100 - metaNum))
-                    }));
-                  } else {
-                    setFormData(prev => ({ ...prev, googlePercentage: e.target.value }));
-                  }
-                  if (errors.googlePercentage) {
-                    setErrors(prev => ({ ...prev, googlePercentage: "", percentageSum: "" }));
-                  }
+                  const v = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
+                  const m = parseFloat(data.metaPercentage) || 0;
+                  setData((p) => ({
+                    ...p,
+                    googlePercentage: v + m > 100 ? String(100 - m) : e.target.value,
+                  }));
+                  setErrors((p) => ({ ...p, googlePercentage: "", percentageSum: "" }));
                 }}
-                placeholder="E.g.: 60"
-                className={cn(
-                  "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-                  errors.googlePercentage ? "border-destructive" : ""
-                )}
+                className={cn(errors.googlePercentage && "border-destructive")}
               />
+              {errors.googlePercentage && (
+                <p className="text-xs text-destructive">{errors.googlePercentage}</p>
+              )}
             </div>
+            {/* Meta */}
             <div className="space-y-2">
               <Label className="text-sm text-foreground/70">Meta Ads (%)</Label>
-              <Input 
+              <Input
                 type="number"
                 min="0"
                 max="100"
-                value={formData.metaPercentage}
+                placeholder="e.g. 40"
+                value={data.metaPercentage}
                 onChange={(e) => {
-                  const value = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
-                  const googleNum = parseFloat(formData.googlePercentage) || 0;
-                  if (value + googleNum > 100) {
-                    setFormData(prev => ({ 
-                      ...prev, 
-                      metaPercentage: String(Math.min(value, 100 - googleNum))
-                    }));
-                  } else {
-                    setFormData(prev => ({ ...prev, metaPercentage: e.target.value }));
-                  }
-                  if (errors.metaPercentage) {
-                    setErrors(prev => ({ ...prev, metaPercentage: "", percentageSum: "" }));
-                  }
+                  const v = Math.min(100, Math.max(0, parseFloat(e.target.value) || 0));
+                  const g = parseFloat(data.googlePercentage) || 0;
+                  setData((p) => ({
+                    ...p,
+                    metaPercentage: v + g > 100 ? String(100 - g) : e.target.value,
+                  }));
+                  setErrors((p) => ({ ...p, metaPercentage: "", percentageSum: "" }));
                 }}
-                placeholder="E.g.: 40"
-                className={cn(
-                  "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-                  errors.metaPercentage ? "border-destructive" : ""
-                )}
+                className={cn(errors.metaPercentage && "border-destructive")}
               />
+              {errors.metaPercentage && (
+                <p className="text-xs text-destructive">{errors.metaPercentage}</p>
+              )}
             </div>
           </div>
-          {/* Show current sum */}
-          {(formData.googlePercentage || formData.metaPercentage) && (
-            <p className={cn(
-              "text-sm flex items-center gap-1 animate-fade-in",
-              (parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0")) === 100 
-                ? "text-green-500" 
-                : "text-foreground/60"
-            )}>
-              Total: {(parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0"))}%
-              {(parseFloat(formData.googlePercentage || "0") + parseFloat(formData.metaPercentage || "0")) === 100 && (
+          {(data.googlePercentage || data.metaPercentage) && (
+            <p
+              className={cn(
+                "text-sm flex items-center gap-1",
+                (parseFloat(data.googlePercentage || "0") + parseFloat(data.metaPercentage || "0")) === 100
+                  ? "text-green-500"
+                  : "text-foreground/60"
+              )}
+            >
+              Total: {(parseFloat(data.googlePercentage || "0") + parseFloat(data.metaPercentage || "0"))}%
+              {(parseFloat(data.googlePercentage || "0") + parseFloat(data.metaPercentage || "0")) === 100 && (
                 <Check className="w-4 h-4" />
               )}
             </p>
           )}
           {errors.percentageSum && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.percentageSum}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.percentageSum}
             </p>
           )}
         </div>
-        
+
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            7. How many active SKUs do you have on Shopify available for sale in the US?
+            7. How many active SKUs on Shopify available in the US?
+            <span className="text-accent ml-1">*</span>
           </Label>
-          <Input 
+          <Input
             type="number"
             min="0"
-            value={formData.activeSKUs}
-            onChange={handleInputChange("activeSKUs")}
-            placeholder="E.g.: 150"
-            className={cn(
-              "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-              errors.activeSKUs ? "border-destructive" : ""
-            )}
+            placeholder="e.g. 150"
+            value={data.activeSKUs}
+            onChange={set("activeSKUs")}
+            className={cn(errors.activeSKUs && "border-destructive")}
           />
           {errors.activeSKUs && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.activeSKUs}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.activeSKUs}
             </p>
           )}
         </div>
-        
+
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            8. Do you want to focus this new advertising strategy on specific categories or specific products?
+            8. Focus on specific categories or products?
+            <span className="text-accent ml-1">*</span>
           </Label>
-          <Select value={formData.focusOnCategories} onValueChange={handleSelectChange("focusOnCategories")}>
-            <SelectTrigger className={cn(
-              "w-full transition-all duration-200",
-              errors.focusOnCategories ? "border-destructive" : ""
-            )}>
+          <Select value={data.focusOnCategories} onValueChange={setSel("focusOnCategories")}>
+            <SelectTrigger className={cn("w-full", errors.focusOnCategories && "border-destructive")}>
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
@@ -656,51 +549,42 @@ export const OnboardingForm = () => {
             </SelectContent>
           </Select>
           {errors.focusOnCategories && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.focusOnCategories}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.focusOnCategories}
             </p>
           )}
         </div>
-        
-        {formData.focusOnCategories === "yes" && (
+
+        {data.focusOnCategories === "yes" && (
           <div className="space-y-2 animate-fade-in">
             <Label className="text-foreground font-medium">
-              9. Share the categories and products you want to mainly target with this strategy
+              9. List the categories and products to target:
             </Label>
-            <Textarea 
-              value={formData.categoriesDetails}
-              onChange={handleInputChange("categoriesDetails")}
-              placeholder="List the categories and/or products..."
-              className={cn(
-                "min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-                errors.categoriesDetails ? "border-destructive" : ""
-              )}
+            <Textarea
+              value={data.categoriesDetails}
+              onChange={set("categoriesDetails")}
+              placeholder="List categories and/or products…"
+              maxLength={MAX_TEXT}
+              className={cn("min-h-[100px]", errors.categoriesDetails && "border-destructive")}
             />
             {errors.categoriesDetails && (
-              <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-                <AlertCircle className="w-4 h-4" />
-                {errors.categoriesDetails}
+              <p className="text-sm text-destructive flex items-center gap-1">
+                <AlertCircle className="w-4 h-4" /> {errors.categoriesDetails}
               </p>
             )}
           </div>
         )}
       </div>
 
-      {/* Step 3 */}
-      <div className={cn(
-        "space-y-6 transition-all duration-500",
-        currentStep === 3 ? "opacity-100 translate-x-0" : "hidden"
-      )}>
+      {/* ── Step 3: Content & Access ────────────────────────────────────── */}
+      <div className={cn("space-y-6 transition-all duration-500", step === 3 ? "block" : "hidden")}>
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            10. Do you have a Google Drive or Dropbox folder with your social media content?
+            10. Do you have a Google Drive or Dropbox folder with social media content?
+            <span className="text-accent ml-1">*</span>
           </Label>
-          <Select value={formData.hasDriveFolder} onValueChange={handleSelectChange("hasDriveFolder")}>
-            <SelectTrigger className={cn(
-              "w-full transition-all duration-200",
-              errors.hasDriveFolder ? "border-destructive" : ""
-            )}>
+          <Select value={data.hasDriveFolder} onValueChange={setSel("hasDriveFolder")}>
+            <SelectTrigger className={cn("w-full", errors.hasDriveFolder && "border-destructive")}>
               <SelectValue placeholder="Select an option" />
             </SelectTrigger>
             <SelectContent>
@@ -709,124 +593,95 @@ export const OnboardingForm = () => {
             </SelectContent>
           </Select>
           {errors.hasDriveFolder && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.hasDriveFolder}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.hasDriveFolder}
             </p>
           )}
         </div>
-        
+
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            11. Please share access to your Drive or Dropbox with the email: managementecaccess@gmail.com
+            11. Share access with managementecaccess@gmail.com — paste the link below
           </Label>
-          <p className="text-sm text-foreground/60 mb-2">
-            Also, paste the link below.
-          </p>
-          <Input 
+          <Input
             type="url"
-            value={formData.driveFolderLink}
-            onChange={handleInputChange("driveFolderLink")}
-            placeholder="https://drive.google.com/... or https://dropbox.com/..."
-            className={cn(
-              "transition-all duration-200 focus:ring-2 focus:ring-accent/50",
-              errors.driveFolderLink ? "border-destructive" : ""
-            )}
+            placeholder="https://drive.google.com/… or https://dropbox.com/…"
+            value={data.driveFolderLink}
+            onChange={set("driveFolderLink")}
+            maxLength={500}
+            className={cn(errors.driveFolderLink && "border-destructive")}
           />
           {errors.driveFolderLink && (
-            <p className="text-sm text-destructive flex items-center gap-1 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.driveFolderLink}
+            <p className="text-sm text-destructive flex items-center gap-1">
+              <AlertCircle className="w-4 h-4" /> {errors.driveFolderLink}
             </p>
           )}
         </div>
-        
+
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
-            12. Share any other information you consider relevant (optional)
+            12. Any other relevant information? (optional)
           </Label>
-          <Textarea 
-            value={formData.additionalInfo}
-            onChange={handleInputChange("additionalInfo")}
-            placeholder="Additional information..."
-            className="min-h-[100px] transition-all duration-200 focus:ring-2 focus:ring-accent/50"
+          <Textarea
+            value={data.additionalInfo}
+            onChange={set("additionalInfo")}
+            placeholder="Additional information…"
+            maxLength={MAX_TEXT}
+            className="min-h-[100px]"
           />
+          <p className="text-xs text-foreground/40 text-right">{data.additionalInfo.length} / {MAX_TEXT}</p>
         </div>
-        
+
         <div className="pt-4 border-t border-border">
           <div className="flex items-start space-x-3">
-            <Checkbox 
-              id="consent" 
-              checked={formData.consent}
-              onCheckedChange={(checked) => {
-                setFormData(prev => ({ ...prev, consent: checked as boolean }));
-                if (errors.consent) {
-                  setErrors(prev => ({ ...prev, consent: "" }));
-                }
+            <Checkbox
+              id="onboarding-consent"
+              checked={data.consent}
+              onCheckedChange={(c) => {
+                setData((p) => ({ ...p, consent: c as boolean }));
+                setErrors((p) => ({ ...p, consent: "" }));
               }}
-              className={cn(errors.consent ? "border-destructive" : "")}
+              className={cn(errors.consent && "border-destructive")}
             />
-            <label 
-              htmlFor="consent" 
+            <label
+              htmlFor="onboarding-consent"
               className="text-sm text-foreground/70 cursor-pointer leading-relaxed"
             >
-              I authorize the processing of data and the use of information for the development of the advertising strategy.
+              I authorize the processing of my data for the development of the advertising strategy.
+              <span className="text-accent ml-1">*</span>
             </label>
           </div>
           {errors.consent && (
-            <p className="text-sm text-destructive flex items-center gap-1 mt-2 animate-fade-in">
-              <AlertCircle className="w-4 h-4" />
-              {errors.consent}
+            <p className="text-sm text-destructive flex items-center gap-1 mt-2">
+              <AlertCircle className="w-4 h-4" /> {errors.consent}
             </p>
           )}
         </div>
       </div>
 
-      {/* Navigation Buttons */}
+      {/* ── Navigation ──────────────────────────────────────────────────── */}
       <div className="flex justify-between mt-8 pt-6 border-t border-border">
-        {currentStep > 1 ? (
-          <Button 
-            variant="outline" 
-            onClick={handleBack}
-            className="transition-all duration-200 hover:bg-muted"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
+        {step > 1 ? (
+          <Button variant="outline" onClick={back} className="hover:bg-muted">
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back
           </Button>
         ) : (
           <div />
         )}
-        
-        {currentStep < 3 ? (
-          <Button 
-            variant="glow" 
-            onClick={handleNext}
-            className="transition-all duration-200"
-          >
-            Save and continue
-            <ArrowRight className="w-4 h-4 ml-2" />
+
+        {step < 3 ? (
+          <Button variant="glow" onClick={next} className="ml-auto">
+            Next <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         ) : (
-          <Button 
-            variant="glow" 
+          <Button
+            variant="glow"
             onClick={handleSubmit}
-            disabled={isSubmitting}
-            className="transition-all duration-200 min-w-[140px]"
+            disabled={submitting}
+            className="ml-auto"
           >
-            {isSubmitting ? (
-              <span className="flex items-center">
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Submitting...
-              </span>
-            ) : (
-              <>
-                Submit
-                <Check className="w-4 h-4 ml-2" />
-              </>
-            )}
+            {submitting ? "Submitting…" : "Submit Form"}
+            {!submitting && <Check className="w-4 h-4 ml-2" />}
           </Button>
         )}
       </div>

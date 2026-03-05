@@ -1,11 +1,8 @@
 export const Vision = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-graphite relative overflow-hidden">
-      <div className="absolute inset-0 animated-dots opacity-10" />
-      {/* Floating background orbs */}
-      <div className="absolute top-20 left-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse-glow floating-orb" />
-      <div className="absolute bottom-20 right-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-pulse-glow floating-orb" style={{ animationDelay: '3s' }} />
-      
+    <section id="about" className="py-16 md:py-24 bg-transparent relative overflow-hidden">
+
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* About RevUp Header */}
@@ -13,12 +10,12 @@ export const Vision = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 md:mb-8 opacity-0 animate-fade-in">
               About <span className="text-accent gradient-text">RevUp</span>
             </h2>
-            
+
             <div className="space-y-6 text-base md:text-lg text-foreground/80 leading-relaxed max-w-4xl mx-auto opacity-0 animate-fade-in stagger-2">
               <p>
                 RevUp is a <strong className="text-accent">modern digital marketing and automation agency</strong> helping businesses grow smarter and faster through data-driven strategy and AI-powered solutions. We specialize in <strong>Google Ads</strong>, <strong>Meta advertising</strong>, <strong>TikTok marketing</strong>, high-performance <strong>Shopify and website development</strong>, and custom <strong>automations</strong> that streamline operations and boost efficiency.
               </p>
-              
+
               <p>
                 What sets us apart is our ability to blend <strong className="text-accent">AI</strong>, <strong className="text-accent">data</strong>, and <strong>performance marketing</strong> into one unified growth engine. Whether we're building your online presence, running your ads, or automating your workflows, our goal is simple: deliver measurable results, reduce workload, and make digital growth accessible to businesses of all sizes.
               </p>

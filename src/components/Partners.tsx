@@ -14,11 +14,9 @@ export const Partners = () => {
   ];
 
   return (
-    <section id="partners" className="py-16 md:py-20 bg-background relative overflow-hidden" aria-labelledby="partners-heading">
-      {/* Floating orbs background */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent/5 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }} />
-      
+    <section id="partners" className="py-16 md:py-20 bg-transparent relative overflow-hidden" aria-labelledby="partners-heading">
+
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <header className="text-center mb-8 md:mb-12">
           <div className="inline-flex items-center gap-2 mb-3 md:mb-4 opacity-0 animate-scale-in">
@@ -40,8 +38,8 @@ export const Partners = () => {
               className="futuristic-card p-6 md:p-8 rounded-xl md:rounded-2xl w-full flex flex-col items-center justify-center gap-4 min-h-[140px] group opacity-0 animate-slide-up"
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
-              <img 
-                src={partner.logo} 
+              <img
+                src={partner.logo}
                 alt={`${partner.name} certified partner - Professional ${partner.name} advertising and marketing management`}
                 className="max-w-[100px] md:max-w-[120px] max-h-14 md:max-h-16 object-contain opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_hsl(var(--accent)/0.5)]"
                 loading="lazy"

@@ -8,33 +8,33 @@ import shopifyLogo from "@/assets/shopify-logo.svg";
 
 const PartnersPage = () => {
   const partners = [
-    { 
-      name: "Meta", 
+    {
+      name: "Meta",
       logo: metaLogo,
       description: "Official Meta Business Partner with advanced access to advertising tools and beta features."
     },
-    { 
-      name: "Google", 
+    {
+      name: "Google",
       logo: googleLogo,
       description: "Google Partner certified in Search, Display, Video, and Shopping campaigns."
     },
-    { 
-      name: "TikTok", 
+    {
+      name: "TikTok",
       logo: tiktokLogo,
       description: "TikTok Marketing Partner with expertise in creative strategy and performance campaigns."
     },
-    { 
-      name: "Shopify", 
+    {
+      name: "Shopify",
       logo: shopifyLogo,
       description: "Shopify Partner specializing in custom store development and optimization."
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar />
-      
-      <section className="py-24 md:py-32 bg-background">
+
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
@@ -55,8 +55,8 @@ const PartnersPage = () => {
                   key={partner.name}
                   className="glass-card p-8 rounded-xl hover-lift"
                 >
-                  <img 
-                    src={partner.logo} 
+                  <img
+                    src={partner.logo}
                     alt={`${partner.name} logo`}
                     className="max-w-[120px] max-h-16 object-contain mb-6 opacity-80"
                   />
@@ -74,7 +74,7 @@ const PartnersPage = () => {
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">
                 What Partnership <span className="text-accent">Means</span>
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4">
                   <CheckCircle className="text-accent flex-shrink-0 mt-1" size={24} />
@@ -111,7 +111,7 @@ const PartnersPage = () => {
             </div>
 
             <div className="text-center mt-12">
-              <button 
+              <button
                 onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold h-11 rounded-md px-8 text-base md:text-lg py-6"
               >
@@ -121,7 +121,7 @@ const PartnersPage = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

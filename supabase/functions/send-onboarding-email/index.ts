@@ -21,6 +21,7 @@ const ALLOWED_MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   'text/csv',
 ];
+const yesNoSchema = z.enum(["si", "no", "yes", ""]);
 
 // Validation schema
 const fileSchema = z.object({
@@ -32,7 +33,7 @@ const fileSchema = z.object({
 }).nullable().optional();
 
 const formSchema = z.object({
-  hasStrategy: z.enum(['si', 'no', '']),
+  hasStrategy: yesNoSchema,
   strategyDetails: z.string().max(MAX_TEXT_LENGTH).default(''),
   googlePercentage: z.string().refine(v => !v || (parseFloat(v) >= 0 && parseFloat(v) <= 100), {
     message: "Porcentaje inválido"
@@ -43,9 +44,9 @@ const formSchema = z.object({
   activeSKUs: z.string().refine(v => !v || parseInt(v) >= 0, {
     message: "Número de SKUs inválido"
   }),
-  focusOnCategories: z.enum(['si', 'no', '']),
+  focusOnCategories: yesNoSchema,
   categoriesDetails: z.string().max(MAX_TEXT_LENGTH).default(''),
-  hasDriveFolder: z.enum(['si', 'no', '']),
+  hasDriveFolder: yesNoSchema,
   driveFolderLink: z.string().max(500).default(''),
   additionalInfo: z.string().max(MAX_TEXT_LENGTH).default(''),
   shopifyReport: fileSchema,
@@ -65,7 +66,11 @@ const escapeHtml = (text: string): string => {
     '`': '&#x60;',
     '=': '&#x3D;'
   };
-  return text.replace(/[&<>"'`=\/]/g, (char) => map[char]);
+  return text.replace(/[&<>"'`=/]/g, (char) => map[char]);
+};
+
+const normalizeChoice = (choice: z.infer<typeof yesNoSchema>): "yes" | "no" => {
+  return choice === "si" || choice === "yes" ? "yes" : "no";
 };
 
 // Sanitize and validate URL
@@ -89,9 +94,9 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
     const kv = await Deno.openKv();
     const key = ['rate_limit', 'onboarding_form', identifier];
     const result = await kv.get<{ count: number; resetAt: number }>(key);
-    
+
     const now = Date.now();
-    
+
     if (result.value) {
       // Check if window has expired
       if (result.value.resetAt <= now) {
@@ -99,21 +104,21 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
         await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
         return { allowed: true };
       }
-      
+
       // Check if limit exceeded
       if (result.value.count >= RATE_LIMIT_MAX_REQUESTS) {
         const retryAfter = Math.ceil((result.value.resetAt - now) / 1000);
         return { allowed: false, retryAfter };
       }
-      
+
       // Increment counter
-      await kv.set(key, { 
-        count: result.value.count + 1, 
-        resetAt: result.value.resetAt 
+      await kv.set(key, {
+        count: result.value.count + 1,
+        resetAt: result.value.resetAt
       }, { expireIn: result.value.resetAt - now });
       return { allowed: true };
     }
-    
+
     // First request, create new entry
     await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
     return { allowed: true };
@@ -131,26 +136,26 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     // Get client IP for rate limiting
-    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-                     req.headers.get('x-real-ip') || 
-                     'unknown';
-    
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+      req.headers.get('x-real-ip') ||
+      'unknown';
+
     // Check rate limit
     const rateLimitResult = await checkRateLimit(clientIP);
-    
+
     if (!rateLimitResult.allowed) {
       console.log(`Rate limit exceeded for IP: ${clientIP}`);
       return new Response(
-        JSON.stringify({ 
+        JSON.stringify({
           error: "Too many requests. Please try again later.",
           retryAfter: rateLimitResult.retryAfter
         }),
         {
           status: 429,
-          headers: { 
+          headers: {
             "Content-Type": "application/json",
             "Retry-After": String(rateLimitResult.retryAfter),
-            ...corsHeaders 
+            ...corsHeaders
           },
         }
       );
@@ -158,13 +163,13 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Parse and validate input
     const rawData = await req.json();
-    
+
     const validationResult = formSchema.safeParse(rawData);
-    
+
     if (!validationResult.success) {
       console.error("Validation errors:", validationResult.error.errors);
       return new Response(
-        JSON.stringify({ 
+        JSON.stringify({
           error: "Datos inválidos",
           details: validationResult.error.errors.map(e => ({
             field: e.path.join('.'),
@@ -179,26 +184,29 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const data = validationResult.data;
-    
+    const hasStrategy = normalizeChoice(data.hasStrategy);
+    const focusOnCategories = normalizeChoice(data.focusOnCategories);
+    const hasDriveFolder = normalizeChoice(data.hasDriveFolder);
+
     console.log("Processing validated onboarding form submission from IP:", clientIP);
 
     // Build attachments array with validation
     const attachments: { filename: string; content: string }[] = [];
-    
+
     if (data.shopifyReport?.content) {
       attachments.push({
         filename: escapeHtml(data.shopifyReport.name),
         content: data.shopifyReport.content,
       });
     }
-    
+
     if (data.googleAdsReport?.content) {
       attachments.push({
         filename: escapeHtml(data.googleAdsReport.name),
         content: data.googleAdsReport.content,
       });
     }
-    
+
     if (data.metaAdsReport?.content) {
       attachments.push({
         filename: escapeHtml(data.metaAdsReport.name),
@@ -250,7 +258,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             <div class="field">
               <span class="label">¿Tiene estrategia definida?:</span>
-              <span class="value highlight">${data.hasStrategy === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${hasStrategy === 'yes' ? 'Sí' : 'No'}</span>
             </div>
             ${data.strategyDetails ? `
             <div class="field">
@@ -272,7 +280,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             <div class="field">
               <span class="label">¿Enfoque en categorías específicas?:</span>
-              <span class="value highlight">${data.focusOnCategories === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${focusOnCategories === 'yes' ? 'Sí' : 'No'}</span>
             </div>
             ${data.categoriesDetails ? `
             <div class="field">
@@ -286,7 +294,7 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="section">
             <div class="field">
               <span class="label">¿Tiene carpeta Drive/Dropbox?:</span>
-              <span class="value highlight">${data.hasDriveFolder === 'si' ? 'Sí' : 'No'}</span>
+              <span class="value highlight">${hasDriveFolder === 'yes' ? 'Sí' : 'No'}</span>
             </div>
             ${sanitizedDriveLink ? `
             <div class="field">
@@ -316,7 +324,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Build email payload
     const emailPayload: Record<string, unknown> = {
       from: "RevUp Onboarding <onboarding@resend.dev>",
-      to: ["feliperesvera106@gmail.com"], // Cambiar después de verificar dominio
+      to: ["info@revupagencygroup.com"],
       subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
       html: emailHtml,
     };
@@ -326,6 +334,9 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     console.log("Sending email with", attachments.length, "attachments");
+    if (!RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not configured");
+    }
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",

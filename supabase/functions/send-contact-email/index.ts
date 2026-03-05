@@ -20,6 +20,11 @@ interface ContactEmailRequest {
   message: string;
 }
 
+interface ResendEmailResponse {
+  id: string;
+  [key: string]: unknown;
+}
+
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
@@ -45,9 +50,9 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
     const kv = await Deno.openKv();
     const key = ['rate_limit', 'contact_form', identifier];
     const result = await kv.get<{ count: number; resetAt: number }>(key);
-    
+
     const now = Date.now();
-    
+
     if (result.value) {
       // Check if window has expired
       if (result.value.resetAt <= now) {
@@ -55,21 +60,21 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
         await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
         return { allowed: true };
       }
-      
+
       // Check if limit exceeded
       if (result.value.count >= RATE_LIMIT_MAX_REQUESTS) {
         const retryAfter = Math.ceil((result.value.resetAt - now) / 1000);
         return { allowed: false, retryAfter };
       }
-      
+
       // Increment counter
-      await kv.set(key, { 
-        count: result.value.count + 1, 
-        resetAt: result.value.resetAt 
+      await kv.set(key, {
+        count: result.value.count + 1,
+        resetAt: result.value.resetAt
       }, { expireIn: result.value.resetAt - now });
       return { allowed: true };
     }
-    
+
     // First request, create new entry
     await kv.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS }, { expireIn: RATE_LIMIT_WINDOW_MS });
     return { allowed: true };
@@ -80,9 +85,9 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
   }
 };
 
-const RESEND_TEST_RECIPIENT = "feliperesvera106@gmail.com";
+const RESEND_TEST_RECIPIENT = "info@revupagencygroup.com";
 
-const sendEmail = async (from: string, to: string[], subject: string, html: string) => {
+const sendEmail = async (from: string, to: string[], subject: string, html: string): Promise<ResendEmailResponse> => {
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -102,7 +107,7 @@ const sendEmail = async (from: string, to: string[], subject: string, html: stri
     throw new Error(`Resend API error: ${error}`);
   }
 
-  return await response.json();
+  return await response.json() as ResendEmailResponse;
 };
 
 const isResendSandboxRestriction = (error: unknown) => {
@@ -116,40 +121,40 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     // Get client IP for rate limiting
-    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-                     req.headers.get('x-real-ip') || 
-                     'unknown';
-    
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+      req.headers.get('x-real-ip') ||
+      'unknown';
+
     // Check rate limit
     const rateLimitResult = await checkRateLimit(clientIP);
-    
+
     if (!rateLimitResult.allowed) {
       console.log(`Rate limit exceeded for IP: ${clientIP}`);
       return new Response(
-        JSON.stringify({ 
+        JSON.stringify({
           error: "Too many requests. Please try again later.",
           retryAfter: rateLimitResult.retryAfter
         }),
         {
           status: 429,
-          headers: { 
+          headers: {
             "Content-Type": "application/json",
             "Retry-After": String(rateLimitResult.retryAfter),
-            ...corsHeaders 
+            ...corsHeaders
           },
         }
       );
     }
 
     const rawData = await req.json();
-    
+
     // Validate input
     const validationResult = contactSchema.safeParse(rawData);
-    
+
     if (!validationResult.success) {
       console.error("Validation error:", validationResult.error.errors);
       return new Response(
-        JSON.stringify({ 
+        JSON.stringify({
           error: "Invalid input data",
           details: validationResult.error.errors.map(e => ({ field: e.path.join('.'), message: e.message }))
         }),
@@ -161,7 +166,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const { name, email, phone, company, message } = validationResult.data;
-    
+
     // Sanitize data for HTML output
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
@@ -174,7 +179,7 @@ const handler = async (req: Request): Promise<Response> => {
     let sandboxMode = false;
 
     // Send notification email to RevUp inbox (fallback to test recipient if domain is not verified)
-    let notificationResponse: any;
+    let notificationResponse: ResendEmailResponse;
     try {
       notificationResponse = await sendEmail(
         "RevUp Contact Form <onboarding@resend.dev>",
@@ -214,7 +219,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.log("Notification email sent successfully:", notificationResponse);
 
     // Send confirmation email only when not in sandbox mode
-    let confirmationResponse: any = null;
+    let confirmationResponse: ResendEmailResponse | null = null;
     let confirmationDeliveredTo: string | null = null;
 
     if (!sandboxMode) {
@@ -241,7 +246,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     return new Response(
-      JSON.stringify({ 
+      JSON.stringify({
         success: true,
         sandbox_mode: sandboxMode,
         notificationId: notificationResponse.id,
@@ -256,8 +261,9 @@ const handler = async (req: Request): Promise<Response> => {
         },
       }
     );
-  } catch (error: any) {
-    console.error("Error in send-contact-email function:", error);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error("Error in send-contact-email function:", errorMessage);
     return new Response(
       JSON.stringify({ error: "An error occurred. Please try again later." }),
       {

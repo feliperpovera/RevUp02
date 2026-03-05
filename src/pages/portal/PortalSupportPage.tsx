@@ -53,14 +53,14 @@ const PortalSupportPage = () => {
       setLoading(false);
       return;
     }
-    
+
     setLoading(true);
     const { data, error } = await supabase
       .from('support_tickets')
       .select('*')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false });
-    
+
     if (data) setTickets(data);
     if (error) {
       toast({ title: 'Error', description: 'Could not load tickets', variant: 'destructive' });
@@ -74,7 +74,7 @@ const PortalSupportPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const validation = ticketSchema.safeParse(formData);
     if (!validation.success) {
       toast({
@@ -155,7 +155,7 @@ const PortalSupportPage = () => {
 
   return (
     <PortalLayout>
-      <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div
@@ -175,7 +175,7 @@ const PortalSupportPage = () => {
             {user ? (
               <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300">
                     <Plus className="h-4 w-4 mr-2" />
                     New Ticket
                   </Button>
@@ -195,7 +195,7 @@ const PortalSupportPage = () => {
                         placeholder="Brief description of your issue"
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="bg-input border-border"
+                        className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                         required
                       />
                     </div>
@@ -241,7 +241,7 @@ const PortalSupportPage = () => {
                         placeholder="Please provide as much detail as possible..."
                         value={formData.description}
                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                        className="bg-input border-border min-h-32"
+                        className="bg-background/50 border-border/30 rounded-xl focus:border-primary/50 text-foreground min-h-32"
                         required
                       />
                     </div>
@@ -249,9 +249,9 @@ const PortalSupportPage = () => {
                       <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
                         Cancel
                       </Button>
-                      <Button 
-                        type="submit" 
-                        className="bg-primary text-primary-foreground"
+                      <Button
+                        type="submit"
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300"
                         disabled={submitting}
                       >
                         {submitting ? (
@@ -269,7 +269,7 @@ const PortalSupportPage = () => {
               </Dialog>
             ) : (
               <Link to="/portal/login">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300">
                   Sign In to Create Ticket
                 </Button>
               </Link>
@@ -283,7 +283,7 @@ const PortalSupportPage = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {!user ? (
-              <Card className="glass-card">
+              <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
                 <CardContent className="py-16 text-center">
                   <MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-foreground mb-2">Sign in to view your tickets</h3>
@@ -292,7 +292,7 @@ const PortalSupportPage = () => {
                   </p>
                   <div className="flex justify-center gap-4">
                     <Link to="/portal/login">
-                      <Button className="bg-primary text-primary-foreground">
+                      <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300">
                         Sign In
                       </Button>
                     </Link>
@@ -319,7 +319,7 @@ const PortalSupportPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                   >
-                    <Card className="glass-card">
+                    <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
                       <CardContent className="p-6">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div className="flex items-start gap-4">
@@ -352,14 +352,14 @@ const PortalSupportPage = () => {
                 ))}
               </div>
             ) : (
-              <Card className="glass-card">
+              <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
                 <CardContent className="py-16 text-center">
                   <HelpCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-foreground mb-2">No tickets yet</h3>
                   <p className="text-muted-foreground mb-6">
                     Create your first support ticket if you need assistance.
                   </p>
-                  <Button onClick={() => setDialogOpen(true)} className="bg-primary text-primary-foreground">
+                  <Button onClick={() => setDialogOpen(true)} className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300">
                     <Plus className="h-4 w-4 mr-2" />
                     Create Ticket
                   </Button>

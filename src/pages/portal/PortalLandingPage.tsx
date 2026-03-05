@@ -45,7 +45,7 @@ const PortalLandingPage = () => {
   const currentLogo = resolvedTheme === 'light' ? revUpLogoMain : revUpLogoLight;
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-transparent relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 cyber-grid opacity-30" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl floating-orb" />

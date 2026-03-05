@@ -41,14 +41,14 @@ const PortalProfilePage = () => {
         setLoading(false);
         return;
       }
-      
+
       setLoading(true);
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('user_id', user.id)
         .single();
-      
+
       if (data) {
         setProfile({
           full_name: data.full_name || '',
@@ -96,9 +96,9 @@ const PortalProfilePage = () => {
   if (!user) {
     return (
       <PortalLayout>
-        <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <Card className="glass-card">
+            <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
               <CardContent className="py-16 text-center">
                 <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-foreground mb-2">Sign in to view your profile</h3>
@@ -128,7 +128,7 @@ const PortalProfilePage = () => {
 
   return (
     <PortalLayout>
-      <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <motion.div
@@ -151,7 +151,7 @@ const PortalProfilePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Card className="glass-card">
+            <Card className="futuristic-card rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
@@ -179,7 +179,7 @@ const PortalProfilePage = () => {
                           id="full_name"
                           value={profile.full_name || ''}
                           onChange={(e) => setProfile({ ...profile, full_name: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="John Doe"
                         />
                       </div>
@@ -189,7 +189,7 @@ const PortalProfilePage = () => {
                           id="company"
                           value={profile.company || ''}
                           onChange={(e) => setProfile({ ...profile, company: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="Your Company"
                         />
                       </div>
@@ -200,7 +200,7 @@ const PortalProfilePage = () => {
                           type="tel"
                           value={profile.phone || ''}
                           onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="+1 234 567 8900"
                         />
                       </div>
@@ -211,7 +211,7 @@ const PortalProfilePage = () => {
                           type="url"
                           value={profile.website || ''}
                           onChange={(e) => setProfile({ ...profile, website: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="https://yourwebsite.com"
                         />
                       </div>
@@ -221,7 +221,7 @@ const PortalProfilePage = () => {
                           id="city"
                           value={profile.city || ''}
                           onChange={(e) => setProfile({ ...profile, city: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="New York"
                         />
                       </div>
@@ -231,16 +231,16 @@ const PortalProfilePage = () => {
                           id="country"
                           value={profile.country || ''}
                           onChange={(e) => setProfile({ ...profile, country: e.target.value })}
-                          className="bg-input border-border"
+                          className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"
                           placeholder="United States"
                         />
                       </div>
                     </div>
 
                     <div className="flex justify-end pt-4 border-t border-border">
-                      <Button 
-                        type="submit" 
-                        className="bg-primary text-primary-foreground hover:bg-primary/90"
+                      <Button
+                        type="submit"
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base px-6 hover:scale-[1.02] transition-all duration-300"
                         disabled={saving}
                       >
                         {saving ? (
@@ -266,7 +266,7 @@ const PortalProfilePage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-8"
           >
-            <Card className="glass-card">
+            <Card className="bg-card/80 backdrop-blur-xl border border-border/40 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
               <CardHeader>
                 <CardTitle className="text-foreground">Account Information</CardTitle>
                 <CardDescription className="text-muted-foreground">

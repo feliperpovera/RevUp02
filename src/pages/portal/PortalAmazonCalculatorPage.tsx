@@ -120,17 +120,17 @@ export default function PortalAmazonCalculatorPage() {
   const [marketplaceId, setMarketplaceId] = useState<string>("US");
   const [season, setSeason] = useState<string>("standard");
   const [calcMode, setCalcMode] = useState<string>("acos");
-  
+
   // Custom product overrides
   const [customAsp, setCustomAsp] = useState<string>("29.99");
   const [customCogs, setCustomCogs] = useState<string>("8.50");
-  
+
   // Custom overrides (advanced)
   const [customAcos, setCustomAcos] = useState<string>("");
   const [customRoas, setCustomRoas] = useState<string>("");
   const [customCpc, setCustomCpc] = useState<string>("");
   const [customCvr, setCustomCvr] = useState<string>("");
-  
+
   // Inventory inputs
   const [leadTimeDays, setLeadTimeDays] = useState<number>(30);
   const [bufferDays, setBufferDays] = useState<number>(7);
@@ -163,16 +163,16 @@ export default function PortalAmazonCalculatorPage() {
     const referralFeeUnit = asp * product.referralPct;
     const storageUnit = product.volumeFt3 * storageRate;
     const returnsReserveUnit = asp * product.returnsPct;
-    
-    const totalCostUnit = 
-      referralFeeUnit + 
-      fbaFee + 
-      storageUnit + 
-      cogs + 
-      inboundUnit + 
-      product.prepUnit + 
-      returnsReserveUnit + 
-      product.returnProcessing + 
+
+    const totalCostUnit =
+      referralFeeUnit +
+      fbaFee +
+      storageUnit +
+      cogs +
+      inboundUnit +
+      product.prepUnit +
+      returnsReserveUnit +
+      product.returnProcessing +
       product.otherUnit;
 
     // Contribution Margin 1 (before ads)
@@ -245,7 +245,7 @@ export default function PortalAmazonCalculatorPage() {
       productName: product.name,
       asp,
       cogs,
-      
+
       // Per unit breakdown
       referralFeeUnit,
       fbaFee,
@@ -258,7 +258,7 @@ export default function PortalAmazonCalculatorPage() {
       totalCostUnit,
       cm1Unit,
       cm1Pct,
-      
+
       // Ad metrics
       acosUsed: acosUsed * 100,
       roas,
@@ -267,25 +267,25 @@ export default function PortalAmazonCalculatorPage() {
       cpcUsed,
       cvrUsed: cvrUsed * 100,
       adCostPerUnit,
-      
+
       // Revenue & units
       revenueAds,
       unitsAds,
-      
+
       // Profit
       profitUnit,
       profitTotal,
       profitMarginPct,
-      
+
       // PRO metrics
       breakEvenAcos,
       maxCpc,
       tacos,
-      
+
       // Inventory
       dailyUnits,
       reorderPoint,
-      
+
       // Monthly totals
       totalCogsCost,
       totalReferralFees,
@@ -345,7 +345,7 @@ export default function PortalAmazonCalculatorPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card className="bg-card/50 backdrop-blur border-border/50">
+              <Card className="futuristic-card">
                 <CardHeader className="pb-4">
                   <CardTitle className="text-lg flex items-center gap-2">
                     <Package className="h-5 w-5 text-primary" />
@@ -503,7 +503,7 @@ export default function PortalAmazonCalculatorPage() {
                         <TabsTrigger value="acos">ACoS</TabsTrigger>
                         <TabsTrigger value="funnel">Funnel</TabsTrigger>
                       </TabsList>
-                      
+
                       <TabsContent value="acos" className="mt-3 space-y-3">
                         <div className="space-y-2">
                           <Label className="text-sm text-muted-foreground">
@@ -538,7 +538,7 @@ export default function PortalAmazonCalculatorPage() {
                           />
                         </div>
                       </TabsContent>
-                      
+
                       <TabsContent value="funnel" className="mt-3 space-y-3">
                         <div className="space-y-2">
                           <Label className="text-sm text-muted-foreground">
@@ -593,7 +593,7 @@ export default function PortalAmazonCalculatorPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card/50 border-border/50">
+                <Card className="futuristic-card">
                   <CardContent className="pt-4 pb-3">
                     <p className="text-xs text-muted-foreground mb-1">ROAS</p>
                     <p className="text-xl font-bold text-foreground">
@@ -605,7 +605,7 @@ export default function PortalAmazonCalculatorPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card/50 border-border/50">
+                <Card className="futuristic-card">
                   <CardContent className="pt-4 pb-3">
                     <p className="text-xs text-muted-foreground mb-1">Revenue Ads</p>
                     <p className="text-xl font-bold text-foreground">
@@ -617,7 +617,7 @@ export default function PortalAmazonCalculatorPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-card/50 border-border/50">
+                <Card className="futuristic-card">
                   <CardContent className="pt-4 pb-3">
                     <p className="text-xs text-muted-foreground mb-1">Profit/unit</p>
                     <p className={`text-xl font-bold ${results.profitUnit >= 0 ? 'text-green-400' : 'text-red-400'}`}>
@@ -631,7 +631,7 @@ export default function PortalAmazonCalculatorPage() {
               </div>
 
               {/* P&L Breakdown */}
-              <Card className="bg-card/50 backdrop-blur border-border/50">
+              <Card className="futuristic-card">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-lg flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-primary" />
@@ -745,7 +745,7 @@ export default function PortalAmazonCalculatorPage() {
               {/* PRO Metrics & Inventory */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* PRO Metrics */}
-                <Card className="bg-card/50 backdrop-blur border-border/50">
+                <Card className="futuristic-card">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-primary" />
@@ -769,7 +769,7 @@ export default function PortalAmazonCalculatorPage() {
                         {results.breakEvenAcos.toFixed(1)}%
                       </span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <span className="text-sm text-muted-foreground">Max CPC</span>
@@ -786,7 +786,7 @@ export default function PortalAmazonCalculatorPage() {
                         {formatCurrency(results.maxCpc)}
                       </span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <span className="text-sm text-muted-foreground">TACoS</span>
@@ -877,7 +877,7 @@ export default function PortalAmazonCalculatorPage() {
                       <span className="text-sm text-muted-foreground">Daily Sales (est.)</span>
                       <span className="font-medium">{results.dailyUnits.toFixed(1)} units</span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <span className="text-sm text-muted-foreground">Reorder Point</span>

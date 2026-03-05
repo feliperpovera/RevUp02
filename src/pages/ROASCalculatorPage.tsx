@@ -53,22 +53,22 @@ const ROASCalculatorPage = () => {
     const aovAdjusted = sector.aovUS * location.multAOV;
     const cvrBase = sector.cvr * 1.10; // Slightly optimistic baseline (+10%)
     const clicks = budgetNum / cpcAdjusted;
-    
+
     // Market ROAS calculations (without RevUp optimization)
     const ordersMarket = clicks * cvrBase;
     const revenueMarket = ordersMarket * aovAdjusted;
     let roasMarket = revenueMarket / budgetNum;
-    
+
     // Allow custom ROAS override for market
     if (customRoas && parseFloat(customRoas) > 0) {
       roasMarket = parseFloat(customRoas);
     }
-    
+
     // RevUp ROAS calculations (includes additional boost)
     const ordersRevUp = clicks * cvrBase * (1 + REVUP_BOOST);
     const revenueRevUp = ordersRevUp * aovAdjusted;
     let roasRevUp = revenueRevUp / budgetNum;
-    
+
     // If custom ROAS was set, apply RevUp boost to that instead
     if (customRoas && parseFloat(customRoas) > 0) {
       roasRevUp = parseFloat(customRoas) * (1 + REVUP_BOOST);
@@ -98,9 +98,9 @@ const ROASCalculatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar />
-      
+
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-5xl">
           {/* Header */}
@@ -118,7 +118,7 @@ const ROASCalculatorPage = () => {
 
           <div className="grid lg:grid-cols-5 gap-8">
             {/* Inputs Card */}
-            <Card className="lg:col-span-2 border-border/50 bg-card/50 backdrop-blur-sm">
+            <Card className="lg:col-span-2 futuristic-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <DollarSign className="w-5 h-5 text-primary" />
@@ -137,17 +137,17 @@ const ROASCalculatorPage = () => {
                     placeholder="e.g. 5000"
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
-                    className="bg-background/50"
+                    className="bg-background/20 backdrop-blur-sm"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="sector" className="flex items-center gap-2">
                     <ShoppingCart className="w-4 h-4" />
                     Sector / Industry
                   </Label>
                   <Select value={sectorId} onValueChange={setSectorId}>
-                    <SelectTrigger className="bg-background/50">
+                    <SelectTrigger className="bg-background/20 backdrop-blur-sm">
                       <SelectValue placeholder="Select your sector" />
                     </SelectTrigger>
                     <SelectContent>
@@ -166,7 +166,7 @@ const ROASCalculatorPage = () => {
                     Location / Country
                   </Label>
                   <Select value={locationId} onValueChange={setLocationId}>
-                    <SelectTrigger className="bg-background/50">
+                    <SelectTrigger className="bg-background/20 backdrop-blur-sm">
                       <SelectValue placeholder="Select the country" />
                     </SelectTrigger>
                     <SelectContent>
@@ -191,7 +191,7 @@ const ROASCalculatorPage = () => {
                     placeholder="e.g. 3.5 (leave empty for benchmark)"
                     value={customRoas}
                     onChange={(e) => setCustomRoas(e.target.value)}
-                    className="bg-background/50"
+                    className="bg-background/20 backdrop-blur-sm"
                     min={0.1}
                   />
                   <p className="text-xs text-muted-foreground">
@@ -228,7 +228,7 @@ const ROASCalculatorPage = () => {
             </Card>
 
             {/* Results Card */}
-            <Card className="lg:col-span-3 border-border/50 bg-card/50 backdrop-blur-sm">
+            <Card className="lg:col-span-3 futuristic-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-primary" />
@@ -253,7 +253,7 @@ const ROASCalculatorPage = () => {
                           {getRoasStatus(results.roasMarket).label}
                         </p>
                       </div>
-                      
+
                       {/* ROAS RevUp */}
                       <div className="p-5 rounded-xl bg-primary/10 text-center border-2 border-primary/30 relative">
                         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full flex items-center gap-1">
@@ -284,7 +284,7 @@ const ROASCalculatorPage = () => {
                           vs ${results.revenueMarket.toLocaleString('en-US', { maximumFractionDigits: 0 })} market
                         </p>
                       </div>
-                      
+
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <ShoppingCart className="w-4 h-4" />
@@ -297,7 +297,7 @@ const ROASCalculatorPage = () => {
                           vs {results.ordersMarket.toLocaleString('en-US', { maximumFractionDigits: 1 })} market
                         </p>
                       </div>
-                      
+
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <Target className="w-4 h-4" />
@@ -307,7 +307,7 @@ const ROASCalculatorPage = () => {
                           {results.clicks.toLocaleString('en-US')}
                         </p>
                       </div>
-                      
+
                       <div className="p-4 bg-muted/30 rounded-lg">
                         <div className="flex items-center gap-2 text-muted-foreground mb-1">
                           <DollarSign className="w-4 h-4" />
@@ -354,13 +354,13 @@ const ROASCalculatorPage = () => {
           </div>
 
           {/* Info Section */}
-          <Card className="mt-8 border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="mt-8 futuristic-card">
             <CardHeader>
               <CardTitle>Methodology & Sources</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-muted-foreground text-sm">
               <p>
-                This calculator uses <strong className="text-foreground">updated 2025 benchmarks</strong> from 
+                This calculator uses <strong className="text-foreground">updated 2025 benchmarks</strong> from
                 recognized industry sources to project realistic results.
               </p>
               <div className="grid sm:grid-cols-3 gap-4 pt-2">
@@ -386,10 +386,10 @@ const ROASCalculatorPage = () => {
           {/* Legal Disclaimer */}
           <div className="mt-6 p-4 bg-muted/20 rounded-lg border border-border/30">
             <p className="text-xs text-muted-foreground text-center">
-              <strong className="text-foreground">Legal Disclaimer:</strong> The results shown in this calculator are 
-              <strong className="text-foreground"> estimates based on industry benchmarks</strong> and do not constitute 
-              guarantees or performance commitments. Actual results may vary significantly depending on 
-              factors such as product quality, marketing strategy, competition, seasonality, and 
+              <strong className="text-foreground">Legal Disclaimer:</strong> The results shown in this calculator are
+              <strong className="text-foreground"> estimates based on industry benchmarks</strong> and do not constitute
+              guarantees or performance commitments. Actual results may vary significantly depending on
+              factors such as product quality, marketing strategy, competition, seasonality, and
               market conditions. RevUp is not responsible for decisions made based on these projections.
             </p>
           </div>
@@ -400,8 +400,8 @@ const ROASCalculatorPage = () => {
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
               Let our experts help you achieve these projections and beyond. Book a free consultation to discuss your growth strategy.
             </p>
-            <Button 
-              variant="glow" 
+            <Button
+              variant="glow"
               size="lg"
               onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
               className="text-base md:text-lg px-8 py-6"

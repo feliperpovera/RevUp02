@@ -4,10 +4,10 @@ import { Search, Map, Rocket, TrendingUp } from "lucide-react";
 
 const ProcessPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar />
-      
-      <section className="py-24 md:py-32 bg-graphite">
+
+      <section className="py-24 md:py-32 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
@@ -122,7 +122,7 @@ const ProcessPage = () => {
             </div>
 
             <div className="text-center mt-12">
-              <button 
+              <button
                 onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold h-11 rounded-md px-8 text-base md:text-lg py-6"
               >
@@ -132,7 +132,7 @@ const ProcessPage = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

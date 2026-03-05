@@ -4,12 +4,12 @@ import { Target, TrendingUp, Rocket } from "lucide-react";
 
 const StrategyPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar />
-      
-      <section className="py-24 md:py-32 bg-graphite relative overflow-hidden">
+
+      <section className="py-24 md:py-32 bg-transparent relative overflow-hidden">
         <div className="absolute inset-0 animated-dots opacity-10" />
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-16 text-center">
@@ -87,7 +87,7 @@ const StrategyPage = () => {
             </div>
 
             <div className="text-center mt-12">
-              <button 
+              <button
                 onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold h-11 rounded-md px-8 text-base md:text-lg py-6"
               >
@@ -97,7 +97,7 @@ const StrategyPage = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

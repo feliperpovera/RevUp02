@@ -2,7 +2,7 @@ import { MapPin, Globe } from "lucide-react";
 
 export const ClientsMap = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-muted/30">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
@@ -17,7 +17,7 @@ export const ClientsMap = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-3xl mx-auto">
-          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-background/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
+          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-transparent/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
             <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl group-hover:scale-110 transition-transform duration-300">
               <MapPin className="w-8 h-8 text-primary" />
             </div>
@@ -26,8 +26,8 @@ export const ClientsMap = () => {
               <p className="text-sm text-muted-foreground">North American Operations</p>
             </div>
           </div>
-          
-          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-background/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
+
+          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-transparent/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
             <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl group-hover:scale-110 transition-transform duration-300">
               <MapPin className="w-8 h-8 text-primary" />
             </div>

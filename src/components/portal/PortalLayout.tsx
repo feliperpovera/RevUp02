@@ -7,7 +7,7 @@ interface PortalLayoutProps {
 
 const PortalLayout = ({ children }: PortalLayoutProps) => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <PortalNavbar />
       <main className="pt-16">
         {children}

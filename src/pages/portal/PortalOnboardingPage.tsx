@@ -55,7 +55,7 @@ const PortalOnboardingPage = () => {
   const toggleService = (service: string) => {
     setFormData(prev => ({
       ...prev,
-      services: prev.services.includes(service) 
+      services: prev.services.includes(service)
         ? prev.services.filter(s => s !== service)
         : [...prev.services, service]
     }));
@@ -70,25 +70,26 @@ const PortalOnboardingPage = () => {
     }
 
     setLoading(true);
-    const { data, error } = await supabase.from('leads').insert({
-      full_name: formData.full_name, company: formData.company, email: formData.email,
-      phone: formData.phone || null, city: formData.city || null, country: formData.country || null,
-      website: formData.website || null, services: formData.services, budget_range: formData.budget_range,
-      main_goal: formData.main_goal, project_description: formData.project_description, consent: formData.consent
-    }).select('id').single();
+    const { data: result, error: fnError } = await supabase.functions.invoke('submit-lead', {
+      body: {
+        ...formData,
+        email: formData.email.toLowerCase(),
+        source_form: 'portal_onboarding'
+      }
+    });
     setLoading(false);
 
-    if (error) {
-      toast({ title: 'Error', description: 'Could not submit. Please try again.', variant: 'destructive' });
+    if (fnError || (result && result.error)) {
+      toast({ title: 'Error', description: fnError?.message || result?.error || 'Could not submit. Please try again.', variant: 'destructive' });
     } else {
-      setRequestId(data.id.slice(0, 8).toUpperCase());
+      setRequestId(result.id.slice(0, 8).toUpperCase());
       setSubmitted(true);
     }
   };
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="min-h-screen bg-transparent flex items-center justify-center p-4">
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center">
           <div className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-6">
             <CheckCircle className="h-10 w-10 text-green-500" />
@@ -104,7 +105,7 @@ const PortalOnboardingPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
+    <div className="min-h-screen bg-transparent py-8 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <Link to="/portal"><img src={currentLogo} alt="RevUp" className="h-10" /></Link>
@@ -113,7 +114,7 @@ const PortalOnboardingPage = () => {
           </Link>
         </div>
 
-        <Card className="glass-card">
+        <Card className="futuristic-card rounded-2xl overflow-hidden shadow-2xl shadow-black/10">
           <CardHeader>
             <CardTitle className="text-2xl text-foreground">Request Access</CardTitle>
             <CardDescription>Tell us about your project and we'll get in touch.</CardDescription>
@@ -123,32 +124,32 @@ const PortalOnboardingPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Full Name *</Label>
-                  <Input value={formData.full_name} onChange={e => setFormData({...formData, full_name: e.target.value})} required className="bg-input border-border" />
+                  <Input value={formData.full_name} onChange={e => setFormData({ ...formData, full_name: e.target.value })} required className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <Label>Company *</Label>
-                  <Input value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} required className="bg-input border-border" />
+                  <Input value={formData.company} onChange={e => setFormData({ ...formData, company: e.target.value })} required className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <Label>Email *</Label>
-                  <Input type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required className="bg-input border-border" />
+                  <Input type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} required className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <Label>Phone</Label>
-                  <Input value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="bg-input border-border" />
+                  <Input value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <Label>City</Label>
-                  <Input value={formData.city} onChange={e => setFormData({...formData, city: e.target.value})} className="bg-input border-border" />
+                  <Input value={formData.city} onChange={e => setFormData({ ...formData, city: e.target.value })} className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
                 <div className="space-y-2">
                   <Label>Country</Label>
-                  <Input value={formData.country} onChange={e => setFormData({...formData, country: e.target.value})} className="bg-input border-border" />
+                  <Input value={formData.country} onChange={e => setFormData({ ...formData, country: e.target.value })} className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label>Website</Label>
-                <Input value={formData.website} onChange={e => setFormData({...formData, website: e.target.value})} className="bg-input border-border" />
+                <Input value={formData.website} onChange={e => setFormData({ ...formData, website: e.target.value })} className="bg-background/20 backdrop-blur-sm border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground" />
               </div>
               <div className="space-y-2">
                 <Label>Services of Interest *</Label>
@@ -164,23 +165,23 @@ const PortalOnboardingPage = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Monthly Budget *</Label>
-                  <Select value={formData.budget_range} onValueChange={v => setFormData({...formData, budget_range: v})}>
-                    <SelectTrigger className="bg-input border-border"><SelectValue placeholder="Select budget" /></SelectTrigger>
+                  <Select value={formData.budget_range} onValueChange={v => setFormData({ ...formData, budget_range: v })}>
+                    <SelectTrigger className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"><SelectValue placeholder="Select budget" /></SelectTrigger>
                     <SelectContent>{budgets.map(b => <SelectItem key={b} value={b}>{b}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
                   <Label>Main Goal *</Label>
-                  <Select value={formData.main_goal} onValueChange={v => setFormData({...formData, main_goal: v})}>
-                    <SelectTrigger className="bg-input border-border"><SelectValue placeholder="Select goal" /></SelectTrigger>
+                  <Select value={formData.main_goal} onValueChange={v => setFormData({ ...formData, main_goal: v })}>
+                    <SelectTrigger className="bg-background/50 border-border/30 rounded-xl h-12 focus:border-primary/50 text-foreground"><SelectValue placeholder="Select goal" /></SelectTrigger>
                     <SelectContent>{goals.map(g => <SelectItem key={g} value={g}>{g}</SelectItem>)}</SelectContent>
                   </Select>
                 </div>
               </div>
               <div className="space-y-2">
                 <Label>Tell us about your project *</Label>
-                <Textarea value={formData.project_description} onChange={e => setFormData({...formData, project_description: e.target.value})}
-                  className="bg-input border-border min-h-32" placeholder="Describe your business, challenges, and goals..." required />
+                <Textarea value={formData.project_description} onChange={e => setFormData({ ...formData, project_description: e.target.value })}
+                  className="bg-background/50 border-border/30 rounded-xl focus:border-primary/50 text-foreground min-h-32" placeholder="Describe your business, challenges, and goals..." required />
               </div>
               <div className="space-y-2">
                 <Label>Attachments (optional)</Label>
@@ -204,12 +205,12 @@ const PortalOnboardingPage = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Checkbox id="consent" checked={formData.consent} onCheckedChange={c => setFormData({...formData, consent: c as boolean})} />
+                <Checkbox id="consent" checked={formData.consent} onCheckedChange={c => setFormData({ ...formData, consent: c as boolean })} />
                 <Label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
                   I consent to RevUp Agency processing my data to contact me about their services. *
                 </Label>
               </div>
-              <Button type="submit" className="w-full bg-primary text-primary-foreground" disabled={loading}>
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl h-12 text-base hover:scale-[1.02] transition-all duration-300" disabled={loading}>
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><Send className="h-4 w-4 mr-2" />Submit Request</>}
               </Button>
             </form>
