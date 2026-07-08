@@ -1,5 +1,6 @@
-import { Search, Map, Rocket, TrendingUp } from "lucide-react";
+import { Search, Map, Rocket, TrendingUp, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 
 const steps = [
   {
@@ -30,52 +31,77 @@ const steps = [
 
 export const Insights = () => {
   return (
-    <section id="insights" className="py-16 md:py-24 bg-transparent relative overflow-hidden" aria-labelledby="process-heading">
+    <section
+      id="insights"
+      className="relative overflow-hidden bg-background py-24 md:py-32"
+      aria-labelledby="process-heading"
+    >
+      {/* Giant tinted chapter numeral behind the heading */}
+      <GiantNumeral value="007" className="-top-10 right-[2%] hidden lg:block" />
 
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <Eyebrow index="007" label="Our Process" className="mb-10" />
+          </Reveal>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <header className="text-center mb-12 md:mb-20">
-          <h2 id="process-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-2 opacity-0 animate-fade-in">
-            Our <span className="text-accent gradient-text">Process</span>
-          </h2>
-          <div className="w-24 h-1 bg-accent mx-auto animate-glow-pulse"></div>
-        </header>
+          <Reveal delay={0.1}>
+            <SectionHeading
+              className="mb-16 md:mb-20"
+              title={
+                <span id="process-heading">
+                  Our{" "}
+                  <span className="relative inline-block">
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
+                    />
+                    Process
+                  </span>
+                </span>
+              }
+            />
+          </Reveal>
 
-        <div className="max-w-5xl mx-auto relative">
-          {/* Vertical Timeline Line - Animated */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent hidden md:block animate-border-glow"></div>
+          {/* Editorial numbered row-list */}
+          <ol className="border-b border-foreground/10">
+            {steps.map((step, index) => (
+              <Reveal key={step.title} as="li" delay={index * 0.1} className="border-t border-foreground/10">
+                <Link
+                  to="/process"
+                  className="group grid grid-cols-[auto_1fr] items-start gap-x-6 gap-y-4 rounded-2xl px-2 py-10 transition-colors duration-500 hover:bg-accent/10 md:grid-cols-[7rem_auto_1fr_auto] md:items-center md:gap-x-10 md:px-6 md:py-12"
+                >
+                  {/* Big zero-padded numeral */}
+                  <span
+                    aria-hidden="true"
+                    className="font-heading text-5xl leading-none text-foreground/15 transition-colors duration-500 group-hover:text-performance md:text-7xl"
+                  >
+                    {step.number.padStart(2, "0")}
+                  </span>
 
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`relative mb-12 md:mb-16 last:mb-0 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2'
-                }`}
-            >
-              {/* Timeline Dot - Animated */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-graphite z-10 hidden md:block animate-glow-pulse pulse-ring"></div>
+                  {/* Icon chip */}
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-foreground/10 bg-card transition-colors duration-500 group-hover:border-performance/30 md:h-14 md:w-14">
+                    <step.icon className="h-5 w-5 text-performance md:h-6 md:w-6" aria-hidden="true" />
+                  </span>
 
-              <Link
-                to="/process"
-                className={`futuristic-card rounded-xl p-6 md:p-8 cursor-pointer group relative block opacity-0 ${index % 2 === 0
-                    ? 'md:mr-auto md:ml-0 md:mr-[calc(50%+2rem)] animate-slide-in-left'
-                    : 'md:ml-auto md:mr-0 md:ml-[calc(50%+2rem)] animate-slide-in-right'
-                  }`}
-                style={{ animationDelay: `${0.2 + index * 0.2}s` }}
-              >
-                <div className="mb-4 md:mb-6 inline-block p-3 md:p-4 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-all duration-500 group-hover:animate-float">
-                  <step.icon className="w-6 h-6 md:w-8 md:h-8 text-accent group-hover:drop-shadow-[0_0_10px_hsl(var(--accent))]" />
-                </div>
+                  {/* Title + description */}
+                  <span className="col-span-2 md:col-span-1">
+                    <h3 className="font-heading text-2xl leading-tight text-foreground transition-colors duration-300 group-hover:text-performance md:text-3xl">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-stone md:text-base">
+                      {step.description}
+                    </p>
+                  </span>
 
-                <h3 className="text-lg md:text-xl font-heading font-semibold mb-2 md:mb-3 group-hover:text-accent transition-colors duration-300">
-                  {step.title}
-                </h3>
-
-                <p className="text-sm md:text-base text-foreground/70 leading-relaxed">
-                  {step.description}
-                </p>
-              </Link>
-            </div>
-          ))}
+                  {/* Hover arrow */}
+                  <span className="hidden md:block">
+                    <ArrowUpRight className="h-7 w-7 text-performance opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

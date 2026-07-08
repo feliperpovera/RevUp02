@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,7 @@ const TestimonialsPage = () => {
               Join the growing list of businesses that have transformed their digital presence and achieved measurable growth with RevUp.
             </p>
             <Button
-              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+              onClick={() => openCalendly()}
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-full px-8 py-6 text-base"
             >
               Start Your Journey

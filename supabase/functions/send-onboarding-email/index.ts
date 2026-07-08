@@ -1,7 +1,11 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.7";
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -49,25 +53,15 @@ const formSchema = z.object({
   hasDriveFolder: yesNoSchema,
   driveFolderLink: z.string().max(500).default(''),
   additionalInfo: z.string().max(MAX_TEXT_LENGTH).default(''),
+  consent: z.boolean(),
   shopifyReport: fileSchema,
   googleAdsReport: fileSchema,
   metaAdsReport: fileSchema,
+  shopifyReportName: z.string().max(255).optional().nullable().or(z.literal("")),
+  googleAdsReportName: z.string().max(255).optional().nullable().or(z.literal("")),
+  metaAdsReportName: z.string().max(255).optional().nullable().or(z.literal("")),
+  sourceForm: z.string().max(100).optional().nullable().or(z.literal("")),
 });
-
-const escapeHtml = (text: string): string => {
-  if (!text) return '';
-  const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-    '/': '&#x2F;',
-    '`': '&#x60;',
-    '=': '&#x3D;'
-  };
-  return text.replace(/[&<>"'`=/]/g, (char) => map[char]);
-};
 
 const normalizeChoice = (choice: z.infer<typeof yesNoSchema>): "yes" | "no" => {
   return choice === "si" || choice === "yes" ? "yes" : "no";
@@ -190,184 +184,58 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Processing validated onboarding form submission from IP:", clientIP);
 
-    // Build attachments array with validation
-    const attachments: { filename: string; content: string }[] = [];
-
-    if (data.shopifyReport?.content) {
-      attachments.push({
-        filename: escapeHtml(data.shopifyReport.name),
-        content: data.shopifyReport.content,
-      });
-    }
-
-    if (data.googleAdsReport?.content) {
-      attachments.push({
-        filename: escapeHtml(data.googleAdsReport.name),
-        content: data.googleAdsReport.content,
-      });
-    }
-
-    if (data.metaAdsReport?.content) {
-      attachments.push({
-        filename: escapeHtml(data.metaAdsReport.name),
-        content: data.metaAdsReport.content,
-      });
-    }
-
     // Sanitize URL
     const sanitizedDriveLink = sanitizeUrl(data.driveFolderLink);
 
-    const emailHtml = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          h1 { color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px; }
-          h2 { color: #1e40af; margin-top: 25px; }
-          .section { background: #f8fafc; padding: 15px; border-radius: 8px; margin: 15px 0; }
-          .field { margin: 10px 0; }
-          .label { font-weight: bold; color: #475569; }
-          .value { color: #1e293b; }
-          .highlight { background: #dbeafe; padding: 2px 6px; border-radius: 4px; }
-          .file-info { color: #059669; font-style: italic; }
-          .no-file { color: #9ca3af; font-style: italic; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>🚀 Nuevo Formulario de Onboarding</h1>
-          <p>Se ha recibido una nueva solicitud de onboarding. A continuación los detalles:</p>
-          
-          <h2>📁 Paso 1: Archivos Adjuntos</h2>
-          <div class="section">
-            <div class="field">
-              <span class="label">Informe de Shopify:</span>
-              <span class="${data.shopifyReport ? 'file-info' : 'no-file'}">${data.shopifyReport ? escapeHtml(data.shopifyReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
-            </div>
-            <div class="field">
-              <span class="label">Informe de Google Ads:</span>
-              <span class="${data.googleAdsReport ? 'file-info' : 'no-file'}">${data.googleAdsReport ? escapeHtml(data.googleAdsReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
-            </div>
-            <div class="field">
-              <span class="label">Informe de Meta Ads:</span>
-              <span class="${data.metaAdsReport ? 'file-info' : 'no-file'}">${data.metaAdsReport ? escapeHtml(data.metaAdsReport.name) + ' ✅ (adjunto)' : 'No adjunto'}</span>
-            </div>
-            <div class="field">
-              <span class="label">¿Tiene estrategia definida?:</span>
-              <span class="value highlight">${hasStrategy === 'yes' ? 'Sí' : 'No'}</span>
-            </div>
-            ${data.strategyDetails ? `
-            <div class="field">
-              <span class="label">Detalles de estrategia:</span>
-              <p class="value">${escapeHtml(data.strategyDetails)}</p>
-            </div>
-            ` : ''}
-          </div>
+    const { data: savedSubmission, error: saveError } = await supabase
+      .from("onboarding_submissions")
+      .insert([
+        {
+          has_strategy: hasStrategy,
+          strategy_details: data.strategyDetails || null,
+          google_percentage: data.googlePercentage || null,
+          meta_percentage: data.metaPercentage || null,
+          active_skus: data.activeSKUs || null,
+          focus_on_categories: focusOnCategories,
+          categories_details: data.categoriesDetails || null,
+          has_drive_folder: hasDriveFolder,
+          drive_folder_link: sanitizedDriveLink || null,
+          additional_info: data.additionalInfo || null,
+          consent: data.consent,
+          shopify_report_name: data.shopifyReportName || data.shopifyReport?.name || null,
+          google_ads_report_name: data.googleAdsReportName || data.googleAdsReport?.name || null,
+          meta_ads_report_name: data.metaAdsReportName || data.metaAdsReport?.name || null,
+          source_form: data.sourceForm || "onboarding_form",
+          status: "new",
+        },
+      ])
+      .select("id")
+      .single();
 
-          <h2>📊 Paso 2: Datos de Operación</h2>
-          <div class="section">
-            <div class="field">
-              <span class="label">Distribución del gasto:</span>
-              <span class="value">Google Ads: <span class="highlight">${escapeHtml(data.googlePercentage)}%</span> | Meta Ads: <span class="highlight">${escapeHtml(data.metaPercentage)}%</span></span>
-            </div>
-            <div class="field">
-              <span class="label">SKUs activos:</span>
-              <span class="value highlight">${escapeHtml(data.activeSKUs)}</span>
-            </div>
-            <div class="field">
-              <span class="label">¿Enfoque en categorías específicas?:</span>
-              <span class="value highlight">${focusOnCategories === 'yes' ? 'Sí' : 'No'}</span>
-            </div>
-            ${data.categoriesDetails ? `
-            <div class="field">
-              <span class="label">Categorías/productos objetivo:</span>
-              <p class="value">${escapeHtml(data.categoriesDetails)}</p>
-            </div>
-            ` : ''}
-          </div>
-
-          <h2>📂 Paso 3: Contenido</h2>
-          <div class="section">
-            <div class="field">
-              <span class="label">¿Tiene carpeta Drive/Dropbox?:</span>
-              <span class="value highlight">${hasDriveFolder === 'yes' ? 'Sí' : 'No'}</span>
-            </div>
-            ${sanitizedDriveLink ? `
-            <div class="field">
-              <span class="label">Enlace a carpeta:</span>
-              <a href="${sanitizedDriveLink}" target="_blank" rel="noopener noreferrer" style="color: #2563eb;">${escapeHtml(sanitizedDriveLink)}</a>
-            </div>
-            ` : ''}
-            ${data.additionalInfo ? `
-            <div class="field">
-              <span class="label">Información adicional:</span>
-              <p class="value">${escapeHtml(data.additionalInfo).replace(/\n/g, '<br>')}</p>
-            </div>
-            ` : ''}
-          </div>
-
-          <hr style="margin: 30px 0; border: none; border-top: 1px solid #e2e8f0;">
-          <p style="color: #64748b; font-size: 12px;">
-            Este email fue enviado automáticamente desde el formulario de onboarding de RevUp Agency Group.<br>
-            Fecha: ${new Date().toLocaleString('es-ES', { timeZone: 'America/New_York' })}<br>
-            <strong>Archivos adjuntos: ${attachments.length}</strong>
-          </p>
-        </div>
-      </body>
-      </html>
-    `;
-
-    // Build email payload
-    const emailPayload: Record<string, unknown> = {
-      from: "RevUp Onboarding <onboarding@resend.dev>",
-      to: ["info@revupagencygroup.com"],
-      subject: `🚀 Nuevo Onboarding - ${new Date().toLocaleDateString('es-ES')}`,
-      html: emailHtml,
-    };
-
-    if (attachments.length > 0) {
-      emailPayload.attachments = attachments;
+    if (saveError) {
+      console.error("Onboarding save error:", JSON.stringify(saveError));
+      throw new Error(saveError.message || JSON.stringify(saveError));
     }
 
-    console.log("Sending email with", attachments.length, "attachments");
-    if (!RESEND_API_KEY) {
-      throw new Error("RESEND_API_KEY is not configured");
-    }
-
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailPayload),
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      console.error("Resend API error:", error);
-      throw new Error(`Error sending email: ${error}`);
-    }
-
-    const result = await response.json();
-    console.log("Email sent successfully:", result);
+    console.log("Onboarding submission saved:", savedSubmission);
 
     return new Response(
-      JSON.stringify({ success: true, emailId: result.id }),
+      JSON.stringify({ success: true, submissionId: savedSubmission.id }),
       {
         status: 200,
         headers: { "Content-Type": "application/json", ...corsHeaders },
       }
     );
   } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : "Error desconocido";
+    const errorMessage =
+      error instanceof Error
+        ? error.message
+        : typeof error === "object" && error !== null && "message" in error && typeof error.message === "string"
+          ? error.message
+          : JSON.stringify(error);
     console.error("Error in send-onboarding-email function:", errorMessage);
     return new Response(
-      JSON.stringify({ error: "An error occurred. Please try again later." }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },

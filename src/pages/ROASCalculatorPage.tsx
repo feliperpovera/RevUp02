@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { openCalendly } from "@/config/links";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Input } from "@/components/ui/input";
@@ -403,7 +404,7 @@ const ROASCalculatorPage = () => {
             <Button
               variant="glow"
               size="lg"
-              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+              onClick={() => openCalendly()}
               className="text-base md:text-lg px-8 py-6"
             >
               <Calendar className="mr-2 w-5 h-5" />

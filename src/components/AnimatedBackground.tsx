@@ -1,26 +1,25 @@
 import React from 'react';
-import { WaveBackground } from './WaveBackground';
 
+/**
+ * Global page backdrop for the Open Air canvas — intentionally quiet so the
+ * editorial content carries the page. Two slow-breathing Electric Green
+ * washes and a faint dot grid add depth without competing with sections.
+ */
 export const AnimatedBackground: React.FC = () => {
     return (
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-[-1]" aria-hidden="true">
-            {/* Base gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background" />
+            {/* Base canvas */}
+            <div className="absolute inset-0 bg-background" />
 
-            {/* Wave Component */}
-            <WaveBackground className="opacity-100" />
+            {/* Faint dot grid */}
+            <div className="absolute inset-0 animated-dots opacity-30" />
 
-            {/* Animated background orbs from Hero */}
-            <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-glow floating-orb" />
-                <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-accent/3 rounded-full blur-3xl animate-pulse-glow floating-orb" style={{ animationDelay: "2s" }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/3 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "4s" }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-accent/5 rounded-full animate-spin-slow" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] border border-accent/3 rounded-full animate-rotate-slow" style={{ animationDirection: "reverse" }} />
-            </div>
-
-            {/* Vignette effect */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+            {/* Soft accent washes */}
+            <div className="absolute -top-40 right-[-10%] h-[560px] w-[560px] rounded-full bg-accent/10 blur-[120px] animate-pulse-glow" />
+            <div
+                className="absolute bottom-[-15%] left-[-8%] h-[640px] w-[640px] rounded-full bg-performance/[0.06] blur-[140px] animate-pulse-glow"
+                style={{ animationDelay: "2.5s" }}
+            />
         </div>
     );
 };

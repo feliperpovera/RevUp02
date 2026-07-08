@@ -268,13 +268,13 @@ export const OnboardingForm = () => {
           <div className="flex flex-col items-center gap-2 text-center pointer-events-none">
             {file ? (
               <>
-                <FileText className="w-8 h-8 text-accent" />
+                <FileText className="w-8 h-8 text-performance" />
                 <span className="text-sm font-medium text-foreground">{file.name}</span>
                 <span className="text-xs text-foreground/60">Click to change file</span>
               </>
             ) : (
               <>
-                <Upload className="w-8 h-8 text-foreground/40 group-hover:text-accent transition-colors" />
+                <Upload className="w-8 h-8 text-foreground/40 group-hover:text-performance transition-colors" />
                 <span className="text-sm text-foreground/60">Drag here or click to select</span>
                 <span className="text-xs text-foreground/40">CSV, XLSX, PDF · Max 10 MB</span>
               </>
@@ -300,9 +300,9 @@ export const OnboardingForm = () => {
               className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-500",
                 s < step
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-accent text-performance-foreground"
                   : s === step
-                    ? "bg-accent text-accent-foreground scale-110 shadow-lg shadow-accent/30"
+                    ? "bg-accent text-performance-foreground scale-110 shadow-lg shadow-accent/30"
                     : "bg-muted text-muted-foreground"
               )}
             >
@@ -339,7 +339,7 @@ export const OnboardingForm = () => {
       >
         <div className="mb-6 relative">
           <div className="w-20 h-20 mx-auto bg-accent/20 rounded-full flex items-center justify-center animate-scale-in">
-            <Check className="w-10 h-10 text-accent animate-fade-in" style={{ animationDelay: "0.3s" }} />
+            <Check className="w-10 h-10 text-performance animate-fade-in" style={{ animationDelay: "0.3s" }} />
           </div>
           <div className="absolute inset-0 w-20 h-20 mx-auto border-4 border-accent/30 rounded-full animate-ping" />
         </div>
@@ -352,7 +352,7 @@ export const OnboardingForm = () => {
         </p>
 
         <div className="bg-muted/30 rounded-lg p-6 mb-8 text-left animate-fade-in" style={{ animationDelay: "0.5s" }}>
-          <h3 className="font-semibold mb-4 text-accent">Submission Summary:</h3>
+          <h3 className="font-semibold mb-4 text-performance">Submission Summary:</h3>
           <ul className="space-y-2 text-sm text-foreground/70">
             {data.shopifyReport && <li>✓ Shopify Report: {data.shopifyReport.name}</li>}
             {data.googleAdsReport && <li>✓ Google Ads Report: {data.googleAdsReport.name}</li>}
@@ -401,7 +401,7 @@ export const OnboardingForm = () => {
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
             4. Do you currently have a defined advertising strategy for Google and Meta Ads?
-            <span className="text-accent ml-1">*</span>
+            <span className="text-performance ml-1">*</span>
           </Label>
           <Select value={data.hasStrategy} onValueChange={setSel("hasStrategy")}>
             <SelectTrigger className={cn("w-full", errors.hasStrategy && "border-destructive")}>
@@ -440,7 +440,7 @@ export const OnboardingForm = () => {
         <div className="space-y-4">
           <Label className="text-foreground font-medium">
             6. Distribution of ad spend between Google and Meta Ads
-            <span className="text-accent ml-1">*</span>
+            <span className="text-performance ml-1">*</span>
           </Label>
           <div className="grid grid-cols-2 gap-4">
             {/* Google */}
@@ -517,7 +517,7 @@ export const OnboardingForm = () => {
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
             7. How many active SKUs on Shopify available in the US?
-            <span className="text-accent ml-1">*</span>
+            <span className="text-performance ml-1">*</span>
           </Label>
           <Input
             type="number"
@@ -537,7 +537,7 @@ export const OnboardingForm = () => {
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
             8. Focus on specific categories or products?
-            <span className="text-accent ml-1">*</span>
+            <span className="text-performance ml-1">*</span>
           </Label>
           <Select value={data.focusOnCategories} onValueChange={setSel("focusOnCategories")}>
             <SelectTrigger className={cn("w-full", errors.focusOnCategories && "border-destructive")}>
@@ -581,7 +581,7 @@ export const OnboardingForm = () => {
         <div className="space-y-2">
           <Label className="text-foreground font-medium">
             10. Do you have a Google Drive or Dropbox folder with social media content?
-            <span className="text-accent ml-1">*</span>
+            <span className="text-performance ml-1">*</span>
           </Label>
           <Select value={data.hasDriveFolder} onValueChange={setSel("hasDriveFolder")}>
             <SelectTrigger className={cn("w-full", errors.hasDriveFolder && "border-destructive")}>
@@ -648,7 +648,7 @@ export const OnboardingForm = () => {
               className="text-sm text-foreground/70 cursor-pointer leading-relaxed"
             >
               I authorize the processing of my data for the development of the advertising strategy.
-              <span className="text-accent ml-1">*</span>
+              <span className="text-performance ml-1">*</span>
             </label>
           </div>
           {errors.consent && (

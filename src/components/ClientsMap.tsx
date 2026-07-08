@@ -1,46 +1,80 @@
-import { MapPin, Globe } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { BrandCard, DeviceSquareCircle, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
+
+const LOCATIONS = [
+  { name: "United States", region: "North American Operations", corner: "tl" as const },
+  { name: "Colombia", region: "Latin American Operations", corner: "br" as const },
+];
 
 export const ClientsMap = () => {
   return (
-    <section className="py-20 bg-transparent">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Where We Operate
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-3 mb-4">
-            Our Global Presence
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We proudly serve clients across the Americas, with a strong presence in the United States and Colombia.
-          </p>
-        </div>
+    <section id="locations" className="relative overflow-hidden bg-card py-24 md:py-32">
+      {/* Hairline device — precision, tailored to each client */}
+      <DeviceSquareCircle className="pointer-events-none absolute -top-6 right-[5%] hidden h-48 w-48 text-foreground/10 lg:block" />
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-3xl mx-auto">
-          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-transparent/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
-            <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl group-hover:scale-110 transition-transform duration-300">
-              <MapPin className="w-8 h-8 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-bold text-foreground text-xl">United States</h3>
-              <p className="text-sm text-muted-foreground">North American Operations</p>
-            </div>
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <Eyebrow index="006" label="Where We Operate" className="mb-10 max-w-md" />
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <SectionHeading
+              title={
+                <>
+                  Our{" "}
+                  <span className="relative inline-block">
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
+                    />
+                    Global
+                  </span>{" "}
+                  Presence
+                </>
+              }
+              lede="We proudly serve clients across the Americas, with a strong presence in the United States and Colombia."
+            />
+          </Reveal>
+
+          <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            {LOCATIONS.map((location, i) => (
+              <Reveal key={location.name} delay={0.2 + i * 0.1}>
+                <BrandCard corner={location.corner} className="group flex h-full items-center gap-5">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-foreground/10 bg-background transition-all duration-500 group-hover:border-performance/30 group-hover:bg-accent">
+                    <MapPin className="h-6 w-6 text-performance" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2.5">
+                      <h3 className="font-heading text-xl text-foreground md:text-2xl">
+                        {location.name}
+                      </h3>
+                      <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75 motion-reduce:animate-none" />
+                        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary" />
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm font-light text-stone">{location.region}</p>
+                  </div>
+                </BrandCard>
+              </Reveal>
+            ))}
           </div>
 
-          <div className="flex-1 w-full flex items-center gap-5 p-6 bg-transparent/80 backdrop-blur-sm rounded-xl border border-border/50 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 group">
-            <div className="p-4 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl group-hover:scale-110 transition-transform duration-300">
-              <MapPin className="w-8 h-8 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-bold text-foreground text-xl">Colombia</h3>
-              <p className="text-sm text-muted-foreground">Latin American Operations</p>
-            </div>
-          </div>
+          <Reveal delay={0.4}>
+            <p className="mx-auto mt-12 max-w-md text-center text-sm font-light leading-relaxed text-stone">
+              Our strategic locations allow us to serve clients across different time zones with{" "}
+              <span className="relative inline-block font-medium text-foreground">
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-[-0.08em] bottom-0 top-[0.5em] -z-10 bg-accent dark:bg-accent/30"
+                />
+                dedicated 24/7 support
+              </span>
+              .
+            </p>
+          </Reveal>
         </div>
-
-        <p className="text-center text-sm text-muted-foreground mt-10 max-w-md mx-auto">
-          Our strategic locations allow us to serve clients across different time zones with <span className="text-primary font-medium">dedicated 24/7 support</span>.
-        </p>
       </div>
     </section>
   );

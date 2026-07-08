@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -20,18 +20,8 @@ const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const PortalLandingPage = lazy(() => import("./pages/portal/PortalLandingPage"));
-const PortalLoginPage = lazy(() => import("./pages/portal/PortalLoginPage"));
-const PortalRegisterPage = lazy(() => import("./pages/portal/PortalRegisterPage"));
-const PortalDashboardPage = lazy(() => import("./pages/portal/PortalDashboardPage"));
-const PortalBenefitsPage = lazy(() => import("./pages/portal/PortalBenefitsPage"));
-const PortalResourcesPage = lazy(() => import("./pages/portal/PortalResourcesPage"));
-const PortalSupportPage = lazy(() => import("./pages/portal/PortalSupportPage"));
-const PortalProfilePage = lazy(() => import("./pages/portal/PortalProfilePage"));
-const PortalOnboardingPage = lazy(() => import("./pages/portal/PortalOnboardingPage"));
-const PortalROASCalculatorPage = lazy(() => import("./pages/portal/PortalROASCalculatorPage"));
-const PortalOnboardingFormPage = lazy(() => import("./pages/portal/PortalOnboardingFormPage"));
-const PortalAmazonCalculatorPage = lazy(() => import("./pages/portal/PortalAmazonCalculatorPage"));
+const AdminLoginPage = lazy(() => import("./pages/admin/AdminLoginPage"));
+const AdminDashboardPage = lazy(() => import("./pages/admin/AdminDashboardPage"));
 
 const queryClient = new QueryClient();
 
@@ -43,7 +33,7 @@ const RouteLoadingFallback = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
@@ -63,19 +53,12 @@ const App = () => (
                 <Route path="/onboarding" element={<OnboardingPage />} />
                 <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
 
-                {/* Portal Routes */}
-                <Route path="/portal" element={<PortalLandingPage />} />
-                <Route path="/portal/login" element={<PortalLoginPage />} />
-                <Route path="/portal/register" element={<PortalRegisterPage />} />
-                <Route path="/portal/dashboard" element={<PortalDashboardPage />} />
-                <Route path="/portal/benefits" element={<PortalBenefitsPage />} />
-                <Route path="/portal/resources" element={<PortalResourcesPage />} />
-                <Route path="/portal/support" element={<PortalSupportPage />} />
-                <Route path="/portal/profile" element={<PortalProfilePage />} />
-                <Route path="/portal/onboarding" element={<PortalOnboardingPage />} />
-                <Route path="/portal/roas-calculator" element={<PortalROASCalculatorPage />} />
-                <Route path="/portal/onboarding-form" element={<PortalOnboardingFormPage />} />
-                <Route path="/portal/amazon-calculator" element={<PortalAmazonCalculatorPage />} />
+                <Route path="/admin/login" element={<AdminLoginPage />} />
+                <Route path="/admin" element={<AdminDashboardPage />} />
+                <Route path="/employee-login" element={<Navigate to="/admin/login" replace />} />
+                <Route path="/employee-portal" element={<Navigate to="/admin" replace />} />
+                <Route path="/client-portal" element={<Navigate to="/admin/login" replace />} />
+                <Route path="/portal/*" element={<Navigate to="/admin/login" replace />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Claude tooling
+.claude/
+
+# Heavy brand source (kept out of git)
+Brandbook RevUp.pdf

@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { ShoppingCart, Code, Settings, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -170,7 +171,7 @@ const ServicesPage = () => {
               <Button
                 variant="glow"
                 size="lg"
-                onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+                onClick={() => openCalendly()}
                 className="text-base md:text-lg px-8 py-6"
               >
                 Get Started Today

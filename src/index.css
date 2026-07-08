@@ -8,51 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark futuristic theme */
-    --background: 0 2% 17%;
-    --foreground: 0 0% 95%;
+    /* RevUp Brandbook — light editorial theme (default)
+       Open Air #f0efeb · Core Graphite #2d2b27 · Electric Green #d7f855
+       Performance Green #01634c · Adaptive Stone #6e6e5e · Soft Grey #bebebe */
+    --background: 48 14% 93%;
+    --foreground: 40 7% 16%;
 
-    --card: 0 2% 22%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 40 7% 16%;
 
-    --popover: 0 2% 19%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 40 7% 16%;
 
-    --primary: 73 91% 65%;
-    --primary-foreground: 0 0% 10%;
+    /* Performance Green drives primary actions (wisr-style solid buttons) */
+    --primary: 166 98% 20%;
+    --primary-foreground: 48 14% 96%;
 
-    --secondary: 0 2% 24%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 48 10% 88%;
+    --secondary-foreground: 40 7% 16%;
 
-    --muted: 0 2% 26%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 48 10% 88%;
+    --muted-foreground: 40 5% 38%;
 
-    --accent: 73 91% 65%;
-    --accent-foreground: 0 0% 10%;
+    /* Electric Green is the signature highlight */
+    --accent: 72 92% 65%;
+    --accent-foreground: 40 7% 16%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 2% 28%;
-    --input: 0 2% 22%;
-    --ring: 73 91% 65%;
+    --border: 45 8% 84%;
+    --input: 45 8% 84%;
+    --ring: 166 98% 20%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* Custom design tokens */
-    --graphite: 0 2% 20%;
-    --graphite-light: 0 2% 28%;
-    --accent-glow: 73 91% 75%;
-    --glass-bg: 0 2% 19%;
-    --glass-border: 0 2% 32%;
+    --graphite: 40 7% 16%;
+    --graphite-light: 40 6% 24%;
+    --stone: 60 8% 40%;
+    --performance: 166 98% 20%;
+    --electric: 72 92% 65%;
+    /* Constant light tone for always-dark surfaces (results band, footer) —
+       does NOT flip with the theme, unlike --background. */
+    --cream: 48 14% 93%;
+    --accent-glow: 72 92% 75%;
+    --glass-bg: 0 0% 100%;
+    --glass-border: 45 8% 84%;
 
     /* Gradients */
-    --gradient-accent: linear-gradient(135deg, hsl(73 91% 65%), hsl(73 91% 75%));
-    --gradient-dark: linear-gradient(180deg, hsl(0 2% 17%), hsl(0 2% 22%));
+    --gradient-accent: linear-gradient(135deg, hsl(72 92% 65%), hsl(72 92% 75%));
+    --gradient-dark: linear-gradient(180deg, hsl(40 7% 16%), hsl(40 6% 22%));
 
     /* Shadows and glows */
-    --glow-accent: 0 0 40px hsl(73 91% 65% / 0.6);
-    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.5);
+    --glow-accent: 0 0 40px hsl(72 92% 65% / 0.5);
+    --shadow-card: 0 8px 32px hsl(40 7% 16% / 0.08);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -76,77 +86,81 @@ All colors MUST be HSL.
   }
 
   .light {
-    /* Light mode colors - optimized for readability */
-    --background: 60 9% 98%;
-    --foreground: 220 15% 15%;
+    /* Alias of the default light theme */
+    --background: 48 14% 93%;
+    --foreground: 40 7% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 40 7% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 40 7% 16%;
 
-    --primary: 73 70% 40%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 166 98% 20%;
+    --primary-foreground: 48 14% 96%;
 
-    --secondary: 60 5% 94%;
-    --secondary-foreground: 220 15% 20%;
+    --secondary: 48 10% 88%;
+    --secondary-foreground: 40 7% 16%;
 
-    --muted: 60 5% 92%;
-    --muted-foreground: 220 10% 40%;
+    --muted: 48 10% 88%;
+    --muted-foreground: 40 5% 38%;
 
-    --accent: 73 70% 40%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 72 92% 65%;
+    --accent-foreground: 40 7% 16%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 60 5% 88%;
-    --input: 60 5% 92%;
-    --ring: 73 70% 40%;
+    --border: 45 8% 84%;
+    --input: 45 8% 84%;
+    --ring: 166 98% 20%;
 
-    --graphite: 60 5% 96%;
-    --graphite-light: 60 5% 92%;
-    --accent-glow: 73 70% 50%;
+    --graphite: 40 7% 16%;
+    --graphite-light: 40 6% 24%;
+    --stone: 60 8% 40%;
+    --accent-glow: 72 92% 75%;
     --glass-bg: 0 0% 100%;
-    --glass-border: 60 5% 88%;
+    --glass-border: 45 8% 84%;
   }
 
   .dark {
-    /* Dark mode colors */
-    --background: 0 2% 17%;
-    --foreground: 0 0% 95%;
+    /* Core Graphite dark mode */
+    --background: 40 7% 14%;
+    --foreground: 48 14% 93%;
 
-    --card: 0 2% 22%;
-    --card-foreground: 0 0% 95%;
+    --card: 40 6% 19%;
+    --card-foreground: 48 14% 93%;
 
-    --popover: 0 2% 19%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 40 6% 17%;
+    --popover-foreground: 48 14% 93%;
 
-    --primary: 73 91% 65%;
-    --primary-foreground: 0 0% 10%;
+    --primary: 72 92% 65%;
+    --primary-foreground: 40 7% 14%;
 
-    --secondary: 0 2% 24%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 40 6% 22%;
+    --secondary-foreground: 48 14% 93%;
 
-    --muted: 0 2% 26%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 40 6% 24%;
+    --muted-foreground: 48 8% 65%;
 
-    --accent: 73 91% 65%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 72 92% 65%;
+    --accent-foreground: 40 7% 14%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 2% 28%;
-    --input: 0 2% 22%;
-    --ring: 73 91% 65%;
+    --border: 40 6% 26%;
+    --input: 40 6% 22%;
+    --ring: 72 92% 65%;
 
-    --graphite: 0 2% 20%;
-    --graphite-light: 0 2% 28%;
-    --accent-glow: 73 91% 75%;
-    --glass-bg: 0 2% 19%;
-    --glass-border: 0 2% 32%;
+    --graphite: 40 7% 16%;
+    --graphite-light: 40 6% 24%;
+    /* Lighter secondary text + functional green for dark-surface contrast */
+    --stone: 55 8% 66%;
+    --performance: 163 55% 45%;
+    --accent-glow: 72 92% 75%;
+    --glass-bg: 40 6% 17%;
+    --glass-border: 40 6% 28%;
   }
 }
 
@@ -166,7 +180,8 @@ All colors MUST be HSL.
   h4,
   h5,
   h6 {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Cal Sans', 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -422,5 +437,84 @@ All colors MUST be HSL.
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* ── REVI 3D experience ─────────────────────────────────────────── */
+
+  /* Idle hover bounce for the 3D frog */
+  .frog-idle {
+    animation: frog-idle 3.2s ease-in-out infinite;
+  }
+
+  @keyframes frog-idle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  /* Ground shadow breathes opposite to the bounce */
+  .frog-shadow-idle {
+    animation: frog-shadow-idle 3.2s ease-in-out infinite;
+  }
+
+  @keyframes frog-shadow-idle {
+    0%, 100% {
+      transform: translateX(-50%) scaleX(1);
+      opacity: 0.6;
+    }
+
+    50% {
+      transform: translateX(-50%) scaleX(0.82);
+      opacity: 0.35;
+    }
+  }
+
+  /* Periodic blink (scaleY squash on the eye group) */
+  .frog-blink {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: frog-blink 4.6s ease-in-out infinite;
+  }
+
+  @keyframes frog-blink {
+    0%, 91%, 100% {
+      transform: scaleY(1);
+    }
+
+    94% {
+      transform: scaleY(0.06);
+    }
+
+    97% {
+      transform: scaleY(1);
+    }
+  }
+
+  /* Orbiting ring behind the frog stage */
+  .orbit-ring {
+    animation: orbit-spin 18s linear infinite;
+  }
+
+  @keyframes orbit-spin {
+    0% {
+      transform: rotateX(72deg) rotateZ(0deg);
+    }
+
+    100% {
+      transform: rotateX(72deg) rotateZ(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frog-idle,
+    .frog-shadow-idle,
+    .frog-blink,
+    .orbit-ring {
+      animation: none;
+    }
   }
 }

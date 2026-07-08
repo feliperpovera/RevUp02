@@ -1,7 +1,11 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.7";
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -18,31 +22,17 @@ interface ContactEmailRequest {
   phone?: string;
   company?: string;
   message: string;
-}
-
-interface ResendEmailResponse {
-  id: string;
-  [key: string]: unknown;
+  source_form?: string;
 }
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
-  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional().or(z.literal("")),
-  company: z.string().trim().max(100, "Company must be less than 100 characters").optional().or(z.literal("")),
-  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters")
+  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional().nullable().or(z.literal("")),
+  company: z.string().trim().max(100, "Company must be less than 100 characters").optional().nullable().or(z.literal("")),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+  source_form: z.string().trim().max(100).optional().nullable().or(z.literal("")),
 });
-
-const escapeHtml = (text: string): string => {
-  const map: Record<string, string> = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;'
-  };
-  return text.replace(/[&<>"']/g, (char) => map[char]);
-};
 
 // Rate limiting function using Deno KV
 const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; retryAfter?: number }> => {
@@ -85,33 +75,28 @@ const checkRateLimit = async (identifier: string): Promise<{ allowed: boolean; r
   }
 };
 
-const RESEND_TEST_RECIPIENT = "info@revupagencygroup.com";
+const persistSubmission = async (payload: ContactEmailRequest) => {
+  const { data, error } = await supabase
+    .from("contact_submissions")
+    .insert([
+      {
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone || null,
+        company: payload.company || null,
+        message: payload.message,
+        source_form: payload.source_form || "contact_page",
+        status: "new",
+      },
+    ])
+    .select("id")
+    .single();
 
-const sendEmail = async (from: string, to: string[], subject: string, html: string): Promise<ResendEmailResponse> => {
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      subject,
-      html,
-    }),
-  });
-
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Resend API error: ${error}`);
+  if (error) {
+    throw error;
   }
 
-  return await response.json() as ResendEmailResponse;
-};
-
-const isResendSandboxRestriction = (error: unknown) => {
-  return error instanceof Error && error.message.includes("You can only send testing emails to your own email address");
+  return data;
 };
 
 const handler = async (req: Request): Promise<Response> => {
@@ -165,93 +150,23 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const { name, email, phone, company, message } = validationResult.data;
-
-    // Sanitize data for HTML output
-    const safeName = escapeHtml(name);
-    const safeEmail = escapeHtml(email);
-    const safePhone = phone ? escapeHtml(phone) : '';
-    const safeCompany = company ? escapeHtml(company) : '';
-    const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
+    const { name, email, phone, company, message, source_form } = validationResult.data;
 
     console.log("Processing contact form submission from IP:", clientIP);
 
-    let sandboxMode = false;
-
-    // Send notification email to RevUp inbox (fallback to test recipient if domain is not verified)
-    let notificationResponse: ResendEmailResponse;
-    try {
-      notificationResponse = await sendEmail(
-        "RevUp Contact Form <onboarding@resend.dev>",
-        ["info@revupagencygroup.com"],
-        `New Contact Form Submission from ${safeName}`,
-        `
-          <h2>New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
-          ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
-          <p><strong>Message:</strong></p>
-          <p>${safeMessage}</p>
-        `
-      );
-    } catch (error) {
-      if (!isResendSandboxRestriction(error)) throw error;
-      sandboxMode = true;
-      console.warn("Resend sandbox restriction detected. Using fallback recipient.");
-      notificationResponse = await sendEmail(
-        "RevUp Contact Form <onboarding@resend.dev>",
-        [RESEND_TEST_RECIPIENT],
-        `New Contact Form Submission from ${safeName}`,
-        `
-          <h2>New Contact Form Submission (Sandbox Mode)</h2>
-          <p><strong>Intended inbox:</strong> info@revupagencygroup.com</p>
-          <p><strong>Name:</strong> ${safeName}</p>
-          <p><strong>Email:</strong> ${safeEmail}</p>
-          ${safePhone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ''}
-          ${safeCompany ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ''}
-          <p><strong>Message:</strong></p>
-          <p>${safeMessage}</p>
-        `
-      );
-    }
-
-    console.log("Notification email sent successfully:", notificationResponse);
-
-    // Send confirmation email only when not in sandbox mode
-    let confirmationResponse: ResendEmailResponse | null = null;
-    let confirmationDeliveredTo: string | null = null;
-
-    if (!sandboxMode) {
-      try {
-        confirmationResponse = await sendEmail(
-          "RevUp Agency Group <onboarding@resend.dev>",
-          [safeEmail],
-          `Confirmation: Message from ${safeName}`,
-          `
-            <h2>Form Submission Received</h2>
-            <h1>Thank you for contacting us, ${safeName}!</h1>
-            <p>We have received your message and will get back to you as soon as possible.</p>
-            <p><strong>Your message:</strong></p>
-            <p>${safeMessage}</p>
-            <br>
-            <p>Best regards,<br>The RevUp Agency Group Team</p>
-          `
-        );
-        confirmationDeliveredTo = safeEmail;
-        console.log("Confirmation email sent successfully:", confirmationResponse);
-      } catch (confirmationError) {
-        console.error("Confirmation email failed, but lead notification was sent:", confirmationError);
-      }
-    }
+    const savedSubmission = await persistSubmission({
+      name,
+      email,
+      phone: phone || "",
+      company: company || "",
+      message,
+      source_form: source_form || "contact_page",
+    });
 
     return new Response(
       JSON.stringify({
         success: true,
-        sandbox_mode: sandboxMode,
-        notificationId: notificationResponse.id,
-        confirmationId: confirmationResponse?.id ?? null,
-        confirmationDeliveredTo,
+        submissionId: savedSubmission.id,
       }),
       {
         status: 200,
@@ -265,7 +180,7 @@ const handler = async (req: Request): Promise<Response> => {
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
     console.error("Error in send-contact-email function:", errorMessage);
     return new Response(
-      JSON.stringify({ error: "An error occurred. Please try again later." }),
+      JSON.stringify({ error: errorMessage }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
