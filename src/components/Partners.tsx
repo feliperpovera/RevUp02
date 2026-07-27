@@ -1,19 +1,14 @@
 import { Award } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
 import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 export const Partners = () => {
-  const prefersReducedMotion = useReducedMotion();
-
   const partners = [
     { name: "Meta", logo: metaLogo },
     { name: "Google", logo: googleLogo },
@@ -49,19 +44,7 @@ export const Partners = () => {
                 id="partners-heading"
                 className="font-heading text-4xl leading-[1.05] text-foreground md:text-5xl lg:text-6xl"
               >
-                We are{" "}
-                <span className="relative inline-block">
-                  {/* Electric Green marker behind the key words */}
-                  <motion.span
-                    aria-hidden="true"
-                    initial={prefersReducedMotion ? false : { scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true, amount: 0.6 }}
-                    transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
-                    className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 origin-left bg-accent dark:bg-accent/30"
-                  />
-                  Official Partners
-                </span>
+                We are <span className="text-primary">Official Partners</span>
               </h2>
             </Reveal>
 

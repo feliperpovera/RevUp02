@@ -1,9 +1,6 @@
 import { ShoppingCart, Code, Settings, Zap, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const services = [
   {
@@ -32,8 +29,6 @@ const services = [
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 export const Services = () => {
-  const prefersReducedMotion = useReducedMotion();
-
   return (
     <section
       id="services"
@@ -53,19 +48,7 @@ export const Services = () => {
             <SectionHeading
               title={
                 <span id="services-heading">
-                  Our{" "}
-                  <span className="relative inline-block">
-                    {/* Electric Green marker behind the key word */}
-                    <motion.span
-                      aria-hidden="true"
-                      initial={prefersReducedMotion ? false : { scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.45, ease: EASE }}
-                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 origin-left bg-accent dark:bg-accent/30"
-                    />
-                    Services
-                  </span>
+                  Our <span className="text-primary">Services</span>
                 </span>
               }
               lede="Complete digital marketing solutions for businesses ready to grow online"

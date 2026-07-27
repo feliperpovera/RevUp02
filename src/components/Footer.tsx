@@ -1,11 +1,8 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Instagram } from "lucide-react";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import { CALENDLY_URL } from "@/config/links";
 import { DeviceAsterisk, Reveal } from "@/components/brand/kit";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const QUICK_LINKS = [
   { label: "About", to: "/about" },
@@ -17,8 +14,6 @@ const QUICK_LINKS = [
 ];
 
 export const Footer = () => {
-  const prefersReducedMotion = useReducedMotion();
-
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/revupagencygroup/", label: "Instagram" },
   ];
@@ -35,17 +30,7 @@ export const Footer = () => {
             Driven by data.{" "}
             <span className="block sm:inline">
               Powered by{" "}
-              <span className="relative inline-block">
-                <motion.span
-                  aria-hidden="true"
-                  initial={prefersReducedMotion ? false : { scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.45, ease: EASE }}
-                  className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 origin-left bg-accent/30"
-                />
-                growth.
-              </span>
+              <span className="text-accent">growth.</span>
             </span>
           </p>
         </Reveal>

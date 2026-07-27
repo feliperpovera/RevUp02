@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // GH_PAGES=1 builds for the GitHub Pages preview (served under /RevUp02/);
+  // normal builds stay at the domain root for the real host.
+  base: process.env.GH_PAGES ? "/RevUp02/" : "/",
   server: {
     host: "::",
     port: 8080,

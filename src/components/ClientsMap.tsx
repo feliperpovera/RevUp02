@@ -22,15 +22,7 @@ export const ClientsMap = () => {
             <SectionHeading
               title={
                 <>
-                  Our{" "}
-                  <span className="relative inline-block">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
-                    />
-                    Global
-                  </span>{" "}
-                  Presence
+                  Our <span className="text-primary">Global</span> Presence
                 </>
               }
               lede="We proudly serve clients across the Americas, with a strong presence in the United States and Colombia."
@@ -64,13 +56,7 @@ export const ClientsMap = () => {
           <Reveal delay={0.4}>
             <p className="mx-auto mt-12 max-w-md text-center text-sm font-light leading-relaxed text-stone">
               Our strategic locations allow us to serve clients across different time zones with{" "}
-              <span className="relative inline-block font-medium text-foreground">
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-[-0.08em] bottom-0 top-[0.5em] -z-10 bg-accent dark:bg-accent/30"
-                />
-                dedicated 24/7 support
-              </span>
+              <span className="font-medium text-primary">dedicated 24/7 support</span>
               .
             </p>
           </Reveal>

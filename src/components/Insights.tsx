@@ -50,14 +50,7 @@ export const Insights = () => {
               className="mb-16 md:mb-20"
               title={
                 <span id="process-heading">
-                  Our{" "}
-                  <span className="relative inline-block">
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
-                    />
-                    Process
-                  </span>
+                  Our <span className="text-primary">Process</span>
                 </span>
               }
             />

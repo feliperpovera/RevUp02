@@ -56,14 +56,7 @@ export const Vision = () => {
               <SectionHeading
                 title={
                   <>
-                    About{" "}
-                    <span className="relative inline-block">
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
-                      />
-                      RevUp
-                    </span>
+                    About <span className="text-primary">RevUp</span>
                   </>
                 }
               />

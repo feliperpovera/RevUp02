@@ -159,16 +159,8 @@ export const Hero = () => {
                     variants={wordVariants}
                     initial={prefersReducedMotion ? false : "hidden"}
                     animate="visible"
-                    className="relative mr-[0.28em] inline-block text-foreground"
+                    className="mr-[0.28em] inline-block text-primary"
                   >
-                    {/* Electric Green marker behind the closing words */}
-                    <motion.span
-                      aria-hidden="true"
-                      initial={prefersReducedMotion ? false : { scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.6, delay: 0.9 + i * 0.15, ease: EASE }}
-                      className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 origin-left bg-accent dark:bg-accent/30"
-                    />
                     {word}
                   </motion.span>
                 ))}
@@ -247,10 +239,7 @@ export const Hero = () => {
                 <div className="mb-2">
                   <h2 className="font-heading text-2xl text-foreground md:text-[1.7rem]">
                     Get a{" "}
-                    <span className="relative inline-block">
-                      <span className="absolute inset-x-[-0.1em] bottom-0 top-[0.5em] -z-10 bg-accent dark:bg-accent/30" aria-hidden="true" />
-                      Free Quote
-                    </span>
+                    <span className="text-primary">Free Quote</span>
                   </h2>
                   <p className="mt-1.5 text-sm font-light text-stone">Tell us about your project</p>
                 </div>

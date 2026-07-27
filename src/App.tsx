@@ -18,6 +18,7 @@ const ProcessPage = lazy(() => import("./pages/ProcessPage"));
 const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
+const GraciasPage = lazy(() => import("./pages/GraciasPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const AdminLoginPage = lazy(() => import("./pages/admin/AdminLoginPage"));
@@ -38,7 +39,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <AnimatedBackground />
             <Suspense fallback={<RouteLoadingFallback />}>
@@ -52,6 +53,8 @@ const App = () => (
                 <Route path="/testimonials" element={<TestimonialsPage />} />
                 <Route path="/onboarding" element={<OnboardingPage />} />
                 <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
+                <Route path="/gracias" element={<GraciasPage />} />
+                <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />
 
                 <Route path="/admin/login" element={<AdminLoginPage />} />
                 <Route path="/admin" element={<AdminDashboardPage />} />

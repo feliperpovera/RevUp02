@@ -120,14 +120,7 @@ export const Contact = () => {
                 id="contact-heading"
                 className="font-heading text-4xl leading-[1.05] text-foreground md:text-5xl lg:text-6xl"
               >
-                Let&apos;s Work{" "}
-                <span className="relative inline-block">
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-[-0.08em] bottom-[0.04em] top-[0.52em] -z-10 bg-accent dark:bg-accent/30"
-                  />
-                  Together
-                </span>
+                Let&apos;s Work <span className="text-primary">Together</span>
               </h2>
               <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-stone md:text-lg">
                 Ready to accelerate your digital growth? Get a free consultation from our marketing experts.
