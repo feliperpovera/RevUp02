@@ -25,9 +25,9 @@
     "semantic_hash": "c735540bb63936a123bc867d950c9f69"
   },
   "src/App.tsx": {
-    "mtime": 1785179941.483687,
-    "ast_hash": "2f50b4ce51eee4afd105e41e8c271f0c",
-    "semantic_hash": ""
+    "mtime": 1783527589.146068,
+    "ast_hash": "75b0f821e8911e58569ef28f44636ba2",
+    "semantic_hash": "75b0f821e8911e58569ef28f44636ba2"
   },
   "src/components/AnimatedBackground.tsx": {
     "mtime": 1781123989.9719517,
@@ -555,8 +555,8 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1785179956.2583692,
-    "ast_hash": "40684b2dbee9add38e845cc40d51018c",
+    "mtime": 1783606910.1300373,
+    "ast_hash": "18c599e8e0754ed7944e8f9101dd369c",
     "semantic_hash": ""
   },
   "public/robots.txt": {
@@ -647,16 +647,6 @@
   "src/assets/tiktok-logo.png": {
     "mtime": 1781138110.3920937,
     "ast_hash": "81c13c8fc5b3ac31eae18c1ba5938595",
-    "semantic_hash": ""
-  },
-  "src/config/tracking.ts": {
-    "mtime": 1785179893.5697732,
-    "ast_hash": "b9ac21e78f025c3f0f3adeea698e3846",
-    "semantic_hash": ""
-  },
-  "src/pages/GraciasPage.tsx": {
-    "mtime": 1785179920.7445023,
-    "ast_hash": "5be277d880338ad38004d8e5f05f4642",
     "semantic_hash": ""
   }
 }
