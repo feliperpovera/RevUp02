@@ -95,7 +95,7 @@ export const Testimonials = () => {
                     alt={`${client.company} logo`}
                     loading="lazy"
                     style={{ width: logoWidth(client.ar) }}
-                    className="h-auto max-w-full object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
+                    className="h-auto max-w-full object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 dark:invert dark:mix-blend-screen dark:group-hover:grayscale"
                   />
                   <span className="text-center font-heading text-base text-foreground/70 transition-colors duration-300 group-hover:text-performance md:text-lg">
                     {client.company}

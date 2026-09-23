@@ -15,7 +15,7 @@ export const Partners = () => {
     { name: "Google", logo: googleLogo },
     { name: "TikTok", logo: tiktokLogo },
     { name: "Shopify", logo: shopifyLogo },
-    { name: "ChatGPT", logo: chatgptLogo },
+    { name: "ChatGPT", logo: chatgptLogo, invertOnDark: true },
   ];
 
   return (
@@ -73,7 +73,7 @@ export const Partners = () => {
                     <img
                       src={partner.logo}
                       alt={`${partner.name} certified partner - Professional ${partner.name} advertising and marketing management`}
-                      className="max-h-12 w-auto max-w-[110px] object-contain opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-14 md:max-w-[130px]"
+                      className={`max-h-12 w-auto max-w-[110px] object-contain opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-14 md:max-w-[130px] ${"invertOnDark" in partner ? "dark:invert" : ""}`}
                       loading="lazy"
                     />
                     <span className="flex items-center gap-2 font-heading text-base text-foreground/70 transition-colors duration-300 group-hover:text-performance md:text-lg">
