@@ -1,0 +1,10 @@
+name = "revup-agency"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-01"
+
+# Public config for functions/api/submit.ts. RESEND_API_KEY is a secret:
+#   npx wrangler pages secret put RESEND_API_KEY
+[vars]
+NOTIFY_TO = "info@revupagencygroup.com"
+# Switch to "RevUp Website <forms@revupagencygroup.com>" once the domain is verified in Resend.
+MAIL_FROM = "RevUp Website <onboarding@resend.dev>"

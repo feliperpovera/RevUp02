@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Instagram } from "lucide-react";
+import { ArrowUpRight, Instagram, MessageCircle } from "lucide-react";
 import revupLogoMain from "@/assets/revup-logo-main.png";
-import { CALENDLY_URL } from "@/config/links";
+import { CALENDLY_URL, WHATSAPP_URL } from "@/config/links";
 import { DeviceAsterisk, Reveal } from "@/components/brand/kit";
 
 const QUICK_LINKS = [
@@ -16,6 +16,7 @@ const QUICK_LINKS = [
 export const Footer = () => {
   const socialLinks = [
     { icon: Instagram, href: "https://www.instagram.com/revupagencygroup/", label: "Instagram" },
+    { icon: MessageCircle, href: WHATSAPP_URL, label: "WhatsApp" },
   ];
 
   return (
@@ -39,7 +40,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-[1.4fr_1fr_1.2fr_0.7fr] lg:gap-10">
           {/* Brand */}
           <Reveal delay={0}>
-            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-14 w-auto md:h-16" />
+            <img src={revupLogoMain} alt="RevUp Agency Group Logo" className="h-16 w-auto md:h-20" />
             <p className="mt-5 max-w-xs text-sm font-light leading-relaxed text-cream/60 md:text-base">
               Grow smarter. Move faster. Data-driven digital marketing excellence.
             </p>
@@ -95,19 +96,6 @@ export const Footer = () => {
               Let&apos;s talk.
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-          </Reveal>
-
-          {/* Admin */}
-          <Reveal delay={0.3}>
-            <h3 className="text-xs font-medium uppercase tracking-[0.3em] text-cream/50">
-              Admin
-            </h3>
-            <Link
-              to="/admin/login"
-              className="mt-6 inline-block text-sm font-light text-cream/70 transition-colors duration-300 hover:text-accent md:text-base"
-            >
-              Admin Portal
-            </Link>
           </Reveal>
         </div>
 

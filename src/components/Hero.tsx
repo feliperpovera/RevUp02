@@ -11,8 +11,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { getEdgeFunctionErrorMessage } from "@/lib/edgeFunctionError";
-import { supabaseClient } from "@/lib/supabaseClient";
+import { submitForm } from "@/lib/submitForm";
 import { openCalendly } from "@/config/links";
 import { BrandCard, DeviceArrow, Eyebrow, Marquee } from "@/components/brand/kit";
 import metaLogo from "@/assets/meta-logo-new.png";
@@ -66,8 +65,7 @@ export const Hero = () => {
     setSubmitting(true);
 
     try {
-      const { data: result, error: fnError } = await supabaseClient.functions.invoke("submit-lead", {
-        body: {
+      await submitForm("lead", {
           full_name: name.trim(),
           email: email.trim().toLowerCase(),
           phone: phone.trim() || "",
@@ -77,16 +75,7 @@ export const Hero = () => {
           project_description: `Quick Quote – Service: ${service} | Budget: ${budget}`,
           consent: true,
           source_form: "hero_quick_quote",
-        },
-      });
-
-      if (fnError) {
-        throw fnError;
-      }
-
-      if (result && result.error) {
-        throw new Error(result.error);
-      }
+        });
 
       toast.success("Quote request sent! We'll get back to you soon.");
       setName("");
@@ -95,11 +84,7 @@ export const Hero = () => {
       setService("");
       setBudget("");
     } catch (error: unknown) {
-      const errorMessage = await getEdgeFunctionErrorMessage(
-        error,
-        "Could not save your request. Please try again."
-      );
-      toast.error(errorMessage);
+      toast.error(error instanceof Error ? error.message : "Could not send your request. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -133,7 +118,7 @@ export const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <Eyebrow index="001" label="Digital Growth Agency" className="mb-10 max-w-md" />
+              <Eyebrow index="001" label="Growth partner for US businesses" className="mb-10 max-w-md" />
             </motion.div>
 
             <h1 className="font-heading text-[2.9rem] leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.2rem]">
@@ -173,7 +158,7 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.8, ease: EASE }}
               className="mt-8 max-w-xl text-lg font-light leading-relaxed text-stone md:text-xl"
             >
-              Boost revenue, reduce workload, and scale faster &amp; smarter with data and AI — let
+              From Main Street shops to national brands, we help small and large businesses across the USA win more customers with ads, websites and AI. Tell us where you want to go — let
               us show you how.
             </motion.p>
 
@@ -188,7 +173,7 @@ export const Hero = () => {
                 onClick={openCalendly}
                 className="group h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
               >
-                Work With Us
+                Book a free call
                 <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
               <Button
@@ -199,7 +184,7 @@ export const Hero = () => {
                 }
                 className="h-14 rounded-full border-foreground/20 px-8 text-base font-medium hover:border-performance hover:bg-transparent hover:text-performance"
               >
-                Get a Free Quote
+                Get my free quote
               </Button>
             </motion.div>
 
@@ -332,12 +317,12 @@ export const Hero = () => {
                   disabled={submitting}
                   className="h-12 w-full rounded-full bg-primary text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg"
                 >
-                  {submitting ? "Sending…" : "Request Free Quote"}
+                  {submitting ? "Sending…" : "Send me my free quote"}
                   {!submitting && <Send className="ml-2 h-4 w-4" />}
                 </Button>
 
                 <p className="text-center text-[11px] font-light text-stone">
-                  No commitment required. We'll respond within 24 hours.
+                  No pressure, no commitment — a real person replies within 24 hours.
                 </p>
               </form>
             </BrandCard>

@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -21,9 +21,6 @@ const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
 const GraciasPage = lazy(() => import("./pages/GraciasPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const AdminLoginPage = lazy(() => import("./pages/admin/AdminLoginPage"));
-const AdminDashboardPage = lazy(() => import("./pages/admin/AdminDashboardPage"));
-
 const queryClient = new QueryClient();
 
 const RouteLoadingFallback = () => (
@@ -35,13 +32,13 @@ const RouteLoadingFallback = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-      <AuthProvider>
-        <TooltipProvider>
+      <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <AnimatedBackground />
+            <WhatsAppButton />
             <Suspense fallback={<RouteLoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -56,20 +53,12 @@ const App = () => (
                 <Route path="/gracias" element={<GraciasPage />} />
                 <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />
 
-                <Route path="/admin/login" element={<AdminLoginPage />} />
-                <Route path="/admin" element={<AdminDashboardPage />} />
-                <Route path="/employee-login" element={<Navigate to="/admin/login" replace />} />
-                <Route path="/employee-portal" element={<Navigate to="/admin" replace />} />
-                <Route path="/client-portal" element={<Navigate to="/admin/login" replace />} />
-                <Route path="/portal/*" element={<Navigate to="/admin/login" replace />} />
-
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </BrowserRouter>
         </TooltipProvider>
-      </AuthProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

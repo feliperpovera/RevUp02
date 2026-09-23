@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { openCalendly } from "@/config/links";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Menu, UserRound } from "lucide-react";
+import { ArrowUpRight, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
@@ -44,10 +44,10 @@ export const Navbar = () => {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center">
-          <img src={currentLogo} alt="RevUp Agency Group Logo" className="h-10 md:h-11" />
+          <img src={currentLogo} alt="RevUp Agency Group Logo" className="h-14 md:h-16" />
         </Link>
 
         {/* Desktop menu */}
@@ -65,21 +65,12 @@ export const Navbar = () => {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex">
-          <Link to="/admin/login" aria-label="Admin Portal">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full text-foreground/60 hover:text-foreground"
-            >
-              <UserRound className="h-5 w-5" />
-            </Button>
-          </Link>
           <ThemeToggle />
           <Button
             onClick={openCalendly}
             className="group rounded-full bg-primary px-6 font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:pl-5 hover:pr-7"
           >
-            Work With Us
+            Book a free call
             <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
         </div>
@@ -106,14 +97,6 @@ export const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                to="/admin/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 text-lg text-foreground/70 transition-colors hover:text-performance"
-              >
-                <UserRound className="h-5 w-5" />
-                Admin Portal
-              </Link>
               <Button
                 className="mt-4 rounded-full bg-primary font-semibold text-primary-foreground hover:bg-primary/90"
                 onClick={() => {
@@ -121,7 +104,7 @@ export const Navbar = () => {
                   setMobileMenuOpen(false);
                 }}
               >
-                Work With Us
+                Book a free call
                 <ArrowUpRight className="ml-1.5 h-4 w-4" />
               </Button>
             </div>

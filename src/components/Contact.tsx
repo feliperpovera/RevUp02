@@ -4,8 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Check, Send } from "lucide-react";
 import { toast } from "sonner";
-import { getEdgeFunctionErrorMessage } from "@/lib/edgeFunctionError";
-import { supabase } from "@/integrations/supabase/client";
+import { submitForm } from "@/lib/submitForm";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -28,7 +27,7 @@ const INITIAL_STATE: FormState = {
 
 const TRUST_ITEMS = [
   "We'll respond within 24 hours.",
-  "Your data is stored securely. We never share your information.",
+  "Your information stays private. We never share it.",
 ];
 
 const INPUT_CLASS = "h-12 rounded-xl border-foreground/15 bg-background/60 focus:border-performance";
@@ -64,35 +63,19 @@ export const Contact = () => {
     setSubmitting(true);
 
     try {
-      // ── 1. Persist to Supabase ────────────────────────────────────────────
-      // ── 1. Call secure Edge Function ──────────────────────────────────────
-      const { data: result, error: fnError } = await supabase.functions.invoke("send-contact-email", {
-        body: {
+      await submitForm("contact", {
           name: form.name.trim(),
           email: form.email.trim().toLowerCase(),
           phone: form.phone.trim() || "",
           company: form.company.trim() || "",
           message: form.message.trim(),
           source_form: "contact_page",
-        },
-      });
-
-      if (fnError) {
-        throw fnError;
-      }
-
-      if (result && result.error) {
-        throw new Error(result.error);
-      }
+        });
 
       toast.success("Message sent! We'll get back to you within 24 hours.");
       setForm(INITIAL_STATE);
     } catch (error: unknown) {
-      const errorMessage = await getEdgeFunctionErrorMessage(
-        error,
-        "Could not save your message. Please try again."
-      );
-      toast.error(errorMessage);
+      toast.error(error instanceof Error ? error.message : "Could not send your message. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -123,7 +106,7 @@ export const Contact = () => {
                 Let&apos;s Work <span className="text-primary">Together</span>
               </h2>
               <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-stone md:text-lg">
-                Ready to accelerate your digital growth? Get a free consultation from our marketing experts.
+                Whether you run a local shop or a national brand, tell us about your goals. We'll reply within 24 hours with honest, practical ideas — free.
               </p>
             </Reveal>
 
@@ -246,14 +229,14 @@ export const Contact = () => {
                   aria-label="Submit contact form"
                   className="group h-12 w-full rounded-full bg-primary text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg"
                 >
-                  {submitting ? "Sending…" : "Send Message"}
+                  {submitting ? "Sending…" : "Send my message"}
                   {!submitting && (
                     <Send className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   )}
                 </Button>
 
                 <p className="text-center text-[11px] font-light text-stone">
-                  Your data is stored securely. We never share your information.
+                  Your information stays private. We never share it.
                 </p>
               </form>
             </BrandCard>

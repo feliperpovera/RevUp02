@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/integrations/supabase/client";
+import { submitForm } from "@/lib/submitForm";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
@@ -191,9 +191,7 @@ export const OnboardingForm = () => {
         if (!ok) throw new Error(error);
       }
 
-      // ── 1. Call secure Edge Function ──────────────────────────────────────
-      const { data: result, error: fnError } = await supabase.functions.invoke("send-onboarding-email", {
-        body: {
+      await submitForm("onboarding", {
           hasStrategy: data.hasStrategy,
           strategyDetails: sanitize(data.strategyDetails),
           googlePercentage: data.googlePercentage,
@@ -209,12 +207,7 @@ export const OnboardingForm = () => {
           googleAdsReportName: data.googleAdsReport?.name,
           metaAdsReportName: data.metaAdsReport?.name,
           sourceForm: "onboarding_form",
-        },
-      });
-
-      if (fnError || (result && result.error)) {
-        throw new Error(fnError?.message || result?.error || "Could not save your information. Please try again.");
-      }
+        });
 
       setSubmitted(true);
       toast({
