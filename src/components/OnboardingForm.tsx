@@ -21,7 +21,7 @@ import {
   FileText,
   Home,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { submitForm } from "@/lib/submitForm";
 
@@ -97,6 +97,7 @@ const isUrl = (s: string) => {
 
 // ── Component ────────────────────────────────────────────────────────────────
 export const OnboardingForm = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(INITIAL);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -209,11 +210,7 @@ export const OnboardingForm = () => {
           sourceForm: "onboarding_form",
         });
 
-      setSubmitted(true);
-      toast({
-        title: "Form submitted!",
-        description: "We received your information and will contact you soon.",
-      });
+      navigate("/gracias?source=onboarding");
     } catch (err: unknown) {
       const errorMessage = err instanceof Error
         ? err.message

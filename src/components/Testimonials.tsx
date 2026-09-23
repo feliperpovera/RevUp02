@@ -18,20 +18,21 @@ import invirtiendoLogo from "@/assets/clients/invirtiendo-logo.png";
 import xpressfoamLogo from "@/assets/clients/xpressfoam-logo.png";
 import maylinLogo from "@/assets/clients/maylin-logo.png";
 
-const CLIENTS = [
-  { company: "Vélez", logo: velezLogo },
-  { company: "Monastery Couture", logo: monasteryLogo },
-  { company: "Distrihogar", logo: distrihogarLogo },
+// url: client website; leave out until confirmed.
+const CLIENTS: { company: string; logo: string; url?: string }[] = [
+  { company: "Vélez", logo: velezLogo , url: "https://www.velez.com.co" },
+  { company: "Monastery Couture", logo: monasteryLogo , url: "https://www.monasterycouture.com" },
+  { company: "Distrihogar", logo: distrihogarLogo , url: "https://distrihogar.com" },
   { company: "MIAN", logo: mianLogo },
-  { company: "New Life Furniture", logo: newlifeLogo },
+  { company: "New Life Furniture", logo: newlifeLogo , url: "https://newlifefurniture.com" },
   { company: "IntraWest Management", logo: intrawestLogo },
   { company: "Host U", logo: hostuLogo },
-  { company: "European Luxury Wall Finishes", logo: europeanLogo },
-  { company: "Vera Seguros", logo: veraLogo },
-  { company: "Hera 23", logo: hera23Logo },
+  { company: "European Luxury Wall Finishes", logo: europeanLogo , url: "https://europeanluxurywallfinishes.com" },
+  { company: "Vera Seguros", logo: veraLogo , url: "https://veraseguros.com" },
+  { company: "Hera 23", logo: hera23Logo , url: "https://hera23.com" },
   { company: "Invirtiendo", logo: invirtiendoLogo },
-  { company: "Xpress Foam", logo: xpressfoamLogo },
-  { company: "Maylin Mattress", logo: maylinLogo },
+  { company: "Xpress Foam", logo: xpressfoamLogo , url: "https://xpressfoam.com" },
+  { company: "Maylin Mattress", logo: maylinLogo , url: "https://maylinmattress.com" },
 ];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
@@ -73,6 +74,13 @@ export const Testimonials = () => {
                 delay={(index % 5) * 0.08}
                 className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
               >
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={client.url ? `Visit ${client.company} website` : undefined}
+                  className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
                 <BrandCard
                   corner={CORNERS[index % CORNERS.length]}
                   className="group flex h-full min-h-[180px] flex-col items-center justify-center gap-5 p-6 md:min-h-[200px] md:p-8"
@@ -87,6 +95,7 @@ export const Testimonials = () => {
                     {client.company}
                   </span>
                 </BrandCard>
+                </a>
               </Reveal>
             ))}
           </ul>

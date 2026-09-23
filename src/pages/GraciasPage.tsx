@@ -1,25 +1,28 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Check, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackWhatsAppLead } from "@/config/tracking";
+import { trackLead } from "@/config/tracking";
 import revupLogoLight from "@/assets/revup-logo-light.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /**
- * WhatsApp conversion thank-you page (/gracias).
- * Fires the `whatsapp_lead` attribution event on load (GTM dataLayer +
- * optional direct Meta Pixel), then offers a single path back home.
+ * Single thank-you page for every CTA (/gracias?source=...).
+ * Fires the `lead` attribution event on load (GTM dataLayer + optional
+ * direct Meta Pixel), then offers a single path back home.
  * Deliberately distraction-free: logo, confirmation, one button.
  */
 const GraciasPage = () => {
   const prefersReducedMotion = useReducedMotion();
 
+  const [params] = useSearchParams();
+  const source = params.get("source") || "whatsapp";
+
   useEffect(() => {
-    trackWhatsAppLead();
-  }, []);
+    trackLead(source);
+  }, [source]);
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background px-4">
@@ -59,7 +62,7 @@ const GraciasPage = () => {
         >
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             <MessageCircle className="h-3.5 w-3.5" />
-            Message received
+            Request received
           </p>
 
           <h1 className="font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
@@ -69,8 +72,8 @@ const GraciasPage = () => {
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-base font-light leading-relaxed text-stone md:text-lg">
-            Your message is in our inbox. Our team will get back to you on
-            WhatsApp within 24 hours.
+            Your request is in our inbox. Our team will get back to you
+            {source === "whatsapp" ? " on WhatsApp" : ""} within 24 hours.
           </p>
         </motion.div>
 

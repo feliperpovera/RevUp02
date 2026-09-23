@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,6 +34,7 @@ const TRUST_ITEMS = [
 const INPUT_CLASS = "h-12 rounded-xl border-foreground/15 bg-background/60 focus:border-performance";
 
 export const Contact = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState<FormState>(INITIAL_STATE);
   const [submitting, setSubmitting] = useState(false);
 
@@ -72,7 +74,7 @@ export const Contact = () => {
           source_form: "contact_page",
         });
 
-      toast.success("Message sent! We'll get back to you within 24 hours.");
+      navigate("/gracias?source=contact");
       setForm(INITIAL_STATE);
     } catch (error: unknown) {
       toast.error(error instanceof Error ? error.message : "Could not send your message. Please try again.");

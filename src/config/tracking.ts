@@ -49,15 +49,18 @@ const loadMetaPixel = (pixelId: string) => {
   window.fbq("track", "PageView");
 };
 
-/** Fire the WhatsApp-lead conversion signals. Safe to call once per visit. */
-export const trackWhatsAppLead = () => {
-  // 1) GTM dataLayer — map this event to your pixel/tags in Tag Manager.
+/**
+ * Fire the lead conversion signals from the thank-you page. Every CTA lands
+ * there with ?source= (quote | contact | onboarding | whatsapp).
+ */
+export const trackLead = (source: string) => {
+  // 1) GTM dataLayer — map `lead` to your pixel/tags in Tag Manager.
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "whatsapp_lead",
-    lead_source: "whatsapp",
-    page: "/gracias",
-  });
+  window.dataLayer.push({ event: "lead", lead_source: source, page: "/gracias" });
+  // Kept for the existing WhatsApp ads trigger in GTM.
+  if (source === "whatsapp") {
+    window.dataLayer.push({ event: "whatsapp_lead", lead_source: source, page: "/gracias" });
+  }
 
   // 2) Direct Meta Pixel (only when META_PIXEL_ID is configured).
   if (META_PIXEL_ID) {

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Send } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import {
@@ -42,6 +43,7 @@ const STATS = [
 ];
 
 export const Hero = () => {
+  const navigate = useNavigate();
   const prefersReducedMotion = useReducedMotion();
 
   // Form state
@@ -79,7 +81,7 @@ export const Hero = () => {
           source_form: "hero_quick_quote",
         });
 
-      toast.success("Quote request sent! We'll get back to you soon.");
+      navigate("/gracias?source=quote");
       setName("");
       setEmail("");
       setPhone("");
