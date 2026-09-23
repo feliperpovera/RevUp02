@@ -18,6 +18,7 @@ import metaLogo from "@/assets/meta-logo-new.png";
 import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
+import chatgptLogo from "@/assets/chatgpt-logo.svg";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -31,6 +32,7 @@ const PARTNER_LOGOS = [
   { name: "Google", logo: googleLogo },
   { name: "TikTok", logo: tiktokLogo },
   { name: "Shopify", logo: shopifyLogo },
+  { name: "ChatGPT", logo: chatgptLogo },
 ];
 
 const STATS = [

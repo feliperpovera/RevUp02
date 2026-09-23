@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Eyebrow, GiantNumeral, Marquee, Reveal, SectionHeading } from "@/components/brand/kit";
+import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 import { openCalendly } from "@/config/links";
 
 // Import client logos
@@ -10,58 +10,21 @@ import hostuLogo from "@/assets/clients/hostu-logo.jpeg";
 import europeanLogo from "@/assets/clients/european-logo.png";
 import velezLogo from "@/assets/clients/velez-logo.png";
 import intrawestLogo from "@/assets/clients/intrawest-logo.png";
+import monasteryLogo from "@/assets/clients/monastery-logo.png";
+import distrihogarLogo from "@/assets/clients/distrihogar-logo.png";
 
-// Real results only — add a client quote here once you have one approved.
 const CLIENTS = [
-  {
-    company: "MIAN",
-    industry: "E-commerce",
-    logo: mianLogo,
-    result: "20.2x",
-    resultLabel: "Return on ad spend",
-    story: "Every $1 they invested in ads came back as $20.20 in sales.",
-  },
-  {
-    company: "New Life Furniture",
-    industry: "Home & Living",
-    logo: newlifeLogo,
-    result: "7.4x",
-    resultLabel: "Return on ad spend",
-    story: "Every $1 in ads turned into $7.40 in furniture sales.",
-  },
-  {
-    company: "Vélez",
-    industry: "Retail & Fashion",
-    logo: velezLogo,
-    result: "Full",
-    resultLabel: "US ad management",
-    story: "We run their entire advertising process in the USA.",
-  },
-  {
-    company: "IntraWest Management",
-    industry: "Real Estate",
-    logo: intrawestLogo,
-    result: "Full",
-    resultLabel: "US ad management",
-    story: "We handle their full advertising process in the USA.",
-  },
-  {
-    company: "Host U",
-    industry: "Web Development",
-    logo: hostuLogo,
-    result: "New",
-    resultLabel: "Website built",
-    story: "We built their complete web presence from scratch.",
-  },
-  {
-    company: "European Luxury Wall Finishes",
-    industry: "Web Development",
-    logo: europeanLogo,
-    result: "New",
-    resultLabel: "Website built",
-    story: "We created a complete web presence that shows off their craft.",
-  },
+  { company: "Vélez", logo: velezLogo },
+  { company: "Monastery Couture", logo: monasteryLogo },
+  { company: "Distrihogar", logo: distrihogarLogo },
+  { company: "MIAN", logo: mianLogo },
+  { company: "New Life Furniture", logo: newlifeLogo },
+  { company: "IntraWest Management", logo: intrawestLogo },
+  { company: "Host U", logo: hostuLogo },
+  { company: "European Luxury Wall Finishes", logo: europeanLogo },
 ];
+
+const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 export const Testimonials = () => {
   return (
@@ -75,77 +38,46 @@ export const Testimonials = () => {
 
       <div className="container relative z-10 mx-auto px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
-          {/* Header */}
           <Reveal>
-            <Eyebrow index="003" label="Clients & Results" tone="light" className="mb-10" />
+            <Eyebrow index="003" label="Our Clients" tone="light" className="mb-10" />
           </Reveal>
 
-          <Reveal delay={0.1} className="max-w-3xl">
+          <Reveal delay={0.1} className="mb-14 max-w-3xl md:mb-20">
             <SectionHeading
               tone="light"
               title={
                 <span id="testimonials-heading">
-                  Real businesses. <span className="text-accent">Real results.</span>
+                  Brands that <span className="text-accent">grow with us.</span>
                 </span>
               }
-              lede="Small and large businesses across the USA trust us with their growth. Here's what we've achieved together."
+              lede="Small and large businesses across the USA trust us with their growth."
             />
           </Reveal>
-        </div>
-      </div>
 
-      {/* Monochrome client logo carousel — white-bg logos knocked out via
-          invert + mix-blend-screen so only the mark shows on graphite */}
-      <Reveal delay={0.2}>
-        <Marquee duration={32} className="mt-14 md:mt-16">
-          {Array.from({ length: 3 }).flatMap((_, copy) =>
-            CLIENTS.map((client) => (
-              // bg-graphite inside the blend group: the marquee's transform
-              // isolates blending, so the backdrop must be painted in here
-              <span key={`${copy}-${client.company}`} className="mx-12 bg-graphite">
-                <img
-                  src={client.logo}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  className="h-14 w-auto object-contain opacity-60 grayscale invert mix-blend-screen transition-opacity hover:opacity-100 md:h-16"
-                />
-              </span>
-            ))
-          )}
-        </Marquee>
-      </Reveal>
-
-      {/* Client stories */}
-      <div className="container relative z-10 mx-auto mt-16 px-4 md:mt-20 md:px-8">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {CLIENTS.map((client, i) => (
-            <Reveal key={client.company} delay={(i % 3) * 0.1}>
-              <article className="group flex h-full flex-col rounded-3xl border border-cream/10 bg-cream/[0.05] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-accent/40 hover:bg-cream/[0.08] md:p-8">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-heading text-5xl leading-none text-accent md:text-6xl">{client.result}</span>
-                  <span className="text-xs font-medium uppercase tracking-[0.2em] text-cream/50">
-                    {client.resultLabel}
+          {/* Client logos — same card treatment as Official Partners */}
+          <ul className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+            {CLIENTS.map((client, index) => (
+              <Reveal as="li" key={client.company} delay={(index % 4) * 0.1}>
+                <BrandCard
+                  corner={CORNERS[index % CORNERS.length]}
+                  className="group flex h-full min-h-[180px] flex-col items-center justify-center gap-5 p-6 md:min-h-[200px] md:p-8"
+                >
+                  <img
+                    src={client.logo}
+                    alt={`${client.company} logo`}
+                    loading="lazy"
+                    className="max-h-14 w-auto max-w-[150px] object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-16 md:max-w-[170px]"
+                  />
+                  <span className="text-center font-heading text-base text-foreground/70 transition-colors duration-300 group-hover:text-performance md:text-lg">
+                    {client.company}
                   </span>
-                </div>
-
-                <p className="mt-6 flex-1 text-lg font-light leading-relaxed text-cream/85">{client.story}</p>
-
-                <div className="mt-8 flex items-center gap-4 border-t border-cream/10 pt-6">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white p-1.5">
-                    <img src={client.logo} alt={`${client.company} logo`} loading="lazy" className="max-h-full max-w-full object-contain" />
-                  </span>
-                  <span>
-                    <span className="block font-heading text-lg leading-tight text-cream">{client.company}</span>
-                    <span className="text-xs uppercase tracking-[0.2em] text-cream/50">{client.industry}</span>
-                  </span>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                </BrandCard>
+              </Reveal>
+            ))}
+          </ul>
 
           {/* Friendly CTA */}
-          <Reveal className="md:col-span-2 lg:col-span-3">
+          <Reveal className="mt-10">
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-accent p-8 md:flex-row md:items-center md:p-10">
               <div>
                 <p className="font-heading text-3xl leading-tight text-graphite md:text-4xl">Your business could be next.</p>

@@ -5,6 +5,7 @@ import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
+import chatgptLogo from "@/assets/chatgpt-logo.svg";
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
@@ -14,6 +15,7 @@ export const Partners = () => {
     { name: "Google", logo: googleLogo },
     { name: "TikTok", logo: tiktokLogo },
     { name: "Shopify", logo: shopifyLogo },
+    { name: "ChatGPT", logo: chatgptLogo },
   ];
 
   return (
@@ -50,13 +52,13 @@ export const Partners = () => {
 
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-2xl text-base font-light leading-relaxed text-stone md:text-lg">
-                Certified digital marketing partners with Meta, Google Ads, TikTok, and
-                Shopify—delivering expert campaign management and e-commerce solutions
+                Certified digital marketing partners with Meta, Google Ads, TikTok, Shopify and
+                ChatGPT—delivering expert campaign management, e-commerce and AI solutions
               </p>
             </Reveal>
           </header>
 
-          <ul className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
             {partners.map((partner, index) => (
               <Reveal as="li" key={partner.name} delay={index * 0.1}>
                 <Link
