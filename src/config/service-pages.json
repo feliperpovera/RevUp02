@@ -102,6 +102,119 @@
       "Law firms",
       "Real estate",
       "Insurance"
+    ],
+    "plans": [
+      "search",
+      "all-ads",
+      "complete"
+    ]
+  },
+  {
+    "path": "/seo-for-service-businesses",
+    "name": "SEO for Service Businesses",
+    "title": "Local SEO for Contractors & Service Businesses | RevUp",
+    "description": "Local SEO services for contractors and service businesses in the USA: Google Maps, Business Profile and service pages built to win calls. Book a free call.",
+    "eyebrow": "Local SEO",
+    "h1": "Local SEO that helps customers find your service business — and call",
+    "intro": "When a pipe bursts or the AC quits, your next customer grabs their phone and searches Google. The companies that show up in Google Maps and the top local results are the ones most likely to get the call. RevUp offers local SEO services built for service businesses — plumbers, HVAC and roofing contractors, cleaning and landscaping companies, clinics and professional services across the USA. We start with a complete SEO launch, then manage your Google Business Profile, service pages and reviews every month to help you earn more calls you don't pay for per click. Run it on its own, or pair it with Google, Meta and TikTok ads for a complete SEO + SEM growth package.",
+    "why": [
+      "Service businesses live and die by local search. When someone types \"plumber near me\", \"AC repair\" or \"roof replacement Tampa\" into Google, the businesses in the map results and the first organic listings get most of the attention — and calls from organic results don't cost you anything per click. But local SEO has a lot of moving parts. A Google Business Profile with the wrong categories, a name and phone number that don't match across directories, one generic \"Services\" page instead of a page for each service and city, and too few recent reviews can keep a great company invisible. SEO also doesn't switch on overnight: it builds over months, which is why the sooner you start, the sooner that work adds up.",
+      "That's why we build SEO and SEM together. Paid ads on Google, Meta and TikTok can start bringing calls as soon as campaigns go live, while SEO builds organic traffic you don't pay for per click. The two feed each other: Google Ads search terms show which keywords turn into calls and leads, so SEO focuses on the searches that pay, and the service pages we optimize for SEO also become stronger landing pages for your ads. When you show up in both the ads and the organic results for the same search, you take more space on the page and give customers more chances to choose you. One strategy, one team and one monthly report — with local SEO on its own, or as part of the complete SEO + SEM package."
+    ],
+    "included": [
+      {
+        "title": "SEO launch & audit",
+        "text": "A one-time kickoff: technical review of your website, a look at the local competitors showing up ahead of you and keyword research by service and city, so we start with a clear plan."
+      },
+      {
+        "title": "Google Business Profile optimization",
+        "text": "Categories, services, service areas, photos, hours and descriptions set up to compete in Google Maps and the local map pack — then kept active with monthly posts and updates."
+      },
+      {
+        "title": "Service & city pages",
+        "text": "On-page SEO for the pages that sell: a clear page for each service and area you cover, with titles, headings, content and click-to-call built around how customers search."
+      },
+      {
+        "title": "Business listings cleanup",
+        "text": "Your business name, address and phone number made consistent across key directories, so Google and your customers see the same trusted information everywhere."
+      },
+      {
+        "title": "Review strategy",
+        "text": "A simple system to ask every customer for a review after the job and respond to each one, so your profile keeps building trust with every new search."
+      },
+      {
+        "title": "Monthly reporting",
+        "text": "Rankings, Google Business Profile calls and direction requests, website traffic and leads in one plain-language report, with what we're doing next."
+      }
+    ],
+    "process": [
+      {
+        "title": "SEO launch",
+        "text": "We audit your website, Google Business Profile and local competitors, research the keywords your customers use by service and city, and fix the technical basics."
+      },
+      {
+        "title": "Fix the foundation",
+        "text": "Your Google Business Profile, business listings and most profitable service pages are optimized so Google clearly understands what you do and where you do it."
+      },
+      {
+        "title": "Grow month by month",
+        "text": "Ongoing management: profile posts and updates, new and improved service and city pages, and a steady flow of reviews that builds your local visibility over time."
+      },
+      {
+        "title": "Measure & refine",
+        "text": "Monthly reports on rankings, calls and traffic. If you also run ads with us, real search data from your campaigns guides which keywords SEO targets next."
+      }
+    ],
+    "small": "For owner-operated service businesses, local SEO is a way to depend less on referrals and pay-per-lead apps. We start with what matters most — a complete Google Business Profile, consistent listings and a strong page for your most profitable service in your main city — then expand service by service. The monthly fee is flat and sized for small businesses, and you can add Google Ads anytime you need calls while SEO grows.",
+    "large": "For multi-location and larger service companies, we manage SEO per location: a Google Business Profile and location page for each market, consistent listings across every branch and reporting that shows visibility, calls and leads by city and service line — all in one strategy with your paid campaigns on Google, Meta and TikTok.",
+    "faqs": [
+      {
+        "q": "How long does SEO take to work?",
+        "a": "SEO is a long-term investment, and we'll be honest about that. Some fixes, like a complete Google Business Profile, can help sooner, but meaningful gains in rankings and organic calls typically take several months and depend on your competition, market and starting point. That's why many service businesses run Google Ads alongside SEO: ads bring calls now while SEO builds."
+      },
+      {
+        "q": "Can you guarantee a #1 ranking on Google?",
+        "a": "No — and be careful with anyone who does. Nobody controls Google's rankings. What we commit to is the work: a fully optimized Google Business Profile, strong service and city pages, clean listings, a steady review strategy and transparent monthly reports so you can see the progress yourself."
+      },
+      {
+        "q": "What's the difference between SEO and SEM?",
+        "a": "SEO (search engine optimization) earns free, organic visibility in Google Search and Google Maps over time. SEM (search engine marketing) usually means paid ads, like Google Ads, that can put you in front of searchers as soon as campaigns go live and stop when the budget stops. SEO builds a long-term asset; SEM can bring calls right away. Together, they cover both."
+      },
+      {
+        "q": "Why combine SEO with Google, Meta or TikTok ads?",
+        "a": "Because they make each other stronger. Ads bring leads while SEO grows. Google Ads data shows which searches turn into calls and leads, so SEO focuses on the keywords that pay. Meta and TikTok ads build awareness, so more local people recognize your name when they search. And one team runs the whole strategy with one monthly report."
+      },
+      {
+        "q": "How does SEO pricing work?",
+        "a": "Local SEO starts with a one-time SEO launch that covers the audit, keyword research and initial optimization, followed by a flat monthly management fee. You can also bundle SEO with Google Ads, or with every ad platform in our Complete Growth package, which costs less than hiring each service separately. Ad spend is paid directly to the ad platforms. See the plans on this page or ask us on a free call."
+      },
+      {
+        "q": "Do you optimize my Google Business Profile?",
+        "a": "Yes. It's a core part of local SEO for service businesses and what you need to compete in Google Maps. We set up your categories, services, service areas, photos and descriptions, keep the profile updated every month and help you earn more reviews."
+      },
+      {
+        "q": "Do I need a new website for SEO?",
+        "a": "Not necessarily. We usually work with your current website and improve its service and city pages, speed and on-page SEO. If your site is holding you back, we'll tell you honestly, and our web design team can build a fast, SEO-ready site."
+      }
+    ],
+    "industries": [
+      "Plumbing",
+      "HVAC",
+      "Roofing",
+      "Electrical",
+      "Landscaping & lawn care",
+      "Cleaning services",
+      "Home remodeling",
+      "Pest control",
+      "Auto repair",
+      "Medical & dental clinics",
+      "Med spas",
+      "Law firms"
+    ],
+    "plans": [
+      "seo",
+      "search",
+      "complete"
     ]
   },
   {
@@ -191,6 +304,11 @@
     "why": [
       "Google Ads is different from every other channel because it reaches people at the exact moment they are looking for a solution. Someone searching for \"emergency plumber near me\" or \"leather jackets for men\" is already close to buying. The challenge is that it's also easy to waste money: broad keywords, missing negative keywords, ads that send people to the wrong page and tracking that counts the wrong actions can quietly drain a budget.",
       "Our job is to close those leaks. We build around keywords with real purchase intent, add negative keywords every week based on actual search terms, match every ad to a relevant landing page and make sure Google is optimizing for revenue and qualified leads instead of cheap clicks. The result is an account where you can see exactly what each dollar returns — and decide with confidence when to invest more."
+    ],
+    "plans": [
+      "google",
+      "search",
+      "complete"
     ]
   },
   {
@@ -268,6 +386,11 @@
     "why": [
       "On Facebook and Instagram, people aren't searching for you — you're interrupting their feed. That means the creative does most of the work. The same product can succeed or fail depending on the first three seconds of a video, the offer in the headline or whether the ad looks like an ad at all. Meanwhile, privacy changes have made accurate tracking harder, so accounts without a proper Conversions API setup often optimize on incomplete data.",
       "We tackle both sides. On the creative side, we test hooks, formats and offers in a structured way instead of guessing, and we keep a steady flow of new ads so results don't fade as audiences see the same creative repeatedly. On the data side, we set up the Meta Pixel and Conversions API together so the algorithm learns from real purchases and leads. Better data plus better creative is what lets a Meta account scale profitably."
+    ],
+    "plans": [
+      "meta",
+      "all-ads",
+      "complete"
     ]
   },
   {
@@ -345,6 +468,11 @@
     "why": [
       "TikTok works differently from other ad platforms. The feed is full-screen, sound-on and driven by entertainment, so ads that look like traditional commercials get skipped in seconds. The brands that win on TikTok make ads that feel like the content people came to watch: real people, quick hooks, honest demonstrations and trends adapted to their product.",
       "That's why our TikTok work starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many brands, TikTok becomes a powerful way to reach new audiences that other channels miss."
+    ],
+    "plans": [
+      "tiktok",
+      "all-ads",
+      "complete"
     ]
   },
   {
@@ -599,6 +727,120 @@
         "q": "¿La cuenta de Google Ads es mía?",
         "a": "Sí. Tu cuenta, tus datos y tus anuncios siempre te pertenecen. Nosotros trabajamos dentro de tu cuenta con acceso de administrador."
       }
+    ],
+    "plans": [
+      "google",
+      "search",
+      "complete"
+    ]
+  },
+  {
+    "path": "/agencia-seo",
+    "lang": "es",
+    "name": "Agencia SEO en Español",
+    "title": "Agencia SEO en Español para Negocios de Servicios | RevUp",
+    "description": "Agencia SEO en español para negocios de servicios en USA. SEO local para aparecer en Google Maps cuando te buscan en tu ciudad. Agenda una llamada gratis.",
+    "eyebrow": "SEO Local en Español",
+    "h1": "Agencia SEO en español para que tu negocio de servicios aparezca en Google y Google Maps",
+    "intro": "¿Tus clientes llegan solo por recomendación o porque pagas anuncios cada mes? En RevUp somos una agencia de marketing digital en español que hace SEO para negocios de servicios en USA: plomeros, técnicos de aire acondicionado, contratistas de techos y remodelación, empresas de limpieza, clínicas y más. Trabajamos tu Perfil de Empresa de Google, tu página web y tu presencia local para que aparezcas en Google Maps y en las búsquedas de tu ciudad cuando alguien necesita lo que haces — en inglés y en español.",
+    "why": [
+      "Cuando se rompe el aire acondicionado o hay una fuga en la cocina, la gente saca el teléfono y busca \"AC repair near me\" o \"plomero cerca de mí\". Y suele llamar a uno de los negocios que ve en el mapa de Google o en los primeros resultados. Los lugares orgánicos del mapa y de los resultados no se pagan por clic: se ganan con SEO local. Si tu perfil está incompleto, tu web no dice qué haces ni en qué ciudades, o tus datos no coinciden en internet, lo más probable es que esa llamada se la lleve otro.",
+      "Muchos negocios hispanos en Estados Unidos hacen un trabajo excelente pero son casi invisibles en Google: el perfil está a medias, la web está solo en un idioma y nadie les ha explicado qué hacer. Nosotros hacemos SEO local pensado para negocios de servicios, en tu idioma, y trabajamos las búsquedas en inglés y en español porque así buscan tus clientes. Te hablamos claro: el posicionamiento en Google no es de un día para otro y nadie puede garantizarte el primer lugar. Toma meses de trabajo constante, pero tu perfil, tus reseñas y tus páginas siguen trabajando para ti sin cobrarte por clic — por eso, si necesitas llamadas ya, lo combinamos con Google Ads mientras el SEO crece."
+    ],
+    "included": [
+      {
+        "title": "Arranque SEO y auditoría",
+        "text": "Revisamos tu web, tu competencia local y las palabras clave que usan tus clientes en tu ciudad, en inglés y en español, y armamos el plan."
+      },
+      {
+        "title": "Perfil de Empresa de Google",
+        "text": "Optimizamos tu perfil (antes Google My Business): categorías, servicios, zonas que atiendes, fotos y horario, con actualizaciones cada mes."
+      },
+      {
+        "title": "SEO para tus servicios y ciudades",
+        "text": "Ajustamos títulos, textos y estructura de tus páginas para que Google entienda qué haces y dónde, y te decimos qué páginas te faltan."
+      },
+      {
+        "title": "Directorios y datos consistentes",
+        "text": "Corregimos tu nombre, dirección y teléfono en directorios como Bing Places, Apple Maps y Yelp para que tus datos sean los mismos en todas partes."
+      },
+      {
+        "title": "Estrategia de reseñas",
+        "text": "Un sistema simple para pedirles reseñas a todos tus clientes reales después de cada trabajo y responderlas bien, siempre dentro de las reglas de Google."
+      },
+      {
+        "title": "Reporte mensual en español",
+        "text": "Ves tus posiciones, llamadas y visitas desde Google cada mes, explicadas en palabras simples, con lo que vamos a mejorar después."
+      }
+    ],
+    "process": [
+      {
+        "title": "Llamada gratis",
+        "text": "Conocemos tu negocio, tus servicios más rentables, las ciudades que atiendes y a quién tienes de competencia."
+      },
+      {
+        "title": "Arranque SEO",
+        "text": "Hacemos la auditoría, elegimos las palabras clave y dejamos tu Perfil de Empresa y tus directorios en orden."
+      },
+      {
+        "title": "Optimización de tu web",
+        "text": "Trabajamos tus páginas de servicios y ciudades en inglés y en español para que Google te muestre en las búsquedas correctas."
+      },
+      {
+        "title": "Crecimiento mes a mes",
+        "text": "Publicamos en tu perfil, impulsamos tus reseñas, medimos llamadas y posiciones, y ajustamos cada mes según los resultados."
+      }
+    ],
+    "industries": [
+      "Plomería",
+      "Aire acondicionado (HVAC)",
+      "Techos (roofing)",
+      "Construcción y remodelación",
+      "Electricistas",
+      "Limpieza de casas y oficinas",
+      "Jardinería y landscaping",
+      "Control de plagas",
+      "Talleres mecánicos",
+      "Clínicas y consultorios",
+      "Med spas y estética",
+      "Abogados y servicios profesionales"
+    ],
+    "small": "Si trabajas con tu camioneta, tu equipo y tu teléfono, el SEO local es una de las formas más sensatas de conseguir clientes sin pagar por cada clic. Empezamos por tu Perfil de Empresa de Google y tu servicio principal en tu ciudad, y crecemos a más servicios y zonas a medida que ves resultados.",
+    "large": "Para empresas con varias sedes, ciudades o líneas de servicio, manejamos un Perfil de Empresa por cada ubicación real, páginas por servicio y ciudad en inglés y en español, y reportes por mercado. Si quieres el paquete completo, unimos SEO y anuncios en Google, Meta y TikTok en una sola estrategia.",
+    "faqs": [
+      {
+        "q": "¿Qué es el SEO local y por qué lo necesita mi negocio de servicios?",
+        "a": "El SEO local es el trabajo que hace que tu negocio aparezca en Google Maps y en Google cuando alguien busca tu servicio en tu zona, por ejemplo \"electricista en Houston\" o \"roofing near me\". Para un negocio de servicios es clave, porque quien busca así normalmente necesita contratar pronto."
+      },
+      {
+        "q": "¿En cuánto tiempo veo resultados con el posicionamiento SEO?",
+        "a": "El SEO es una inversión de mediano plazo. Algunas mejoras, como un Perfil de Empresa bien optimizado, se pueden notar en las primeras semanas o meses, pero un posicionamiento sólido toma varios meses de trabajo constante. Depende de tu ciudad, tu competencia y cómo está tu web hoy. Te lo decimos con honestidad desde la primera llamada."
+      },
+      {
+        "q": "¿Me garantizan el primer lugar en Google?",
+        "a": "No, y desconfía de quien te lo garantice: nadie controla los resultados de Google. Lo que sí hacemos es el trabajo que Google toma en cuenta: tu perfil, tu web y tus directorios optimizados cada mes, y un reporte claro para que veas cómo avanzan tus posiciones, llamadas y visitas."
+      },
+      {
+        "q": "¿Cuánto cuesta el servicio de SEO?",
+        "a": "Tiene dos partes: un arranque SEO de pago único, donde hacemos la auditoría y dejamos todo configurado, y una tarifa mensual de administración. Los precios están en los planes de esta página. Si también quieres anuncios, el Paquete Búsqueda suma Google Ads, y Crecimiento Total une SEO con Google, Meta y TikTok Ads por menos de lo que costarían por separado. El presupuesto de anuncios se paga directo a cada plataforma."
+      },
+      {
+        "q": "¿Qué es mejor, SEO o Google Ads?",
+        "a": "Se complementan. Google Ads (SEM) puede traer llamadas desde los primeros días, pero se detiene cuando dejas de pagar. El SEO tarda más, pero construye visitas que no te cobran por clic. Por eso muchos negocios de servicios usan los dos: los anuncios traen clientes ya mientras el SEO crece."
+      },
+      {
+        "q": "¿Pueden hacer SEO en inglés y en español?",
+        "a": "Sí. Muchos negocios de servicios en USA atienden a clientes que hablan inglés y otros que hablan español, así que trabajamos las palabras clave, tus páginas y tu Perfil de Empresa pensando en cómo busca cada uno. Y toda la comunicación contigo es en español."
+      },
+      {
+        "q": "Atiendo a domicilio y no tengo local. ¿Puedo aparecer en Google Maps?",
+        "a": "Sí. Google permite que los negocios que van a casa del cliente, como plomeros, limpieza o jardinería, tengan un Perfil de Empresa sin mostrar su dirección, indicando las zonas que atienden. Lo configuramos así para que Google sepa en qué ciudades trabajas y pueda mostrarte a clientes de esas zonas."
+      }
+    ],
+    "plans": [
+      "seo",
+      "search",
+      "complete"
     ]
   }
 ]

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
 import { openCalendly, WHATSAPP_URL } from "@/config/links";
 import servicePages from "@/config/service-pages.json";
+import { PricingPlans, type PlanId } from "@/components/PricingPlans";
 
 export type ServicePage = (typeof servicePages)[number];
 
@@ -18,6 +19,7 @@ const LABELS = {
     industries: ["Industries we ", "serve"], small: "For small businesses", large: "For large brands",
     faq: ["Frequently asked ", "questions"], ctaTitle: "Ready to grow with", ctaText: "Book a free, no-pressure call and get an honest plan for your business.",
     others: "Other services",
+    plans: ["Plans & ", "pricing"], plansLede: "Transparent monthly pricing. Start with one service or get the complete SEO + SEM package.", allPlans: "See all plans", pricingPath: "/pricing",
   },
   es: {
     home: "Inicio", services: "Servicios", bookCall: "Agenda una llamada gratis", whatsapp: "Escríbenos por WhatsApp",
@@ -25,6 +27,7 @@ const LABELS = {
     industries: ["Industrias que ", "atendemos"], small: "Para negocios pequeños", large: "Para empresas grandes",
     faq: ["Preguntas ", "frecuentes"], ctaTitle: "¿Listo para crecer con", ctaText: "Agenda una llamada gratis, sin compromiso, y recibe un plan honesto para tu negocio.",
     others: "Otros servicios",
+    plans: ["Planes y ", "precios"], plansLede: "Precios mensuales claros. Empieza con un servicio o toma el paquete completo SEO + SEM.", allPlans: "Ver todos los planes", pricingPath: "/precios",
   },
 };
 
@@ -32,6 +35,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
   const lang = "lang" in page && page.lang === "es" ? "es" : "en";
   const t = LABELS[lang];
   const industries = "industries" in page ? (page.industries as string[]) : [];
+  const plans = "plans" in page ? (page.plans as PlanId[]) : [];
   const others = servicePages.filter((p) => p.path !== page.path && ("lang" in p ? p.lang : "en") === lang);
 
   return (
@@ -166,6 +170,27 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
             </Reveal>
           </div>
         </section>
+
+        {/* Plans & pricing */}
+        {plans.length ? (
+          <section className="container mx-auto px-4 py-16 md:px-8">
+            <div className="mx-auto max-w-6xl">
+              <Reveal>
+                <SectionHeading title={<>{t.plans[0]}<span className="text-primary">{t.plans[1]}</span></>} lede={t.plansLede} className="mb-10" />
+              </Reveal>
+              <PricingPlans ids={plans} lang={lang} />
+              <div className="mt-8 text-center">
+                <Link
+                  to={t.pricingPath}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground/80 transition-colors hover:border-performance hover:text-performance"
+                >
+                  {t.allPlans}
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         {/* FAQ */}
         <section className="container mx-auto px-4 py-16 md:px-8">

@@ -1,9 +1,9 @@
-import { ShoppingCart, Code, Settings, Zap, ArrowUpRight } from "lucide-react";
+import { ShoppingCart, Code, Settings, Zap, Search, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import servicePages from "@/config/service-pages.json";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 
-const services = [
+const services: { icon: typeof Search; title: string; description: string; to?: string; wide?: boolean }[] = [
   {
     icon: ShoppingCart,
     title: "Paid Media Management",
@@ -23,6 +23,13 @@ const services = [
     icon: Zap,
     title: "AI Marketing Automation",
     description: "Intelligent campaign workflows, automated bidding strategies, and AI-powered optimization that reduce manual work while improving advertising performance.",
+  },
+  {
+    icon: Search,
+    title: "SEO for Service Businesses",
+    description: "Local SEO that gets your business found on Google Search and Google Maps — on its own or combined with paid ads as a complete SEO + SEM package that brings calls now and free traffic over time.",
+    to: "/seo-for-service-businesses",
+    wide: true,
   },
 ];
 
@@ -59,9 +66,9 @@ export const Services = () => {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 0.1} className="h-full">
+              <Reveal key={service.title} delay={index * 0.1} className={service.wide ? "h-full md:col-span-2" : "h-full"}>
                 <Link
-                  to="/services"
+                  to={service.to ?? "/services"}
                   className="group block h-full focus-visible:outline-none"
                   aria-label={`${service.title} — learn more about our services`}
                 >

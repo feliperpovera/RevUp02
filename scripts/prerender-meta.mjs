@@ -107,13 +107,20 @@ for (const [path, meta] of Object.entries(routes)) {
     html = html.replace('<html lang="en-US">', '<html lang="es-US">').replace('content="en_US"', 'content="es_US"');
   }
 
-  // hreflang pair: English Google Ads page <-> Spanish Google Ads page
-  const HREFLANG = { "/google-ads-management": "en-US", "/agencia-google-ads": "es-US" };
-  if (HREFLANG[path]) {
-    const alts = Object.entries(HREFLANG)
-      .map(([p, l]) => `<link rel="alternate" hreflang="${l}" href="${seo.site}${p}" />`)
-      .join("\n    ");
-    html = html.replace("</head>", `    ${alts}\n    <link rel="alternate" hreflang="x-default" href="${seo.site}/google-ads-management" />\n  </head>`);
+  // hreflang pairs: [English page, Spanish page]
+  const HREFLANG_PAIRS = [
+    ["/google-ads-management", "/agencia-google-ads"],
+    ["/seo-for-service-businesses", "/agencia-seo"],
+  ];
+  const pair = HREFLANG_PAIRS.find((p) => p.includes(path));
+  if (pair) {
+    const [en, es] = pair;
+    const alts = [
+      `<link rel="alternate" hreflang="en-US" href="${seo.site}${en}" />`,
+      `<link rel="alternate" hreflang="es-US" href="${seo.site}${es}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${seo.site}${en}" />`,
+    ].join("\n    ");
+    html = html.replace("</head>", `    ${alts}\n  </head>`);
   }
 
   if (meta.jsonLd) {

@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
-import { ShoppingCart, Code, Settings, Zap, ArrowRight } from "lucide-react";
+import { ShoppingCart, Code, Settings, Zap, Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ServicesPage = () => {
@@ -168,9 +168,47 @@ const ServicesPage = () => {
                   </div>
                 </div>
               </div>
+              {/* SEO */}
+              <div className="glass-card p-8 md:p-12 rounded-xl">
+                <div className="flex items-start gap-6">
+                  <div className="p-4 rounded-lg bg-accent/10">
+                    <Search className="w-10 h-10 md:w-12 md:h-12 text-accent" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+                      SEO for Service Businesses
+                    </h2>
+                    <p className="text-foreground/70 mb-6 leading-relaxed">
+                      Get found on Google Search and Google Maps by customers in your service area — alone or combined with paid ads as a complete SEO + SEM package.
+                    </p>
+                    <ul className="space-y-3 text-foreground/70">
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Google Business Profile optimization and local rankings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Service and service-area pages optimized for local searches</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Review strategy and consistent business listings</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-accent">•</span>
+                        <span>Monthly reporting on rankings, calls and traffic</span>
+                      </li>
+                    </ul>
+                    <Link to="/seo-for-service-businesses" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-performance hover:underline">
+                      Learn about SEO for service businesses
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-12 flex flex-col items-center gap-4">
               <Button
                 variant="glow"
                 size="lg"
@@ -180,6 +218,9 @@ const ServicesPage = () => {
                 Get Started Today
                 <ArrowRight className="ml-2" />
               </Button>
+              <Link to="/pricing" className="text-sm text-stone underline-offset-4 hover:text-performance hover:underline">
+                See plans & pricing
+              </Link>
             </div>
           </div>
         </div>

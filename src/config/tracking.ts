@@ -69,3 +69,9 @@ export const trackLead = (source: string) => {
     window.fbq?.("track", "Lead");
   }
 };
+
+/** A visitor clicked "get started" on a pricing plan (map `plan_interest` in GTM). */
+export const trackPlanInterest = (plan: string) => {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: "plan_interest", plan });
+};

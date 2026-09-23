@@ -25,6 +25,7 @@ const GraciasPage = lazy(() => import("./pages/GraciasPage"));
 const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
+const PricingPage = lazy(() => import("./pages/PricingPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -64,6 +65,8 @@ const App = () => (
                 {blogPosts.map((post) => (
                   <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogPostPage post={post} />} />
                 ))}
+                <Route path="/pricing" element={<PricingPage />} />
+                <Route path="/precios" element={<PricingPage lang="es" />} />
                 <Route path="/gracias" element={<GraciasPage />} />
                 <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />
 

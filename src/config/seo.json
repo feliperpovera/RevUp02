@@ -47,6 +47,17 @@
     "/blog": {
       "title": "Marketing Blog for Service Businesses | RevUp",
       "description": "Practical guides on Google Ads, Facebook and Instagram ads, Google Business Profile and websites for US service businesses that want more calls and booked jobs."
+    },
+    "/pricing": {
+      "title": "Plans & Pricing: SEO, Google Ads, Meta & TikTok | RevUp",
+      "description": "Monthly plans for Local SEO, Google Ads, Meta Ads and TikTok Ads, plus complete SEO + SEM packages for service businesses. See what's included.",
+      "noindex": true
+    },
+    "/precios": {
+      "title": "Planes y precios: SEO, Google Ads, Meta y TikTok | RevUp",
+      "description": "Planes mensuales de SEO Local, Google Ads, Meta Ads y TikTok Ads, y paquetes completos SEO + SEM para negocios de servicios. Mira qué incluye.",
+      "noindex": true,
+      "lang": "es"
     }
   }
 }

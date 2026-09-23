@@ -1,0 +1,214 @@
+{
+  "plans": [
+    {
+      "id": "seo",
+      "price": 200,
+      "setup": 500,
+      "href": "/seo-for-service-businesses",
+      "en": {
+        "name": "Local SEO",
+        "tagline": "Show up on Google Maps and local search when customers look for your service.",
+        "features": [
+          "SEO launch: website, competitor and keyword audit",
+          "Google Business Profile optimization",
+          "On-page SEO for your service and city pages",
+          "Business listings cleaned up (name, address, phone)",
+          "Monthly Google Business Profile updates",
+          "Review strategy to earn more 5-star reviews",
+          "Monthly rankings, calls and traffic report"
+        ]
+      },
+      "es": {
+        "name": "SEO Local",
+        "tagline": "Aparece en Google Maps y en búsquedas locales cuando los clientes buscan tu servicio.",
+        "features": [
+          "Arranque SEO: auditoría de tu web, competencia y palabras clave",
+          "Optimización de tu Perfil de Empresa en Google",
+          "SEO on-page para tus páginas de servicios y ciudades",
+          "Directorios corregidos (nombre, dirección y teléfono)",
+          "Actualizaciones mensuales de tu Perfil de Google",
+          "Estrategia para conseguir más reseñas de 5 estrellas",
+          "Reporte mensual de posiciones, llamadas y tráfico"
+        ]
+      }
+    },
+    {
+      "id": "google",
+      "price": 750,
+      "href": "/google-ads-management",
+      "en": {
+        "name": "Google Ads",
+        "tagline": "Get in front of people already searching for your service.",
+        "features": [
+          "Search, Local Services, Performance Max and YouTube campaigns",
+          "Keyword research by service and city",
+          "Ad copy and landing page recommendations",
+          "Call and form conversion tracking",
+          "Weekly optimization and wasted-spend cleanup",
+          "Monthly results report"
+        ]
+      },
+      "es": {
+        "name": "Google Ads",
+        "tagline": "Aparece frente a las personas que ya están buscando tu servicio.",
+        "features": [
+          "Campañas de Búsqueda, Local Services, Performance Max y YouTube",
+          "Investigación de palabras clave por servicio y ciudad",
+          "Anuncios y recomendaciones para tu página de destino",
+          "Medición de llamadas y formularios",
+          "Optimización semanal y control del gasto",
+          "Reporte mensual de resultados"
+        ]
+      }
+    },
+    {
+      "id": "meta",
+      "price": 750,
+      "href": "/meta-ads-management",
+      "en": {
+        "name": "Meta Ads",
+        "tagline": "Facebook and Instagram ads that turn your local audience into leads.",
+        "features": [
+          "Facebook and Instagram campaign setup",
+          "Local audiences, lookalikes and retargeting",
+          "Lead forms and WhatsApp message campaigns",
+          "Creative direction and ad copy",
+          "Meta Pixel and conversion tracking",
+          "Monthly results report"
+        ]
+      },
+      "es": {
+        "name": "Meta Ads",
+        "tagline": "Anuncios en Facebook e Instagram que convierten tu audiencia local en clientes.",
+        "features": [
+          "Campañas en Facebook e Instagram",
+          "Audiencias locales, similares y retargeting",
+          "Formularios de clientes y campañas a WhatsApp",
+          "Dirección creativa y textos de anuncios",
+          "Meta Pixel y medición de conversiones",
+          "Reporte mensual de resultados"
+        ]
+      }
+    },
+    {
+      "id": "tiktok",
+      "price": 750,
+      "href": "/tiktok-ads-management",
+      "en": {
+        "name": "TikTok Ads",
+        "tagline": "Short-video ads that make your brand known fast.",
+        "features": [
+          "TikTok campaign setup and targeting",
+          "Spark Ads and lead generation campaigns",
+          "Creative direction for native-style videos",
+          "TikTok Pixel and conversion tracking",
+          "Ongoing testing and optimization",
+          "Monthly results report"
+        ]
+      },
+      "es": {
+        "name": "TikTok Ads",
+        "tagline": "Anuncios en video corto que dan a conocer tu marca rápido.",
+        "features": [
+          "Campañas en TikTok y segmentación",
+          "Spark Ads y campañas de generación de clientes",
+          "Dirección creativa para videos nativos",
+          "TikTok Pixel y medición de conversiones",
+          "Pruebas y optimización continua",
+          "Reporte mensual de resultados"
+        ]
+      }
+    },
+    {
+      "id": "all-ads",
+      "price": 1250,
+      "compareAt": 2250,
+      "badge": "value",
+      "href": "/service-business-marketing",
+      "en": {
+        "name": "All-Platform Ads",
+        "tagline": "Google, Meta and TikTok managed together — use the platforms you need.",
+        "features": [
+          "Google Ads, Meta Ads and TikTok Ads management",
+          "Pick any platforms — same monthly fee",
+          "One strategy and budget split across platforms",
+          "Unified tracking of calls, forms and messages",
+          "Weekly optimization on every platform",
+          "One monthly report for everything"
+        ]
+      },
+      "es": {
+        "name": "Todas las plataformas",
+        "tagline": "Google, Meta y TikTok administrados juntos — usa las plataformas que necesites.",
+        "features": [
+          "Administración de Google Ads, Meta Ads y TikTok Ads",
+          "Elige cualquier plataforma — la misma tarifa mensual",
+          "Una estrategia y un presupuesto repartido entre plataformas",
+          "Medición unificada de llamadas, formularios y mensajes",
+          "Optimización semanal en cada plataforma",
+          "Un solo reporte mensual"
+        ]
+      }
+    },
+    {
+      "id": "search",
+      "price": 950,
+      "setup": 500,
+      "href": "/seo-for-service-businesses",
+      "en": {
+        "name": "Search Package",
+        "tagline": "SEO + Google Ads: own the top of Google, paid and organic.",
+        "features": [
+          "Everything in Local SEO",
+          "Everything in Google Ads",
+          "Keywords shared between ads and SEO",
+          "Ads bring calls now while SEO builds free traffic",
+          "One monthly report for search"
+        ]
+      },
+      "es": {
+        "name": "Paquete Búsqueda",
+        "tagline": "SEO + Google Ads: domina Google, pagado y orgánico.",
+        "features": [
+          "Todo lo de SEO Local",
+          "Todo lo de Google Ads",
+          "Palabras clave compartidas entre anuncios y SEO",
+          "Los anuncios traen llamadas ya mientras el SEO crea tráfico gratis",
+          "Un solo reporte mensual de búsqueda"
+        ]
+      }
+    },
+    {
+      "id": "complete",
+      "price": 1450,
+      "setup": 500,
+      "compareAt": 2450,
+      "badge": "complete",
+      "href": "/service-business-marketing",
+      "en": {
+        "name": "Complete Growth",
+        "tagline": "SEO + SEM on every platform. The full package to dominate your market.",
+        "features": [
+          "Everything in Local SEO",
+          "Everything in All-Platform Ads (Google, Meta, TikTok)",
+          "One strategy for organic and paid growth",
+          "Calls, forms and WhatsApp leads tracked end to end",
+          "Priority support and monthly strategy call",
+          "One monthly report for everything"
+        ]
+      },
+      "es": {
+        "name": "Crecimiento Total",
+        "tagline": "SEO + SEM en todas las plataformas. El paquete completo para dominar tu mercado.",
+        "features": [
+          "Todo lo de SEO Local",
+          "Todo lo de Todas las plataformas (Google, Meta, TikTok)",
+          "Una sola estrategia de crecimiento orgánico y pagado",
+          "Llamadas, formularios y WhatsApp medidos de punta a punta",
+          "Soporte prioritario y llamada mensual de estrategia",
+          "Un solo reporte mensual"
+        ]
+      }
+    }
+  ]
+}

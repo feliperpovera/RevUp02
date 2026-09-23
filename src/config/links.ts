@@ -6,5 +6,5 @@ export const openCalendly = () => {
 };
 
 export const WHATSAPP_NUMBER = "+1 (305) 219-8486";
-export const WHATSAPP_URL =
-  "https://wa.me/13052198486?text=" + encodeURIComponent("Hi RevUp! I'd like to grow my business.");
+export const whatsappUrl = (text: string) => "https://wa.me/13052198486?text=" + encodeURIComponent(text);
+export const WHATSAPP_URL = whatsappUrl("Hi RevUp! I'd like to grow my business.");

@@ -1,5 +1,100 @@
 [
   {
+    "slug": "local-seo-for-service-businesses",
+    "title": "Local SEO for Service Businesses: Get Found on Google | RevUp",
+    "description": "A practical local SEO guide for US service businesses: map pack vs organic results, service pages, reviews, citations, tracking and realistic timelines.",
+    "h1": "Local SEO for service businesses: how to get found on Google",
+    "excerpt": "How local search really works and the steps that help contractors, home service companies, clinics and professional services show up when nearby customers search.",
+    "date": "2026-09-23",
+    "readingMinutes": 7,
+    "sections": [
+      {
+        "h2": "How local search works: the map pack and the organic results",
+        "paragraphs": [
+          "When someone searches for a local service like \"roof repair\", \"hvac company near me\" or \"med spa in doral\", Google usually shows two kinds of free results. First comes the map pack: a map with a short list of businesses pulled from Google Business Profiles. Below it are the regular organic results: websites Google considers the most relevant answers to the search.",
+          "They are related but not the same. The map pack depends mostly on your Google Business Profile, your reviews and how close you are to the person searching. The organic results depend mostly on your website: its pages, content and reputation across the web. Google describes local ranking in terms of relevance, distance and prominence, and a good local SEO plan works on all three. It's worth appearing in both places, because some people call straight from the map while others click through to compare websites first.",
+          "Paid ads can appear above both. We'll cover how ads and SEO fit together near the end of this guide."
+        ]
+      },
+      {
+        "h2": "Start with your Google Business Profile",
+        "paragraphs": [
+          "For most service businesses, the Google Business Profile is the foundation of local SEO. The right primary category, a complete list of services, accurate hours, a correct service area and real photos all help Google understand what you do and where you do it. If you travel to customers, set it up as a service-area business rather than showing a home address.",
+          "We cover the profile in detail in our Google Business Profile guide. The short version: complete every section, keep it active with updates and photos, and never add keywords or city names to your business name. The rest of this guide focuses on everything around the profile that supports it."
+        ]
+      },
+      {
+        "h2": "Build a page for every service and the areas you serve",
+        "paragraphs": [
+          "One of the most common problems we see on service business websites is a single \"Services\" page that lists everything in one paragraph. Google can't rank one page for water heater repair, drain cleaning and repiping all at once, and a customer searching for one of them wants to see that exact service.",
+          "Give each main service its own page. Explain what the service includes, common problems it solves, what the process looks like, what affects the price, and answer the questions customers ask on the phone. Add photos of real jobs and a clear way to call or request a quote.",
+          "Service-area pages work the same way for locations. If you serve several cities or neighborhoods, a page for each important area can help you show up for searches in those places. The key is that each page must be genuinely useful: projects you've done there, local details, reviews from customers in that area, and how you serve it. Copying one page and swapping the city name creates thin, near-duplicate pages that Google may treat as doorway pages and ignore. Only create pages for areas you actually serve.",
+          "A simple way to plan this is to list your services in order of profitability and your service areas in order of importance, then build the pages that sit where the two meet first. A roofer might start with roof replacement and roof repair pages, then pages for the two or three cities where most jobs come from, and expand from there."
+        ]
+      },
+      {
+        "h2": "On-page basics that still matter",
+        "paragraphs": [
+          "Once the right pages exist, make sure each one clearly tells Google and visitors what it's about. Write for customers first: clear, specific answers in plain language do more than repeating a keyword over and over, which can make a page read badly and hurt more than it helps.",
+          "Speed and mobile matter just as much. Many people looking for a local service are on their phone, often in a hurry, and a slow or cluttered page sends them back to the search results to call someone else. None of the basics below is complicated, but they're often skipped:"
+        ],
+        "bullets": [
+          "A unique title tag with the service and city, such as \"AC Repair in Hialeah | Company Name\"",
+          "One clear H1 heading and descriptive subheadings that match how customers search",
+          "Your business name, phone number and service area visible on the page",
+          "Internal links between related services, areas and your contact page",
+          "LocalBusiness structured data (schema) so search engines can read your business details",
+          "Fast loading on a phone, with compressed images and no heavy pop-ups",
+          "A tap-to-call phone number and a short form near the top of every page"
+        ]
+      },
+      {
+        "h2": "Reviews: the signal customers and Google both read",
+        "paragraphs": [
+          "Reviews influence where you appear in the map pack and, just as importantly, whether people choose to call you once they see you. A business with a steady stream of recent, detailed reviews looks active and trustworthy.",
+          "Make asking for reviews part of how every job ends. Send a direct link by text or WhatsApp right after the work is done, while the customer is happy. Reviews that mention the specific service and the city give future customers useful context, but don't script them; simply asking \"what did we help you with?\" often brings that detail naturally.",
+          "Reply to every review, positive or negative, in a calm and professional way. And never buy reviews, write your own, offer discounts or rewards in exchange for reviews, or ask only happy customers. It goes against Google's policies and can get reviews removed or your profile restricted."
+        ]
+      },
+      {
+        "h2": "Keep your business details consistent everywhere",
+        "paragraphs": [
+          "Your name, address and phone number, often called NAP, should be identical wherever your business appears online: your website, Google Business Profile, Facebook, Yelp, Apple Maps, Bing Places, the BBB, and directories for your industry. These listings are called citations.",
+          "Inconsistent details, such as an old phone number, a previous address or a slightly different business name, make it harder for search engines to trust that your information is accurate, and they send some customers to the wrong place. A one-time cleanup of the main directories, followed by checking them whenever something changes, solves most of the problem. After that, focus on quality over quantity: a few relevant, accurate listings matter more than hundreds of low-quality directories.",
+          "Local links help too. Sponsoring a community event, joining a local business association or being featured by a supplier you work with can earn mentions from real local websites, which can strengthen your prominence over time."
+        ]
+      },
+      {
+        "h2": "Measure calls and booked jobs, not just rankings",
+        "paragraphs": [
+          "Rankings are useful to watch, but they don't pay the bills. What matters is how many people found you on Google and then called, filled out a form or sent a message, and how many of those became booked jobs.",
+          "Set up Google Analytics and Google Search Console on your website, track form submissions and clicks on your phone number, and use UTM parameters on your Google Business Profile website link so that traffic appears separately in your reports. Call tracking can show which calls came from organic search; if you use a tracking number, keep your main business number listed consistently so your NAP stays clean.",
+          "Check your profile's performance data as well: calls, direction requests and website clicks. Together these give you an honest picture of what local SEO is actually producing."
+        ]
+      },
+      {
+        "h2": "How long local SEO takes, and when to add Google Ads",
+        "paragraphs": [
+          "Local SEO is not instant. Fixing your profile and technical issues can help relatively quickly, but building new pages, earning reviews and growing your reputation usually takes several months to show meaningful results, and competitive services in big cities take longer. Anyone who guarantees a #1 ranking or a specific number of leads is promising something no one controls; only Google decides the rankings.",
+          "That's why many service businesses combine SEO with Google Ads. Ads can show your business at the top of the search results soon after a campaign goes live, bringing in calls while SEO builds up. The two also make each other better:"
+        ],
+        "bullets": [
+          "With good tracking, search terms from your ads show which keywords bring real jobs, so SEO can focus on them",
+          "Service and area pages built for SEO make stronger landing pages for ads",
+          "Appearing in both the ads and the free results for the same search reinforces trust",
+          "As organic visibility grows, you can decide where ad budget does the most good"
+        ]
+      },
+      {
+        "h2": "Where to start",
+        "paragraphs": [
+          "Start by completing and correcting your Google Business Profile, then build a dedicated page for your most profitable service, clean up your main directory listings and make asking for reviews a habit. Set up call and form tracking from day one so you can see what's working. Then keep going: add pages, earn reviews and improve month after month.",
+          "If you'd rather have a team handle it, RevUp's Local SEO service is built for service businesses: we audit your website, competitors and keywords, optimize your Google Business Profile and service pages, clean up your listings and report on the calls and traffic it brings. It can also be combined with Google Ads when you want calls coming in while SEO grows. Book a free call to see what it would look like for your business."
+        ]
+      }
+    ]
+  },
+  {
     "slug": "google-ads-for-service-businesses",
     "title": "Google Ads for Service Businesses: A Practical Guide | RevUp",
     "description": "How US service businesses can use Google Ads and Local Services Ads to get more calls and booked jobs: campaign types, keywords, targeting, tracking and common mistakes.",
@@ -65,7 +160,9 @@
       },
       {
         "h2": "Common Google Ads mistakes service businesses make",
-        "paragraphs": ["Most wasted budget we see comes from the same handful of issues:"],
+        "paragraphs": [
+          "Most wasted budget we see comes from the same handful of issues:"
+        ],
         "bullets": [
           "Broad keywords with no negative keyword list",
           "Targeting people \"interested in\" your area instead of people in it",
@@ -150,7 +247,9 @@
       },
       {
         "h2": "Mistakes to avoid",
-        "paragraphs": ["These are the issues we see most often in service business accounts:"],
+        "paragraphs": [
+          "These are the issues we see most often in service business accounts:"
+        ],
         "bullets": [
           "Generic ads with no offer and no reason to act now",
           "Instant forms with no qualifying questions",
@@ -198,7 +297,9 @@
       },
       {
         "h2": "Fill in every detail",
-        "paragraphs": ["Complete profiles give Google and customers more reasons to choose you. Make sure you have:"],
+        "paragraphs": [
+          "Complete profiles give Google and customers more reasons to choose you. Make sure you have:"
+        ],
         "bullets": [
           "Services listed individually, with short descriptions",
           "Accurate hours, including holiday hours",
@@ -235,7 +336,9 @@
       },
       {
         "h2": "Common mistakes",
-        "paragraphs": ["Watch out for these:"],
+        "paragraphs": [
+          "Watch out for these:"
+        ],
         "bullets": [
           "Keyword-stuffed business names",
           "Using a virtual office or mailbox as a physical address",
