@@ -1,6 +1,84 @@
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
+import { usd, type PlanId } from "@/components/PricingPlans";
+import pricing from "@/config/pricing.json";
+
+const PRICE_GROUPS: { title: string; ids: PlanId[] }[] = [
+  { title: "SEO + SEM packages", ids: ["seo", "search", "complete"] },
+  { title: "Ads management", ids: ["google", "meta", "tiktok", "all-ads"] },
+];
+
+/** Low-key price list, collapsed by default. Share revupagencygroup.com/about#pricing to open it directly. */
+const PricingSummary = () => {
+  const { hash } = useLocation();
+  const ref = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    if (hash === "#pricing" && ref.current) {
+      ref.current.open = true;
+      ref.current.scrollIntoView({ block: "start" });
+    }
+  }, [hash]);
+
+  return (
+    <details ref={ref} id="pricing" className="group mt-16 scroll-mt-28 border-t border-foreground/10 pt-6">
+      <summary className="mx-auto flex w-fit cursor-pointer list-none items-center gap-1.5 text-sm text-stone transition-colors hover:text-performance">
+        Plans & pricing
+        <ChevronDown className="h-4 w-4 transition-transform duration-300 group-open:rotate-180" aria-hidden="true" />
+      </summary>
+
+      <div className="mt-8 space-y-10">
+        {PRICE_GROUPS.map((group) => (
+          <div key={group.title}>
+            <h2 className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-stone">{group.title}</h2>
+            <ul className="divide-y divide-foreground/10 rounded-2xl border border-foreground/10 bg-card">
+              {group.ids.map((id) => {
+                const plan = pricing.plans.find((p) => p.id === id);
+                if (!plan) return null;
+                const saving = "compareAt" in plan && plan.compareAt ? plan.compareAt - plan.price : 0;
+                return (
+                  <li key={id} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                    <div>
+                      <Link to={plan.href} className="font-heading text-lg text-foreground hover:text-performance">
+                        {plan.en.name}
+                      </Link>
+                      {plan.badge === "complete" ? (
+                        <span className="ml-2 rounded-full bg-accent px-2 py-0.5 align-middle text-[10px] font-semibold uppercase tracking-wider text-graphite">
+                          Full package
+                        </span>
+                      ) : null}
+                      <p className="mt-1 text-sm leading-relaxed text-stone">{plan.en.tagline}</p>
+                    </div>
+                    <div className="shrink-0 sm:text-right">
+                      <p className="font-heading text-2xl text-foreground">
+                        {usd(plan.price)}
+                        <span className="font-sans text-sm text-stone">/mo</span>
+                      </p>
+                      {"setup" in plan && plan.setup ? (
+                        <p className="text-xs text-stone">+ {usd(plan.setup)} one-time SEO launch</p>
+                      ) : null}
+                      {saving ? <p className="text-xs font-medium text-performance">Save {usd(saving)}/mo</p> : null}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+        <p className="text-center text-xs text-stone">
+          Ad spend is paid directly to Google, Meta or TikTok and is not included.{" "}
+          <Link to="/pricing" className="text-performance underline-offset-4 hover:underline">
+            See what each plan includes
+          </Link>
+        </p>
+      </div>
+    </details>
+  );
+};
 
 const AboutPage = () => {
   return (
@@ -61,6 +139,8 @@ const AboutPage = () => {
                 Start Growing Today
               </button>
             </div>
+
+            <PricingSummary />
           </div>
         </div>
       </section>

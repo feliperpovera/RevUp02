@@ -9,7 +9,7 @@ import pricing from "@/config/pricing.json";
 export type Lang = "en" | "es";
 export type PlanId = (typeof pricing.plans)[number]["id"];
 
-const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
+export const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
 
 const T = {
   en: {
