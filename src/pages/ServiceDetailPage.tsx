@@ -11,11 +11,31 @@ export type ServicePage = (typeof servicePages)[number];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
+const LABELS = {
+  en: {
+    home: "Home", services: "Services", bookCall: "Book a free call", whatsapp: "Chat on WhatsApp",
+    why: ["Why it ", "works"], included: ["What's ", "included"], how: ["How we ", "work"],
+    industries: ["Industries we ", "serve"], small: "For small businesses", large: "For large brands",
+    faq: ["Frequently asked ", "questions"], ctaTitle: "Ready to grow with", ctaText: "Book a free, no-pressure call and get an honest plan for your business.",
+    others: "Other services",
+  },
+  es: {
+    home: "Inicio", services: "Servicios", bookCall: "Agenda una llamada gratis", whatsapp: "Escríbenos por WhatsApp",
+    why: ["Por qué ", "funciona"], included: ["Qué ", "incluye"], how: ["Cómo ", "trabajamos"],
+    industries: ["Industrias que ", "atendemos"], small: "Para negocios pequeños", large: "Para empresas grandes",
+    faq: ["Preguntas ", "frecuentes"], ctaTitle: "¿Listo para crecer con", ctaText: "Agenda una llamada gratis, sin compromiso, y recibe un plan honesto para tu negocio.",
+    others: "Otros servicios",
+  },
+};
+
 const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
-  const others = servicePages.filter((p) => p.path !== page.path);
+  const lang = "lang" in page && page.lang === "es" ? "es" : "en";
+  const t = LABELS[lang];
+  const industries = "industries" in page ? (page.industries as string[]) : [];
+  const others = servicePages.filter((p) => p.path !== page.path && ("lang" in p ? p.lang : "en") === lang);
 
   return (
-    <div className="min-h-screen bg-transparent">
+    <div className="min-h-screen bg-transparent" lang={lang === "es" ? "es" : undefined}>
       <Navbar />
 
       <main>
@@ -24,9 +44,9 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone">
-                <Link to="/" className="hover:text-performance">Home</Link>
+                <Link to="/" className="hover:text-performance">{t.home}</Link>
                 <span className="mx-2">/</span>
-                <Link to="/services" className="hover:text-performance">Services</Link>
+                <Link to="/services" className="hover:text-performance">{t.services}</Link>
                 <span className="mx-2">/</span>
                 <span className="text-foreground">{page.name}</span>
               </nav>
@@ -39,13 +59,13 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
                   onClick={openCalendly}
                   className="group h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground hover:bg-primary/90"
                 >
-                  Book a free call
+                  {t.bookCall}
                   <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Button>
                 <Button asChild size="lg" variant="outline" className="h-14 rounded-full border-foreground/20 px-8 text-base">
                   <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-5 w-5" />
-                    Chat on WhatsApp
+                    {t.whatsapp}
                   </a>
                 </Button>
               </div>
@@ -57,7 +77,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
         <section className="container mx-auto px-4 py-12 md:px-8">
           <div className="mx-auto max-w-5xl">
             <Reveal>
-              <SectionHeading title={<>Why it <span className="text-primary">works</span></>} />
+              <SectionHeading title={<>{t.why[0]}<span className="text-primary">{t.why[1]}</span></>} />
               <div className="mt-6 max-w-3xl space-y-5 text-base font-light leading-relaxed text-stone md:text-lg">
                 {page.why.map((paragraph) => (
                   <p key={paragraph.slice(0, 24)}>{paragraph}</p>
@@ -71,7 +91,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
         <section className="container mx-auto px-4 py-16 md:px-8">
           <div className="mx-auto max-w-5xl">
             <Reveal>
-              <SectionHeading title={<>What&apos;s <span className="text-primary">included</span></>} className="mb-10" />
+              <SectionHeading title={<>{t.included[0]}<span className="text-primary">{t.included[1]}</span></>} className="mb-10" />
             </Reveal>
             <ul className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {page.included.map((item, i) => (
@@ -97,7 +117,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
         <section className="container mx-auto px-4 py-16 md:px-8">
           <div className="mx-auto max-w-5xl">
             <Reveal>
-              <SectionHeading title={<>How we <span className="text-primary">work</span></>} className="mb-10" />
+              <SectionHeading title={<>{t.how[0]}<span className="text-primary">{t.how[1]}</span></>} className="mb-10" />
             </Reveal>
             <ol className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {page.process.map((step, i) => (
@@ -111,18 +131,36 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
           </div>
         </section>
 
+        {/* Industries */}
+        {industries.length ? (
+          <section className="container mx-auto px-4 py-12 md:px-8">
+            <div className="mx-auto max-w-5xl">
+              <Reveal>
+                <SectionHeading title={<>{t.industries[0]}<span className="text-primary">{t.industries[1]}</span></>} className="mb-8" />
+                <ul className="flex flex-wrap gap-3">
+                  {industries.map((industry) => (
+                    <li key={industry} className="rounded-full border border-foreground/15 bg-card px-5 py-2.5 text-sm text-foreground/80">
+                      {industry}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
+          </section>
+        ) : null}
+
         {/* Small vs large */}
         <section className="container mx-auto px-4 py-16 md:px-8">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2">
             <Reveal>
               <BrandCard corner="tl" className="h-full">
-                <h2 className="font-heading text-2xl text-foreground">For small businesses</h2>
+                <h2 className="font-heading text-2xl text-foreground">{t.small}</h2>
                 <p className="mt-3 font-light leading-relaxed text-stone">{page.small}</p>
               </BrandCard>
             </Reveal>
             <Reveal delay={0.08}>
               <BrandCard corner="br" className="h-full">
-                <h2 className="font-heading text-2xl text-foreground">For large brands</h2>
+                <h2 className="font-heading text-2xl text-foreground">{t.large}</h2>
                 <p className="mt-3 font-light leading-relaxed text-stone">{page.large}</p>
               </BrandCard>
             </Reveal>
@@ -133,7 +171,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
         <section className="container mx-auto px-4 py-16 md:px-8">
           <div className="mx-auto max-w-5xl">
             <Reveal>
-              <SectionHeading title={<>Frequently asked <span className="text-primary">questions</span></>} className="mb-8" />
+              <SectionHeading title={<>{t.faq[0]}<span className="text-primary">{t.faq[1]}</span></>} className="mb-8" />
             </Reveal>
             <div className="divide-y divide-foreground/10 border-y border-foreground/10">
               {page.faqs.map((faq) => (
@@ -155,22 +193,22 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
             <Reveal>
               <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-graphite p-8 md:flex-row md:items-center md:p-10">
                 <div>
-                  <p className="font-heading text-3xl leading-tight text-cream md:text-4xl">Ready to grow with {page.eyebrow}?</p>
-                  <p className="mt-2 text-cream/70">Book a free, no-pressure call and get an honest plan for your business.</p>
+                  <p className="font-heading text-3xl leading-tight text-cream md:text-4xl">{t.ctaTitle} {page.eyebrow}?</p>
+                  <p className="mt-2 text-cream/70">{t.ctaText}</p>
                 </div>
                 <Button
                   size="lg"
                   onClick={openCalendly}
                   className="group h-14 shrink-0 rounded-full bg-accent px-8 text-base font-semibold text-graphite hover:bg-accent/90"
                 >
-                  Book a free call
+                  {t.bookCall}
                   <ArrowUpRight className="ml-2 h-5 w-5" />
                 </Button>
               </div>
             </Reveal>
 
             <nav aria-label="Other services" className="mt-14">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-stone">Other services</p>
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-stone">{t.others}</p>
               <ul className="flex flex-wrap gap-3">
                 {others.map((p) => (
                   <li key={p.path}>

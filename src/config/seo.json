@@ -3,8 +3,8 @@
   "image": "https://revupagencygroup.com/og-revup.png",
   "routes": {
     "/": {
-      "title": "Digital Marketing Agency for US Businesses | RevUp",
-      "description": "RevUp helps small and large US businesses grow with Google Ads, Meta Ads, TikTok Ads, Shopify websites and AI automation. Book a free strategy call."
+      "title": "Digital Marketing Agency for US Service Businesses | RevUp",
+      "description": "RevUp helps US service businesses and brands get more calls, leads and booked jobs with Google Ads, Meta Ads, TikTok Ads, websites and AI. Book a free call."
     },
     "/services": {
       "title": "Google Ads, Meta Ads & Web Development Services | RevUp",
@@ -43,6 +43,10 @@
       "title": "Thank You | RevUp Agency Group",
       "description": "Thanks for reaching out to RevUp. Our team will get back to you within 24 hours.",
       "noindex": true
+    },
+    "/blog": {
+      "title": "Marketing Blog for Service Businesses | RevUp",
+      "description": "Practical guides on Google Ads, Facebook and Instagram ads, Google Business Profile and websites for US service businesses that want more calls and booked jobs."
     }
   }
 }

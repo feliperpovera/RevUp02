@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import seo from "@/config/seo.json";
 import servicePages from "@/config/service-pages.json";
+import blogPosts from "@/config/blog-posts.json";
 
-type RouteSeo = { title: string; description: string; noindex?: boolean };
+type RouteSeo = { title: string; description: string; noindex?: boolean; lang?: string };
 const ROUTES: Record<string, RouteSeo> = {
   ...(seo.routes as Record<string, RouteSeo>),
-  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description }])),
+  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description, lang: "lang" in p ? p.lang : undefined }])),
+  ...Object.fromEntries(blogPosts.map((p) => [`/blog/${p.slug}`, { title: p.title, description: p.description }])),
 };
 
 const setMeta = (selector: string, attr: "content" | "href", value: string) => {
@@ -32,6 +34,7 @@ export const RouteMeta = () => {
     const description = route?.description ?? ROUTES["/"].description;
 
     document.title = title;
+    document.documentElement.lang = route?.lang === "es" ? "es-US" : "en-US";
     setMeta('meta[name="description"]', "content", description);
     setMeta('link[rel="canonical"]', "href", url);
     setMeta('meta[property="og:url"]', "content", url);

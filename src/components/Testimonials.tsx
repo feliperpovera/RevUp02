@@ -23,16 +23,16 @@ const CLIENTS: { company: string; logo: string; url?: string }[] = [
   { company: "Vélez", logo: velezLogo , url: "https://www.velez.com.co" },
   { company: "Monastery Couture", logo: monasteryLogo , url: "https://www.monasterycouture.com" },
   { company: "Distrihogar", logo: distrihogarLogo , url: "https://distrihogar.com" },
-  { company: "MIAN", logo: mianLogo },
+  { company: "MIAN", logo: mianLogo, url: "https://mianhousedecor.com/" },
   { company: "New Life Furniture", logo: newlifeLogo , url: "https://newlifefurniture.com" },
   { company: "IntraWest Management", logo: intrawestLogo },
   { company: "Host U", logo: hostuLogo },
   { company: "European Luxury Wall Finishes", logo: europeanLogo , url: "https://europeanluxurywallfinishes.com" },
   { company: "Vera Seguros", logo: veraLogo , url: "https://veraseguros.com" },
   { company: "Hera 23", logo: hera23Logo , url: "https://hera23.com" },
-  { company: "Invirtiendo", logo: invirtiendoLogo },
+  { company: "Invirtiendo", logo: invirtiendoLogo, url: "https://invirtiendoo.vercel.app/" },
   { company: "Xpress Foam", logo: xpressfoamLogo , url: "https://xpressfoam.com" },
-  { company: "Maylin Mattress", logo: maylinLogo , url: "https://maylinmattress.com" },
+  { company: "Maylin Mattress", logo: maylinLogo , url: "https://www.maylinmattress.com/" },
 ];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;

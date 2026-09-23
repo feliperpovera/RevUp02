@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { openCalendly } from "@/config/links";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
+import servicePages from "@/config/service-pages.json";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import revupLogoLight from "@/assets/revup-logo-light.png";
 
@@ -34,6 +35,7 @@ export const Navbar = () => {
     { label: "Testimonials", path: "/testimonials" },
     { label: "Services", path: "/services" },
     { label: "About", path: "/about" },
+    { label: "Blog", path: "/blog" },
   ];
 
   return (
@@ -52,15 +54,51 @@ export const Navbar = () => {
 
         {/* Desktop menu */}
         <div className="hidden items-center gap-1 md:flex">
-          {menuItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className="rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {menuItems.map((item) =>
+            item.path === "/services" ? (
+              <div key={item.path} className="group relative">
+                <Link
+                  to={item.path}
+                  aria-haspopup="true"
+                  className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180" aria-hidden="true" />
+                </Link>
+                {/* Dropdown: opens on hover and on keyboard focus */}
+                <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="rounded-2xl border border-foreground/10 bg-background p-2 shadow-[0_20px_50px_hsl(40_7%_16%/0.15)]">
+                    {servicePages.map((page) => (
+                      <li key={page.path}>
+                        <Link
+                          to={page.path}
+                          className="block rounded-xl px-4 py-2.5 text-sm text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-performance focus-visible:bg-foreground/5 focus-visible:outline-none"
+                        >
+                          {page.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="mt-1 border-t border-foreground/10 pt-1">
+                      <Link
+                        to="/services"
+                        className="block rounded-xl px-4 py-2.5 text-sm font-medium text-performance transition-colors hover:bg-foreground/5 focus-visible:bg-foreground/5 focus-visible:outline-none"
+                      >
+                        All services
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Desktop actions */}
@@ -88,14 +126,30 @@ export const Navbar = () => {
                 <ThemeToggle />
               </div>
               {menuItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-heading text-2xl text-foreground/80 transition-colors hover:text-performance"
-                >
-                  {item.label}
-                </Link>
+                <div key={item.path}>
+                  <Link
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="font-heading text-2xl text-foreground/80 transition-colors hover:text-performance"
+                  >
+                    {item.label}
+                  </Link>
+                  {item.path === "/services" ? (
+                    <ul className="mt-3 space-y-2 border-l border-foreground/10 pl-4">
+                      {servicePages.map((page) => (
+                        <li key={page.path}>
+                          <Link
+                            to={page.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-sm text-foreground/70 transition-colors hover:text-performance"
+                          >
+                            {page.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
               ))}
               <Button
                 className="mt-4 rounded-full bg-primary font-semibold text-primary-foreground hover:bg-primary/90"

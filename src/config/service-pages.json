@@ -1,12 +1,117 @@
 [
   {
+    "path": "/service-business-marketing",
+    "name": "Lead Generation for Service Businesses",
+    "title": "Lead Generation for Service Businesses & Contractors | RevUp",
+    "description": "Lead generation for US contractors and service businesses: Google Ads for home services, exclusive leads, an alternative to HomeAdvisor and Angi.",
+    "eyebrow": "Service Businesses",
+    "h1": "Lead generation for service businesses and contractors across the USA",
+    "intro": "Plumbers, HVAC and roofing contractors, landscapers, cleaning companies, auto repair shops, clinics, law firms, real estate and insurance teams — service businesses don't sell products in a cart. They sell appointments, estimates and phone calls. RevUp is a marketing agency for service businesses: we run Google Ads for contractors and home services, social media lead generation and fast websites designed to get you more leads, fill your calendar and show you which dollars brought in real jobs.",
+    "why": [
+      "Service businesses win or lose in the moment a customer needs help. A burst pipe, a broken AC in July, a legal problem, a toothache — people pick up their phone, search, and call one of the first businesses they trust. If you aren't visible in Google Search, Google Maps and on social media at that moment, the job goes to a competitor. And because most of these customers are local, every campaign has to be built around your real service area, your hours and your capacity to take new work.",
+      "That's why we build service-business marketing around calls and booked jobs instead of vanity metrics. We combine Google Ads and Local Services Ads to capture people already searching, Facebook and Instagram lead generation to reach people before they search, a strong Google Business Profile to win the map results, and fast landing pages that turn visits into calls. Then we track every call and form, so you know which service, which city and which campaign actually pays for itself."
+    ],
+    "included": [
+      {
+        "title": "Google Search & Local Services Ads",
+        "text": "Campaigns built around your services and service area, including Local Services Ads where your category is eligible."
+      },
+      {
+        "title": "Facebook & Instagram lead generation",
+        "text": "Lead forms, click-to-WhatsApp and Messenger campaigns with offers like free estimates and inspections."
+      },
+      {
+        "title": "Google Business Profile optimization",
+        "text": "Categories, services, photos and review strategy to help you show up in Google Maps and the local map pack."
+      },
+      {
+        "title": "Landing pages that convert",
+        "text": "One fast, mobile-first page per service with click-to-call, short forms and real trust signals."
+      },
+      {
+        "title": "Call & lead tracking",
+        "text": "Every call and form tracked back to the campaign, keyword and city that produced it."
+      },
+      {
+        "title": "Speed-to-lead follow-up",
+        "text": "Instant lead notifications and WhatsApp follow-up flows so new leads are contacted while they're still ready to buy."
+      }
+    ],
+    "process": [
+      {
+        "title": "Map your business",
+        "text": "Your most profitable services, your service area, your average job value and how many new jobs you can take each week."
+      },
+      {
+        "title": "Fix the foundation",
+        "text": "Google Business Profile, landing pages and call and form tracking set up before we spend on ads."
+      },
+      {
+        "title": "Launch lead campaigns",
+        "text": "Google and Meta campaigns focused on your top services and cities, with budgets matched to your capacity."
+      },
+      {
+        "title": "Optimize for booked jobs",
+        "text": "We review lead quality with you, cut what brings bad leads and scale the services and areas that bring profitable work."
+      }
+    ],
+    "small": "For owner-operated and growing service businesses, we focus first on the fastest wins: a complete Google Business Profile, a clear landing page with click-to-call and a tightly targeted Google campaign for your most profitable service. You'll know exactly what you're paying for each lead.",
+    "large": "For multi-location and larger service companies, we manage campaigns per location and service line, consistent Google Business Profiles across locations and reporting that shows cost per lead and cost per booked job by market.",
+    "faqs": [
+      {
+        "q": "Is this an alternative to HomeAdvisor, Angi or Thumbtack?",
+        "a": "Yes. Lead marketplaces like HomeAdvisor, Angi and Thumbtack often send the same lead to several companies, so you compete on price and speed for every job. With your own Google Ads, Local Services Ads and social campaigns, the leads are exclusive to your business, and you build a brand customers come back to."
+      },
+      {
+        "q": "How can I get more roofing jobs, landscaping customers or cleaning clients?",
+        "a": "Show up where local customers look — Google Search, Google Maps and social media — with a clear offer, a fast landing page and quick follow-up. We build that system around your service area and your most profitable services, whether that's roof replacements, weekly lawn care or recurring cleaning contracts."
+      },
+      {
+        "q": "What's the best way to advertise my small business online?",
+        "a": "Start where people already search for your service: Google Ads and a complete Google Business Profile. Then add Facebook and Instagram lead generation to reach customers before they search. Track every call and form so you know what each lead and job costs."
+      },
+      {
+        "q": "What types of service businesses do you work with?",
+        "a": "Our approach is built for businesses that sell appointments, estimates and calls: home services and contractors, cleaning and landscaping, auto repair, medical, dental and aesthetic clinics, legal, real estate, insurance and other professional services."
+      },
+      {
+        "q": "Should I use Google Ads or Local Services Ads?",
+        "a": "Often both. Local Services Ads charge per lead and appear at the very top of results for eligible categories, while Google Search Ads give you more control over keywords, ads and landing pages. We'll recommend the right mix for your category and market."
+      },
+      {
+        "q": "Can you help us answer and follow up with leads faster?",
+        "a": "Yes. We set up instant lead notifications and can connect forms and ads with WhatsApp so your team can respond in minutes — one of the biggest factors in turning leads into booked jobs."
+      },
+      {
+        "q": "Do you work with Spanish-speaking customers?",
+        "a": "Yes. Our team works in English and Spanish, so we can run campaigns and follow-up flows for bilingual and Hispanic markets across the United States."
+      }
+    ],
+    "industries": [
+      "Roofing",
+      "HVAC",
+      "Plumbing",
+      "Electrical",
+      "Landscaping & lawn care",
+      "Cleaning services",
+      "Home remodeling",
+      "Pest control",
+      "Auto repair",
+      "Medical & dental clinics",
+      "Med spas",
+      "Law firms",
+      "Real estate",
+      "Insurance"
+    ]
+  },
+  {
     "path": "/google-ads-management",
     "name": "Google Ads Management",
-    "title": "Google Ads Management Agency for US Businesses | RevUp",
-    "description": "Google Ads management for small and large US businesses: Search, Performance Max, Shopping and YouTube campaigns built to turn ad spend into sales. Free audit.",
-    "eyebrow": "Google Ads",
-    "h1": "Google Ads management that turns searches into customers",
-    "intro": "When someone searches for what you sell, your business should be the first answer they trust. RevUp plans, builds and optimizes Google Ads campaigns for small and large businesses across the United States, so every dollar you spend is tied to calls, leads and sales you can measure.",
+    "title": "Google Ads Management & PPC Agency for Small Business | RevUp",
+    "description": "Affordable Google Ads management and PPC services for small businesses in the USA. Hire a Google Ads agency focused on leads and sales. Free audit.",
+    "eyebrow": "Google Ads & PPC",
+    "h1": "Google Ads management & PPC services that turn searches into customers",
+    "intro": "When someone searches for what you sell, your business should be the first answer they trust. RevUp is a Google Ads agency for small businesses and growing brands across the United States: our Google Ads specialists plan, build and optimize your PPC campaigns so every dollar you spend is tied to calls, leads and sales you can measure.",
     "included": [
       {
         "title": "Search campaigns",
@@ -51,12 +156,24 @@
         "text": "Weekly optimization and monthly strategy reviews to lower cost per acquisition and grow volume when the numbers support it."
       }
     ],
-    "small": "If you're a local or growing business, you don't need a huge budget — you need the right keywords, clean tracking and someone watching the account every week. We start focused and expand only when the results justify it.",
+    "small": "Google advertising for small business works when it's focused. You don't need a huge budget — you need the right keywords, clean tracking and a Google Ads expert watching the account every week. Our PPC management for small business starts with your most profitable service and expands only when the results justify it, which keeps it affordable.",
     "large": "For larger brands and multi-location businesses, we manage complex account structures, product feeds with thousands of SKUs and budgets across Search, Shopping, Performance Max and YouTube — with reporting your leadership team can act on.",
     "faqs": [
       {
+        "q": "How much does Google Ads management cost?",
+        "a": "Google Ads management pricing has two parts: your ad spend, which you pay directly to Google, and our management fee, which depends on the number of campaigns, services and locations we manage. We keep PPC management affordable for small businesses and give you a clear quote after a free call, based on your goals and market."
+      },
+      {
         "q": "How much should I spend on Google Ads?",
         "a": "It depends on your industry, location, competition and goals. In your free call we'll estimate a starting budget based on your market and what a lead or sale is worth to you, then scale as results come in."
+      },
+      {
+        "q": "Should I hire a Google Ads expert or a Google Ads agency?",
+        "a": "A single freelancer can work for a simple account. Hiring a Google Ads management company like RevUp gives you a team instead: strategy, ad copy, landing pages, conversion tracking and reporting, with more than one specialist looking after your results."
+      },
+      {
+        "q": "Is there a Google Ads agency near me?",
+        "a": "We manage Google Ads and PPC campaigns for businesses across the United States remotely, so distance isn't a barrier. Your campaigns target your own local area, and we meet by video call and WhatsApp."
       },
       {
         "q": "How long until Google Ads shows results?",
@@ -305,6 +422,102 @@
     "why": [
       "Your website is where your marketing budget either pays off or disappears. A slow page, a confusing menu or a checkout with too many steps can undo the work of even the best ad campaign. Most visitors arrive on their phone, decide in seconds whether to stay and leave the moment something feels hard.",
       "We build sites with that reality in mind. Every page has one clear job, loads quickly on mobile and guides visitors to the next step — buying, booking or getting in touch. Because we also run paid advertising, we design landing pages and product pages around how ad traffic actually behaves, and we install tracking from day one so you can see which campaigns and pages drive sales. Your site becomes a tool that grows with your marketing, not a brochure that sits still."
+    ]
+  },
+  {
+    "path": "/agencia-google-ads",
+    "lang": "es",
+    "name": "Agencia de Google Ads en Español",
+    "title": "Agencia de Google Ads en Español para Negocios en USA | RevUp",
+    "description": "Administración de Google Ads en español para negocios hispanos en Estados Unidos. Publicidad en Google para conseguir más clientes. Llamada gratis.",
+    "eyebrow": "Google Ads en Español",
+    "h1": "Agencia de Google Ads en español para negocios en Estados Unidos",
+    "intro": "¿Tienes un negocio en Estados Unidos y quieres más clientes? En RevUp somos una agencia de Google Ads que trabaja en español. Nuestros expertos en Google Ads crean y administran tus anuncios en Google para que tu negocio aparezca cuando la gente busca lo que ofreces — y para que cada dólar se convierta en llamadas, citas y ventas que puedes medir.",
+    "why": [
+      "La mayoría de los clientes empiezan buscando en Google: \"plomero cerca de mí\", \"abogado de accidentes\", \"limpieza de casas\". Si tu negocio no aparece en ese momento, esa llamada se la lleva la competencia. La publicidad en Google es la forma más directa de estar ahí justo cuando el cliente está listo para contratar.",
+      "Muchos dueños de negocios hispanos en Estados Unidos han probado anuncios sin buenos resultados, o no han tenido una agencia que les explique todo en su idioma. Nosotros hablamos tu idioma y conocemos el mercado: elegimos las palabras clave correctas en inglés y en español, mostramos tus anuncios solo en tu zona de servicio y medimos cada llamada y formulario. Así sabes exactamente cuánto te cuesta cada cliente nuevo."
+    ],
+    "included": [
+      {
+        "title": "Administración de Google Ads",
+        "text": "Creamos, lanzamos y optimizamos tus campañas cada semana para bajar el costo por cliente."
+      },
+      {
+        "title": "Anuncios en inglés y en español",
+        "text": "Llegamos a tus clientes en el idioma en que buscan, para negocios hispanos y mercados bilingües."
+      },
+      {
+        "title": "Anuncios locales",
+        "text": "Tus anuncios aparecen solo en las ciudades y zonas donde trabajas, en el horario en que puedes atender."
+      },
+      {
+        "title": "Página de aterrizaje",
+        "text": "Una página rápida y clara para que quien haga clic te llame o te escriba de inmediato."
+      },
+      {
+        "title": "Medición de llamadas y formularios",
+        "text": "Sabes cuántas llamadas, mensajes y clientes trae cada campaña — no solo clics."
+      },
+      {
+        "title": "Reportes claros en español",
+        "text": "Te explicamos los resultados en palabras simples y qué vamos a mejorar el próximo mes."
+      }
+    ],
+    "process": [
+      {
+        "title": "Llamada gratis",
+        "text": "Conocemos tu negocio, tus servicios, tu zona y cuánto vale para ti un cliente nuevo."
+      },
+      {
+        "title": "Estrategia y configuración",
+        "text": "Elegimos palabras clave, escribimos los anuncios y configuramos la medición de llamadas y formularios."
+      },
+      {
+        "title": "Lanzamiento",
+        "text": "Tus anuncios salen con un presupuesto controlado mientras eliminamos las búsquedas que no traen clientes."
+      },
+      {
+        "title": "Optimización y crecimiento",
+        "text": "Cada semana ajustamos para conseguir más clientes al menor costo, y crecemos cuando los números funcionan."
+      }
+    ],
+    "industries": [
+      "Construcción y remodelación",
+      "Techos (roofing)",
+      "Plomería",
+      "Aire acondicionado (HVAC)",
+      "Jardinería y landscaping",
+      "Limpieza",
+      "Talleres mecánicos",
+      "Clínicas y consultorios",
+      "Abogados",
+      "Seguros",
+      "Bienes raíces",
+      "Restaurantes"
+    ],
+    "small": "La publicidad para negocios pequeños no tiene que ser cara. Empezamos con tu servicio más rentable y tu zona principal, con un presupuesto que tenga sentido para ti, y crecemos solo cuando los resultados lo justifican.",
+    "large": "Para empresas con varias sedes o varias líneas de servicio, manejamos campañas por ubicación y por servicio, en inglés y en español, con reportes que muestran el costo por cliente en cada mercado.",
+    "faqs": [
+      {
+        "q": "¿Cómo consigo más clientes para mi negocio en Estados Unidos?",
+        "a": "Aparece donde tus clientes buscan: anuncios en Google, un perfil de Google Business completo y una página web clara. Luego responde rápido a cada llamada y mensaje. Nosotros armamos ese sistema completo para tu negocio."
+      },
+      {
+        "q": "¿Cuánto cuesta la administración de Google Ads?",
+        "a": "Tiene dos partes: tu presupuesto de anuncios, que pagas directamente a Google, y nuestra tarifa de administración, que depende de cuántas campañas y servicios manejemos. Te damos una cotización clara después de una llamada gratis."
+      },
+      {
+        "q": "¿Trabajan con negocios hispanos?",
+        "a": "Sí. Hacemos marketing para negocios hispanos en Estados Unidos, con atención en español de principio a fin y anuncios en inglés y en español según tus clientes."
+      },
+      {
+        "q": "¿Necesito un presupuesto grande para anunciarme en Google?",
+        "a": "No. Muchos negocios empiezan con un presupuesto moderado enfocado en su servicio principal. Lo importante es que la campaña esté bien configurada y medida para no desperdiciar dinero."
+      },
+      {
+        "q": "¿La cuenta de Google Ads es mía?",
+        "a": "Sí. Tu cuenta, tus datos y tus anuncios siempre te pertenecen. Nosotros trabajamos dentro de tu cuenta con acceso de administrador."
+      }
     ]
   }
 ]

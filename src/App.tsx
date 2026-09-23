@@ -7,6 +7,7 @@ import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import { RouteMeta } from "@/components/RouteMeta";
 import servicePages from "@/config/service-pages.json";
+import blogPosts from "@/config/blog-posts.json";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -22,6 +23,8 @@ const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
 const GraciasPage = lazy(() => import("./pages/GraciasPage"));
 const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -56,6 +59,10 @@ const App = () => (
                 <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
                 {servicePages.map((page) => (
                   <Route key={page.path} path={page.path} element={<ServiceDetailPage page={page} />} />
+                ))}
+                <Route path="/blog" element={<BlogPage />} />
+                {blogPosts.map((post) => (
+                  <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogPostPage post={post} />} />
                 ))}
                 <Route path="/gracias" element={<GraciasPage />} />
                 <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />

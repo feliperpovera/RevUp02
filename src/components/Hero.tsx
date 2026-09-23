@@ -162,7 +162,7 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.8, ease: EASE }}
               className="mt-8 max-w-xl text-lg font-light leading-relaxed text-stone md:text-xl"
             >
-              From Main Street shops to national brands, we help small and large businesses across the USA win more customers with ads, websites and AI. Tell us where you want to go — let
+              From home services and clinics to national brands, we help service businesses across the USA get more calls, leads and booked jobs with ads, websites and AI. Tell us where you want to go — let
               us show you how.
             </motion.p>
 
