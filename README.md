@@ -1,23 +1,26 @@
 # RevUp Agency Group — Website
 
 Marketing site for RevUp Agency Group (Vite + React + TypeScript + Tailwind).
+Hosted on Hostinger (static files + `.htaccess` SPA fallback).
 
 ## Develop
 
 ```bash
 npm install
-npm run dev          # frontend only, http://localhost:8080
-npm run dev:full     # frontend + /api functions via Cloudflare (needs .dev.vars)
+npm run dev          # http://localhost:8080
 ```
 
-## Forms backend
+## Forms
 
-`functions/api/submit.ts` is a Cloudflare Pages Function that emails every form
-submission to `NOTIFY_TO` through Resend. Config lives in `wrangler.toml`; the
-API key is a secret: `npx wrangler pages secret put RESEND_API_KEY`.
-
-## Deploy
+`worker/submit.js` is a Cloudflare Worker (`revup-forms`) that emails every form
+to `MAIL_TO` through Resend, from the verified `revupagencygroup.com` domain.
 
 ```bash
-npm run deploy       # builds and publishes to Cloudflare Pages
+npm run deploy:forms                                   # deploy the Worker
+cd worker && npx wrangler secret put RESEND_API_KEY    # set the Resend key once
 ```
+
+## Deploy the site
+
+`npm run build`, then publish `dist/` to the `hostinger` branch — Hostinger's
+Git deployment pulls that branch into `public_html`.

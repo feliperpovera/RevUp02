@@ -1,0 +1,8 @@
+name = "revup-forms"
+main = "submit.js"
+compatibility_date = "2026-09-01"
+
+# RESEND_API_KEY is a secret: npx wrangler secret put RESEND_API_KEY
+[vars]
+MAIL_TO = "info@revupagencygroup.com"
+MAIL_FROM = "RevUp Agency Group <forms@revupagencygroup.com>"
