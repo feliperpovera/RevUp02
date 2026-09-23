@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
+import { RouteMeta } from "@/components/RouteMeta";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -37,6 +38,7 @@ const App = () => (
           <Sonner />
           <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
+            <RouteMeta />
             <AnimatedBackground />
             <WhatsAppButton />
             <Suspense fallback={<RouteLoadingFallback />}>

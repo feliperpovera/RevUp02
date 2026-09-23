@@ -10,6 +10,7 @@ const TestimonialsPage = () => {
       <Navbar />
 
       <section className="pt-32 pb-16 bg-transparent">
+        <h1 className="sr-only">RevUp client results and case studies</h1>
         <Testimonials />
 
         <div className="container mx-auto px-4 md:px-6 mt-16">

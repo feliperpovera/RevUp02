@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Per-route static HTML with page-specific SEO tags: /services -> services.html
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([a-z0-9-]+)$ $1.html [L]
+
 # SPA fallback: serve index.html for app routes (/gracias, /services, ...)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

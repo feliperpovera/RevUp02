@@ -1,0 +1,48 @@
+{
+  "site": "https://revupagencygroup.com",
+  "image": "https://revupagencygroup.com/og-revup.png",
+  "routes": {
+    "/": {
+      "title": "Digital Marketing Agency for US Businesses | RevUp",
+      "description": "RevUp helps small and large US businesses grow with Google Ads, Meta Ads, TikTok Ads, Shopify websites and AI automation. Book a free strategy call."
+    },
+    "/services": {
+      "title": "Google Ads, Meta Ads & Web Development Services | RevUp",
+      "description": "Paid media management, Shopify and website development, store management and AI marketing automation for US businesses. Get a free quote."
+    },
+    "/about": {
+      "title": "About RevUp Agency Group | Data-Driven Marketing Agency",
+      "description": "RevUp is a digital marketing agency that blends data, AI and human insight to help businesses grow with measurable results. Meet our mission and vision."
+    },
+    "/partners": {
+      "title": "Official Meta, Google, TikTok & Shopify Partners | RevUp",
+      "description": "RevUp is a certified partner of Meta, Google Ads, TikTok and Shopify, delivering expert campaign management and e-commerce solutions."
+    },
+    "/process": {
+      "title": "Our Marketing Process: From Strategy to Scale | RevUp",
+      "description": "From strategy consultation to launch and continuous optimization, see how RevUp turns ad spend into measurable growth for your business."
+    },
+    "/strategy": {
+      "title": "Data-Driven, AI-Powered Marketing Strategy | RevUp",
+      "description": "Our strategy: data-driven, AI-powered systems that help businesses work smarter, operate more efficiently and reach their full growth potential."
+    },
+    "/testimonials": {
+      "title": "Client Results & Case Studies | RevUp Agency Group",
+      "description": "See how brands like MIAN (20.2x ROAS) and New Life Furniture (7.4x ROAS) grew with RevUp's paid advertising and web development."
+    },
+    "/roas-calculator": {
+      "title": "Free ROAS Calculator for Google & Meta Ads | RevUp",
+      "description": "Project your return on ad spend with our free ROAS calculator, using updated benchmarks by industry and region."
+    },
+    "/onboarding": {
+      "title": "Client Onboarding | RevUp Agency Group",
+      "description": "Client onboarding form for RevUp Agency Group.",
+      "noindex": true
+    },
+    "/gracias": {
+      "title": "Thank You | RevUp Agency Group",
+      "description": "Thanks for reaching out to RevUp. Our team will get back to you within 24 hours.",
+      "noindex": true
+    }
+  }
+}
