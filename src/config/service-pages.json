@@ -1,0 +1,310 @@
+[
+  {
+    "path": "/google-ads-management",
+    "name": "Google Ads Management",
+    "title": "Google Ads Management Agency for US Businesses | RevUp",
+    "description": "Google Ads management for small and large US businesses: Search, Performance Max, Shopping and YouTube campaigns built to turn ad spend into sales. Free audit.",
+    "eyebrow": "Google Ads",
+    "h1": "Google Ads management that turns searches into customers",
+    "intro": "When someone searches for what you sell, your business should be the first answer they trust. RevUp plans, builds and optimizes Google Ads campaigns for small and large businesses across the United States, so every dollar you spend is tied to calls, leads and sales you can measure.",
+    "included": [
+      {
+        "title": "Search campaigns",
+        "text": "Keyword research around real buying intent, tightly grouped ad groups and ads written to match what your customers type."
+      },
+      {
+        "title": "Performance Max & Shopping",
+        "text": "Product feed setup and optimization so your catalog shows up across Search, Shopping, YouTube, Gmail and Display."
+      },
+      {
+        "title": "YouTube & Display",
+        "text": "Video and visual campaigns to build awareness and bring back visitors who didn't buy the first time."
+      },
+      {
+        "title": "Conversion tracking",
+        "text": "Google Tag Manager, GA4 and enhanced conversions set up correctly, so bidding optimizes for revenue — not clicks."
+      },
+      {
+        "title": "Bidding & budget management",
+        "text": "Smart bidding strategies chosen for your goals and budgets moved toward the campaigns that actually sell."
+      },
+      {
+        "title": "Clear reporting",
+        "text": "Plain-language reports on cost, leads, sales and return on ad spend, with the next steps we recommend."
+      }
+    ],
+    "process": [
+      {
+        "title": "Audit & strategy",
+        "text": "We review your account (or your market, if you're starting fresh), your margins and your goals, and define what success looks like in numbers."
+      },
+      {
+        "title": "Build & tracking",
+        "text": "We structure campaigns, write the ads, connect your conversion tracking and make sure every lead and sale is recorded."
+      },
+      {
+        "title": "Launch & learn",
+        "text": "Campaigns go live with controlled budgets while we watch search terms, cut waste and double down on what converts."
+      },
+      {
+        "title": "Optimize & scale",
+        "text": "Weekly optimization and monthly strategy reviews to lower cost per acquisition and grow volume when the numbers support it."
+      }
+    ],
+    "small": "If you're a local or growing business, you don't need a huge budget — you need the right keywords, clean tracking and someone watching the account every week. We start focused and expand only when the results justify it.",
+    "large": "For larger brands and multi-location businesses, we manage complex account structures, product feeds with thousands of SKUs and budgets across Search, Shopping, Performance Max and YouTube — with reporting your leadership team can act on.",
+    "faqs": [
+      {
+        "q": "How much should I spend on Google Ads?",
+        "a": "It depends on your industry, location, competition and goals. In your free call we'll estimate a starting budget based on your market and what a lead or sale is worth to you, then scale as results come in."
+      },
+      {
+        "q": "How long until Google Ads shows results?",
+        "a": "Search campaigns can bring traffic and leads within days of launch. Campaigns usually need a few weeks of data to optimize bidding and reach a stable cost per lead or sale."
+      },
+      {
+        "q": "Do I keep ownership of my Google Ads account?",
+        "a": "Yes. Your account, data and assets always belong to you. We work inside your account with manager access."
+      },
+      {
+        "q": "Can you take over an existing account?",
+        "a": "Yes. We start with an audit of your current campaigns, tracking and spend, then fix what's leaking budget before scaling."
+      }
+    ],
+    "why": [
+      "Google Ads is different from every other channel because it reaches people at the exact moment they are looking for a solution. Someone searching for \"emergency plumber near me\" or \"leather jackets for men\" is already close to buying. The challenge is that it's also easy to waste money: broad keywords, missing negative keywords, ads that send people to the wrong page and tracking that counts the wrong actions can quietly drain a budget.",
+      "Our job is to close those leaks. We build around keywords with real purchase intent, add negative keywords every week based on actual search terms, match every ad to a relevant landing page and make sure Google is optimizing for revenue and qualified leads instead of cheap clicks. The result is an account where you can see exactly what each dollar returns — and decide with confidence when to invest more."
+    ]
+  },
+  {
+    "path": "/meta-ads-management",
+    "name": "Meta Ads Management",
+    "title": "Facebook & Instagram Ads Management Agency | RevUp",
+    "description": "Meta Ads management for US businesses: Facebook and Instagram campaigns with creative testing, Pixel and Conversions API tracking and ROAS-focused optimization.",
+    "eyebrow": "Meta Ads",
+    "h1": "Facebook & Instagram ads that sell, not just scroll",
+    "intro": "Your customers spend hours every day on Facebook and Instagram. RevUp builds Meta Ads campaigns that stop the scroll, reach the right people and turn attention into leads and sales — for small businesses getting started and for large brands ready to scale.",
+    "included": [
+      {
+        "title": "Campaign strategy",
+        "text": "Prospecting, retargeting and retention campaigns mapped to your funnel, including Advantage+ where it fits."
+      },
+      {
+        "title": "Creative testing",
+        "text": "Structured testing of hooks, formats and offers across images, video and Reels to find what your audience responds to."
+      },
+      {
+        "title": "Pixel & Conversions API",
+        "text": "Meta Pixel and server-side Conversions API set up so your ads optimize on accurate purchase and lead data."
+      },
+      {
+        "title": "Audience building",
+        "text": "Custom audiences from your customers and site visitors, lookalikes and broad targeting guided by the data."
+      },
+      {
+        "title": "Lead generation",
+        "text": "Instant forms, WhatsApp and Messenger campaigns with follow-up flows so leads don't go cold."
+      },
+      {
+        "title": "Reporting",
+        "text": "Clear weekly numbers on spend, cost per result and return on ad spend, plus what we're testing next."
+      }
+    ],
+    "process": [
+      {
+        "title": "Audit & offer",
+        "text": "We look at your account history, your best customers and your offer, and decide what message and audience to lead with."
+      },
+      {
+        "title": "Tracking & creative",
+        "text": "We make sure Pixel and Conversions API are recording correctly and produce the first round of ad creative to test."
+      },
+      {
+        "title": "Test",
+        "text": "We launch controlled tests to find the winning combinations of audience, creative and offer."
+      },
+      {
+        "title": "Scale",
+        "text": "Budget moves to what's working, fresh creative keeps performance from fatiguing and we keep testing new angles."
+      }
+    ],
+    "small": "For small businesses, Meta Ads is one of the fastest ways to reach local customers and build demand. We keep budgets efficient, focus on offers that convert and set up lead capture that works with how you already sell — including WhatsApp.",
+    "large": "For e-commerce and larger brands, we manage full-funnel Meta accounts with catalog and dynamic product ads, high-volume creative testing and ROAS-based scaling across multiple markets.",
+    "faqs": [
+      {
+        "q": "Should I advertise on Facebook or Instagram?",
+        "a": "Usually both. Meta Ads runs across Facebook, Instagram, Messenger and the Audience Network from one account, and the algorithm shifts budget to where your results are cheapest."
+      },
+      {
+        "q": "What budget do I need for Meta Ads?",
+        "a": "You can start with a modest budget, but you need enough spend to let the algorithm learn. We'll recommend a starting budget in your free call based on your goals and average order or lead value."
+      },
+      {
+        "q": "Do you create the ads?",
+        "a": "Yes. We plan and produce ad creative — copy, images and video concepts — and test them systematically to find what performs."
+      },
+      {
+        "q": "What results have your clients seen?",
+        "a": "Results vary by business, but RevUp clients have reached returns on ad spend such as 20.2x for MIAN and 7.4x for New Life Furniture across their paid advertising."
+      }
+    ],
+    "why": [
+      "On Facebook and Instagram, people aren't searching for you — you're interrupting their feed. That means the creative does most of the work. The same product can succeed or fail depending on the first three seconds of a video, the offer in the headline or whether the ad looks like an ad at all. Meanwhile, privacy changes have made accurate tracking harder, so accounts without a proper Conversions API setup often optimize on incomplete data.",
+      "We tackle both sides. On the creative side, we test hooks, formats and offers in a structured way instead of guessing, and we keep a steady flow of new ads so results don't fade as audiences see the same creative repeatedly. On the data side, we set up the Meta Pixel and Conversions API together so the algorithm learns from real purchases and leads. Better data plus better creative is what lets a Meta account scale profitably."
+    ]
+  },
+  {
+    "path": "/tiktok-ads-management",
+    "name": "TikTok Ads Management",
+    "title": "TikTok Ads Management Agency for US Brands | RevUp",
+    "description": "TikTok Ads management for US businesses: native creative, Spark Ads, TikTok Pixel tracking and campaigns built to reach new customers and drive sales.",
+    "eyebrow": "TikTok Ads",
+    "h1": "TikTok ads that feel native — and drive real sales",
+    "intro": "TikTok is where new customers discover brands. It rewards ads that look and feel like real content, not traditional commercials. RevUp builds TikTok Ads campaigns with native creative and solid tracking so small and large US businesses can turn attention into revenue.",
+    "included": [
+      {
+        "title": "Native creative strategy",
+        "text": "Hooks, scripts and formats designed for TikTok — made to be watched, not skipped."
+      },
+      {
+        "title": "Spark Ads",
+        "text": "Boosting your best organic posts and creator content as ads to keep social proof and engagement."
+      },
+      {
+        "title": "TikTok Pixel & Events API",
+        "text": "Accurate tracking of purchases and leads so campaigns optimize toward real results."
+      },
+      {
+        "title": "Campaign management",
+        "text": "Sales, lead and awareness campaigns, including Smart+ where it fits, managed and optimized weekly."
+      },
+      {
+        "title": "TikTok Shop support",
+        "text": "Guidance for brands selling through TikTok Shop and connecting it with your ad campaigns."
+      },
+      {
+        "title": "Reporting",
+        "text": "Clear reporting on spend, cost per result and return, with the creative insights behind the numbers."
+      }
+    ],
+    "process": [
+      {
+        "title": "Research",
+        "text": "We study your audience, competitors and the content already performing in your category on TikTok."
+      },
+      {
+        "title": "Creative & tracking",
+        "text": "We develop the first batch of native ad concepts and set up Pixel and Events API tracking."
+      },
+      {
+        "title": "Test",
+        "text": "We launch creative tests to find the hooks and formats that drive the lowest cost per result."
+      },
+      {
+        "title": "Scale",
+        "text": "Winning creatives get budget, and we keep a steady flow of fresh concepts to avoid creative fatigue."
+      }
+    ],
+    "small": "For small businesses, TikTok can deliver reach that's hard to get anywhere else at the same cost. We focus on simple, authentic creative that you can produce without a big studio budget.",
+    "large": "For larger brands, we run structured creative testing at volume, integrate creator content and Spark Ads, and connect TikTok with the rest of your paid media plan.",
+    "faqs": [
+      {
+        "q": "Is TikTok right for my business?",
+        "a": "If your customers are on TikTok and your product can be shown or explained visually, it's worth testing. We'll tell you honestly in your free call whether TikTok should be a priority for you right now."
+      },
+      {
+        "q": "Do I need to film content myself?",
+        "a": "Not necessarily. We plan the concepts and can work with your team, creators or existing footage. Authentic, simple content often outperforms polished productions on TikTok."
+      },
+      {
+        "q": "What are Spark Ads?",
+        "a": "Spark Ads let you promote organic TikTok posts — yours or a creator's — as ads, keeping the likes, comments and shares that make them more credible."
+      },
+      {
+        "q": "How do you measure TikTok results?",
+        "a": "With the TikTok Pixel and Events API tracking purchases and leads, plus reporting that compares TikTok against your other channels."
+      }
+    ],
+    "why": [
+      "TikTok works differently from other ad platforms. The feed is full-screen, sound-on and driven by entertainment, so ads that look like traditional commercials get skipped in seconds. The brands that win on TikTok make ads that feel like the content people came to watch: real people, quick hooks, honest demonstrations and trends adapted to their product.",
+      "That's why our TikTok work starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many brands, TikTok becomes a powerful way to reach new audiences that other channels miss."
+    ]
+  },
+  {
+    "path": "/shopify-web-development",
+    "name": "Shopify & Website Development",
+    "title": "Shopify & Website Development for US Businesses | RevUp",
+    "description": "Custom Shopify stores, landing pages and business websites built for speed, SEO and conversions. Designed to turn your ad traffic into customers.",
+    "eyebrow": "Shopify & Web Development",
+    "h1": "Shopify stores and websites built to convert",
+    "intro": "Great ads only work if the site they send people to is fast, clear and easy to buy from. RevUp designs and builds Shopify stores, landing pages and business websites for small and large US businesses — built from day one for speed, SEO and conversions.",
+    "included": [
+      {
+        "title": "Shopify store builds",
+        "text": "New stores or redesigns with a theme tailored to your brand, product pages that sell and a smooth checkout."
+      },
+      {
+        "title": "Landing pages",
+        "text": "High-converting pages for your ad campaigns, built to match each offer and audience."
+      },
+      {
+        "title": "Business websites",
+        "text": "Fast, mobile-first websites that explain what you do and make it easy to contact you."
+      },
+      {
+        "title": "Technical SEO",
+        "text": "Clean structure, page titles, descriptions, sitemaps and structured data so Google understands your site."
+      },
+      {
+        "title": "Tracking setup",
+        "text": "Google Analytics 4, Tag Manager, Meta Pixel and TikTok Pixel installed correctly from launch."
+      },
+      {
+        "title": "Store & site management",
+        "text": "Ongoing updates, speed optimization and conversion improvements after launch."
+      }
+    ],
+    "process": [
+      {
+        "title": "Discovery",
+        "text": "We learn your business, your customers and your goals, and map the pages and features your site needs."
+      },
+      {
+        "title": "Design",
+        "text": "We design the key pages around your brand and the actions you want visitors to take."
+      },
+      {
+        "title": "Build & launch",
+        "text": "We develop, test on every device, connect tracking and launch without disrupting your business."
+      },
+      {
+        "title": "Improve",
+        "text": "After launch we measure how visitors behave and keep improving speed and conversion rate."
+      }
+    ],
+    "small": "For small businesses, we build sites that look professional, load fast and are easy for you to update — without paying for features you don't need.",
+    "large": "For larger brands, we handle complex catalogs, custom Shopify functionality, integrations and performance work at scale, coordinated with your marketing campaigns.",
+    "faqs": [
+      {
+        "q": "Should I use Shopify for my online store?",
+        "a": "For most product businesses, yes. Shopify is reliable, secure and easy to manage, with a large app ecosystem. We'll confirm it's the right fit for your catalog and operations."
+      },
+      {
+        "q": "Can you redesign my existing site?",
+        "a": "Yes. We can redesign and migrate existing Shopify stores and websites, keeping your products, content and SEO value."
+      },
+      {
+        "q": "Will my site be optimized for Google?",
+        "a": "Yes. Every site includes technical SEO basics: fast load times, mobile-friendly design, proper titles and descriptions, a sitemap and structured data."
+      },
+      {
+        "q": "Do you manage the site after launch?",
+        "a": "We offer ongoing website and store management, including updates, speed optimization and conversion rate improvements."
+      }
+    ],
+    "why": [
+      "Your website is where your marketing budget either pays off or disappears. A slow page, a confusing menu or a checkout with too many steps can undo the work of even the best ad campaign. Most visitors arrive on their phone, decide in seconds whether to stay and leave the moment something feels hard.",
+      "We build sites with that reality in mind. Every page has one clear job, loads quickly on mobile and guides visitors to the next step — buying, booking or getting in touch. Because we also run paid advertising, we design landing pages and product pages around how ad traffic actually behaves, and we install tracking from day one so you can see which campaigns and pages drive sales. Your site becomes a tool that grows with your marketing, not a brochure that sits still."
+    ]
+  }
+]

@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import seo from "@/config/seo.json";
+import servicePages from "@/config/service-pages.json";
 
 type RouteSeo = { title: string; description: string; noindex?: boolean };
-const ROUTES = seo.routes as Record<string, RouteSeo>;
+const ROUTES: Record<string, RouteSeo> = {
+  ...(seo.routes as Record<string, RouteSeo>),
+  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description }])),
+};
 
 const setMeta = (selector: string, attr: "content" | "href", value: string) => {
   document.querySelector(selector)?.setAttribute(attr, value);

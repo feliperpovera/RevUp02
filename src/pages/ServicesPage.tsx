@@ -1,3 +1,6 @@
+import servicePages from "@/config/service-pages.json";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
@@ -180,6 +183,20 @@ const ServicesPage = () => {
             </div>
           </div>
         </div>
+
+        <nav aria-label="Service pages" className="container mx-auto mt-16 flex max-w-6xl justify-center px-4 md:px-6 flex-wrap items-center gap-3">
+          <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">Explore</span>
+          {servicePages.map((p) => (
+            <Link
+              key={p.path}
+              to={p.path}
+              className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground/80 transition-colors hover:border-performance hover:text-performance"
+            >
+              {p.name}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          ))}
+        </nav>
       </section>
 
       <Footer />

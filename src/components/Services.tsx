@@ -1,5 +1,6 @@
 import { ShoppingCart, Code, Settings, Zap, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import servicePages from "@/config/service-pages.json";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 
 const services = [
@@ -92,6 +93,19 @@ export const Services = () => {
               </Reveal>
             ))}
           </div>
+          <nav aria-label="Service pages" className="mt-12 flex flex-wrap items-center gap-3">
+            <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">Explore</span>
+            {servicePages.map((p) => (
+              <Link
+                key={p.path}
+                to={p.path}
+                className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground/80 transition-colors hover:border-performance hover:text-performance"
+              >
+                {p.name}
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </section>

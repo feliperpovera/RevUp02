@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import { RouteMeta } from "@/components/RouteMeta";
+import servicePages from "@/config/service-pages.json";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -20,6 +21,7 @@ const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
 const GraciasPage = lazy(() => import("./pages/GraciasPage"));
+const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -52,6 +54,9 @@ const App = () => (
                 <Route path="/testimonials" element={<TestimonialsPage />} />
                 <Route path="/onboarding" element={<OnboardingPage />} />
                 <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
+                {servicePages.map((page) => (
+                  <Route key={page.path} path={page.path} element={<ServiceDetailPage page={page} />} />
+                ))}
                 <Route path="/gracias" element={<GraciasPage />} />
                 <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />
 

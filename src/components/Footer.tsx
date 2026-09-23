@@ -11,6 +11,10 @@ const QUICK_LINKS = [
   { label: "Services", to: "/services" },
   { label: "Process", to: "/process" },
   { label: "Testimonials", to: "/testimonials" },
+  { label: "Google Ads", to: "/google-ads-management" },
+  { label: "Meta Ads", to: "/meta-ads-management" },
+  { label: "TikTok Ads", to: "/tiktok-ads-management" },
+  { label: "Shopify & Web", to: "/shopify-web-development" },
 ];
 
 export const Footer = () => {
