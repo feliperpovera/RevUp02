@@ -19,23 +19,28 @@ import xpressfoamLogo from "@/assets/clients/xpressfoam-logo.png";
 import maylinLogo from "@/assets/clients/maylin-logo.png";
 
 // url: client website; leave out until confirmed.
-const CLIENTS: { company: string; logo: string; url?: string }[] = [
-  { company: "Vélez", logo: velezLogo , url: "https://www.velez.com.co" },
-  { company: "Monastery Couture", logo: monasteryLogo , url: "https://www.monasterycouture.com" },
-  { company: "Distrihogar", logo: distrihogarLogo , url: "https://distrihogar.com" },
-  { company: "MIAN", logo: mianLogo, url: "https://mianhousedecor.com/" },
-  { company: "New Life Furniture", logo: newlifeLogo , url: "https://newlifefurniture.com" },
-  { company: "IntraWest Management", logo: intrawestLogo },
-  { company: "Host U", logo: hostuLogo },
-  { company: "European Luxury Wall Finishes", logo: europeanLogo , url: "https://europeanluxurywallfinishes.com" },
-  { company: "Vera Seguros", logo: veraLogo , url: "https://veraseguros.com" },
-  { company: "Hera 23", logo: hera23Logo , url: "https://hera23.com" },
-  { company: "Invirtiendo", logo: invirtiendoLogo, url: "https://invirtiendoo.vercel.app/" },
-  { company: "Xpress Foam", logo: xpressfoamLogo , url: "https://xpressfoam.com" },
-  { company: "Maylin Mattress", logo: maylinLogo , url: "https://www.maylinmattress.com/" },
+// ar: logo width/height (files are trimmed to their content), used to give every logo the same visual weight.
+const CLIENTS: { company: string; logo: string; ar: number; url?: string }[] = [
+  { company: "Vélez", logo: velezLogo, ar: 3.95, url: "https://www.velez.com.co" },
+  { company: "Monastery Couture", logo: monasteryLogo, ar: 2.26, url: "https://www.monasterycouture.com" },
+  { company: "Distrihogar", logo: distrihogarLogo, ar: 3.29, url: "https://distrihogar.com" },
+  { company: "MIAN", logo: mianLogo, ar: 1.58, url: "https://mianhousedecor.com/" },
+  { company: "New Life Furniture", logo: newlifeLogo, ar: 2.53, url: "https://newlifefurniture.com" },
+  { company: "IntraWest Management", logo: intrawestLogo, ar: 0.56 },
+  { company: "Host U", logo: hostuLogo, ar: 2.18 },
+  { company: "European Luxury Wall Finishes", logo: europeanLogo, ar: 1.07, url: "https://europeanluxurywallfinishes.com" },
+  { company: "Vera Seguros", logo: veraLogo, ar: 1.54, url: "https://veraseguros.com" },
+  { company: "Hera 23", logo: hera23Logo, ar: 1.29, url: "https://hera23.com" },
+  { company: "Invirtiendo", logo: invirtiendoLogo, ar: 5.24, url: "https://invirtiendoo.vercel.app/" },
+  { company: "Xpress Foam", logo: xpressfoamLogo, ar: 1.65, url: "https://xpressfoam.com" },
+  { company: "Maylin Mattress", logo: maylinLogo, ar: 1.48, url: "https://www.maylinmattress.com/" },
 ];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
+
+// Same ink area for every logo, capped so tall marks don't tower and wide wordmarks fit the card.
+const LOGO_AREA = 5200;
+const logoWidth = (ar: number) => Math.round(Math.min(Math.sqrt(LOGO_AREA * ar), 72 * ar, 165));
 
 export const Testimonials = () => {
   return (
@@ -89,7 +94,8 @@ export const Testimonials = () => {
                     src={client.logo}
                     alt={`${client.company} logo`}
                     loading="lazy"
-                    className="max-h-14 w-auto max-w-[150px] object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-16 md:max-w-[170px]"
+                    style={{ width: logoWidth(client.ar) }}
+                    className="h-auto max-w-full object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0"
                   />
                   <span className="text-center font-heading text-base text-foreground/70 transition-colors duration-300 group-hover:text-performance md:text-lg">
                     {client.company}

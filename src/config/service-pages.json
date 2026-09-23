@@ -348,6 +348,87 @@
     ]
   },
   {
+    "path": "/web-design",
+    "name": "Website Design",
+    "title": "Website Design for Service Businesses & Small Business | RevUp",
+    "description": "Fast, mobile-first websites for US service businesses and small businesses — built for SEO, calls and booked jobs. Get a free website quote.",
+    "eyebrow": "Website Design",
+    "h1": "Websites that turn visitors into calls and booked jobs",
+    "intro": "RevUp designs and builds websites for service businesses and small businesses in the USA — contractors, home services, clinics, professional services and local brands. Every site is fast on mobile, easy to find on Google and built around one goal: getting people to call, book or request a quote.",
+    "why": [
+      "For a service business, your website is often the first impression — and the place where a lead decides to call you or your competitor. If it loads slowly, hides your phone number or doesn't explain what you do and where you work, people leave in seconds.",
+      "We build small business websites around how customers actually hire a service: clear services and service areas, visible click-to-call and WhatsApp buttons, quote and booking forms that land in your inbox, and trust signals like reviews and photos of your work. Because we also run Google Ads and Meta Ads, every site is ready for paid traffic and local SEO from day one, with tracking installed so you can see which pages bring in leads."
+    ],
+    "included": [
+      {
+        "title": "Custom website design",
+        "text": "A professional design built around your brand, your services and the action you want visitors to take."
+      },
+      {
+        "title": "Mobile-first and fast",
+        "text": "Pages that load quickly on phones, where most of your customers will find you."
+      },
+      {
+        "title": "Service and service-area pages",
+        "text": "A page for each service and the cities you cover, so you show up in local searches."
+      },
+      {
+        "title": "Lead capture",
+        "text": "Click-to-call, WhatsApp and quote forms that send every lead straight to your email."
+      },
+      {
+        "title": "SEO foundations",
+        "text": "Page titles, descriptions, sitemap, structured data and Google Search Console setup."
+      },
+      {
+        "title": "Tracking and landing pages",
+        "text": "Google Analytics 4, Tag Manager and Meta Pixel installed, plus landing pages for your ad campaigns."
+      }
+    ],
+    "process": [
+      {
+        "title": "Discovery",
+        "text": "We learn your services, service area and ideal customers, and plan the pages your site needs."
+      },
+      {
+        "title": "Design",
+        "text": "We design the key pages and share them with you for feedback before building."
+      },
+      {
+        "title": "Build & launch",
+        "text": "We build, test on every device, connect your domain, forms and tracking, and go live."
+      },
+      {
+        "title": "Grow",
+        "text": "After launch we can run ads and SEO to bring traffic, and keep improving the pages that convert."
+      }
+    ],
+    "small": "For small businesses, we build a professional website that's quick to launch, easy to update and focused on getting you calls — without paying for features you don't need.",
+    "large": "For larger companies and multi-location businesses, we build sites with many service and location pages, integrations with your CRM and booking tools, and performance work at scale.",
+    "faqs": [
+      {
+        "q": "Do you build websites for service businesses like contractors and home services?",
+        "a": "Yes. Service businesses are our main focus. We build sites with service pages, service-area pages, click-to-call and quote forms designed to generate leads."
+      },
+      {
+        "q": "Can you redesign my current website?",
+        "a": "Yes. We can redesign your existing site and move your content while protecting the SEO value you already have."
+      },
+      {
+        "q": "Will my website show up on Google?",
+        "a": "Every site includes SEO foundations: fast load times, mobile-friendly design, proper titles and descriptions, a sitemap, structured data and Google Search Console setup. Ranking also depends on competition and ongoing work, which we can help with."
+      },
+      {
+        "q": "Do you also build online stores?",
+        "a": "Yes. For product businesses we build Shopify stores — see our Shopify & Website Development service."
+      },
+      {
+        "q": "Can you manage ads to my new website?",
+        "a": "Yes. We run Google Ads, Meta Ads and TikTok Ads, so your website and campaigns are planned together."
+      }
+    ]
+  },
+  {
     "path": "/shopify-web-development",
     "name": "Shopify & Website Development",
     "title": "Shopify & Website Development for US Businesses | RevUp",
