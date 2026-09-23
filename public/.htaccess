@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Real 404s (e.g. unknown /blog/slug) keep the 404 status but render the branded React 404
+ErrorDocument 404 /index.html
+
+# Per-route static HTML with page-specific SEO tags: /services -> services.html
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([a-z0-9-]+)$ $1.html [L]
+
+# Blog articles: /blog/slug -> blog--slug.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^blog/([a-z0-9-]+)$ blog--$1.html [L]
+
+# SPA fallback: serve index.html for app routes (/gracias, /services, ...)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+

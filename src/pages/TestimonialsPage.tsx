@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { openCalendly } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ const TestimonialsPage = () => {
       <Navbar />
 
       <section className="pt-32 pb-16 bg-transparent">
+        <h1 className="sr-only">RevUp client results and case studies</h1>
         <Testimonials />
 
         <div className="container mx-auto px-4 md:px-6 mt-16">
@@ -20,7 +22,7 @@ const TestimonialsPage = () => {
               Join the growing list of businesses that have transformed their digital presence and achieved measurable growth with RevUp.
             </p>
             <Button
-              onClick={() => window.open('https://calendly.com/revupagencygroup-info/30min?month=2025-11', '_blank')}
+              onClick={() => openCalendly()}
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-full px-8 py-6 text-base"
             >
               Start Your Journey

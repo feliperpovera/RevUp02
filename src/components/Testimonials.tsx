@@ -1,6 +1,7 @@
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
+import { openCalendly } from "@/config/links";
 
 // Import client logos
 import mianLogo from "@/assets/clients/mian-logo.jpg";
@@ -9,156 +10,115 @@ import hostuLogo from "@/assets/clients/hostu-logo.jpeg";
 import europeanLogo from "@/assets/clients/european-logo.png";
 import velezLogo from "@/assets/clients/velez-logo.png";
 import intrawestLogo from "@/assets/clients/intrawest-logo.png";
+import monasteryLogo from "@/assets/clients/monastery-logo.png";
+import distrihogarLogo from "@/assets/clients/distrihogar-logo.png";
+import veraLogo from "@/assets/clients/vera-logo.png";
+import hera23Logo from "@/assets/clients/hera23-logo.png";
+import invirtiendoLogo from "@/assets/clients/invirtiendo-logo.png";
+import xpressfoamLogo from "@/assets/clients/xpressfoam-logo.png";
+import maylinLogo from "@/assets/clients/maylin-logo.png";
 
-const testimonials = [
-  {
-    type: "result",
-    company: "Vélez",
-    subtitle: "Retail & Fashion",
-    description: "We Supported Them Through The Entire Advertising Process In The USA",
-    result: "Full",
-    period: "Support",
-    logo: velezLogo,
-  },
-  {
-    type: "result",
-    company: "IntraWest Management",
-    subtitle: "Real Estate",
-    description: "We Supported Them Through The Entire Advertising Process In The USA",
-    result: "Full",
-    period: "Support",
-    logo: intrawestLogo,
-  },
-  {
-    type: "result",
-    company: "MIAN",
-    subtitle: "E-commerce",
-    description: "We Achieved A Return On Ad Spend Of",
-    result: "20.2x",
-    period: "ROAS",
-    logo: mianLogo,
-  },
-  {
-    type: "result",
-    company: "New Life Furniture",
-    subtitle: "Home & Living",
-    description: "We Achieved A Return On Ad Spend Of",
-    result: "7.4x",
-    period: "ROAS",
-    logo: newlifeLogo,
-  },
-  {
-    type: "result",
-    company: "Host U",
-    subtitle: "Web Development",
-    description: "We Created A Complete Web Presence",
-    result: "Website",
-    period: "Creation",
-    logo: hostuLogo,
-  },
-  {
-    type: "result",
-    company: "European Luxury Wall Finishes",
-    subtitle: "Web Development",
-    description: "We Created A Complete Web Presence",
-    result: "Website",
-    period: "Creation",
-    logo: europeanLogo,
-  },
+// url: client website; leave out until confirmed.
+const CLIENTS: { company: string; logo: string; url?: string }[] = [
+  { company: "Vélez", logo: velezLogo , url: "https://www.velez.com.co" },
+  { company: "Monastery Couture", logo: monasteryLogo , url: "https://www.monasterycouture.com" },
+  { company: "Distrihogar", logo: distrihogarLogo , url: "https://distrihogar.com" },
+  { company: "MIAN", logo: mianLogo, url: "https://mianhousedecor.com/" },
+  { company: "New Life Furniture", logo: newlifeLogo , url: "https://newlifefurniture.com" },
+  { company: "IntraWest Management", logo: intrawestLogo },
+  { company: "Host U", logo: hostuLogo },
+  { company: "European Luxury Wall Finishes", logo: europeanLogo , url: "https://europeanluxurywallfinishes.com" },
+  { company: "Vera Seguros", logo: veraLogo , url: "https://veraseguros.com" },
+  { company: "Hera 23", logo: hera23Logo , url: "https://hera23.com" },
+  { company: "Invirtiendo", logo: invirtiendoLogo, url: "https://invirtiendoo.vercel.app/" },
+  { company: "Xpress Foam", logo: xpressfoamLogo , url: "https://xpressfoam.com" },
+  { company: "Maylin Mattress", logo: maylinLogo , url: "https://www.maylinmattress.com/" },
 ];
 
+const CORNERS = ["tl", "tr", "bl", "br"] as const;
+
 export const Testimonials = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 350;
-      scrollContainerRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-transparent relative overflow-hidden" aria-labelledby="testimonials-heading">
-      <div className="absolute inset-0 cyber-grid opacity-5" />
-      
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Header */}
-        <header className="text-center mb-8">
-          <p className="text-xs uppercase tracking-[0.2em] text-foreground/40 mb-4">
-            Our Clients And Results
-          </p>
-          <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-            Meet Our Amazing <span className="text-accent">Clients And Partners.</span>
-          </h2>
-          <p className="text-sm md:text-base text-foreground/50 max-w-3xl mx-auto leading-relaxed">
-            We collaborate with driven brands and entrepreneurs who are ready to scale. With every partnership, our goal stays the same: deliver paid advertising that fuels real growth and lasting impact.
-          </p>
-        </header>
+    <section
+      id="testimonials"
+      className="relative overflow-hidden bg-graphite py-24 md:py-32"
+      aria-labelledby="testimonials-heading"
+    >
+      {/* Giant tinted chapter numeral, behind content */}
+      <GiantNumeral value="003" className="-top-10 right-[-2%] text-cream/[0.04]" />
 
-        {/* Navigation */}
-        <div className="flex justify-end gap-2 mb-6">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scroll("left")}
-            className="rounded-full border border-border/30 hover:border-accent/50 hover:bg-accent/5 h-10 w-10"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => scroll("right")}
-            className="rounded-full border border-border/30 hover:border-accent/50 hover:bg-accent/5 h-10 w-10"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <Eyebrow index="003" label="Our Clients" tone="light" className="mb-10" />
+          </Reveal>
 
-        {/* Carousel */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory -mx-4 px-4"
-        >
-          {testimonials.map((item, index) => (
-            <article
-              key={index}
-              className="flex-shrink-0 w-[220px] md:w-[260px] snap-start rounded-2xl overflow-hidden bg-card border border-border/20 p-6 flex flex-col justify-between min-h-[320px] md:min-h-[380px] transition-all duration-300 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5"
-            >
-              {/* Logo */}
-              <div className="mb-4 flex justify-center">
-                <div className="w-24 h-24 flex items-center justify-center p-3 bg-white rounded-full overflow-hidden shadow-sm">
-                  <img 
-                    src={item.logo} 
-                    alt={`${item.company} logo`}
-                    className="max-h-full max-w-full object-contain"
+          <Reveal delay={0.1} className="mb-14 max-w-3xl md:mb-20">
+            <SectionHeading
+              tone="light"
+              title={
+                <span id="testimonials-heading">
+                  Brands that <span className="text-accent">grow with us.</span>
+                </span>
+              }
+              lede="Small and large businesses in the USA and Latin America trust us with their growth."
+            />
+          </Reveal>
+
+          {/* Client logos — same card treatment as Official Partners */}
+          <ul className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {CLIENTS.map((client, index) => (
+              <Reveal
+                as="li"
+                key={client.company}
+                delay={(index % 5) * 0.08}
+                className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
+              >
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={client.url ? `Visit ${client.company} website` : undefined}
+                  className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                <BrandCard
+                  corner={CORNERS[index % CORNERS.length]}
+                  className="group flex h-full min-h-[180px] flex-col items-center justify-center gap-5 p-6 md:min-h-[200px] md:p-8"
+                >
+                  <img
+                    src={client.logo}
+                    alt={`${client.company} logo`}
+                    loading="lazy"
+                    className="max-h-14 w-auto max-w-[150px] object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-16 md:max-w-[170px]"
                   />
-                </div>
-              </div>
+                  <span className="text-center font-heading text-base text-foreground/70 transition-colors duration-300 group-hover:text-performance md:text-lg">
+                    {client.company}
+                  </span>
+                </BrandCard>
+                </a>
+              </Reveal>
+            ))}
+          </ul>
 
-              {/* Company */}
+          {/* Friendly CTA */}
+          <Reveal className="mt-10">
+            <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-accent p-8 md:flex-row md:items-center md:p-10">
               <div>
-                <h3 className="text-lg md:text-xl font-heading font-bold text-foreground mb-1">
-                  {item.company}
-                </h3>
-                {item.subtitle && (
-                  <p className="text-[10px] uppercase tracking-wider text-accent/70">{item.subtitle}</p>
-                )}
+                <p className="font-heading text-3xl leading-tight text-graphite md:text-4xl">Your business could be next.</p>
+                <p className="mt-2 text-base text-graphite/70">
+                  Small shop or big brand — let's have a quick, no-pressure chat about your goals.
+                </p>
               </div>
-              
-              {/* Result */}
-              <div className="mt-auto">
-                <p className="text-xs text-foreground/50 mb-2 leading-relaxed">{item.description}</p>
-                <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-1">
-                  {item.result}
-                </div>
-                <p className="text-xs text-foreground/40">{item.period}</p>
-              </div>
-            </article>
-          ))}
+              <Button
+                size="lg"
+                onClick={openCalendly}
+                className="group h-14 shrink-0 rounded-full bg-graphite px-8 text-base font-semibold text-cream hover:bg-graphite/90"
+              >
+                Book a free call
+                <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

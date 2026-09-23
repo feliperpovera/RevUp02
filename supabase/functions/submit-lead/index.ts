@@ -4,7 +4,6 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.7";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -17,20 +16,68 @@ const leadSchema = z.object({
     full_name: z.string().trim().min(2, "Name is required").max(100),
     email: z.string().trim().email("Invalid email").max(255),
     company: z.string().trim().max(100).optional().or(z.literal("")),
-    phone: z.string().trim().max(20).optional().or(z.literal("")),
-    city: z.string().trim().max(100).optional().or(z.literal("")),
-    country: z.string().trim().max(100).optional().or(z.literal("")),
-    website: z.string().trim().max(255).optional().or(z.literal("")),
+    phone: z.string().trim().max(20).optional().nullable().or(z.literal("")),
+    city: z.string().trim().max(100).optional().nullable().or(z.literal("")),
+    country: z.string().trim().max(100).optional().nullable().or(z.literal("")),
+    website: z.string().trim().max(255).optional().nullable().or(z.literal("")),
     services: z.array(z.string()).min(1, "At least one service required"),
-    budget_range: z.string().trim().max(100).optional().or(z.literal("")),
-    main_goal: z.string().trim().max(255).optional().or(z.literal("")),
-    project_description: z.string().trim().max(2000).optional().or(z.literal("")),
+    budget_range: z.string().trim().max(100).optional().nullable().or(z.literal("")),
+    main_goal: z.string().trim().max(255).optional().nullable().or(z.literal("")),
+    project_description: z.string().trim().max(2000).optional().nullable().or(z.literal("")),
     consent: z.boolean(),
     source_form: z.string().optional().default("hero_lead"),
-    utm_source: z.string().trim().max(100).optional().or(z.literal("")),
-    utm_medium: z.string().trim().max(100).optional().or(z.literal("")),
-    utm_campaign: z.string().trim().max(100).optional().or(z.literal("")),
+    utm_source: z.string().trim().max(100).optional().nullable().or(z.literal("")),
+    utm_medium: z.string().trim().max(100).optional().nullable().or(z.literal("")),
+    utm_campaign: z.string().trim().max(100).optional().nullable().or(z.literal("")),
 });
+
+const insertLead = async (payload: Record<string, unknown>) => {
+    const attempts = [
+        payload,
+        {
+            full_name: payload.full_name,
+            company: payload.company,
+            email: payload.email,
+            phone: payload.phone,
+            city: payload.city,
+            country: payload.country,
+            website: payload.website,
+            services: payload.services,
+            budget_range: payload.budget_range,
+            main_goal: payload.main_goal,
+            project_description: payload.project_description,
+            consent: payload.consent,
+            status: payload.status,
+        },
+    ];
+
+    let lastError: unknown = null;
+
+    for (const attempt of attempts) {
+        const { data, error } = await supabase
+            .from("leads")
+            .insert([attempt])
+            .select("id")
+            .single();
+
+        if (!error) {
+            return data;
+        }
+
+        lastError = error;
+
+        const isMissingColumn =
+            error.code === "PGRST204" ||
+            error.code === "42703" ||
+            error.message?.toLowerCase().includes("column");
+
+        if (!isMissingColumn) {
+            throw error;
+        }
+    }
+
+    throw lastError;
+};
 
 const checkRateLimit = async (ip: string) => {
     try {
@@ -58,7 +105,7 @@ const handler = async (req: Request): Promise<Response> => {
         const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
         const userAgent = req.headers.get("user-agent") || "unknown";
 
-        const rateResult = await checkRateLimit(ip);
+        await checkRateLimit(ip);
 
         const body = await req.json();
         const result = leadSchema.safeParse(body);
@@ -66,32 +113,12 @@ const handler = async (req: Request): Promise<Response> => {
             return new Response(JSON.stringify({ error: result.error.errors[0].message }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
         }
 
-        const { data: dbData, error: dbError } = await supabase
-            .from("leads")
-            .insert([{ ...result.data, ip_address: ip, user_agent: userAgent, status: "new" }])
-            .select()
-            .single();
-
-        if (dbError) throw dbError;
-
-        if (RESEND_API_KEY) {
-            await fetch("https://api.resend.com/emails", {
-                method: "POST",
-                headers: { "Authorization": `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    from: "RevUp Leads <onboarding@resend.dev>",
-                    to: ["info@revupagencygroup.com"],
-                    subject: `New Lead: ${result.data.full_name}`,
-                    html: `<h3>New Lead Acquisition</h3>
-                 <p><b>Name:</b> ${result.data.full_name}</p>
-                 <p><b>Email:</b> ${result.data.email}</p>
-                 <p><b>Services:</b> ${result.data.services.join(", ")}</p>
-                 <p><b>Budget:</b> ${result.data.budget_range}</p>
-                 <p><b>Description:</b></p>
-                 <p>${result.data.project_description || "N/A"}</p>`,
-                }),
-            });
-        }
+        const dbData = await insertLead({
+            ...result.data,
+            ip_address: ip,
+            user_agent: userAgent,
+            status: "new",
+        });
 
         return new Response(JSON.stringify({ success: true, id: dbData.id }), { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 

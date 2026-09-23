@@ -12,5 +12,8 @@ Allow: /
 
 User-agent: *
 Allow: /
+# Conversion page: keep out of search so organic visits don't count as leads
+Disallow: /gracias
+Disallow: /thank-you
 
 Sitemap: https://revupagencygroup.com/sitemap.xml

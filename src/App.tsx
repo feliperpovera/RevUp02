@@ -2,12 +2,15 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
+import { RouteMeta } from "@/components/RouteMeta";
+import servicePages from "@/config/service-pages.json";
+import blogPosts from "@/config/blog-posts.json";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -18,20 +21,11 @@ const ProcessPage = lazy(() => import("./pages/ProcessPage"));
 const TestimonialsPage = lazy(() => import("./pages/TestimonialsPage"));
 const OnboardingPage = lazy(() => import("./pages/OnboardingPage"));
 const ROASCalculatorPage = lazy(() => import("./pages/ROASCalculatorPage"));
+const GraciasPage = lazy(() => import("./pages/GraciasPage"));
+const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
+const BlogPage = lazy(() => import("./pages/BlogPage"));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-const PortalLandingPage = lazy(() => import("./pages/portal/PortalLandingPage"));
-const PortalLoginPage = lazy(() => import("./pages/portal/PortalLoginPage"));
-const PortalRegisterPage = lazy(() => import("./pages/portal/PortalRegisterPage"));
-const PortalDashboardPage = lazy(() => import("./pages/portal/PortalDashboardPage"));
-const PortalBenefitsPage = lazy(() => import("./pages/portal/PortalBenefitsPage"));
-const PortalResourcesPage = lazy(() => import("./pages/portal/PortalResourcesPage"));
-const PortalSupportPage = lazy(() => import("./pages/portal/PortalSupportPage"));
-const PortalProfilePage = lazy(() => import("./pages/portal/PortalProfilePage"));
-const PortalOnboardingPage = lazy(() => import("./pages/portal/PortalOnboardingPage"));
-const PortalROASCalculatorPage = lazy(() => import("./pages/portal/PortalROASCalculatorPage"));
-const PortalOnboardingFormPage = lazy(() => import("./pages/portal/PortalOnboardingFormPage"));
-const PortalAmazonCalculatorPage = lazy(() => import("./pages/portal/PortalAmazonCalculatorPage"));
 
 const queryClient = new QueryClient();
 
@@ -43,14 +37,15 @@ const RouteLoadingFallback = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <AuthProvider>
-        <TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+      <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
+          <BrowserRouter basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
+            <RouteMeta />
             <AnimatedBackground />
+            <WhatsAppButton />
             <Suspense fallback={<RouteLoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -62,20 +57,15 @@ const App = () => (
                 <Route path="/testimonials" element={<TestimonialsPage />} />
                 <Route path="/onboarding" element={<OnboardingPage />} />
                 <Route path="/roas-calculator" element={<ROASCalculatorPage />} />
-
-                {/* Portal Routes */}
-                <Route path="/portal" element={<PortalLandingPage />} />
-                <Route path="/portal/login" element={<PortalLoginPage />} />
-                <Route path="/portal/register" element={<PortalRegisterPage />} />
-                <Route path="/portal/dashboard" element={<PortalDashboardPage />} />
-                <Route path="/portal/benefits" element={<PortalBenefitsPage />} />
-                <Route path="/portal/resources" element={<PortalResourcesPage />} />
-                <Route path="/portal/support" element={<PortalSupportPage />} />
-                <Route path="/portal/profile" element={<PortalProfilePage />} />
-                <Route path="/portal/onboarding" element={<PortalOnboardingPage />} />
-                <Route path="/portal/roas-calculator" element={<PortalROASCalculatorPage />} />
-                <Route path="/portal/onboarding-form" element={<PortalOnboardingFormPage />} />
-                <Route path="/portal/amazon-calculator" element={<PortalAmazonCalculatorPage />} />
+                {servicePages.map((page) => (
+                  <Route key={page.path} path={page.path} element={<ServiceDetailPage page={page} />} />
+                ))}
+                <Route path="/blog" element={<BlogPage />} />
+                {blogPosts.map((post) => (
+                  <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogPostPage post={post} />} />
+                ))}
+                <Route path="/gracias" element={<GraciasPage />} />
+                <Route path="/thank-you" element={<Navigate to="/gracias" replace />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
@@ -83,7 +73,6 @@ const App = () => (
             </Suspense>
           </BrowserRouter>
         </TooltipProvider>
-      </AuthProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

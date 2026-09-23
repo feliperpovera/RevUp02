@@ -52,10 +52,14 @@ export default {
           DEFAULT: "hsl(var(--graphite))",
           light: "hsl(var(--graphite-light))",
         },
+        stone: "hsl(var(--stone))",
+        performance: "hsl(var(--performance))",
+        electric: "hsl(var(--electric))",
+        cream: "hsl(var(--cream))",
       },
       fontFamily: {
         sans: ['Raleway', 'sans-serif'],
-        heading: ['Outfit', 'sans-serif'],
+        heading: ['Cal Sans', 'Outfit', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
