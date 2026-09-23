@@ -12,6 +12,11 @@ import velezLogo from "@/assets/clients/velez-logo.png";
 import intrawestLogo from "@/assets/clients/intrawest-logo.png";
 import monasteryLogo from "@/assets/clients/monastery-logo.png";
 import distrihogarLogo from "@/assets/clients/distrihogar-logo.png";
+import veraLogo from "@/assets/clients/vera-logo.png";
+import hera23Logo from "@/assets/clients/hera23-logo.png";
+import invirtiendoLogo from "@/assets/clients/invirtiendo-logo.png";
+import xpressfoamLogo from "@/assets/clients/xpressfoam-logo.png";
+import maylinLogo from "@/assets/clients/maylin-logo.png";
 
 const CLIENTS = [
   { company: "Vélez", logo: velezLogo },
@@ -22,6 +27,11 @@ const CLIENTS = [
   { company: "IntraWest Management", logo: intrawestLogo },
   { company: "Host U", logo: hostuLogo },
   { company: "European Luxury Wall Finishes", logo: europeanLogo },
+  { company: "Vera Seguros", logo: veraLogo },
+  { company: "Hera 23", logo: hera23Logo },
+  { company: "Invirtiendo", logo: invirtiendoLogo },
+  { company: "Xpress Foam", logo: xpressfoamLogo },
+  { company: "Maylin Mattress", logo: maylinLogo },
 ];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
@@ -50,14 +60,19 @@ export const Testimonials = () => {
                   Brands that <span className="text-accent">grow with us.</span>
                 </span>
               }
-              lede="Small and large businesses across the USA trust us with their growth."
+              lede="Small and large businesses in the USA and Latin America trust us with their growth."
             />
           </Reveal>
 
           {/* Client logos — same card treatment as Official Partners */}
-          <ul className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+          <ul className="flex flex-wrap justify-center gap-4 md:gap-6">
             {CLIENTS.map((client, index) => (
-              <Reveal as="li" key={client.company} delay={(index % 4) * 0.1}>
+              <Reveal
+                as="li"
+                key={client.company}
+                delay={(index % 5) * 0.08}
+                className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
+              >
                 <BrandCard
                   corner={CORNERS[index % CORNERS.length]}
                   className="group flex h-full min-h-[180px] flex-col items-center justify-center gap-5 p-6 md:min-h-[200px] md:p-8"
