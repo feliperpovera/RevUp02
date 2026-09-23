@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# Real 404s (e.g. unknown /blog/slug) keep the 404 status but render the branded React 404
+ErrorDocument 404 /index.html
+
 # Per-route static HTML with page-specific SEO tags: /services -> services.html
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([a-z0-9-]+)$ $1.html [L]
