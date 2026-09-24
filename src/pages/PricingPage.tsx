@@ -34,7 +34,7 @@ const COPY = {
     ctaText: "Tell us about your business and we'll recommend the right plan — no pressure.",
     whatsapp: "Ask on WhatsApp",
     whatsappMessage: "Hi RevUp! I'd like help choosing a plan for my business.",
-    call: "Book a free call",
+    call: "Book a Meeting",
   },
   es: {
     eyebrow: "Planes y precios",
@@ -63,7 +63,7 @@ const COPY = {
     ctaText: "Cuéntanos de tu negocio y te recomendamos el plan indicado — sin compromiso.",
     whatsapp: "Pregúntanos por WhatsApp",
     whatsappMessage: "¡Hola RevUp! Quiero ayuda para elegir un plan para mi negocio.",
-    call: "Agenda una llamada gratis",
+    call: "Agenda una reunión",
   },
 };
 

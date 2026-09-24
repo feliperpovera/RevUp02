@@ -14,18 +14,18 @@ const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 const LABELS = {
   en: {
-    home: "Home", services: "Services", bookCall: "Book a free call", whatsapp: "Chat on WhatsApp",
+    home: "Home", services: "Services", bookCall: "Book a Meeting", whatsapp: "Chat on WhatsApp",
     why: ["Why it ", "works"], included: ["What's ", "included"], how: ["How we ", "work"],
     industries: ["Industries we ", "serve"], small: "For small businesses", large: "For large brands",
-    faq: ["Frequently asked ", "questions"], ctaTitle: "Ready to grow with", ctaText: "Book a free, no-pressure call and get an honest plan for your business.",
+    faq: ["Frequently asked ", "questions"], ctaTitle: "Ready to grow with", ctaText: "Book a free, no-pressure meeting and get an honest plan for your business.",
     others: "Other services",
     plans: ["Plans & ", "pricing"], plansLede: "Transparent monthly pricing. Start with one service or get the complete SEO + SEM package.", allPlans: "See all plans", pricingPath: "/pricing",
   },
   es: {
-    home: "Inicio", services: "Servicios", bookCall: "Agenda una llamada gratis", whatsapp: "Escríbenos por WhatsApp",
+    home: "Inicio", services: "Servicios", bookCall: "Agenda una reunión", whatsapp: "Escríbenos por WhatsApp",
     why: ["Por qué ", "funciona"], included: ["Qué ", "incluye"], how: ["Cómo ", "trabajamos"],
     industries: ["Industrias que ", "atendemos"], small: "Para negocios pequeños", large: "Para empresas grandes",
-    faq: ["Preguntas ", "frecuentes"], ctaTitle: "¿Listo para crecer con", ctaText: "Agenda una llamada gratis, sin compromiso, y recibe un plan honesto para tu negocio.",
+    faq: ["Preguntas ", "frecuentes"], ctaTitle: "¿Listo para crecer con", ctaText: "Agenda una reunión gratis, sin compromiso, y recibe un plan honesto para tu negocio.",
     others: "Otros servicios",
     plans: ["Planes y ", "precios"], plansLede: "Precios mensuales claros. Empieza con un servicio o toma el paquete completo SEO + SEM.", allPlans: "Ver todos los planes", pricingPath: "/precios",
   },

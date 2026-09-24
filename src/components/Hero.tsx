@@ -177,7 +177,7 @@ export const Hero = () => {
                 onClick={openCalendly}
                 className="group h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
               >
-                Book a free call
+                Book a Meeting
                 <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
               <Button

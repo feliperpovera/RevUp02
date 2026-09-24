@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { openCalendly } from "@/config/links";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ArrowUpRight, ChevronDown, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -15,6 +14,16 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  /** The quote form lives at the bottom of the home page ("Let's Work Together"). */
+  const goToQuoteForm = () => {
+    setMobileMenuOpen(false);
+    const form = pathname === "/" ? document.getElementById("contact-form") : null;
+    if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+    else navigate("/#contact-form");
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -105,10 +114,10 @@ export const Navbar = () => {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <Button
-            onClick={openCalendly}
+            onClick={goToQuoteForm}
             className="group rounded-full bg-primary px-6 font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:pl-5 hover:pr-7"
           >
-            Book a free call
+            Get a Free Quote
             <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
         </div>
@@ -153,12 +162,9 @@ export const Navbar = () => {
               ))}
               <Button
                 className="mt-4 rounded-full bg-primary font-semibold text-primary-foreground hover:bg-primary/90"
-                onClick={() => {
-                  openCalendly();
-                  setMobileMenuOpen(false);
-                }}
+                onClick={goToQuoteForm}
               >
-                Book a free call
+                Get a Free Quote
                 <ArrowUpRight className="ml-1.5 h-4 w-4" />
               </Button>
             </div>

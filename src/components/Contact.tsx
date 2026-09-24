@@ -7,6 +7,7 @@ import { Check, Send } from "lucide-react";
 import { toast } from "sonner";
 import { submitForm } from "@/lib/submitForm";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
+import { CalendlyButton } from "@/components/CalendlyButton";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -124,6 +125,13 @@ export const Contact = () => {
                 </Reveal>
               ))}
             </ul>
+
+            <Reveal delay={0.5} className="mt-10 border-t border-foreground/10 pt-8">
+              <p className="mb-4 text-sm font-light leading-relaxed text-stone">
+                Prefer to talk it through? Pick a time that works for you.
+              </p>
+              <CalendlyButton />
+            </Reveal>
           </div>
 
           {/* Right — contact form */}
@@ -134,7 +142,7 @@ export const Contact = () => {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="space-y-4 md:space-y-5"
+                className="scroll-mt-32 space-y-4 md:space-y-5"
               >
                 {/* Name */}
                 <div>

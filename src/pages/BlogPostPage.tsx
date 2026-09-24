@@ -66,7 +66,7 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                 onClick={openCalendly}
                 className="h-12 rounded-full bg-accent px-7 font-semibold text-graphite hover:bg-accent/90"
               >
-                Book a free call
+                Book a Meeting
                 <ArrowUpRight className="ml-2 h-5 w-5" />
               </Button>
               {related ? (
