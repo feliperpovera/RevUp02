@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { usd, type PlanId } from "@/components/PricingPlans";
 import pricing from "@/config/pricing.json";
@@ -177,7 +177,7 @@ const AboutPage = () => {
 
             <div className="text-center mt-12">
               <button
-                onClick={() => openCalendly()}
+                onClick={goToForm}
                 className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold h-11 rounded-md px-8 text-base md:text-lg py-6"
               >
                 {t.cta}

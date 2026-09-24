@@ -2,7 +2,7 @@ import servicePages from "@/config/service-pages.json";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { ShoppingCart, Code, Settings, Zap, Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -199,7 +199,7 @@ const ServicesPage = () => {
               <Button
                 variant="glow"
                 size="lg"
-                onClick={() => openCalendly()}
+                onClick={goToForm}
                 className="text-base md:text-lg px-8 py-6"
               >
                 {t.cta}

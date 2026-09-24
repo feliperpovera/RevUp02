@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
 import { PricingPlans } from "@/components/PricingPlans";
 import { useLang } from "@/config/i18n";
-import { openCalendly, whatsappUrl } from "@/config/links";
+import { goToForm, whatsappUrl } from "@/config/links";
 
 const COPY = {
   en: {
@@ -161,7 +161,7 @@ const PricingPage = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    onClick={openCalendly}
+                    onClick={goToForm}
                     className="h-14 rounded-full border-cream/30 bg-transparent px-8 text-base text-cream hover:bg-cream/10 hover:text-cream"
                   >
                     {t.call}

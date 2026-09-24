@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { useLang } from "@/config/i18n";
 
 // Import client logos
@@ -144,7 +144,7 @@ export const Testimonials = () => {
               </div>
               <Button
                 size="lg"
-                onClick={openCalendly}
+                onClick={goToForm}
                 className="group h-14 shrink-0 rounded-full bg-graphite px-8 text-base font-semibold text-cream hover:bg-graphite/90"
               >
                 {t.book}

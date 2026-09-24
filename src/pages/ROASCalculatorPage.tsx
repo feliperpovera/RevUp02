@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { useLang } from "@/config/i18n";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -512,7 +512,7 @@ const ROASCalculatorPage = () => {
             <Button
               variant="glow"
               size="lg"
-              onClick={() => openCalendly()}
+              onClick={goToForm}
               className="text-base md:text-lg px-8 py-6"
             >
               <Calendar className="mr-2 w-5 h-5" />

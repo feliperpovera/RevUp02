@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
-import { openCalendly, WHATSAPP_URL } from "@/config/links";
+import { goToForm, WHATSAPP_URL } from "@/config/links";
 import servicePages from "@/config/service-pages.json";
 import { pagePath } from "@/config/i18n";
 import { PricingPlans, type PlanId } from "@/components/PricingPlans";
@@ -61,7 +61,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Button
                   size="lg"
-                  onClick={openCalendly}
+                  onClick={goToForm}
                   className="group h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground hover:bg-primary/90"
                 >
                   {t.bookCall}
@@ -224,7 +224,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
                 </div>
                 <Button
                   size="lg"
-                  onClick={openCalendly}
+                  onClick={goToForm}
                   className="group h-14 shrink-0 rounded-full bg-accent px-8 text-base font-semibold text-graphite hover:bg-accent/90"
                 >
                   {t.bookCall}

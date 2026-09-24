@@ -4,7 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/brand/kit";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import posts from "@/config/blog-posts.json";
 import servicePages from "@/config/service-pages.json";
 import { formatDate } from "@/pages/BlogPage";
@@ -93,7 +93,7 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button
                 size="lg"
-                onClick={openCalendly}
+                onClick={goToForm}
                 className="h-12 rounded-full bg-accent px-7 font-semibold text-graphite hover:bg-accent/90"
               >
                 {t.book}

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { Reveal } from "@/components/brand/kit";
 import { cn } from "@/lib/utils";
-import { openCalendly, whatsappUrl } from "@/config/links";
+import { goToForm, whatsappUrl } from "@/config/links";
 import { trackPlanInterest } from "@/config/tracking";
 import pricing from "@/config/pricing.json";
 import { localizePath } from "@/config/i18n";
@@ -132,7 +132,7 @@ export const PricingPlans = ({ ids, lang = "en", learnMore = false, className }:
                 </a>
                 <button
                   type="button"
-                  onClick={openCalendly}
+                  onClick={goToForm}
                   className={cn(
                     "mt-3 text-sm underline-offset-4 hover:underline",
                     featured ? "text-cream/80 hover:text-cream" : "text-stone hover:text-performance"

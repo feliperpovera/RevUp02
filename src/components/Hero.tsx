@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import { submitForm } from "@/lib/submitForm";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { pagePath, useLang } from "@/config/i18n";
 import { BrandCard, DeviceArrow, Eyebrow, Marquee } from "@/components/brand/kit";
 import metaLogo from "@/assets/meta-logo-new.png";
@@ -249,7 +249,7 @@ export const Hero = () => {
             >
               <Button
                 size="lg"
-                onClick={openCalendly}
+                onClick={goToForm}
                 className="group h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
               >
                 {t.book}

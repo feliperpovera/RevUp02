@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import { openCalendly } from "@/config/links";
+import { goToForm } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { Testimonials } from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ const TestimonialsPage = () => {
               {t.text}
             </p>
             <Button
-              onClick={() => openCalendly()}
+              onClick={goToForm}
               className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold rounded-full px-8 py-6 text-base"
             >
               {t.cta}
