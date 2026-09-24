@@ -40,6 +40,7 @@ const PricingSummary = () => {
                 const plan = pricing.plans.find((p) => p.id === id);
                 if (!plan) return null;
                 const saving = "compareAt" in plan && plan.compareAt ? plan.compareAt - plan.price : 0;
+                const setupSaving = "setupCompareAt" in plan && plan.setupCompareAt && plan.setup ? plan.setupCompareAt - plan.setup : 0;
                 return (
                   <li key={id} className="flex flex-col gap-2 p-5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
                     <div>
@@ -61,6 +62,7 @@ const PricingSummary = () => {
                       {"setup" in plan && plan.setup ? (
                         <p className="text-xs text-stone">+ {usd(plan.setup)} one-time SEO launch</p>
                       ) : null}
+                      {setupSaving ? <p className="text-xs font-medium text-performance">{usd(setupSaving)} off the SEO launch</p> : null}
                       {saving ? <p className="text-xs font-medium text-performance">Save {usd(saving)}/mo</p> : null}
                     </div>
                   </li>

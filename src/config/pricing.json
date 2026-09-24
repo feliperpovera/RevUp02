@@ -153,7 +153,8 @@
     {
       "id": "search",
       "price": 950,
-      "setup": 500,
+      "setup": 300,
+      "setupCompareAt": 500,
       "href": "/seo-for-service-businesses",
       "en": {
         "name": "Search Package",

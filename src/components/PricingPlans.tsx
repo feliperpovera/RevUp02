@@ -16,6 +16,7 @@ const T = {
     mo: "/mo",
     setup: (n: number) => `+ ${usd(n)} one-time SEO launch`,
     save: (n: number) => `Save ${usd(n)}/mo vs. separate plans`,
+    setupSave: (n: number) => `${usd(n)} off the SEO launch`,
     badge: { value: "Best value", complete: "Full SEO + SEM package" },
     cta: "Get started",
     call: "Book a free call",
@@ -27,6 +28,7 @@ const T = {
     mo: "/mes",
     setup: (n: number) => `+ ${usd(n)} pago único de arranque SEO`,
     save: (n: number) => `Ahorras ${usd(n)}/mes vs. planes por separado`,
+    setupSave: (n: number) => `${usd(n)} menos en el arranque SEO`,
     badge: { value: "Mejor valor", complete: "Paquete completo SEO + SEM" },
     cta: "Empezar",
     call: "Agenda una llamada gratis",
@@ -60,6 +62,7 @@ export const PricingPlans = ({ ids, lang = "en", learnMore = false, className }:
           const copy = plan[lang];
           const featured = plan.badge === "complete";
           const saving = "compareAt" in plan && plan.compareAt ? plan.compareAt - plan.price : 0;
+          const setupSaving = "setupCompareAt" in plan && plan.setupCompareAt && plan.setup ? plan.setupCompareAt - plan.setup : 0;
           return (
             <Reveal as="li" key={plan.id} delay={(i % 4) * 0.08} className="h-full">
               <div
@@ -93,6 +96,7 @@ export const PricingPlans = ({ ids, lang = "en", learnMore = false, className }:
                 </div>
                 <div className={cn("mt-2 min-h-[1.25rem] space-y-1 text-xs font-medium", featured ? "text-cream/70" : "text-stone")}>
                   {"setup" in plan && plan.setup ? <p>{t.setup(plan.setup)}</p> : null}
+                  {setupSaving ? <p className={featured ? "text-accent" : "text-performance"}>{t.setupSave(setupSaving)}</p> : null}
                   {saving ? <p className={featured ? "text-accent" : "text-performance"}>{t.save(saving)}</p> : null}
                 </div>
 
