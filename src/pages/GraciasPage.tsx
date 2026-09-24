@@ -4,18 +4,43 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Check, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackLead } from "@/config/tracking";
+import { pagePath, useLang } from "@/config/i18n";
 import revupLogoLight from "@/assets/revup-logo-light.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const COPY = {
+  en: {
+    homeLabel: "RevUp Agency Group — Home",
+    received: "Request received",
+    thanks: "Thank you!",
+    soon: "We'll be talking with you soon.",
+    body: (whatsapp: boolean) =>
+      `Your request is in our inbox. Our team will get back to you${whatsapp ? " on WhatsApp" : ""} within 24 hours.`,
+    back: "Back to Home",
+  },
+  es: {
+    homeLabel: "RevUp Agency Group — Inicio",
+    received: "Solicitud recibida",
+    thanks: "¡Gracias!",
+    soon: "Hablaremos contigo muy pronto.",
+    body: (whatsapp: boolean) =>
+      `Tu solicitud ya está en nuestra bandeja de entrada. Nuestro equipo te responderá${whatsapp ? " por WhatsApp" : ""} en menos de 24 horas.`,
+    back: "Volver al inicio",
+  },
+};
+
 /**
- * Single thank-you page for every CTA (/gracias?source=...).
+ * Single thank-you page for every CTA (/gracias?source=... or /es/gracias?source=...).
  * Fires the `lead` attribution event on load (GTM dataLayer + optional
  * direct Meta Pixel), then offers a single path back home.
  * Deliberately distraction-free: logo, confirmation, one button.
  */
 const GraciasPage = () => {
   const prefersReducedMotion = useReducedMotion();
+  const lang = useLang();
+  const t = COPY[lang];
+  const home = pagePath("home", lang);
 
   const [params] = useSearchParams();
   const source = params.get("source") || "whatsapp";
@@ -39,7 +64,7 @@ const GraciasPage = () => {
         transition={{ duration: 0.6, ease: EASE }}
         className="absolute top-10"
       >
-        <Link to="/" aria-label="RevUp Agency Group — Home">
+        <Link to={home} aria-label={t.homeLabel}>
           <img src={revupLogoLight} alt="RevUp Agency Group" className="h-10" />
         </Link>
       </motion.div>
@@ -62,18 +87,17 @@ const GraciasPage = () => {
         >
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-primary">
             <MessageCircle className="h-3.5 w-3.5" />
-            Request received
+            {t.received}
           </p>
 
           <h1 className="font-heading text-4xl leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-            Thank you!
+            {t.thanks}
             <br />
-            <span className="text-primary">We&apos;ll be talking with you soon.</span>
+            <span className="text-primary">{t.soon}</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-md text-base font-light leading-relaxed text-stone md:text-lg">
-            Your request is in our inbox. Our team will get back to you
-            {source === "whatsapp" ? " on WhatsApp" : ""} within 24 hours.
+            {t.body(source === "whatsapp")}
           </p>
         </motion.div>
 
@@ -88,9 +112,9 @@ const GraciasPage = () => {
             size="lg"
             className="h-14 rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
           >
-            <Link to="/">
+            <Link to={home}>
               <ArrowLeft className="mr-2 h-5 w-5" />
-              Back to Home
+              {t.back}
             </Link>
           </Button>
         </motion.div>

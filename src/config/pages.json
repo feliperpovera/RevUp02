@@ -1,0 +1,13 @@
+{
+  "home": { "en": "/", "es": "/es" },
+  "services": { "en": "/services", "es": "/es/servicios" },
+  "about": { "en": "/about", "es": "/es/nosotros" },
+  "partners": { "en": "/partners", "es": "/es/aliados" },
+  "process": { "en": "/process", "es": "/es/proceso" },
+  "strategy": { "en": "/strategy", "es": "/es/estrategia" },
+  "testimonials": { "en": "/testimonials", "es": "/es/testimonios" },
+  "roas": { "en": "/roas-calculator", "es": "/es/calculadora-roas" },
+  "blog": { "en": "/blog", "es": "/es/blog" },
+  "pricing": { "en": "/pricing", "es": "/es/precios" },
+  "thanks": { "en": "/gracias", "es": "/es/gracias" }
+}

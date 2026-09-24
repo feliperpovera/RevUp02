@@ -53,11 +53,62 @@
       "description": "Monthly plans for Local SEO, Google Ads, Meta Ads and TikTok Ads, plus complete SEO + SEM packages for service businesses. See what's included.",
       "noindex": true
     },
-    "/precios": {
+    "/es": {
+      "title": "Agencia de Marketing Digital en Español en USA | RevUp",
+      "description": "Agencia de marketing digital en español para negocios de servicios en USA: SEO local, Google Ads, Facebook, Instagram y TikTok Ads. Agenda una reunión gratis.",
+      "lang": "es"
+    },
+    "/es/servicios": {
+      "title": "Servicios de SEO, Google Ads, Facebook Ads y Web | RevUp",
+      "description": "SEO local, Google Ads, anuncios en Facebook e Instagram, TikTok Ads y diseño web para negocios de servicios en Estados Unidos. Conoce cómo te ayudamos a crecer.",
+      "lang": "es"
+    },
+    "/es/nosotros": {
+      "title": "Sobre RevUp: Agencia de Marketing Digital con Datos e IA",
+      "description": "RevUp es una agencia de marketing digital que combina datos, IA y criterio humano para que negocios en Estados Unidos crezcan con resultados medibles. Conócenos.",
+      "lang": "es"
+    },
+    "/es/aliados": {
+      "title": "Partners de Meta, Google, TikTok y Shopify | RevUp",
+      "description": "RevUp trabaja como partner de Meta, Google Ads, TikTok y Shopify para manejar campañas y tiendas online con experiencia. Conoce nuestras alianzas oficiales.",
+      "lang": "es"
+    },
+    "/es/proceso": {
+      "title": "Nuestro Proceso de Marketing Digital | RevUp",
+      "description": "De la estrategia al lanzamiento y la optimización continua: así convertimos tu inversión en publicidad en crecimiento medible para tu negocio en Estados Unidos.",
+      "lang": "es"
+    },
+    "/es/estrategia": {
+      "title": "Estrategia de Marketing con Datos e IA | RevUp",
+      "description": "Nuestra estrategia: sistemas basados en datos e inteligencia artificial que ayudan a los negocios a trabajar mejor, operar con eficiencia y crecer. Descúbrela.",
+      "lang": "es"
+    },
+    "/es/testimonios": {
+      "title": "Resultados de Clientes y Casos de Éxito | RevUp",
+      "description": "Mira cómo marcas como MIAN (20.2x ROAS) y New Life Furniture (7.4x ROAS) crecieron con la publicidad digital y el desarrollo web de RevUp. Casos reales.",
+      "lang": "es"
+    },
+    "/es/calculadora-roas": {
+      "title": "Calculadora de ROAS Gratis para Google y Meta Ads | RevUp",
+      "description": "Calcula el retorno de tu inversión publicitaria con nuestra calculadora de ROAS gratis, con referencias actualizadas por industria y región. Pruébala ahora.",
+      "lang": "es"
+    },
+    "/es/blog": {
+      "title": "Blog de Marketing para Negocios de Servicios | RevUp",
+      "description": "Guías prácticas de Google Ads, anuncios en Facebook e Instagram, Perfil de Empresa de Google y SEO local para negocios de servicios hispanos en Estados Unidos.",
+      "lang": "es"
+    },
+    "/es/precios": {
       "title": "Planes y precios: SEO, Google Ads, Meta y TikTok | RevUp",
       "description": "Planes mensuales de SEO Local, Google Ads, Meta Ads y TikTok Ads, y paquetes completos SEO + SEM para negocios de servicios. Mira qué incluye.",
-      "noindex": true,
-      "lang": "es"
+      "lang": "es",
+      "noindex": true
+    },
+    "/es/gracias": {
+      "title": "Gracias | RevUp Agency Group",
+      "description": "Gracias por escribirnos. Nuestro equipo te responderá en menos de 24 horas.",
+      "lang": "es",
+      "noindex": true
     }
   }
 }

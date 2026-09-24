@@ -3,7 +3,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
-import { PricingPlans, type Lang } from "@/components/PricingPlans";
+import { PricingPlans } from "@/components/PricingPlans";
+import { useLang } from "@/config/i18n";
 import { openCalendly, whatsappUrl } from "@/config/links";
 
 const COPY = {
@@ -67,11 +68,12 @@ const COPY = {
   },
 };
 
-const PricingPage = ({ lang = "en" }: { lang?: Lang }) => {
+const PricingPage = () => {
+  const lang = useLang();
   const t = COPY[lang];
 
   return (
-    <div className="min-h-screen bg-transparent" lang={lang === "es" ? "es" : undefined}>
+    <div className="min-h-screen bg-transparent">
       <Navbar />
       <main>
         <section className="container mx-auto px-4 pb-12 pt-36 md:px-8 md:pt-44">

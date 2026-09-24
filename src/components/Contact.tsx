@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { submitForm } from "@/lib/submitForm";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
 import { CalendlyButton } from "@/components/CalendlyButton";
+import { pagePath, useLang } from "@/config/i18n";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -27,15 +28,69 @@ const INITIAL_STATE: FormState = {
   message: "",
 };
 
-const TRUST_ITEMS = [
-  "We'll respond within 24 hours.",
-  "Your information stays private. We never share it.",
-];
+const COPY = {
+  en: {
+    trust: ["We'll respond within 24 hours.", "Your information stays private. We never share it."],
+    nameRequired: "Please enter your name",
+    invalidEmail: "Please enter a valid email address",
+    messageRequired: "Please write a message",
+    messageShort: "Message must be at least 10 characters",
+    sendError: "Could not send your message. Please try again.",
+    eyebrow: "Contact",
+    titleA: "Let's Work",
+    titleB: "Together",
+    lede: "Whether you run a local shop or a national brand, tell us about your goals. We'll reply within 24 hours with honest, practical ideas — free.",
+    talk: "Prefer to talk it through? Pick a time that works for you.",
+    formLabel: "Contact form",
+    name: "Full Name",
+    namePlaceholder: "John Smith",
+    email: "Email",
+    emailPlaceholder: "john@company.com",
+    phone: "Phone",
+    company: "Company",
+    companyPlaceholder: "Acme Inc.",
+    message: "Message",
+    messagePlaceholder: "Tell us about your project and goals…",
+    submitLabel: "Submit contact form",
+    sending: "Sending…",
+    submit: "Send my message",
+    privacy: "Your information stays private. We never share it.",
+  },
+  es: {
+    trust: ["Te respondemos en menos de 24 horas.", "Tu información es privada. Nunca la compartimos."],
+    nameRequired: "Por favor escribe tu nombre",
+    invalidEmail: "Por favor ingresa un correo electrónico válido",
+    messageRequired: "Por favor escribe un mensaje",
+    messageShort: "El mensaje debe tener al menos 10 caracteres",
+    sendError: "No pudimos enviar tu mensaje. Por favor intenta de nuevo.",
+    eyebrow: "Contacto",
+    titleA: "Trabajemos",
+    titleB: "juntos",
+    lede: "Ya sea que tengas un negocio local o una marca nacional, cuéntanos tus metas. Te respondemos en menos de 24 horas con ideas honestas y prácticas, gratis.",
+    talk: "¿Prefieres conversarlo? Elige el horario que mejor te funcione.",
+    formLabel: "Formulario de contacto",
+    name: "Nombre completo",
+    namePlaceholder: "Juan Pérez",
+    email: "Correo electrónico",
+    emailPlaceholder: "juan@tuempresa.com",
+    phone: "Teléfono",
+    company: "Empresa",
+    companyPlaceholder: "Mi Negocio LLC",
+    message: "Mensaje",
+    messagePlaceholder: "Cuéntanos sobre tu proyecto y tus metas…",
+    submitLabel: "Enviar formulario de contacto",
+    sending: "Enviando…",
+    submit: "Enviar mi mensaje",
+    privacy: "Tu información es privada. Nunca la compartimos.",
+  },
+};
 
 const INPUT_CLASS = "h-12 rounded-xl border-foreground/15 bg-background/60 focus:border-performance";
 
 export const Contact = () => {
   const navigate = useNavigate();
+  const lang = useLang();
+  const t = COPY[lang];
   const [form, setForm] = useState<FormState>(INITIAL_STATE);
   const [submitting, setSubmitting] = useState(false);
 
@@ -47,19 +102,19 @@ export const Contact = () => {
 
     // ── Client-side validation ──────────────────────────────────────────────
     if (!form.name.trim()) {
-      toast.error("Please enter your name");
+      toast.error(t.nameRequired);
       return;
     }
     if (!form.email.trim() || !EMAIL_REGEX.test(form.email.trim())) {
-      toast.error("Please enter a valid email address");
+      toast.error(t.invalidEmail);
       return;
     }
     if (!form.message.trim()) {
-      toast.error("Please write a message");
+      toast.error(t.messageRequired);
       return;
     }
     if (form.message.trim().length < 10) {
-      toast.error("Message must be at least 10 characters");
+      toast.error(t.messageShort);
       return;
     }
 
@@ -75,10 +130,10 @@ export const Contact = () => {
           source_form: "contact_page",
         });
 
-      navigate("/gracias?source=contact");
+      navigate(`${pagePath("thanks", lang)}?source=contact`);
       setForm(INITIAL_STATE);
     } catch (error: unknown) {
-      toast.error(error instanceof Error ? error.message : "Could not send your message. Please try again.");
+      toast.error(lang === "en" && error instanceof Error ? error.message : t.sendError);
     } finally {
       setSubmitting(false);
     }
@@ -98,7 +153,7 @@ export const Contact = () => {
           {/* Left — editorial intro + trust list */}
           <div className="lg:sticky lg:top-32">
             <Reveal>
-              <Eyebrow index="008" label="Contact" className="mb-10" />
+              <Eyebrow index="008" label={t.eyebrow} className="mb-10" />
             </Reveal>
 
             <Reveal delay={0.1}>
@@ -106,15 +161,15 @@ export const Contact = () => {
                 id="contact-heading"
                 className="font-heading text-4xl leading-[1.05] text-foreground md:text-5xl lg:text-6xl"
               >
-                Let&apos;s Work <span className="text-primary">Together</span>
+                {t.titleA} <span className="text-primary">{t.titleB}</span>
               </h2>
               <p className="mt-5 max-w-xl text-base font-light leading-relaxed text-stone md:text-lg">
-                Whether you run a local shop or a national brand, tell us about your goals. We'll reply within 24 hours with honest, practical ideas — free.
+                {t.lede}
               </p>
             </Reveal>
 
             <ul className="mt-10 space-y-4 border-t border-foreground/10 pt-8">
-              {TRUST_ITEMS.map((item, i) => (
+              {t.trust.map((item, i) => (
                 <Reveal as="li" key={item} delay={0.2 + i * 0.1} distance={20}>
                   <span className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
@@ -128,7 +183,7 @@ export const Contact = () => {
 
             <Reveal delay={0.5} className="mt-10 border-t border-foreground/10 pt-8">
               <p className="mb-4 text-sm font-light leading-relaxed text-stone">
-                Prefer to talk it through? Pick a time that works for you.
+                {t.talk}
               </p>
               <CalendlyButton />
             </Reveal>
@@ -141,18 +196,18 @@ export const Contact = () => {
                 id="contact-form"
                 onSubmit={handleSubmit}
                 noValidate
-                aria-label="Contact form"
+                aria-label={t.formLabel}
                 className="scroll-mt-32 space-y-4 md:space-y-5"
               >
                 {/* Name */}
                 <div>
                   <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-foreground/70">
-                    Full Name <span className="text-performance">*</span>
+                    {t.name} <span className="text-performance">*</span>
                   </label>
                   <Input
                     id="contact-name"
                     type="text"
-                    placeholder="John Smith"
+                    placeholder={t.namePlaceholder}
                     value={form.name}
                     onChange={update("name")}
                     maxLength={100}
@@ -165,12 +220,12 @@ export const Contact = () => {
                 {/* Email */}
                 <div>
                   <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-foreground/70">
-                    Email <span className="text-performance">*</span>
+                    {t.email} <span className="text-performance">*</span>
                   </label>
                   <Input
                     id="contact-email"
                     type="email"
-                    placeholder="john@company.com"
+                    placeholder={t.emailPlaceholder}
                     value={form.email}
                     onChange={update("email")}
                     maxLength={255}
@@ -184,7 +239,7 @@ export const Contact = () => {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-foreground/70">
-                      Phone
+                      {t.phone}
                     </label>
                     <Input
                       id="contact-phone"
@@ -198,12 +253,12 @@ export const Contact = () => {
                   </div>
                   <div>
                     <label htmlFor="contact-company" className="mb-1.5 block text-sm font-medium text-foreground/70">
-                      Company
+                      {t.company}
                     </label>
                     <Input
                       id="contact-company"
                       type="text"
-                      placeholder="Acme Inc."
+                      placeholder={t.companyPlaceholder}
                       value={form.company}
                       onChange={update("company")}
                       maxLength={200}
@@ -215,11 +270,11 @@ export const Contact = () => {
                 {/* Message */}
                 <div>
                   <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-foreground/70">
-                    Message <span className="text-performance">*</span>
+                    {t.message} <span className="text-performance">*</span>
                   </label>
                   <Textarea
                     id="contact-message"
-                    placeholder="Tell us about your project and goals…"
+                    placeholder={t.messagePlaceholder}
                     value={form.message}
                     onChange={update("message")}
                     maxLength={2000}
@@ -236,17 +291,17 @@ export const Contact = () => {
                 <Button
                   type="submit"
                   disabled={submitting}
-                  aria-label="Submit contact form"
+                  aria-label={t.submitLabel}
                   className="group h-12 w-full rounded-full bg-primary text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:shadow-lg"
                 >
-                  {submitting ? "Sending…" : "Send my message"}
+                  {submitting ? t.sending : t.submit}
                   {!submitting && (
                     <Send className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   )}
                 </Button>
 
                 <p className="text-center text-[11px] font-light text-stone">
-                  Your information stays private. We never share it.
+                  {t.privacy}
                 </p>
               </form>
             </BrandCard>

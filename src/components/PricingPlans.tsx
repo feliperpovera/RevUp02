@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { openCalendly, whatsappUrl } from "@/config/links";
 import { trackPlanInterest } from "@/config/tracking";
 import pricing from "@/config/pricing.json";
+import { localizePath } from "@/config/i18n";
 
 export type Lang = "en" | "es";
 export type PlanId = (typeof pricing.plans)[number]["id"];
@@ -141,7 +142,7 @@ export const PricingPlans = ({ ids, lang = "en", learnMore = false, className }:
                 </button>
                 {learnMore ? (
                   <Link
-                    to={plan.href}
+                    to={localizePath(plan.href, lang)}
                     className={cn(
                       "mt-2 inline-flex items-center justify-center gap-1 text-xs",
                       featured ? "text-cream/60 hover:text-cream" : "text-stone hover:text-performance"

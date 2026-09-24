@@ -8,12 +8,43 @@ import { openCalendly } from "@/config/links";
 import posts from "@/config/blog-posts.json";
 import servicePages from "@/config/service-pages.json";
 import { formatDate } from "@/pages/BlogPage";
+import { localizePath, pagePath, postLang, postPath, useLang } from "@/config/i18n";
 
 export type BlogPost = (typeof posts)[number];
 
+const COPY = {
+  en: {
+    breadcrumb: "Breadcrumb",
+    home: "Home",
+    minRead: "min read",
+    ctaTitle: "Want this done for your business?",
+    ctaText:
+      "RevUp builds marketing for US service businesses — campaigns, websites and tracking focused on calls and booked jobs.",
+    book: "Book a Meeting",
+    explore: (name: string) => `Explore our ${name}`,
+    more: "More articles",
+    all: "All articles",
+  },
+  es: {
+    breadcrumb: "Ruta de navegación",
+    home: "Inicio",
+    minRead: "min de lectura",
+    ctaTitle: "¿Quieres que hagamos esto por tu negocio?",
+    ctaText:
+      "RevUp crea el marketing de negocios de servicios en EE. UU. — campañas, sitios web y medición enfocados en conseguir llamadas y trabajos agendados.",
+    book: "Agenda una reunión",
+    explore: (name: string) => `Ver servicio: ${name}`,
+    more: "Más artículos",
+    all: "Todos los artículos",
+  },
+};
+
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
-  const more = posts.filter((p) => p.slug !== post.slug);
-  const related = servicePages.find((p) => p.path === post.service) ?? servicePages.find((p) => p.path === "/service-business-marketing");
+  const lang = useLang();
+  const t = COPY[lang];
+  const more = posts.filter((p) => p.slug !== post.slug && postLang(p) === lang);
+  const findService = (path: string) => servicePages.find((p) => p.path === localizePath(path, lang));
+  const related = findService(post.service) ?? findService("/service-business-marketing");
 
   return (
     <div className="min-h-screen bg-transparent">
@@ -21,13 +52,13 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
       <main className="container mx-auto px-4 pb-24 pt-36 md:px-8 md:pt-44">
         <article className="mx-auto max-w-3xl">
           <Reveal>
-            <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone">
-              <Link to="/" className="hover:text-performance">Home</Link>
+            <nav aria-label={t.breadcrumb} className="mb-8 text-sm text-stone">
+              <Link to={pagePath("home", lang)} className="hover:text-performance">{t.home}</Link>
               <span className="mx-2">/</span>
-              <Link to="/blog" className="hover:text-performance">Blog</Link>
+              <Link to={pagePath("blog", lang)} className="hover:text-performance">Blog</Link>
             </nav>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-stone">
-              {formatDate(post.date)} · {post.readingMinutes} min read · RevUp Agency Group
+              {formatDate(post.date, lang)} · {post.readingMinutes} {t.minRead} · RevUp Agency Group
             </p>
             <h1 className="mt-4 font-heading text-4xl leading-[1.08] text-foreground md:text-5xl">{post.h1}</h1>
             <p className="mt-6 text-lg font-light leading-relaxed text-stone">{post.excerpt}</p>
@@ -55,10 +86,9 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
 
           {/* CTA */}
           <div className="mt-16 rounded-3xl bg-graphite p-8 md:p-10">
-            <p className="font-heading text-3xl leading-tight text-cream">Want this done for your business?</p>
+            <p className="font-heading text-3xl leading-tight text-cream">{t.ctaTitle}</p>
             <p className="mt-2 text-cream/70">
-              RevUp builds marketing for US service businesses — campaigns, websites and tracking focused on calls and
-              booked jobs.
+              {t.ctaText}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Button
@@ -66,32 +96,32 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                 onClick={openCalendly}
                 className="h-12 rounded-full bg-accent px-7 font-semibold text-graphite hover:bg-accent/90"
               >
-                Book a Meeting
+                {t.book}
                 <ArrowUpRight className="ml-2 h-5 w-5" />
               </Button>
               {related ? (
                 <Button asChild size="lg" variant="outline" className="h-12 rounded-full border-cream/30 bg-transparent px-7 text-cream hover:bg-cream/10 hover:text-cream">
-                  <Link to={related.path}>Explore our {related.name}</Link>
+                  <Link to={related.path}>{t.explore(related.name)}</Link>
                 </Button>
               ) : null}
             </div>
           </div>
 
           {/* More articles */}
-          <nav aria-label="More articles" className="mt-16">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-stone">More articles</p>
+          <nav aria-label={t.more} className="mt-16">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-stone">{t.more}</p>
             <ul className="space-y-3">
               {more.map((p) => (
-                <li key={p.slug}>
-                  <Link to={`/blog/${p.slug}`} className="font-heading text-lg text-foreground hover:text-performance">
+                <li key={postPath(p)}>
+                  <Link to={postPath(p)} className="font-heading text-lg text-foreground hover:text-performance">
                     {p.h1}
                   </Link>
                 </li>
               ))}
             </ul>
-            <Link to="/blog" className="mt-8 inline-flex items-center gap-2 text-sm text-stone hover:text-performance">
+            <Link to={pagePath("blog", lang)} className="mt-8 inline-flex items-center gap-2 text-sm text-stone hover:text-performance">
               <ArrowLeft className="h-4 w-4" />
-              All articles
+              {t.all}
             </Link>
           </nav>
         </article>

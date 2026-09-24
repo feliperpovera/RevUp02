@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 import { openCalendly } from "@/config/links";
+import { useLang } from "@/config/i18n";
 
 // Import client logos
 import mianLogo from "@/assets/clients/mian-logo.jpg";
@@ -38,11 +39,37 @@ const CLIENTS: { company: string; logo: string; ar: number; url?: string }[] = [
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
+const COPY = {
+  en: {
+    eyebrow: "Our Clients",
+    titleA: "Brands that",
+    titleB: "grow with us.",
+    lede: "Small and large businesses in the USA and Latin America trust us with their growth.",
+    visit: (company: string) => `Visit ${company} website`,
+    logoAlt: (company: string) => `${company} logo`,
+    ctaTitle: "Your business could be next.",
+    ctaText: "Small shop or big brand — let's have a quick, no-pressure chat about your goals.",
+    book: "Book a Meeting",
+  },
+  es: {
+    eyebrow: "Nuestros clientes",
+    titleA: "Marcas que",
+    titleB: "crecen con nosotros.",
+    lede: "Negocios pequeños y grandes en EE. UU. y Latinoamérica nos confían su crecimiento.",
+    visit: (company: string) => `Visita el sitio web de ${company}`,
+    logoAlt: (company: string) => `Logo de ${company}`,
+    ctaTitle: "Tu negocio podría ser el próximo.",
+    ctaText: "Negocio pequeño o gran marca: tengamos una charla rápida y sin presión sobre tus metas.",
+    book: "Agenda una reunión",
+  },
+};
+
 // Same ink area for every logo, capped so tall marks don't tower and wide wordmarks fit the card.
 const LOGO_AREA = 5200;
 const logoWidth = (ar: number) => Math.round(Math.min(Math.sqrt(LOGO_AREA * ar), 72 * ar, 165));
 
 export const Testimonials = () => {
+  const t = COPY[useLang()];
   return (
     <section
       id="testimonials"
@@ -55,7 +82,7 @@ export const Testimonials = () => {
       <div className="container relative z-10 mx-auto px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <Eyebrow index="003" label="Our Clients" tone="light" className="mb-10" />
+            <Eyebrow index="003" label={t.eyebrow} tone="light" className="mb-10" />
           </Reveal>
 
           <Reveal delay={0.1} className="mb-14 max-w-3xl md:mb-20">
@@ -63,10 +90,10 @@ export const Testimonials = () => {
               tone="light"
               title={
                 <span id="testimonials-heading">
-                  Brands that <span className="text-accent">grow with us.</span>
+                  {t.titleA} <span className="text-accent">{t.titleB}</span>
                 </span>
               }
-              lede="Small and large businesses in the USA and Latin America trust us with their growth."
+              lede={t.lede}
             />
           </Reveal>
 
@@ -83,7 +110,7 @@ export const Testimonials = () => {
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={client.url ? `Visit ${client.company} website` : undefined}
+                  aria-label={client.url ? t.visit(client.company) : undefined}
                   className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                 <BrandCard
@@ -92,7 +119,7 @@ export const Testimonials = () => {
                 >
                   <img
                     src={client.logo}
-                    alt={`${client.company} logo`}
+                    alt={t.logoAlt(client.company)}
                     loading="lazy"
                     style={{ width: logoWidth(client.ar) }}
                     className="h-auto max-w-full object-contain opacity-80 grayscale mix-blend-multiply transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 dark:invert dark:mix-blend-screen dark:group-hover:grayscale"
@@ -110,9 +137,9 @@ export const Testimonials = () => {
           <Reveal className="mt-10">
             <div className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-accent p-8 md:flex-row md:items-center md:p-10">
               <div>
-                <p className="font-heading text-3xl leading-tight text-graphite md:text-4xl">Your business could be next.</p>
+                <p className="font-heading text-3xl leading-tight text-graphite md:text-4xl">{t.ctaTitle}</p>
                 <p className="mt-2 text-base text-graphite/70">
-                  Small shop or big brand — let's have a quick, no-pressure chat about your goals.
+                  {t.ctaText}
                 </p>
               </div>
               <Button
@@ -120,7 +147,7 @@ export const Testimonials = () => {
                 onClick={openCalendly}
                 className="group h-14 shrink-0 rounded-full bg-graphite px-8 text-base font-semibold text-cream hover:bg-graphite/90"
               >
-                Book a Meeting
+                {t.book}
                 <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </div>

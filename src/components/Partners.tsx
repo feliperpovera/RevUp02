@@ -6,10 +6,34 @@ import tiktokLogo from "@/assets/tiktok-logo.png";
 import metaLogo from "@/assets/meta-logo-new.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
 import chatgptLogo from "@/assets/chatgpt-logo.svg";
+import { pagePath, useLang } from "@/config/i18n";
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
+const COPY = {
+  en: {
+    eyebrow: "Official Partners",
+    badge: "Certified",
+    titleA: "We are",
+    titleB: "Official Partners",
+    lede: "Certified digital marketing partners with Meta, Google Ads, TikTok, Shopify and ChatGPT—delivering expert campaign management, e-commerce and AI solutions",
+    cardLabel: (name: string) => `${name} official partner — learn more`,
+    logoAlt: (name: string) => `${name} certified partner - Professional ${name} advertising and marketing management`,
+  },
+  es: {
+    eyebrow: "Socios oficiales",
+    badge: "Certificados",
+    titleA: "Somos",
+    titleB: "socios oficiales",
+    lede: "Socios certificados de marketing digital con Meta, Google Ads, TikTok, Shopify y ChatGPT: manejo experto de campañas, e-commerce y soluciones con IA",
+    cardLabel: (name: string) => `Socio oficial de ${name}: conoce más`,
+    logoAlt: (name: string) => `Socio certificado de ${name}: manejo profesional de publicidad y marketing en ${name}`,
+  },
+};
+
 export const Partners = () => {
+  const lang = useLang();
+  const t = COPY[lang];
   const partners = [
     { name: "Meta", logo: metaLogo },
     { name: "Google", logo: googleLogo },
@@ -30,7 +54,7 @@ export const Partners = () => {
       <div className="container relative z-10 mx-auto px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <Eyebrow index="002" label="Official Partners" className="mb-12 max-w-md" />
+            <Eyebrow index="002" label={t.eyebrow} className="mb-12 max-w-md" />
           </Reveal>
 
           <header className="mb-14 md:mb-20">
@@ -38,7 +62,7 @@ export const Partners = () => {
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-card px-4 py-1.5">
                 <Award className="h-4 w-4 text-performance" aria-hidden="true" />
                 <span className="text-xs font-medium uppercase tracking-[0.2em] text-stone">
-                  Certified
+                  {t.badge}
                 </span>
               </div>
 
@@ -46,14 +70,13 @@ export const Partners = () => {
                 id="partners-heading"
                 className="font-heading text-4xl leading-[1.05] text-foreground md:text-5xl lg:text-6xl"
               >
-                We are <span className="text-primary">Official Partners</span>
+                {t.titleA} <span className="text-primary">{t.titleB}</span>
               </h2>
             </Reveal>
 
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-2xl text-base font-light leading-relaxed text-stone md:text-lg">
-                Certified digital marketing partners with Meta, Google Ads, TikTok, Shopify and
-                ChatGPT—delivering expert campaign management, e-commerce and AI solutions
+                {t.lede}
               </p>
             </Reveal>
           </header>
@@ -62,9 +85,9 @@ export const Partners = () => {
             {partners.map((partner, index) => (
               <Reveal as="li" key={partner.name} delay={index * 0.1}>
                 <Link
-                  to="/partners"
+                  to={pagePath("partners", lang)}
                   className="group block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  aria-label={`${partner.name} official partner — learn more`}
+                  aria-label={t.cardLabel(partner.name)}
                 >
                   <BrandCard
                     corner={CORNERS[index % CORNERS.length]}
@@ -72,7 +95,7 @@ export const Partners = () => {
                   >
                     <img
                       src={partner.logo}
-                      alt={`${partner.name} certified partner - Professional ${partner.name} advertising and marketing management`}
+                      alt={t.logoAlt(partner.name)}
                       className={`max-h-12 w-auto max-w-[110px] object-contain opacity-80 grayscale transition-all duration-500 group-hover:opacity-100 group-hover:grayscale-0 md:max-h-14 md:max-w-[130px] ${"invertOnDark" in partner ? "dark:invert" : ""}`}
                       loading="lazy"
                     />

@@ -1,42 +1,85 @@
 import { ShoppingCart, Code, Settings, Zap, Search, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import servicePages from "@/config/service-pages.json";
+import { localizePath, pagePath, serviceLang, useLang, type Lang } from "@/config/i18n";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 
-const services: { icon: typeof Search; title: string; description: string; to?: string; wide?: boolean }[] = [
+type Text = Record<Lang, string>;
+
+const services: { icon: typeof Search; title: Text; description: Text; to?: string; wide?: boolean }[] = [
   {
     icon: ShoppingCart,
-    title: "Paid Media Management",
-    description: "Expert Google Ads, Meta Ads (Facebook & Instagram), and TikTok advertising campaigns that drive targeted traffic, boost conversions, and maximize ROI for US businesses.",
+    title: { en: "Paid Media Management", es: "Manejo de publicidad pagada" },
+    description: {
+      en: "Expert Google Ads, Meta Ads (Facebook & Instagram), and TikTok advertising campaigns that drive targeted traffic, boost conversions, and maximize ROI for US businesses.",
+      es: "Campañas expertas en Google Ads, Meta Ads (Facebook e Instagram) y TikTok que atraen tráfico calificado, aumentan las conversiones y maximizan el ROI de negocios en EE. UU.",
+    },
   },
   {
     icon: Code,
-    title: "Website & E-commerce Development",
-    description: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
+    title: { en: "Website & E-commerce Development", es: "Desarrollo de sitios web y e-commerce" },
+    description: {
+      en: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
+      es: "Tiendas Shopify a la medida, landing pages que convierten y sitios web responsivos diseñados para convertir visitantes en clientes e impulsar tus ventas en línea.",
+    },
   },
   {
     icon: Settings,
-    title: "Website & Store Management",
-    description: "Ongoing website maintenance, performance optimization, and conversion rate improvements to keep your digital presence competitive and profitable.",
+    title: { en: "Website & Store Management", es: "Administración de sitios web y tiendas" },
+    description: {
+      en: "Ongoing website maintenance, performance optimization, and conversion rate improvements to keep your digital presence competitive and profitable.",
+      es: "Mantenimiento continuo de tu sitio, optimización de rendimiento y mejoras en la tasa de conversión para que tu presencia digital siga siendo competitiva y rentable.",
+    },
   },
   {
     icon: Zap,
-    title: "AI Marketing Automation",
-    description: "Intelligent campaign workflows, automated bidding strategies, and AI-powered optimization that reduce manual work while improving advertising performance.",
+    title: { en: "AI Marketing Automation", es: "Automatización de marketing con IA" },
+    description: {
+      en: "Intelligent campaign workflows, automated bidding strategies, and AI-powered optimization that reduce manual work while improving advertising performance.",
+      es: "Flujos de campaña inteligentes, estrategias de puja automatizadas y optimización con IA que reducen el trabajo manual y mejoran el rendimiento de tu publicidad.",
+    },
   },
   {
     icon: Search,
-    title: "Local SEO Services",
-    description: "Local SEO that gets your business found on Google Search and Google Maps — on its own or combined with paid ads as a complete SEO + SEM package that brings calls now and free traffic over time.",
+    title: { en: "Local SEO Services", es: "Servicios de SEO local" },
+    description: {
+      en: "Local SEO that gets your business found on Google Search and Google Maps — on its own or combined with paid ads as a complete SEO + SEM package that brings calls now and free traffic over time.",
+      es: "SEO local para que encuentren tu negocio en Google Search y Google Maps, solo o combinado con anuncios pagados en un paquete completo de SEO + SEM que trae llamadas hoy y tráfico gratis con el tiempo.",
+    },
     to: "/seo-for-service-businesses",
     wide: true,
   },
 ];
 
+const COPY = {
+  en: {
+    eyebrow: "Our Services",
+    titleA: "Our",
+    titleB: "Services",
+    lede: "Complete digital marketing solutions for businesses ready to grow online",
+    cardLabel: (title: string) => `${title} — learn more about our services`,
+    learnMore: "Learn more",
+    navLabel: "Service pages",
+    explore: "Explore",
+  },
+  es: {
+    eyebrow: "Nuestros servicios",
+    titleA: "Nuestros",
+    titleB: "servicios",
+    lede: "Soluciones completas de marketing digital para negocios listos para crecer en línea",
+    cardLabel: (title: string) => `${title}: conoce más sobre nuestros servicios`,
+    learnMore: "Conoce más",
+    navLabel: "Páginas de servicios",
+    explore: "Explora",
+  },
+};
+
 /** One oversized corner per card, rotating around the 2×2 grid. */
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
 
 export const Services = () => {
+  const lang = useLang();
+  const t = COPY[lang];
   return (
     <section
       id="services"
@@ -49,28 +92,28 @@ export const Services = () => {
       <div className="container relative z-10 mx-auto px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <Eyebrow index="004" label="Our Services" className="mb-10 max-w-md" />
+            <Eyebrow index="004" label={t.eyebrow} className="mb-10 max-w-md" />
           </Reveal>
 
           <Reveal delay={0.1}>
             <SectionHeading
               title={
                 <span id="services-heading">
-                  Our <span className="text-primary">Services</span>
+                  {t.titleA} <span className="text-primary">{t.titleB}</span>
                 </span>
               }
-              lede="Complete digital marketing solutions for businesses ready to grow online"
+              lede={t.lede}
               className="mb-14 md:mb-20"
             />
           </Reveal>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 0.1} className={service.wide ? "h-full md:col-span-2" : "h-full"}>
+              <Reveal key={service.title.en} delay={index * 0.1} className={service.wide ? "h-full md:col-span-2" : "h-full"}>
                 <Link
-                  to={service.to ?? "/services"}
+                  to={service.to ? localizePath(service.to, lang) : pagePath("services", lang)}
                   className="group block h-full focus-visible:outline-none"
-                  aria-label={`${service.title} — learn more about our services`}
+                  aria-label={t.cardLabel(service.title[lang])}
                 >
                   <BrandCard
                     corner={CORNERS[index % CORNERS.length]}
@@ -81,17 +124,17 @@ export const Services = () => {
                     </div>
 
                     <h3 className="font-heading text-2xl text-foreground transition-colors duration-300 group-hover:text-performance">
-                      {service.title}
+                      {service.title[lang]}
                     </h3>
 
                     <p className="mt-3 flex-1 text-base font-light leading-relaxed text-stone">
-                      {service.description}
+                      {service.description[lang]}
                     </p>
 
                     {/* Learn-more row slides into view on hover */}
                     <div className="mt-8 flex items-center gap-1.5 border-t border-foreground/10 pt-5 text-sm font-medium text-performance">
                       <span className="-translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100 motion-reduce:translate-x-0 motion-reduce:opacity-100">
-                        Learn more
+                        {t.learnMore}
                       </span>
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" />
                     </div>
@@ -100,9 +143,9 @@ export const Services = () => {
               </Reveal>
             ))}
           </div>
-          <nav aria-label="Service pages" className="mt-12 flex flex-wrap items-center gap-3">
-            <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">Explore</span>
-            {servicePages.map((p) => (
+          <nav aria-label={t.navLabel} className="mt-12 flex flex-wrap items-center gap-3">
+            <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">{t.explore}</span>
+            {servicePages.filter((p) => serviceLang(p) === lang).map((p) => (
               <Link
                 key={p.path}
                 to={p.path}

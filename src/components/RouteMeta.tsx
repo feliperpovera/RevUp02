@@ -3,13 +3,16 @@ import { useLocation } from "react-router-dom";
 import seo from "@/config/seo.json";
 import servicePages from "@/config/service-pages.json";
 import blogPosts from "@/config/blog-posts.json";
+import { langOf, pagePath, postLang, postPath, serviceLang } from "@/config/i18n";
 
 type RouteSeo = { title: string; description: string; noindex?: boolean; lang?: string };
 const ROUTES: Record<string, RouteSeo> = {
   ...(seo.routes as Record<string, RouteSeo>),
-  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description, lang: "lang" in p ? p.lang : undefined }])),
-  ...Object.fromEntries(blogPosts.map((p) => [`/blog/${p.slug}`, { title: p.title, description: p.description }])),
+  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description, lang: serviceLang(p) }])),
+  ...Object.fromEntries(blogPosts.map((p) => [postPath(p), { title: p.title, description: p.description, lang: postLang(p) }])),
 };
+
+const NOT_FOUND = { en: "Page Not Found | RevUp Agency Group", es: "Página no encontrada | RevUp Agency Group" };
 
 const setMeta = (selector: string, attr: "content" | "href", value: string) => {
   document.querySelector(selector)?.setAttribute(attr, value);
@@ -26,20 +29,22 @@ export const RouteMeta = () => {
   useEffect(() => {
     const path = pathname.replace(/\/+$/, "") || "/";
     const route = ROUTES[path];
+    const lang = langOf(path);
     const url = `${seo.site}${path === "/" ? "/" : path}`;
 
     // Unknown path = soft 404: keep it out of the index.
     const noindex = !route || route.noindex;
-    const title = route?.title ?? "Page Not Found | RevUp Agency Group";
-    const description = route?.description ?? ROUTES["/"].description;
+    const title = route?.title ?? NOT_FOUND[lang];
+    const description = route?.description ?? ROUTES[pagePath("home", lang)].description;
 
     document.title = title;
-    document.documentElement.lang = route?.lang === "es" ? "es-US" : "en-US";
+    document.documentElement.lang = lang === "es" ? "es-US" : "en-US";
     setMeta('meta[name="description"]', "content", description);
     setMeta('link[rel="canonical"]', "href", url);
     setMeta('meta[property="og:url"]', "content", url);
     setMeta('meta[property="og:title"]', "content", title);
     setMeta('meta[property="og:description"]', "content", description);
+    setMeta('meta[property="og:locale"]', "content", lang === "es" ? "es_US" : "en_US");
     setMeta('meta[name="twitter:title"]', "content", title);
     setMeta('meta[name="twitter:description"]', "content", description);
     setMeta(

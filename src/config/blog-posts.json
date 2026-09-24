@@ -1,6 +1,7 @@
 [
   {
     "slug": "local-seo-for-service-businesses",
+    "alt": "/es/blog/seo-local-para-negocios-de-servicios",
     "title": "Local SEO for Service Businesses: Get Found on Google | RevUp",
     "description": "A practical local SEO guide for US service businesses: map pack vs organic results, service pages, reviews, citations, tracking and realistic timelines.",
     "h1": "Local SEO for service businesses: how to get found on Google",
@@ -53,7 +54,7 @@
         "h2": "Reviews: the signal customers and Google both read",
         "paragraphs": [
           "Reviews influence where you appear in the map pack and, just as importantly, whether people choose to call you once they see you. A business with a steady stream of recent, detailed reviews looks active and trustworthy.",
-          "Make asking for reviews part of how every job ends. Send a direct link by text or WhatsApp right after the work is done, while the customer is happy. Reviews that mention the specific service and the city give future customers useful context, but don't script them; simply asking \"what did we help you with?\" often brings that detail naturally.",
+          "Make asking for reviews part of how every job ends. Send every customer a direct link by text or WhatsApp right after the work is done, while the job is fresh in their mind. Reviews that mention the specific service and the city give future customers useful context, but don't script them; simply asking \"what did we help you with?\" often brings that detail naturally.",
           "Reply to every review, positive or negative, in a calm and professional way. And never buy reviews, write your own, offer discounts or rewards in exchange for reviews, or ask only happy customers. It goes against Google's policies and can get reviews removed or your profile restricted."
         ]
       },
@@ -97,12 +98,13 @@
   },
   {
     "slug": "google-ads-for-service-businesses",
+    "alt": "/es/blog/google-ads-para-negocios-de-servicios",
     "title": "Google Ads for Service Businesses: A Practical Guide | RevUp",
-    "description": "How US service businesses can use Google Ads and Local Services Ads to get more calls and booked jobs: campaign types, keywords, targeting, tracking and common mistakes.",
+    "description": "How US service businesses can use Google Ads and Local Services Ads to get more calls: campaign structure, keywords, tracking and budgets that make sense.",
     "h1": "Google Ads for service businesses: a practical guide to more calls and booked jobs",
     "excerpt": "The campaign types, keywords, targeting and tracking that help plumbers, contractors, clinics and other service businesses turn Google searches into booked jobs.",
     "date": "2026-09-23",
-    "readingMinutes": 7,
+    "readingMinutes": 4,
     "service": "/google-ads-management",
     "sections": [
       {
@@ -183,12 +185,13 @@
   },
   {
     "slug": "facebook-instagram-ads-for-service-businesses",
+    "alt": "/es/blog/anuncios-facebook-instagram-para-negocios-de-servicios",
     "title": "Facebook & Instagram Ads for Service Businesses | RevUp",
-    "description": "How US service businesses can generate quality leads with Facebook and Instagram ads: offers, lead forms, WhatsApp campaigns, creative, targeting and fast follow-up.",
+    "description": "How service businesses can use Facebook and Instagram ads to win local customers: audiences, offers, lead forms, WhatsApp and tracking that shows results.",
     "h1": "How service businesses get quality leads from Facebook & Instagram ads",
     "excerpt": "Offers, lead forms, WhatsApp campaigns and creative that help contractors, clinics and local service businesses turn social media attention into booked appointments.",
     "date": "2026-09-23",
-    "readingMinutes": 7,
+    "readingMinutes": 3,
     "service": "/meta-ads-management",
     "sections": [
       {
@@ -271,12 +274,13 @@
   },
   {
     "slug": "google-business-profile-for-service-businesses",
-    "title": "Google Business Profile Guide for Local Service Businesses | RevUp",
-    "description": "How local service businesses in the US can optimize their Google Business Profile to show up in Google Maps and the local map pack: categories, services, reviews and more.",
+    "alt": "/es/blog/perfil-de-empresa-de-google-para-negocios",
+    "title": "Google Business Profile Guide for Service Businesses | RevUp",
+    "description": "A practical Google Business Profile guide for local service businesses: categories, service areas, photos, reviews and posts that help you show up on Maps.",
     "h1": "Google Business Profile: how local service businesses win on Google Maps",
     "excerpt": "Categories, service areas, reviews and the everyday habits that help plumbers, clinics, contractors and other local service businesses appear in Google Maps and the map pack.",
     "date": "2026-09-23",
-    "readingMinutes": 6,
+    "readingMinutes": 3,
     "service": "/seo-for-service-businesses",
     "sections": [
       {
@@ -321,7 +325,7 @@
       {
         "h2": "Build a steady flow of reviews",
         "paragraphs": [
-          "Reviews influence both your ranking and whether people call you. The most reliable way to get them is simply to ask every satisfied customer, right after the job, with a direct link to your review form. Reply to every review — thank people for positive ones and respond calmly and helpfully to negative ones.",
+          "Reviews influence both your ranking and whether people call you. The most reliable way to get them is simply to ask every customer, right after the job, with a direct link to your review form. Reply to every review — thank people for positive ones and respond calmly and helpfully to negative ones.",
           "Never buy reviews, write them yourself or offer rewards in exchange for positive ratings. It violates Google's policies and can lead to reviews being removed or your profile being restricted."
         ]
       },
@@ -355,6 +359,379 @@
         "h2": "Next steps",
         "paragraphs": [
           "A well-managed Google Business Profile, a fast website and targeted local ads work best together: the profile builds trust, the website converts and the ads bring volume when you want to grow faster. If you'd like help optimizing your profile or building the rest of the system, book a free call with RevUp."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "seo-local-para-negocios-de-servicios",
+    "alt": "/blog/local-seo-for-service-businesses",
+    "lang": "es",
+    "title": "SEO local para negocios: cómo aparecer en Google | RevUp",
+    "description": "Guía práctica de SEO local para negocios de servicios en USA: mapa y resultados orgánicos, páginas de servicios, reseñas, directorios y plazos realistas.",
+    "h1": "SEO local para negocios de servicios: cómo aparecer en Google cuando te buscan",
+    "excerpt": "Cómo funciona de verdad la búsqueda local y los pasos que ayudan a contratistas, empresas de servicios para el hogar, clínicas y servicios profesionales a aparecer cuando los clientes de su zona buscan, en inglés o en español.",
+    "date": "2026-09-23",
+    "readingMinutes": 10,
+    "service": "/seo-for-service-businesses",
+    "sections": [
+      {
+        "h2": "Cómo funciona la búsqueda local: el mapa y los resultados orgánicos",
+        "paragraphs": [
+          "Cuando alguien busca un servicio local, como \"roof repair\", \"plomero cerca de mí\" o \"med spa en Doral\", Google suele mostrar dos tipos de resultados gratuitos. Primero aparece el paquete local, conocido en inglés como \"map pack\": un mapa con una lista corta de negocios que salen de los Perfiles de Empresa de Google. Debajo están los resultados orgánicos de siempre: las páginas web que Google considera las respuestas más relevantes para esa búsqueda.",
+          "Están relacionados, pero no son lo mismo. El mapa depende sobre todo de tu Perfil de Empresa, de tus reseñas y de qué tan cerca estás de la persona que busca. Los resultados orgánicos dependen sobre todo de tu página web: sus páginas, su contenido y su reputación en internet. Google explica que el ranking local se basa en la relevancia, la distancia y la prominencia, y un buen plan de SEO local trabaja las tres. Vale la pena aparecer en los dos lugares, porque hay gente que llama directamente desde el mapa y otra que prefiere entrar a varios sitios web y comparar antes.",
+          "Si atiendes a clientes hispanos, ten en cuenta que no todos buscan en el mismo idioma. Unos escriben \"ac repair near me\", otros \"reparación de aire acondicionado\", y muchos cambian de idioma según el momento. Por eso conviene pensar tu SEO local en inglés y en español desde el principio.",
+          "Los anuncios pagados pueden aparecer encima de ambos. Al final de esta guía vemos cómo encajan los anuncios con el SEO."
+        ]
+      },
+      {
+        "h2": "Empieza por tu Perfil de Empresa de Google",
+        "paragraphs": [
+          "Para la mayoría de los negocios de servicios, el Perfil de Empresa de Google (antes Google My Business) es la base del SEO local. La categoría principal correcta, una lista completa de servicios, un horario exacto, una zona de servicio bien definida y fotos reales ayudan a Google a entender qué haces y dónde lo haces. Si vas a casa de tus clientes, configúralo como negocio con zona de servicio (service-area business) en lugar de mostrar la dirección de tu casa.",
+          "Explicamos el perfil paso a paso en nuestra guía del Perfil de Empresa de Google. La versión corta: completa todas las secciones, mantenlo activo con novedades y fotos, y nunca agregues al nombre de tu negocio palabras clave, ciudades ni frases que no forman parte de tu nombre real, como \"Se habla español\". El resto de esta guía se enfoca en todo lo que rodea al perfil y lo fortalece."
+        ]
+      },
+      {
+        "h2": "Crea una página para cada servicio y para cada zona que atiendes",
+        "paragraphs": [
+          "Uno de los problemas más comunes que vemos en los sitios web de negocios de servicios es una sola página de \"Servicios\" que lo menciona todo en un párrafo. Google no puede posicionar una misma página para reparación de calentadores de agua, destape de drenajes y cambio de tuberías al mismo tiempo, y el cliente que busca uno de esos servicios quiere ver exactamente ese servicio.",
+          "Dale a cada servicio principal su propia página. Explica qué incluye, qué problemas comunes resuelve, cómo es el proceso y qué influye en el precio, y responde las preguntas que tus clientes te hacen por teléfono. Agrega fotos de trabajos reales y una forma clara de llamar o pedir una cotización.",
+          "Las páginas por zona funcionan igual, pero para ubicaciones. Si atiendes varias ciudades o vecindarios, una página para cada zona importante puede ayudarte a aparecer en las búsquedas de esos lugares. La clave es que cada página sea útil de verdad: proyectos que has hecho ahí, detalles locales, reseñas de clientes de esa zona y cómo la atiendes. Copiar una página y cambiar solo el nombre de la ciudad crea páginas pobres y casi duplicadas que Google puede tratar como páginas puerta (doorway pages) e ignorar. Crea páginas solo para las zonas que realmente atiendes.",
+          "Una forma sencilla de planearlo es ordenar tus servicios según lo rentables que son y tus zonas según su importancia, y construir primero las páginas donde se cruzan las dos listas. Un techero podría empezar con las páginas de reemplazo y reparación de techos, luego con las de las dos o tres ciudades de donde salen más trabajos, y crecer desde ahí.",
+          "Si una buena parte de tus clientes prefiere el español, considera tener tus páginas más importantes también en español. Que sean páginas propias y bien escritas, con las palabras que usan tus clientes, y no una traducción automática sin revisar. Mantén cada idioma en su propia página y enlázalas entre sí, para que tanto tus visitantes como Google entiendan que son la misma página en dos idiomas."
+        ]
+      },
+      {
+        "h2": "Lo básico en cada página que sigue importando",
+        "paragraphs": [
+          "Cuando ya tienes las páginas correctas, asegúrate de que cada una les diga claramente a Google y a tus visitantes de qué se trata. Escribe primero para tus clientes: las respuestas claras, concretas y en palabras sencillas sirven más que repetir una palabra clave una y otra vez, algo que hace que la página se lea mal y puede hacer más daño que bien.",
+          "La velocidad y la versión para celular importan igual. Mucha gente que busca un servicio local lo hace desde el teléfono, muchas veces con prisa, y una página lenta o recargada la devuelve a los resultados para llamar a otro. Nada de lo siguiente es complicado, pero se pasa por alto con frecuencia:"
+        ],
+        "bullets": [
+          "Una etiqueta de título (title tag) única con el servicio y la ciudad, por ejemplo \"Reparación de aire acondicionado en Hialeah | Tu Empresa\"",
+          "Un solo encabezado H1 claro y subtítulos descriptivos que coincidan con la forma en que buscan tus clientes",
+          "El nombre de tu negocio, tu teléfono y tu zona de servicio visibles en la página",
+          "Enlaces internos entre servicios relacionados, zonas y tu página de contacto",
+          "Datos estructurados LocalBusiness (schema) para que los buscadores puedan leer los datos de tu negocio",
+          "Carga rápida en el celular, con imágenes comprimidas y sin ventanas emergentes pesadas",
+          "Un teléfono que se pueda tocar para llamar y un formulario corto cerca de la parte de arriba de cada página"
+        ]
+      },
+      {
+        "h2": "Reseñas: la señal que leen tanto tus clientes como Google",
+        "paragraphs": [
+          "Las reseñas influyen en tu posición en el mapa y, algo igual de importante, en si la gente decide llamarte cuando te ve. Un negocio que recibe reseñas recientes y detalladas de forma constante se ve activo y confiable.",
+          "Haz que pedir una reseña sea parte del cierre de cada trabajo, con todos tus clientes. Manda un enlace directo por mensaje de texto o WhatsApp justo al terminar, cuando el cliente todavía tiene el trabajo fresco en la memoria. Las reseñas que mencionan el servicio y la ciudad les dan contexto útil a tus futuros clientes, pero no las dictes: basta con pedirle \"cuéntanos en qué te ayudamos\" para que ese detalle salga solo. Si tu cliente se siente más cómodo en español, que escriba su reseña en español; a otros clientes hispanos les sirve leerla en su idioma.",
+          "Responde todas las reseñas, positivas o negativas, con calma y profesionalismo, idealmente en el mismo idioma en que te escribieron. Y nunca compres reseñas, las escribas tú mismo, ofrezcas descuentos o regalos a cambio de ellas ni se las pidas solo a los clientes que quedaron contentos. Va en contra de las políticas de Google y puede hacer que eliminen reseñas o que restrinjan tu perfil."
+        ]
+      },
+      {
+        "h2": "Mantén los datos de tu negocio iguales en todas partes",
+        "paragraphs": [
+          "Tu nombre, dirección y teléfono, lo que en inglés se conoce como NAP (name, address, phone), deben ser idénticos en todos los lugares donde aparece tu negocio: tu sitio web, tu Perfil de Empresa de Google, Facebook, Yelp, Apple Maps, Bing Places, el BBB y los directorios de tu industria. A estos listados se les llama citaciones (citations).",
+          "Los datos inconsistentes, como un teléfono viejo, una dirección anterior o un nombre escrito un poco distinto, hacen que a los buscadores les cueste confiar en que tu información es correcta, y mandan a algunos clientes al lugar equivocado. Si tu negocio se presenta a veces con un nombre en inglés y a veces con uno en español, elige uno como nombre oficial y escríbelo igual en todas partes. Una limpieza de los directorios principales, y revisarlos cada vez que algo cambie, resuelve la mayor parte del problema. Después, prioriza la calidad sobre la cantidad: unos pocos listados relevantes y correctos valen más que cientos de directorios de baja calidad.",
+          "Los enlaces locales también ayudan. Patrocinar un evento de la comunidad, unirte a una asociación de negocios o a la cámara de comercio hispana de tu zona, o aparecer en el sitio web de un proveedor con el que trabajas, puede darte menciones desde sitios locales reales, y eso puede fortalecer tu prominencia con el tiempo."
+        ]
+      },
+      {
+        "h2": "Mide llamadas y trabajos agendados, no solo posiciones",
+        "paragraphs": [
+          "Vale la pena seguir tus posiciones, pero las posiciones no pagan las cuentas. Lo que importa es cuánta gente te encontró en Google y luego llamó, llenó un formulario o te escribió, y cuántos de esos contactos se convirtieron en trabajos agendados.",
+          "Instala Google Analytics y Google Search Console en tu sitio web, mide los formularios enviados y los clics en tu número de teléfono, y usa parámetros UTM en el enlace a tu sitio web que pones en tu Perfil de Empresa, para que ese tráfico aparezca por separado en tus reportes. El seguimiento de llamadas puede mostrarte qué llamadas vinieron de la búsqueda orgánica; si usas un número de seguimiento, mantén tu número principal publicado de forma consistente para no desordenar tu NAP.",
+          "Revisa también los datos de rendimiento de tu perfil: llamadas, solicitudes de indicaciones y clics a tu sitio web. En Search Console, además, puedes ver con qué búsquedas apareces, en inglés y en español, lo que te ayuda a decidir qué páginas crear después. Juntos, estos datos te dan una imagen honesta de lo que el SEO local está produciendo de verdad."
+        ]
+      },
+      {
+        "h2": "Cuánto tarda el SEO local en dar resultados y cuándo sumar Google Ads",
+        "paragraphs": [
+          "El SEO local no es inmediato. Corregir tu perfil y los problemas técnicos puede ayudar relativamente rápido, pero crear páginas nuevas, conseguir reseñas y hacer crecer tu reputación normalmente toma varios meses en mostrar resultados que se noten, y en servicios con mucha competencia y en ciudades grandes toma más. Si alguien te garantiza el primer lugar o un número fijo de clientes, te está prometiendo algo que nadie controla: solo Google decide las posiciones.",
+          "Por eso muchos negocios de servicios combinan el SEO con Google Ads. Los anuncios pueden poner tu negocio arriba en los resultados poco después de lanzar la campaña y traer llamadas mientras el SEO crece. Además, uno mejora al otro:"
+        ],
+        "bullets": [
+          "Con un buen seguimiento, los términos de búsqueda de tus anuncios muestran qué palabras clave traen trabajos reales, en inglés y en español, para que el SEO se enfoque en ellas",
+          "Las páginas de servicios y de zonas que creas para el SEO son mejores páginas de destino para tus anuncios",
+          "Aparecer en los anuncios y en los resultados gratuitos de una misma búsqueda refuerza la confianza",
+          "A medida que crece tu visibilidad orgánica, puedes decidir dónde rinde más tu presupuesto de anuncios"
+        ]
+      },
+      {
+        "h2": "Por dónde empezar",
+        "paragraphs": [
+          "Empieza por completar y corregir tu Perfil de Empresa de Google, luego crea una página dedicada para tu servicio más rentable, limpia tus listados en los directorios principales y convierte en hábito pedirle una reseña a cada cliente. Configura la medición de llamadas y formularios desde el primer día para ver qué funciona. Después, sigue adelante: agrega páginas, consigue reseñas y mejora mes a mes.",
+          "Si prefieres que un equipo se encargue, el servicio de SEO local de RevUp está pensado para negocios de servicios: auditamos tu sitio web, tu competencia y tus palabras clave en inglés y en español, optimizamos tu Perfil de Empresa de Google y tus páginas de servicios, corregimos tus listados y te reportamos las llamadas y el tráfico que genera. También se puede combinar con Google Ads cuando quieres recibir llamadas mientras el SEO crece. Agenda una llamada gratis para ver cómo se vería en tu negocio."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "google-ads-para-negocios-de-servicios",
+    "alt": "/blog/google-ads-for-service-businesses",
+    "lang": "es",
+    "title": "Google Ads para negocios de servicios: guía práctica | RevUp",
+    "description": "Cómo usar Google Ads y los Anuncios de Servicios Locales para conseguir más llamadas y trabajos: tipos de campaña, palabras clave, zona, medición y errores.",
+    "h1": "Google Ads para negocios de servicios: guía práctica para conseguir más llamadas y trabajos",
+    "excerpt": "Los tipos de campaña, las palabras clave, la segmentación y la medición que ayudan a plomeros, contratistas, clínicas y otros negocios de servicios a convertir búsquedas en Google en trabajos agendados.",
+    "date": "2026-09-23",
+    "readingMinutes": 6,
+    "service": "/google-ads-management",
+    "sections": [
+      {
+        "h2": "Por qué Google Ads funciona tan bien para negocios de servicios",
+        "paragraphs": [
+          "La mayoría de los trabajos de servicio empiezan con una búsqueda. Cuando se daña el calentador de agua, duele una muela o hay una gotera en el techo, la gente no se pone a ver redes sociales buscando inspiración: abre Google, escribe lo que necesita y llama a uno de los primeros negocios que le dan confianza. Esa intención es lo que hace que Google Ads sea tan poderoso para un negocio de servicios: pagas por aparecer frente a personas que ya necesitan lo que tú haces.",
+          "La otra cara de la moneda es que Google Ads también puede gastarse tu dinero muy rápido si no está configurado según la forma en que los negocios de servicios consiguen clientes de verdad. Esta guía cubre las decisiones que más importan."
+        ]
+      },
+      {
+        "h2": "Elige el tipo de campaña correcto",
+        "paragraphs": [
+          "Para la mayoría de los negocios de servicios, la base es una campaña de búsqueda de Google: anuncios de texto que aparecen cuando alguien busca tu servicio en tu zona. Las campañas de búsqueda te dan control sobre las palabras clave, los textos, las páginas de destino y el presupuesto de cada servicio.",
+          "En Estados Unidos, muchas categorías de servicios también pueden usar los Anuncios de Servicios Locales de Google (Local Services Ads). Aparecen encima de los anuncios normales, muestran tus reseñas e insignias de verificación, y cobran por cliente potencial en vez de por clic. Vale la pena probarlos si tu categoría es elegible, pero tienes menos control sobre cómo se asignan los contactos, así que muchos negocios los usan junto con las campañas de búsqueda y no en su lugar.",
+          "Performance Max puede funcionar para algunos negocios de servicios, pero optimiza hacia cualquier conversión que le indiques. Si tu medición cuenta formularios de baja calidad o llamadas muy cortas como conversiones, puede traerte volumen sin trabajos reales. Primero pon en orden tu medición."
+        ]
+      },
+      {
+        "h2": "Palabras clave que traen clientes, no curiosos",
+        "paragraphs": [
+          "Enfócate en búsquedas que muestran que alguien está listo para contratar: el servicio más una ubicación (\"ac repair miami\", \"plomero en houston\"), búsquedas con \"near me\" o \"cerca de mí\" y frases urgentes como \"emergency plumber\", \"plomero 24 horas\" o \"same day\". Organiza las campañas por servicio, para que cada servicio tenga sus propios anuncios y su propia página de destino.",
+          "Si atiendes en español, no des por hecho que tus clientes buscan solo en español. Es común que un cliente hispano busque en inglés aunque prefiera que lo atiendan en español, y otros escriben directamente \"plomero cerca de mí\". Revisa los términos de búsqueda reales de tu cuenta y, si las búsquedas en español tienen volumen en tu zona, dales su propio grupo de anuncios o su propia campaña, con anuncios y página de destino en español.",
+          "Igual de importantes son las palabras clave negativas: búsquedas por las que no quieres pagar. Estas son algunas comunes para negocios de servicios, en los dos idiomas:"
+        ],
+        "bullets": [
+          "Gente que busca empleo: \"jobs\", \"salary\", \"hiring\", \"training\", \"trabajo\", \"empleo\", \"curso\"",
+          "Gente que quiere hacerlo por su cuenta: \"how to\", \"diy\", \"youtube\", \"parts\", \"cómo arreglar\"",
+          "Quienes solo buscan lo más barato y no te dejan ganancia: \"free\", \"cheapest\", \"gratis\", \"más barato\"",
+          "Servicios que no ofreces y zonas que no cubres"
+        ]
+      },
+      {
+        "h2": "Apunta a tu zona real de servicio y a tus horarios",
+        "paragraphs": [
+          "Configura tus ubicaciones con las ciudades, los códigos postales (ZIP codes) o el radio que realmente atiendes, y usa la opción que muestra tus anuncios a personas que están o suelen estar en esas zonas, no a quienes solo muestran interés en ellas. Un contacto de fuera de tu zona es un clic desperdiciado.",
+          "Programa tus anuncios para las horas en que alguien puede contestar el teléfono. Si de noche las llamadas se van al buzón de voz, baja las pujas en esas horas o manda esos clics a una página con un buen formulario para agendar."
+        ]
+      },
+      {
+        "h2": "Escribe anuncios que se ganen la llamada",
+        "paragraphs": [
+          "El cliente de servicios quiere saber tres cosas rápido: si puedes hacer el trabajo, si puedes hacerlo pronto y si puede confiar en ti. Pon el servicio y la ciudad en el título, menciona la rapidez o la disponibilidad si es verdad, y agrega señales de confianza reales, como tus años en el negocio, tus licencias o tu calificación en reseñas. Si atiendes en español, dilo: \"Se habla español\" es una razón concreta para que te elijan.",
+          "Usa los recursos del anuncio (antes llamados extensiones) para ocupar más espacio y facilitar la llamada: recursos de llamada para que desde el celular se pueda llamar con un toque, recursos de ubicación vinculados a tu Perfil de Empresa de Google y vínculos a sitios hacia tus servicios más importantes."
+        ]
+      },
+      {
+        "h2": "Manda los clics a una página hecha para ese servicio",
+        "paragraphs": [
+          "Mandar todos los anuncios a tu página de inicio es uno de los errores más caros. Cada servicio debería tener una página de destino que coincida con el anuncio, cargue rápido en el celular, muestre arriba un teléfono que se pueda tocar para llamar, use un formulario corto e incluya pruebas: reseñas, fotos de trabajos reales y las zonas que atiendes. Y si el anuncio está en español, la página también debe estarlo."
+        ]
+      },
+      {
+        "h2": "Mide llamadas y trabajos agendados, no clics",
+        "paragraphs": [
+          "Los clics no pagan las cuentas; los trabajos sí. Como mínimo, mide como conversiones separadas las llamadas desde tus anuncios, las llamadas desde tu sitio web y los formularios enviados. Mejor aún: registra qué contactos se convirtieron en trabajos agendados y envía esa información de vuelta a Google, para que las pujas aprendan a encontrar más personas parecidas a tus mejores clientes.",
+          "Con una buena medición puedes responder las preguntas que importan: cuánto te cuesta un contacto en cada servicio, cuánto te cuesta un trabajo agendado y qué campañas son rentables."
+        ]
+      },
+      {
+        "h2": "Errores comunes de los negocios de servicios en Google Ads",
+        "paragraphs": [
+          "La mayor parte del presupuesto desperdiciado que vemos viene del mismo puñado de problemas:"
+        ],
+        "bullets": [
+          "Palabras clave amplias sin una lista de palabras clave negativas",
+          "Mostrar anuncios a personas \"interesadas en\" tu zona en vez de a personas que están en ella",
+          "Una sola campaña para todos los servicios, que manda el tráfico a la página de inicio",
+          "Contar visitas a la página o llamadas cortas como conversiones",
+          "Anuncios en español que llevan a una página solo en inglés, o al revés",
+          "Cambiarlo todo cada pocos días, antes de que los datos puedan decir algo"
+        ]
+      },
+      {
+        "h2": "Por dónde empezar",
+        "paragraphs": [
+          "Empieza con tu servicio más rentable en tu zona principal, una página de destino dedicada y una medición correcta de llamadas y formularios. Dale a la campaña unas semanas para reunir datos, limpia los términos de búsqueda cada semana y amplía a más servicios y ciudades cuando los números cuadren. Si quieres que alguien revise tu cuenta o te arme un plan para tu mercado, agenda una llamada gratis con nuestro equipo."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "anuncios-facebook-instagram-para-negocios-de-servicios",
+    "alt": "/blog/facebook-instagram-ads-for-service-businesses",
+    "lang": "es",
+    "title": "Anuncios en Facebook e Instagram para negocios | RevUp",
+    "description": "Cómo conseguir clientes potenciales de calidad con anuncios en Facebook e Instagram: ofertas, formularios, campañas a WhatsApp, creativos y respuesta rápida.",
+    "h1": "Cómo conseguir clientes potenciales de calidad con anuncios en Facebook e Instagram",
+    "excerpt": "Ofertas, formularios, campañas a WhatsApp y anuncios auténticos que ayudan a contratistas, clínicas y negocios de servicios locales a convertir la atención en redes sociales en citas agendadas.",
+    "date": "2026-09-23",
+    "readingMinutes": 5,
+    "service": "/meta-ads-management",
+    "sections": [
+      {
+        "h2": "Las redes sociales crean la demanda; Google la captura",
+        "paragraphs": [
+          "Google Ads llega a personas que ya están buscando tu servicio. Facebook e Instagram funcionan distinto: llegas a la gente antes de que busque, mientras revisa su feed. Para un negocio de servicios, eso significa que los anuncios de Meta son mejores para crear demanda: lograr que los dueños de casa agenden el mantenimiento del aire acondicionado antes del verano, que los pacientes reserven la consulta que vienen posponiendo o que los propietarios pidan una cotización.",
+          "Como esa gente no te estaba buscando, tu oferta y tus anuncios tienen que hacer el trabajo. Esto es lo que marca la diferencia."
+        ]
+      },
+      {
+        "h2": "Empieza con una oferta clara y de bajo riesgo",
+        "paragraphs": [
+          "\"Hacemos un trabajo excelente\" no es una oferta. Dale a la gente una razón concreta y de bajo riesgo para levantar la mano ahora. Algunas ofertas que suelen funcionar bien para negocios de servicios:"
+        ],
+        "bullets": [
+          "Cotización (estimado), inspección o consulta gratis",
+          "Servicios de temporada con fecha límite clara (mantenimientos, limpieza de canaletas, revisiones antes del verano)",
+          "Un paquete de primera visita o para clientes nuevos con un precio claro",
+          "Financiamiento o planes de pago para los trabajos más grandes"
+        ]
+      },
+      {
+        "h2": "Elige bien cómo capturar al cliente potencial",
+        "paragraphs": [
+          "Los formularios instantáneos de Meta permiten que la gente deje sus datos sin salir de la app. Normalmente traen más clientes potenciales al menor costo, pero la calidad puede ser más baja. Agregar algunas preguntas para calificar (qué servicio necesita, su código postal, para cuándo lo necesita) o usar el tipo de formulario de mayor intención filtra a quienes no van en serio. Si tu público habla español, arma el formulario en español, con preguntas cortas y claras.",
+          "Mandar a la gente a una página de destino trae menos contactos, pero muchas veces mejor calificados, y funciona bien cuando necesitas explicar el servicio o mostrar reseñas primero.",
+          "Las campañas de mensajes abren una conversación en WhatsApp o Messenger. Para muchos negocios de servicios, sobre todo en mercados bilingües, un chat se siente más fácil que un formulario, y tu equipo puede calificar y agendar al cliente en la misma conversación. Muchos clientes hispanos ya usan WhatsApp todos los días y les resulta natural escribirle ahí a un negocio, así que asegúrate de que alguien conteste rápido y en el idioma del cliente."
+        ]
+      },
+      {
+        "h2": "Usa anuncios que se vean reales",
+        "paragraphs": [
+          "Los anuncios que funcionan para negocios de servicios casi nunca parecen comerciales de televisión. Muestran a tu equipo, tus camionetas, tu clínica o tus proyectos de verdad. Algunos formatos que llaman la atención una y otra vez:"
+        ],
+        "bullets": [
+          "Fotos de antes y después de trabajos reales",
+          "Videos cortos del dueño o de un técnico explicando la oferta, en el idioma de tu público",
+          "Reseñas reales de clientes, mostradas con su permiso",
+          "Texto simple y directo: el servicio, la zona y la oferta"
+        ]
+      },
+      {
+        "h2": "Segmenta tu zona de servicio y deja que los datos trabajen",
+        "paragraphs": [
+          "Define un radio alrededor de las zonas que atiendes y mantén la segmentación bastante amplia dentro de él: el algoritmo de Meta es bueno para encontrar a las personas con más probabilidad de responder una vez que tiene datos de conversiones. Agrega retargeting para quienes visitaron tu sitio web o interactuaron con tus anuncios, y excluye a tus clientes actuales cuando promociones ofertas para clientes nuevos.",
+          "Si tu mercado es bilingüe, prueba el mismo anuncio en inglés y en español, cada versión completa en su idioma en lugar de mezclar los dos, y deja que los resultados te digan cuál funciona mejor para cada servicio."
+        ]
+      },
+      {
+        "h2": "La velocidad de respuesta define tus resultados",
+        "paragraphs": [
+          "El interés de un cliente potencial que llega desde redes sociales dura minutos, no días. Mucha gente llena formularios con varios negocios, y el primero que llama muchas veces se queda con el trabajo. Configura notificaciones instantáneas para cada contacto nuevo, llama en cuestión de minutos durante tu horario y usa una respuesta automática por WhatsApp o mensaje de texto fuera de horario. Si el contacto llegó por un anuncio en español, que lo llame alguien que hable español. Los mismos anuncios pueden parecer un fracaso o un éxito según qué tan rápido se contacte a la gente."
+        ]
+      },
+      {
+        "h2": "Sigue cada contacto hasta el trabajo agendado",
+        "paragraphs": [
+          "Instala el píxel de Meta junto con la API de conversiones para que Meta reciba datos precisos incluso con las restricciones de privacidad de los navegadores. Después, mide qué pasa con cada contacto: ¿lo llamaron?, ¿agendó?, ¿se convirtió en cliente? Cuando puedes decirle a Meta qué contactos se convirtieron en negocio real, las campañas se optimizan hacia la calidad y no solo hacia el volumen."
+        ]
+      },
+      {
+        "h2": "Errores que debes evitar",
+        "paragraphs": [
+          "Estos son los problemas que más vemos en las cuentas de negocios de servicios:"
+        ],
+        "bullets": [
+          "Anuncios genéricos, sin oferta y sin una razón para actuar ahora",
+          "Formularios instantáneos sin preguntas para calificar",
+          "Contactos que se quedan un día entero en una hoja de cálculo antes de que alguien llame",
+          "Usar los mismos anuncios durante meses hasta que el rendimiento se cae",
+          "Juzgar el canal solo por el costo por contacto y no por el costo por trabajo agendado"
+        ]
+      },
+      {
+        "h2": "Cómo empezar",
+        "paragraphs": [
+          "Elige un servicio con una oferta clara, crea algunos anuncios sencillos y auténticos, escoge una forma de capturar contactos a la que tu equipo pueda darle seguimiento rápido y mide cada contacto hasta el trabajo agendado. Cuando sabes cuánto te cuesta un cliente que llega por Meta, crecer se vuelve una decisión de negocio y no una apuesta. Si quieres ayuda para armar ese sistema, agenda una llamada gratis con RevUp."
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "perfil-de-empresa-de-google-para-negocios",
+    "alt": "/blog/google-business-profile-for-service-businesses",
+    "lang": "es",
+    "title": "Perfil de Empresa de Google: guía para negocios | RevUp",
+    "description": "Cómo optimizar tu Perfil de Empresa de Google (antes Google My Business) para aparecer en Google Maps y en el mapa local: categorías, servicios, reseñas y más.",
+    "h1": "Perfil de Empresa de Google: cómo aparecer en Google Maps con tu negocio de servicios",
+    "excerpt": "Categorías, zonas de servicio, reseñas y los hábitos de todos los días que ayudan a plomeros, clínicas, contratistas y otros negocios de servicios locales a aparecer en Google Maps y en el mapa de resultados locales.",
+    "date": "2026-09-23",
+    "readingMinutes": 5,
+    "service": "/seo-for-service-businesses",
+    "sections": [
+      {
+        "h2": "Por qué tu Perfil de Empresa de Google importa tanto",
+        "paragraphs": [
+          "Cuando alguien busca un servicio local, como \"dentist near me\", \"reparación de techos\" o \"abogado de accidentes\", Google muchas veces muestra un mapa con algunos negocios antes de los resultados normales. Esos negocios reciben llamadas, solicitudes de indicaciones y visitas a su sitio web sin pagar por clic. Tu Perfil de Empresa de Google, el que antes se llamaba Google My Business o Google Mi Negocio, es lo que decide si estás en ese grupo.",
+          "Es gratis, y para muchos negocios de servicios locales es la pieza más importante de su presencia en internet. Así puedes sacarle el máximo provecho."
+        ]
+      },
+      {
+        "h2": "Configúralo bien desde el principio",
+        "paragraphs": [
+          "Si tú vas a donde están tus clientes en lugar de que ellos vengan a ti (plomeros, empresas de limpieza, jardineros, servicios móviles), configura tu perfil como negocio con zona de servicio (service-area business). Puedes ocultar tu dirección y mostrar en su lugar las ciudades o zonas que atiendes. Completa también la verificación que te pide Google: es el paso que hace que tu perfil pueda mostrarse en Google Maps y en la Búsqueda.",
+          "Usa el nombre real de tu negocio, exactamente como lo ven tus clientes. Agregar palabras clave, ciudades o frases como \"Se habla español\" al nombre para posicionarte mejor va en contra de las pautas de Google y puede hacer que suspendan tu perfil. Si quieres que la gente sepa que atiendes en español, dilo en la descripción, en tus servicios y en tus publicaciones."
+        ]
+      },
+      {
+        "h2": "Elige las categorías correctas",
+        "paragraphs": [
+          "Tu categoría principal es una de las señales más fuertes que usa Google para decidir en qué búsquedas apareces. Elige la categoría más específica que describa tu servicio principal; por ejemplo, la de tu oficio concreto en lugar de una genérica, cuando aplique. Después, agrega categorías secundarias para los otros servicios que de verdad ofreces."
+        ]
+      },
+      {
+        "h2": "Completa cada detalle",
+        "paragraphs": [
+          "Un perfil completo les da a Google y a tus clientes más razones para elegirte. Asegúrate de tener:"
+        ],
+        "bullets": [
+          "Tus servicios listados uno por uno, con descripciones cortas",
+          "Un horario exacto, incluido el de los días festivos",
+          "Un teléfono en el que sí contesten, y el enlace a tu sitio web",
+          "Una descripción que explique qué haces y dónde, en palabras sencillas, y que mencione si atiendes en español",
+          "Los atributos que apliquen a tu negocio, como los idiomas en que atiendes o las citas en línea"
+        ]
+      },
+      {
+        "h2": "Sube fotos reales con regularidad",
+        "paragraphs": [
+          "Las fotos de tu equipo, tus vehículos, tu local y tus trabajos terminados demuestran que eres un negocio real y activo. Evita las fotos de banco de imágenes. Agrega fotos nuevas con el tiempo: los proyectos terminados son el contenido perfecto para un negocio de servicios."
+        ]
+      },
+      {
+        "h2": "Cómo conseguir más reseñas en Google, de forma constante",
+        "paragraphs": [
+          "Las reseñas influyen tanto en tu posición como en si la gente te llama. La forma más confiable de conseguirlas es simplemente pedírselas a todos tus clientes, justo después del trabajo, con un enlace directo a tu formulario de reseñas. Responde todas las reseñas: agradece las positivas y contesta las negativas con calma y buena disposición, en el idioma en que te escribieron.",
+          "Nunca compres reseñas, las escribas tú mismo ni ofrezcas descuentos o regalos a cambio de ellas. Tampoco se las pidas solo a los clientes que quedaron contentos. Va en contra de las políticas de Google y puede hacer que eliminen reseñas o que restrinjan tu perfil."
+        ]
+      },
+      {
+        "h2": "Mantén tu información igual en todas partes",
+        "paragraphs": [
+          "El nombre de tu negocio, tu teléfono y tu dirección o zona de servicio deben coincidir en tu sitio web, tu perfil, tus redes sociales y directorios como Yelp, el BBB y los sitios de tu industria. La información consistente ayuda a que Google confíe en que los datos de tu negocio son correctos. Si usas un nombre en inglés y otro en español, escoge uno como nombre oficial y escríbelo igual en todas partes."
+        ]
+      },
+      {
+        "h2": "Publica novedades y mide los resultados",
+        "paragraphs": [
+          "Usa las publicaciones del perfil para compartir ofertas, servicios de temporada y proyectos recientes, también en español si tus clientes lo hablan. En la sección de rendimiento de tu perfil puedes ver cuántas personas llamaron, pidieron indicaciones o hicieron clic para ir a tu sitio web. Agrega parámetros de seguimiento (UTM) al enlace de tu sitio web para que las visitas que llegan desde tu perfil se vean claramente en Google Analytics.",
+          "Si también usas Google Ads, vincula tu perfil con tu cuenta de anuncios para que tu dirección y tu ubicación en el mapa puedan aparecer en tus anuncios mediante los recursos de ubicación."
+        ]
+      },
+      {
+        "h2": "Errores comunes",
+        "paragraphs": [
+          "Ten cuidado con estos:"
+        ],
+        "bullets": [
+          "Nombres de negocio llenos de palabras clave",
+          "Usar una oficina virtual o un buzón de correo privado (mailbox) como dirección física",
+          "Dejar incompletas las categorías, los servicios o el horario",
+          "Ignorar las reseñas o responder solo las buenas",
+          "Dejar pasar meses sin publicar novedades ni subir fotos nuevas"
+        ]
+      },
+      {
+        "h2": "Próximos pasos",
+        "paragraphs": [
+          "Un Perfil de Empresa de Google bien manejado, un sitio web rápido y anuncios locales bien segmentados funcionan mejor juntos: el perfil genera confianza, el sitio web convierte y los anuncios traen volumen cuando quieres crecer más rápido. Si quieres ayuda para optimizar tu perfil o armar el resto del sistema, agenda una llamada gratis con RevUp."
         ]
       }
     ]

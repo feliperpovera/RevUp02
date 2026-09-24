@@ -6,8 +6,33 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
 import servicePages from "@/config/service-pages.json";
+import { alternatePath, pagePath, serviceLang, useLang, type PageKey } from "@/config/i18n";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import revupLogoLight from "@/assets/revup-logo-light.png";
+
+const COPY = {
+  en: { quote: "Get a Free Quote", allServices: "All services", switchLabel: "Ver en español", menu: { partners: "Partners", testimonials: "Testimonials", services: "Services", about: "About", blog: "Blog" } },
+  es: { quote: "Cotización gratis", allServices: "Todos los servicios", switchLabel: "View in English", menu: { partners: "Aliados", testimonials: "Testimonios", services: "Servicios", about: "Nosotros", blog: "Blog" } },
+};
+
+const MENU = ["partners", "testimonials", "services", "about", "blog"] as const satisfies readonly PageKey[];
+
+/** EN / ES pill that opens the same page in the other language. */
+const LanguageSwitch = () => {
+  const { pathname } = useLocation();
+  const lang = useLang();
+  const other = lang === "en" ? "es" : "en";
+  return (
+    <Link
+      to={alternatePath(pathname, other)}
+      hrefLang={other}
+      aria-label={COPY[lang].switchLabel}
+      className="inline-flex h-8 items-center rounded-full border border-foreground/15 px-3 text-xs font-semibold tracking-wide text-foreground/70 transition-colors hover:border-performance hover:text-performance"
+    >
+      {other.toUpperCase()}
+    </Link>
+  );
+};
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,13 +41,17 @@ export const Navbar = () => {
   const { resolvedTheme } = useTheme();
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const lang = useLang();
+  const t = COPY[lang];
+  const home = pagePath("home", lang);
+  const langServices = servicePages.filter((page) => serviceLang(page) === lang);
 
   /** The quote form lives at the bottom of the home page ("Let's Work Together"). */
   const goToQuoteForm = () => {
     setMobileMenuOpen(false);
-    const form = pathname === "/" ? document.getElementById("contact-form") : null;
+    const form = pathname === home ? document.getElementById("contact-form") : null;
     if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
-    else navigate("/#contact-form");
+    else navigate(`${home}#contact-form`);
   };
 
   useEffect(() => {
@@ -39,13 +68,7 @@ export const Navbar = () => {
 
   const currentLogo = mounted && resolvedTheme === "light" ? revupLogoLight : revupLogoMain;
 
-  const menuItems = [
-    { label: "Partners", path: "/partners" },
-    { label: "Testimonials", path: "/testimonials" },
-    { label: "Services", path: "/services" },
-    { label: "About", path: "/about" },
-    { label: "Blog", path: "/blog" },
-  ];
+  const menuItems = MENU.map((key) => ({ key, label: t.menu[key], path: pagePath(key, lang) }));
 
   return (
     <nav
@@ -57,14 +80,14 @@ export const Navbar = () => {
     >
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 md:px-8">
         {/* Logo */}
-        <Link to="/" className="flex shrink-0 items-center">
+        <Link to={home} className="flex shrink-0 items-center">
           <img src={currentLogo} alt="RevUp Agency Group Logo" className="h-14 md:h-16" />
         </Link>
 
         {/* Desktop menu */}
         <div className="hidden items-center gap-1 md:flex">
           {menuItems.map((item) =>
-            item.path === "/services" ? (
+            item.key === "services" ? (
               <div key={item.path} className="group relative">
                 <Link
                   to={item.path}
@@ -77,7 +100,7 @@ export const Navbar = () => {
                 {/* Dropdown: opens on hover and on keyboard focus */}
                 <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                   <ul className="rounded-2xl border border-foreground/10 bg-background p-2 shadow-[0_20px_50px_hsl(40_7%_16%/0.15)]">
-                    {servicePages.map((page) => (
+                    {langServices.map((page) => (
                       <li key={page.path}>
                         <Link
                           to={page.path}
@@ -89,10 +112,10 @@ export const Navbar = () => {
                     ))}
                     <li className="mt-1 border-t border-foreground/10 pt-1">
                       <Link
-                        to="/services"
+                        to={item.path}
                         className="block rounded-xl px-4 py-2.5 text-sm font-medium text-performance transition-colors hover:bg-foreground/5 focus-visible:bg-foreground/5 focus-visible:outline-none"
                       >
-                        All services
+                        {t.allServices}
                       </Link>
                     </li>
                   </ul>
@@ -112,12 +135,13 @@ export const Navbar = () => {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex">
+          <LanguageSwitch />
           <ThemeToggle />
           <Button
             onClick={goToQuoteForm}
             className="group rounded-full bg-primary px-6 font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90 hover:pl-5 hover:pr-7"
           >
-            Get a Free Quote
+            {t.quote}
             <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Button>
         </div>
@@ -131,7 +155,8 @@ export const Navbar = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] border-foreground/10 bg-background">
             <div className="mt-8 flex flex-col gap-6">
-              <div className="mb-4 flex justify-end">
+              <div className="mb-4 flex justify-end gap-2">
+                <LanguageSwitch />
                 <ThemeToggle />
               </div>
               {menuItems.map((item) => (
@@ -143,9 +168,9 @@ export const Navbar = () => {
                   >
                     {item.label}
                   </Link>
-                  {item.path === "/services" ? (
+                  {item.key === "services" ? (
                     <ul className="mt-3 space-y-2 border-l border-foreground/10 pl-4">
-                      {servicePages.map((page) => (
+                      {langServices.map((page) => (
                         <li key={page.path}>
                           <Link
                             to={page.path}
@@ -164,7 +189,7 @@ export const Navbar = () => {
                 className="mt-4 rounded-full bg-primary font-semibold text-primary-foreground hover:bg-primary/90"
                 onClick={goToQuoteForm}
               >
-                Get a Free Quote
+                {t.quote}
                 <ArrowUpRight className="ml-1.5 h-4 w-4" />
               </Button>
             </div>

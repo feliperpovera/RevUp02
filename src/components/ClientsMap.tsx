@@ -1,12 +1,38 @@
 import { MapPin } from "lucide-react";
 import { BrandCard, DeviceSquareCircle, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
+import { useLang } from "@/config/i18n";
 
-const LOCATIONS = [
-  { name: "United States", region: "North American Operations", corner: "tl" as const },
-  { name: "Colombia", region: "Latin American Operations", corner: "br" as const },
-];
+const COPY = {
+  en: {
+    eyebrow: "Where We Operate",
+    titleA: "Our",
+    titleB: "Global",
+    titleC: "Presence",
+    lede: "We proudly serve clients across the Americas, with a strong presence in the United States and Colombia.",
+    locations: [
+      { name: "United States", region: "North American Operations", corner: "tl" as const },
+      { name: "Colombia", region: "Latin American Operations", corner: "br" as const },
+    ],
+    footnote: "Our strategic locations allow us to serve clients across different time zones with",
+    support: "dedicated 24/7 support",
+  },
+  es: {
+    eyebrow: "Dónde operamos",
+    titleA: "Nuestra presencia",
+    titleB: "global",
+    titleC: "",
+    lede: "Con orgullo atendemos clientes en todo el continente americano, con una fuerte presencia en Estados Unidos y Colombia.",
+    locations: [
+      { name: "Estados Unidos", region: "Operaciones en Norteamérica", corner: "tl" as const },
+      { name: "Colombia", region: "Operaciones en Latinoamérica", corner: "br" as const },
+    ],
+    footnote: "Nuestras ubicaciones estratégicas nos permiten atender clientes en distintas zonas horarias con",
+    support: "soporte dedicado 24/7",
+  },
+};
 
 export const ClientsMap = () => {
+  const t = COPY[useLang()];
   return (
     <section id="locations" className="relative overflow-hidden bg-card py-24 md:py-32">
       {/* Hairline device — precision, tailored to each client */}
@@ -15,22 +41,22 @@ export const ClientsMap = () => {
       <div className="container relative z-10 mx-auto px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <Eyebrow index="006" label="Where We Operate" className="mb-10 max-w-md" />
+            <Eyebrow index="006" label={t.eyebrow} className="mb-10 max-w-md" />
           </Reveal>
 
           <Reveal delay={0.1}>
             <SectionHeading
               title={
                 <>
-                  Our <span className="text-primary">Global</span> Presence
+                  {t.titleA} <span className="text-primary">{t.titleB}</span> {t.titleC}
                 </>
               }
-              lede="We proudly serve clients across the Americas, with a strong presence in the United States and Colombia."
+              lede={t.lede}
             />
           </Reveal>
 
           <div className="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-            {LOCATIONS.map((location, i) => (
+            {t.locations.map((location, i) => (
               <Reveal key={location.name} delay={0.2 + i * 0.1}>
                 <BrandCard corner={location.corner} className="group flex h-full items-center gap-5">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-foreground/10 bg-background transition-all duration-500 group-hover:border-performance/30 group-hover:bg-accent">
@@ -55,8 +81,8 @@ export const ClientsMap = () => {
 
           <Reveal delay={0.4}>
             <p className="mx-auto mt-12 max-w-md text-center text-sm font-light leading-relaxed text-stone">
-              Our strategic locations allow us to serve clients across different time zones with{" "}
-              <span className="font-medium text-primary">dedicated 24/7 support</span>
+              {t.footnote}{" "}
+              <span className="font-medium text-primary">{t.support}</span>
               .
             </p>
           </Reveal>

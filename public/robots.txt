@@ -15,5 +15,6 @@ Allow: /
 # Conversion page: keep out of search so organic visits don't count as leads
 Disallow: /gracias
 Disallow: /thank-you
+Disallow: /es/gracias
 
 Sitemap: https://revupagencygroup.com/sitemap.xml

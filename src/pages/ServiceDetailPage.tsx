@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
 import { openCalendly, WHATSAPP_URL } from "@/config/links";
 import servicePages from "@/config/service-pages.json";
+import { pagePath } from "@/config/i18n";
 import { PricingPlans, type PlanId } from "@/components/PricingPlans";
 
 export type ServicePage = (typeof servicePages)[number];
@@ -19,7 +20,7 @@ const LABELS = {
     industries: ["Industries we ", "serve"], small: "For small businesses", large: "For large brands",
     faq: ["Frequently asked ", "questions"], ctaTitle: "Ready to grow with", ctaText: "Book a free, no-pressure meeting and get an honest plan for your business.",
     others: "Other services",
-    plans: ["Plans & ", "pricing"], plansLede: "Transparent monthly pricing. Start with one service or get the complete SEO + SEM package.", allPlans: "See all plans", pricingPath: "/pricing",
+    plans: ["Plans & ", "pricing"], plansLede: "Transparent monthly pricing. Start with one service or get the complete SEO + SEM package.", allPlans: "See all plans",
   },
   es: {
     home: "Inicio", services: "Servicios", bookCall: "Agenda una reunión", whatsapp: "Escríbenos por WhatsApp",
@@ -27,7 +28,7 @@ const LABELS = {
     industries: ["Industrias que ", "atendemos"], small: "Para negocios pequeños", large: "Para empresas grandes",
     faq: ["Preguntas ", "frecuentes"], ctaTitle: "¿Listo para crecer con", ctaText: "Agenda una reunión gratis, sin compromiso, y recibe un plan honesto para tu negocio.",
     others: "Otros servicios",
-    plans: ["Planes y ", "precios"], plansLede: "Precios mensuales claros. Empieza con un servicio o toma el paquete completo SEO + SEM.", allPlans: "Ver todos los planes", pricingPath: "/precios",
+    plans: ["Planes y ", "precios"], plansLede: "Precios mensuales claros. Empieza con un servicio o toma el paquete completo SEO + SEM.", allPlans: "Ver todos los planes",
   },
 };
 
@@ -48,9 +49,9 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
           <div className="mx-auto max-w-5xl">
             <Reveal>
               <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone">
-                <Link to="/" className="hover:text-performance">{t.home}</Link>
+                <Link to={pagePath("home", lang)} className="hover:text-performance">{t.home}</Link>
                 <span className="mx-2">/</span>
-                <Link to="/services" className="hover:text-performance">{t.services}</Link>
+                <Link to={pagePath("services", lang)} className="hover:text-performance">{t.services}</Link>
                 <span className="mx-2">/</span>
                 <span className="text-foreground">{page.name}</span>
               </nav>
@@ -181,7 +182,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
               <PricingPlans ids={plans} lang={lang} />
               <div className="mt-8 text-center">
                 <Link
-                  to={t.pricingPath}
+                  to={pagePath("pricing", lang)}
                   className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 px-5 py-2.5 text-sm text-foreground/80 transition-colors hover:border-performance hover:text-performance"
                 >
                   {t.allPlans}
