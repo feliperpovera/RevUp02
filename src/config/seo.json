@@ -4,11 +4,11 @@
   "routes": {
     "/": {
       "title": "Digital Marketing Agency for US Service Businesses | RevUp",
-      "description": "RevUp helps US service businesses and brands get more calls, leads and booked jobs with Google Ads, Meta Ads, TikTok Ads, websites and AI. Book a free call."
+      "description": "RevUp helps US service businesses get more calls and booked jobs with local SEO, Google Ads, Facebook, Instagram and TikTok ads, and websites. Book a free call."
     },
     "/services": {
-      "title": "Google Ads, Meta Ads & Web Development Services | RevUp",
-      "description": "Paid media management, Shopify and website development, store management and AI marketing automation for US businesses. Get a free quote."
+      "title": "SEO, Google Ads, Facebook Ads & Web Design Services | RevUp",
+      "description": "Local SEO, Google Ads, Facebook & Instagram ads, TikTok ads and website design for US service businesses and brands. Explore our services and book a free call."
     },
     "/about": {
       "title": "About RevUp Agency Group | Data-Driven Marketing Agency",

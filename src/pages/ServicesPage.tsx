@@ -176,7 +176,7 @@ const ServicesPage = () => {
                   </div>
                   <div className="flex-1">
                     <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                      SEO for Service Businesses
+                      Local SEO Services
                     </h2>
                     <p className="text-foreground/70 mb-6 leading-relaxed">
                       Get found on Google Search and Google Maps by customers in your service area — alone or combined with paid ads as a complete SEO + SEM package.
@@ -200,7 +200,7 @@ const ServicesPage = () => {
                       </li>
                     </ul>
                     <Link to="/seo-for-service-businesses" className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-performance hover:underline">
-                      Learn about SEO for service businesses
+                      Learn about our local SEO services
                       <ArrowUpRight className="h-4 w-4" />
                     </Link>
                   </div>

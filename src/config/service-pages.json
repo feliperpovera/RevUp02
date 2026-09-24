@@ -1,46 +1,46 @@
 [
   {
     "path": "/service-business-marketing",
-    "name": "Lead Generation for Service Businesses",
-    "title": "Lead Generation for Service Businesses & Contractors | RevUp",
-    "description": "Lead generation for US contractors and service businesses: Google Ads for home services, exclusive leads, an alternative to HomeAdvisor and Angi.",
-    "eyebrow": "Service Businesses",
-    "h1": "Lead generation for service businesses and contractors across the USA",
-    "intro": "Plumbers, HVAC and roofing contractors, landscapers, cleaning companies, auto repair shops, clinics, law firms, real estate and insurance teams — service businesses don't sell products in a cart. They sell appointments, estimates and phone calls. RevUp is a marketing agency for service businesses: we run Google Ads for contractors and home services, social media lead generation and fast websites designed to get you more leads, fill your calendar and show you which dollars brought in real jobs.",
+    "name": "Service Business Marketing",
+    "title": "Home Service & Contractor Marketing Agency | RevUp",
+    "description": "Marketing for service businesses across the US: Google Ads, Facebook lead generation and websites that help contractors book more jobs. Book a free call.",
+    "eyebrow": "Home Service Marketing",
+    "h1": "Marketing for home service businesses and contractors that books real jobs",
+    "intro": "RevUp handles marketing for service businesses across the United States: plumbers, HVAC and roofing companies, electricians, remodelers, landscapers, cleaning companies and other contractors who sell estimates, appointments and phone calls, not products in a cart. As a home service marketing agency, we combine Google Ads and Local Services Ads, Facebook and Instagram lead generation, a strong Google Business Profile and fast landing pages into one system, so you get exclusive leads, a fuller calendar and a clear view of which dollars brought in real jobs.",
     "why": [
-      "Service businesses win or lose in the moment a customer needs help. A burst pipe, a broken AC in July, a legal problem, a toothache — people pick up their phone, search, and call one of the first businesses they trust. If you aren't visible in Google Search, Google Maps and on social media at that moment, the job goes to a competitor. And because most of these customers are local, every campaign has to be built around your real service area, your hours and your capacity to take new work.",
-      "That's why we build service-business marketing around calls and booked jobs instead of vanity metrics. We combine Google Ads and Local Services Ads to capture people already searching, Facebook and Instagram lead generation to reach people before they search, a strong Google Business Profile to win the map results, and fast landing pages that turn visits into calls. Then we track every call and form, so you know which service, which city and which campaign actually pays for itself."
+      "Home service businesses win or lose in the moment a customer needs help. A burst pipe, a dead AC in July, a leaking roof after a storm: people grab their phone, search, and call one of the first companies they trust. If you aren't visible in Google Search, Google Maps and on social media at that moment, the job goes to a competitor. And because these customers are local, lead generation for home services has to be built around your real service area, your hours and how much new work your crews can take.",
+      "That's why our marketing for service businesses is measured in calls and booked jobs, not clicks or likes. We capture people already searching with Google Ads and Local Services Ads, reach homeowners before they search with Facebook and Instagram lead generation, help you win the map results with a complete Google Business Profile, and send that traffic to fast landing pages built to get the call. Then we track every call and form, so you know which service, which city and which campaign actually pays for itself, and you stop depending on shared leads from HomeAdvisor or Angi."
     ],
     "included": [
       {
         "title": "Google Search & Local Services Ads",
-        "text": "Campaigns built around your services and service area, including Local Services Ads where your category is eligible."
+        "text": "Campaigns built around the jobs you want, like emergency plumbing, AC repair or roof replacement, in your service area, including Local Services Ads where your category is eligible."
       },
       {
         "title": "Facebook & Instagram lead generation",
-        "text": "Lead forms, click-to-WhatsApp and Messenger campaigns with offers like free estimates and inspections."
+        "text": "Lead forms, Messenger and click-to-WhatsApp campaigns with offers homeowners respond to, like free estimates, inspections and seasonal tune-ups."
       },
       {
         "title": "Google Business Profile optimization",
-        "text": "Categories, services, photos and review strategy to help you show up in Google Maps and the local map pack."
+        "text": "Categories, services, photos and a review strategy to help you show up in Google Maps and the local map pack."
       },
       {
         "title": "Landing pages that convert",
-        "text": "One fast, mobile-first page per service with click-to-call, short forms and real trust signals."
+        "text": "One fast, mobile-first page per service with click-to-call, short forms and the trust signals homeowners look for: licenses, reviews and warranties."
       },
       {
         "title": "Call & lead tracking",
-        "text": "Every call and form tracked back to the campaign, keyword and city that produced it."
+        "text": "Every call and form tracked back to the campaign, keyword and city that produced it, so you see your cost per lead and cost per booked job."
       },
       {
         "title": "Speed-to-lead follow-up",
-        "text": "Instant lead notifications and WhatsApp follow-up flows so new leads are contacted while they're still ready to buy."
+        "text": "Instant lead notifications and WhatsApp follow-up flows so new leads are contacted while they're still ready to book."
       }
     ],
     "process": [
       {
         "title": "Map your business",
-        "text": "Your most profitable services, your service area, your average job value and how many new jobs you can take each week."
+        "text": "Your most profitable services, your service area, your average job value and how many new jobs your crews can take each week."
       },
       {
         "title": "Fix the foundation",
@@ -48,39 +48,43 @@
       },
       {
         "title": "Launch lead campaigns",
-        "text": "Google and Meta campaigns focused on your top services and cities, with budgets matched to your capacity."
+        "text": "Google and Meta campaigns focused on your top services and cities, from roof replacements to AC installs, with budgets matched to your capacity."
       },
       {
         "title": "Optimize for booked jobs",
         "text": "We review lead quality with you, cut what brings bad leads and scale the services and areas that bring profitable work."
       }
     ],
-    "small": "For owner-operated and growing service businesses, we focus first on the fastest wins: a complete Google Business Profile, a clear landing page with click-to-call and a tightly targeted Google campaign for your most profitable service. You'll know exactly what you're paying for each lead.",
-    "large": "For multi-location and larger service companies, we manage campaigns per location and service line, consistent Google Business Profiles across locations and reporting that shows cost per lead and cost per booked job by market.",
+    "small": "For owner-operated contractors and growing home service companies, we start with the fastest wins: a complete Google Business Profile, a clear landing page with click-to-call and a tightly targeted Google campaign for your most profitable service. You'll see exactly what you pay for each lead.",
+    "large": "For multi-location home service brands and larger contracting companies, we manage campaigns per location and service line, keep Google Business Profiles consistent across markets and report cost per lead and cost per booked job by market.",
     "faqs": [
       {
-        "q": "Is this an alternative to HomeAdvisor, Angi or Thumbtack?",
-        "a": "Yes. Lead marketplaces like HomeAdvisor, Angi and Thumbtack often send the same lead to several companies, so you compete on price and speed for every job. With your own Google Ads, Local Services Ads and social campaigns, the leads are exclusive to your business, and you build a brand customers come back to."
+        "q": "What's the best lead generation for contractors?",
+        "a": "For most contractors, the best leads are the ones that come only to you. Lead marketplaces like HomeAdvisor, Angi and Thumbtack often send the same lead to several companies, so you compete on price and speed for every job. With your own Google Ads, Local Services Ads, Facebook and Instagram campaigns and Google Business Profile, the leads are exclusive to your business, and you build a brand homeowners come back to."
       },
       {
-        "q": "How can I get more roofing jobs, landscaping customers or cleaning clients?",
-        "a": "Show up where local customers look — Google Search, Google Maps and social media — with a clear offer, a fast landing page and quick follow-up. We build that system around your service area and your most profitable services, whether that's roof replacements, weekly lawn care or recurring cleaning contracts."
+        "q": "How do I get leads as a general contractor?",
+        "a": "Show up where homeowners look (Google Search, Google Maps and social media) with a clear offer, a fast landing page and quick follow-up. Lead generation for construction companies and remodelers works best with campaigns for your highest-value projects in the cities you want to work in, a Google Business Profile full of project photos and reviews, and a process that calls every new lead back fast."
       },
       {
-        "q": "What's the best way to advertise my small business online?",
-        "a": "Start where people already search for your service: Google Ads and a complete Google Business Profile. Then add Facebook and Instagram lead generation to reach customers before they search. Track every call and form so you know what each lead and job costs."
+        "q": "What are the best marketing strategies for HVAC companies, plumbers and roofers?",
+        "a": "The best marketing for plumbers, HVAC companies and roofing contractors starts with demand that already exists: Google Ads and Local Services Ads for urgent searches like AC repair, drain cleaning or roof leaks, plus a complete Google Business Profile to win the map pack. Then Facebook and Instagram reach homeowners before they search, with offers like seasonal tune-ups, maintenance plans or free roof inspections. Whatever the trade, track every call so your budget moves to the services and cities that bring profitable jobs."
+      },
+      {
+        "q": "How much does it cost to hire a marketing agency for a home service business?",
+        "a": "Our pricing has two parts: a flat monthly management fee for the channels we run, and your ad budget, which you pay directly to Google or Meta. Plans that include SEO also have a one-time SEO launch. You can compare the plans for this service in the Plans & pricing section on this page and choose the channels that fit your budget."
+      },
+      {
+        "q": "Is a marketing agency worth it for contractors?",
+        "a": "A contractor marketing agency is worth it when you have room for more jobs and the results are measured. We set up call and form tracking before spending on ads, so you can see what each lead and booked job costs and decide with real numbers whether the marketing pays for itself. If your schedule is already full, we'll tell you: more leads isn't always the answer."
+      },
+      {
+        "q": "How do I get more clients for my service business?",
+        "a": "Most service businesses grow fastest when a few channels work together: Google Ads and Local Services Ads to catch people already searching, a complete Google Business Profile and local SEO to earn map and organic visibility over time, Facebook and Instagram to reach homeowners before they search, and a fast website that turns visits into calls. You don't need everything on day one. We start with the channel closest to the sale for your trade, set up tracking and quick follow-up, and add channels only when the numbers support it."
       },
       {
         "q": "What types of service businesses do you work with?",
-        "a": "Our approach is built for businesses that sell appointments, estimates and calls: home services and contractors, cleaning and landscaping, auto repair, medical, dental and aesthetic clinics, legal, real estate, insurance and other professional services."
-      },
-      {
-        "q": "Should I use Google Ads or Local Services Ads?",
-        "a": "Often both. Local Services Ads charge per lead and appear at the very top of results for eligible categories, while Google Search Ads give you more control over keywords, ads and landing pages. We'll recommend the right mix for your category and market."
-      },
-      {
-        "q": "Can you help us answer and follow up with leads faster?",
-        "a": "Yes. We set up instant lead notifications and can connect forms and ads with WhatsApp so your team can respond in minutes — one of the biggest factors in turning leads into booked jobs."
+        "a": "Our marketing for service businesses is built for companies that sell estimates, appointments and calls: roofing, HVAC, plumbing, electrical, remodeling, painting and other contractors; cleaning, landscaping and pest control companies; auto repair shops; and clinics, med spas, law firms, real estate and insurance teams across the United States."
       },
       {
         "q": "Do you work with Spanish-speaking customers?",
@@ -92,9 +96,11 @@
       "HVAC",
       "Plumbing",
       "Electrical",
+      "General contractors & remodeling",
+      "Painting",
+      "Concrete",
       "Landscaping & lawn care",
       "Cleaning services",
-      "Home remodeling",
       "Pest control",
       "Auto repair",
       "Medical & dental clinics",
@@ -111,15 +117,15 @@
   },
   {
     "path": "/seo-for-service-businesses",
-    "name": "SEO for Service Businesses",
-    "title": "Local SEO for Contractors & Service Businesses | RevUp",
-    "description": "Local SEO services for contractors and service businesses in the USA: Google Maps, Business Profile and service pages built to win calls. Book a free call.",
+    "name": "Local SEO Services",
+    "title": "Local SEO Services for Contractors & Small Business | RevUp",
+    "description": "Local SEO services for US contractors and small businesses: Google Business Profile optimization, Google Maps visibility and service pages. Book a free call.",
     "eyebrow": "Local SEO",
-    "h1": "Local SEO that helps customers find your service business — and call",
-    "intro": "When a pipe bursts or the AC quits, your next customer grabs their phone and searches Google. The companies that show up in Google Maps and the top local results are the ones most likely to get the call. RevUp offers local SEO services built for service businesses — plumbers, HVAC and roofing contractors, cleaning and landscaping companies, clinics and professional services across the USA. We start with a complete SEO launch, then manage your Google Business Profile, service pages and reviews every month to help you earn more calls you don't pay for per click. Run it on its own, or pair it with Google, Meta and TikTok ads for a complete SEO + SEM growth package.",
+    "h1": "Local SEO services that help customers find your business on Google — and call",
+    "intro": "RevUp provides local SEO services for contractors, home service companies and small businesses across the United States, so you show up on Google Maps and in local search when customers need you. When a pipe bursts or the AC quits, your next customer grabs their phone and searches Google, and the companies in the map pack and the top local results are the ones most likely to get the call. We work with plumbers, HVAC and roofing contractors, cleaning and landscaping companies, clinics and professional services: we start with a complete SEO launch, then manage your Google Business Profile, service pages and reviews every month to help you earn more calls you don't pay for per click. Run it on its own, or pair it with Google, Meta and TikTok ads for a complete SEO + SEM growth package.",
     "why": [
-      "Service businesses live and die by local search. When someone types \"plumber near me\", \"AC repair\" or \"roof replacement Tampa\" into Google, the businesses in the map results and the first organic listings get most of the attention — and calls from organic results don't cost you anything per click. But local SEO has a lot of moving parts. A Google Business Profile with the wrong categories, a name and phone number that don't match across directories, one generic \"Services\" page instead of a page for each service and city, and too few recent reviews can keep a great company invisible. SEO also doesn't switch on overnight: it builds over months, which is why the sooner you start, the sooner that work adds up.",
-      "That's why we build SEO and SEM together. Paid ads on Google, Meta and TikTok can start bringing calls as soon as campaigns go live, while SEO builds organic traffic you don't pay for per click. The two feed each other: Google Ads search terms show which keywords turn into calls and leads, so SEO focuses on the searches that pay, and the service pages we optimize for SEO also become stronger landing pages for your ads. When you show up in both the ads and the organic results for the same search, you take more space on the page and give customers more chances to choose you. One strategy, one team and one monthly report — with local SEO on its own, or as part of the complete SEO + SEM package."
+      "Service businesses live and die by local search. When someone types \"plumber\", \"AC repair\" or \"roof replacement\" into Google, the businesses in the map results and the first organic listings get most of the attention — and calls from organic results don't cost you anything per click. Google says local rankings come down to relevance, distance and prominence, so your Google Maps ranking depends on more than one thing: a Google Business Profile with the right categories and service areas, a name and phone number that match across directories, a dedicated page for each service instead of one generic \"Services\" page, and a steady flow of recent reviews. Get those wrong and a great company stays invisible — especially service-area businesses without a storefront. SEO also doesn't switch on overnight: it builds over months, which is why the sooner you start, the sooner that work adds up.",
+      "That's why we build SEO and SEM together. Paid ads on Google, Meta and TikTok can start bringing calls as soon as campaigns go live, while SEO builds organic traffic you don't pay for per click. The two feed each other: Google Ads search terms show which keywords turn into calls and leads, so SEO focuses on the searches that pay, and the service pages we optimize for SEO also become stronger landing pages for your ads. When you show up in both the ads and the organic results for the same search, you take more space on the page and give customers more chances to choose you. Working with one local SEO agency that also runs your ads means one strategy, one team and one monthly report — with local SEO on its own, or as part of the complete SEO + SEM package."
     ],
     "included": [
       {
@@ -135,16 +141,16 @@
         "text": "On-page SEO for the pages that sell: a clear page for each service and area you cover, with titles, headings, content and click-to-call built around how customers search."
       },
       {
-        "title": "Business listings cleanup",
-        "text": "Your business name, address and phone number made consistent across key directories, so Google and your customers see the same trusted information everywhere."
+        "title": "Listings & citations cleanup",
+        "text": "Your business name, address and phone number made consistent across key directories and citations, so Google and your customers see the same trusted information everywhere."
       },
       {
         "title": "Review strategy",
-        "text": "A simple system to ask every customer for a review after the job and respond to each one, so your profile keeps building trust with every new search."
+        "text": "A simple system to ask every customer for a Google review after the job and respond to each one, so your profile keeps building trust with every new search."
       },
       {
         "title": "Monthly reporting",
-        "text": "Rankings, Google Business Profile calls and direction requests, website traffic and leads in one plain-language report, with what we're doing next."
+        "text": "Google Maps and search rankings, Google Business Profile calls and direction requests, website traffic and leads in one plain-language report, with what we're doing next."
       }
     ],
     "process": [
@@ -165,32 +171,36 @@
         "text": "Monthly reports on rankings, calls and traffic. If you also run ads with us, real search data from your campaigns guides which keywords SEO targets next."
       }
     ],
-    "small": "For owner-operated service businesses, local SEO is a way to depend less on referrals and pay-per-lead apps. We start with what matters most — a complete Google Business Profile, consistent listings and a strong page for your most profitable service in your main city — then expand service by service. The monthly fee is flat and sized for small businesses, and you can add Google Ads anytime you need calls while SEO grows.",
+    "small": "For owner-operated contractors and small businesses, local SEO is a way to depend less on referrals and pay-per-lead apps. Our SEO services for small businesses start with what matters most — a complete Google Business Profile, consistent listings and a strong page for your most profitable service in your main city — then expand service by service. The monthly fee is flat and sized for small businesses, and you can add Google Ads anytime you need calls while SEO grows.",
     "large": "For multi-location and larger service companies, we manage SEO per location: a Google Business Profile and location page for each market, consistent listings across every branch and reporting that shows visibility, calls and leads by city and service line — all in one strategy with your paid campaigns on Google, Meta and TikTok.",
     "faqs": [
+      {
+        "q": "How much does local SEO cost for a small business?",
+        "a": "Our local SEO services start with a one-time SEO launch that covers the audit, keyword research and initial optimization, followed by a flat monthly management fee — no long list of add-ons. You can also bundle SEO with Google Ads, or with every ad platform in our Complete Growth package, which costs less than hiring each service separately. If you add ads, ad spend is paid directly to the ad platforms. See the plans on this page or ask us on a free call."
+      },
+      {
+        "q": "Is SEO worth it for a small business?",
+        "a": "For most service businesses, yes, because your customers already search Google when they need a plumber, a roofer or a clinic, and calls from Google Maps and organic results don't cost you per click. The work also compounds: a strong Google Business Profile, steady reviews and good service pages keep working for you after they're built. It's worth it when you can give it time; if you need calls this week, start with ads and add SEO alongside them."
+      },
       {
         "q": "How long does SEO take to work?",
         "a": "SEO is a long-term investment, and we'll be honest about that. Some fixes, like a complete Google Business Profile, can help sooner, but meaningful gains in rankings and organic calls typically take several months and depend on your competition, market and starting point. That's why many service businesses run Google Ads alongside SEO: ads bring calls now while SEO builds."
       },
       {
+        "q": "What is Google Business Profile optimization?",
+        "a": "Google Business Profile (formerly Google My Business) is the listing that shows your business in Google Maps and the local map pack. Optimizing it means choosing the right primary and secondary categories, listing every service and service area, adding real photos, hours and a clear description, posting updates and earning and answering reviews. We handle all of it as part of local SEO and keep the profile active every month."
+      },
+      {
+        "q": "How do I rank higher on Google Maps?",
+        "a": "Google says local results are based mainly on relevance, distance and prominence. In practice, that means a complete and accurate Google Business Profile, the right categories and service areas, consistent name, address and phone number across directories, a steady flow of genuine reviews and strong service pages on your website. Nobody can control Google Maps rankings, but doing that work consistently is what gives your business the best chance to show up."
+      },
+      {
+        "q": "Do you do SEO for plumbers, HVAC companies and roofers?",
+        "a": "Yes. SEO for contractors and home service companies is a core part of what we do: plumbers, HVAC contractors, roofers, electricians, remodelers, cleaning, landscaping and pest control companies, as well as clinics and law firms. Most contractors are service-area businesses without a storefront, so we set up your Google Business Profile and service-area pages the way Google expects, and build a page for each service you want more calls for."
+      },
+      {
         "q": "Can you guarantee a #1 ranking on Google?",
         "a": "No — and be careful with anyone who does. Nobody controls Google's rankings. What we commit to is the work: a fully optimized Google Business Profile, strong service and city pages, clean listings, a steady review strategy and transparent monthly reports so you can see the progress yourself."
-      },
-      {
-        "q": "What's the difference between SEO and SEM?",
-        "a": "SEO (search engine optimization) earns free, organic visibility in Google Search and Google Maps over time. SEM (search engine marketing) usually means paid ads, like Google Ads, that can put you in front of searchers as soon as campaigns go live and stop when the budget stops. SEO builds a long-term asset; SEM can bring calls right away. Together, they cover both."
-      },
-      {
-        "q": "Why combine SEO with Google, Meta or TikTok ads?",
-        "a": "Because they make each other stronger. Ads bring leads while SEO grows. Google Ads data shows which searches turn into calls and leads, so SEO focuses on the keywords that pay. Meta and TikTok ads build awareness, so more local people recognize your name when they search. And one team runs the whole strategy with one monthly report."
-      },
-      {
-        "q": "How does SEO pricing work?",
-        "a": "Local SEO starts with a one-time SEO launch that covers the audit, keyword research and initial optimization, followed by a flat monthly management fee. You can also bundle SEO with Google Ads, or with every ad platform in our Complete Growth package, which costs less than hiring each service separately. Ad spend is paid directly to the ad platforms. See the plans on this page or ask us on a free call."
-      },
-      {
-        "q": "Do you optimize my Google Business Profile?",
-        "a": "Yes. It's a core part of local SEO for service businesses and what you need to compete in Google Maps. We set up your categories, services, service areas, photos and descriptions, keep the profile updated every month and help you earn more reviews."
       },
       {
         "q": "Do I need a new website for SEO?",
@@ -202,9 +212,11 @@
       "HVAC",
       "Roofing",
       "Electrical",
+      "General contractors & construction",
+      "Home remodeling",
+      "Flooring",
       "Landscaping & lawn care",
       "Cleaning services",
-      "Home remodeling",
       "Pest control",
       "Auto repair",
       "Medical & dental clinics",
@@ -220,45 +232,45 @@
   {
     "path": "/google-ads-management",
     "name": "Google Ads Management",
-    "title": "Google Ads Management & PPC Agency for Small Business | RevUp",
-    "description": "Affordable Google Ads management and PPC services for small businesses in the USA. Hire a Google Ads agency focused on leads and sales. Free audit.",
+    "title": "Google Ads Management Agency for Small Business | RevUp",
+    "description": "Google Ads management for US small businesses and contractors: Search, Local Services Ads and PPC campaigns built for calls and sales. Book a free call.",
     "eyebrow": "Google Ads & PPC",
-    "h1": "Google Ads management & PPC services that turn searches into customers",
-    "intro": "When someone searches for what you sell, your business should be the first answer they trust. RevUp is a Google Ads agency for small businesses and growing brands across the United States: our Google Ads specialists plan, build and optimize your PPC campaigns so every dollar you spend is tied to calls, leads and sales you can measure.",
+    "h1": "Google Ads management that turns searches into calls, leads and sales",
+    "intro": "RevUp provides Google Ads management for small businesses, contractors and growing brands across the United States. As a Google Ads agency built around results you can measure, we plan, build and optimize your PPC campaigns — Search, Local Services Ads, Performance Max and YouTube — so every dollar you spend is tied to the calls, leads and sales it brings in.",
     "included": [
       {
-        "title": "Search campaigns",
-        "text": "Keyword research around real buying intent, tightly grouped ad groups and ads written to match what your customers type."
+        "title": "Google Search campaigns",
+        "text": "Keyword research around real buying intent, tightly grouped ad groups and ads written to match what your customers type — by service and by city."
       },
       {
-        "title": "Performance Max & Shopping",
-        "text": "Product feed setup and optimization so your catalog shows up across Search, Shopping, YouTube, Gmail and Display."
+        "title": "Local Services Ads",
+        "text": "Setup and ongoing management of Google Local Services Ads for eligible home services and professional categories: profile, service areas, budget, and lead review."
       },
       {
-        "title": "YouTube & Display",
-        "text": "Video and visual campaigns to build awareness and bring back visitors who didn't buy the first time."
+        "title": "Performance Max, Shopping & YouTube",
+        "text": "Product feed setup and campaigns that put your catalog and brand across Search, Shopping, YouTube, Gmail and Display, and bring back visitors who didn't buy."
       },
       {
-        "title": "Conversion tracking",
-        "text": "Google Tag Manager, GA4 and enhanced conversions set up correctly, so bidding optimizes for revenue — not clicks."
+        "title": "Call & conversion tracking",
+        "text": "Google Tag Manager, GA4, call tracking and enhanced conversions set up correctly, so bidding optimizes for real leads and revenue — not clicks."
       },
       {
-        "title": "Bidding & budget management",
-        "text": "Smart bidding strategies chosen for your goals and budgets moved toward the campaigns that actually sell."
+        "title": "Bidding & wasted-spend cleanup",
+        "text": "Bid strategies chosen for your goals, new negative keywords every week and budget moved toward the campaigns that actually bring in customers."
       },
       {
         "title": "Clear reporting",
-        "text": "Plain-language reports on cost, leads, sales and return on ad spend, with the next steps we recommend."
+        "text": "Plain-language reports on cost, calls, leads, sales and return on ad spend, with the next steps we recommend."
       }
     ],
     "process": [
       {
         "title": "Audit & strategy",
-        "text": "We review your account (or your market, if you're starting fresh), your margins and your goals, and define what success looks like in numbers."
+        "text": "We audit your Google Ads account (or your market, if you're starting fresh), your margins and your goals, and define what success looks like in numbers."
       },
       {
         "title": "Build & tracking",
-        "text": "We structure campaigns, write the ads, connect your conversion tracking and make sure every lead and sale is recorded."
+        "text": "We structure campaigns, write the ads, set up Local Services Ads where you're eligible and make sure every call, form and sale is recorded."
       },
       {
         "title": "Launch & learn",
@@ -266,44 +278,48 @@
       },
       {
         "title": "Optimize & scale",
-        "text": "Weekly optimization and monthly strategy reviews to lower cost per acquisition and grow volume when the numbers support it."
+        "text": "Weekly optimization and monthly strategy reviews to lower your cost per lead or sale, and grow volume when the numbers support it."
       }
     ],
-    "small": "Google advertising for small business works when it's focused. You don't need a huge budget — you need the right keywords, clean tracking and a Google Ads expert watching the account every week. Our PPC management for small business starts with your most profitable service and expands only when the results justify it, which keeps it affordable.",
-    "large": "For larger brands and multi-location businesses, we manage complex account structures, product feeds with thousands of SKUs and budgets across Search, Shopping, Performance Max and YouTube — with reporting your leadership team can act on.",
+    "small": "Google Ads for small business works when it's focused. You don't need a huge budget — you need the right keywords, clean tracking and a Google Ads specialist watching the account every week. Our PPC management for small business starts with your most profitable service and service area and expands only when the results justify it, so every dollar stays accountable.",
+    "large": "For larger brands, e-commerce stores and multi-location businesses, our PPC management services cover complex account structures, product feeds with thousands of SKUs and budgets across Search, Shopping, Performance Max and YouTube — with reporting your leadership team can act on.",
     "faqs": [
       {
         "q": "How much does Google Ads management cost?",
-        "a": "Google Ads management pricing has two parts: your ad spend, which you pay directly to Google, and our management fee, which depends on the number of campaigns, services and locations we manage. We keep PPC management affordable for small businesses and give you a clear quote after a free call, based on your goals and market."
+        "a": "There are two separate costs. Your ad spend is paid directly to Google, so you control it and see every charge. Our PPC management fee is a flat monthly fee that covers strategy, campaign builds, tracking, weekly optimization and reporting. You can compare the plans in the Plans & pricing section on this page; packages that add SEO include a one-time SEO launch."
       },
       {
-        "q": "How much should I spend on Google Ads?",
-        "a": "It depends on your industry, location, competition and goals. In your free call we'll estimate a starting budget based on your market and what a lead or sale is worth to you, then scale as results come in."
+        "q": "How much should a small business spend on Google Ads?",
+        "a": "It depends on your industry, competition, service area and what a new customer is worth to you. On a free call we look at your market and help you set a starting budget you're comfortable testing, then scale only when the numbers support it. You can raise or lower your ad spend at any time."
       },
       {
-        "q": "Should I hire a Google Ads expert or a Google Ads agency?",
-        "a": "A single freelancer can work for a simple account. Hiring a Google Ads management company like RevUp gives you a team instead: strategy, ad copy, landing pages, conversion tracking and reporting, with more than one specialist looking after your results."
+        "q": "Is Google Ads worth it for a small business?",
+        "a": "It can be, when the account is built around searches with real buying intent and tracked properly. Google Ads reaches people at the moment they're looking for your service, but broad keywords and missing tracking can waste budget fast. We start with your most profitable service, measure every call and form, and tell you honestly if the numbers don't work for your business."
       },
       {
-        "q": "Is there a Google Ads agency near me?",
-        "a": "We manage Google Ads and PPC campaigns for businesses across the United States remotely, so distance isn't a barrier. Your campaigns target your own local area, and we meet by video call and WhatsApp."
+        "q": "Is a Google Ads specialist worth it, or should I hire an agency?",
+        "a": "A specialist is worth it when your time is better spent running your business than learning the platform. A freelancer can handle a simple account; a PPC agency like RevUp gives you a team for strategy, ad copy, landing page recommendations, conversion tracking and reporting. We work with businesses across the United States remotely, by video call and WhatsApp."
       },
       {
-        "q": "How long until Google Ads shows results?",
-        "a": "Search campaigns can bring traffic and leads within days of launch. Campaigns usually need a few weeks of data to optimize bidding and reach a stable cost per lead or sale."
+        "q": "What are Google Local Services Ads, and do you manage them?",
+        "a": "Local Services Ads are Google ads for service businesses such as plumbers, HVAC companies, roofers, cleaners and law firms. They can appear at the top of search results with your reviews and a Google verification badge, and you're charged per lead instead of per click. Eligibility depends on your category and location, and Google runs its own verification. Google Local Services Ads management is part of our Google Ads plan: we guide you through setup and verification, manage budgets and review leads alongside your Search campaigns."
       },
       {
-        "q": "Do I keep ownership of my Google Ads account?",
-        "a": "Yes. Your account, data and assets always belong to you. We work inside your account with manager access."
+        "q": "Do Google Ads work for contractors?",
+        "a": "They can, because they put you in front of people actively searching for the jobs you do — AC repair, a roof replacement, a plumbing emergency. Results depend on your market, budget, offer and how fast you answer the phone. We build Google Ads for contractors and home services around your most profitable services and service area, track every call and cut the keywords that bring bad leads."
       },
       {
-        "q": "Can you take over an existing account?",
-        "a": "Yes. We start with an audit of your current campaigns, tracking and spend, then fix what's leaking budget before scaling."
+        "q": "How long does it take for Google Ads to work?",
+        "a": "Search campaigns can start bringing clicks and calls within days of launch. Most accounts need a few weeks of conversion data before automated bidding settles and your cost per lead or sale becomes stable, and we optimize every week along the way."
+      },
+      {
+        "q": "Can you take over my existing Google Ads account? Do I keep ownership?",
+        "a": "Yes to both. We start with an audit of your current campaigns, tracking and spend, then fix what's wasting budget before we scale. Your Google Ads account, data and assets always belong to you — we work inside it with manager access."
       }
     ],
     "why": [
-      "Google Ads is different from every other channel because it reaches people at the exact moment they are looking for a solution. Someone searching for \"emergency plumber near me\" or \"leather jackets for men\" is already close to buying. The challenge is that it's also easy to waste money: broad keywords, missing negative keywords, ads that send people to the wrong page and tracking that counts the wrong actions can quietly drain a budget.",
-      "Our job is to close those leaks. We build around keywords with real purchase intent, add negative keywords every week based on actual search terms, match every ad to a relevant landing page and make sure Google is optimizing for revenue and qualified leads instead of cheap clicks. The result is an account where you can see exactly what each dollar returns — and decide with confidence when to invest more."
+      "Google Ads is different from every other channel because it reaches people at the exact moment they are looking for a solution. Someone searching for \"emergency plumber\", \"AC repair\" or \"leather jackets for men\" is already close to buying. That's why Google Ads for HVAC contractors, plumbers, roofing companies and other home services — and for e-commerce brands — can be such a direct way to win customers. The catch is that it's also easy to waste money: broad keywords, missing negative keywords, ads that send people to the wrong page and tracking that counts the wrong actions can quietly drain a budget.",
+      "Good Google Ads management is about closing those leaks. We build around keywords with real purchase intent, add negative keywords every week based on actual search terms, match every ad to a relevant landing page and make sure Google is optimizing for revenue and qualified leads instead of cheap clicks. The result is an account where you can see exactly what each dollar returns — and decide with confidence when to invest more."
     ],
     "plans": [
       "google",
@@ -313,42 +329,42 @@
   },
   {
     "path": "/meta-ads-management",
-    "name": "Meta Ads Management",
-    "title": "Facebook & Instagram Ads Management Agency | RevUp",
-    "description": "Meta Ads management for US businesses: Facebook and Instagram campaigns with creative testing, Pixel and Conversions API tracking and ROAS-focused optimization.",
-    "eyebrow": "Meta Ads",
-    "h1": "Facebook & Instagram ads that sell, not just scroll",
-    "intro": "Your customers spend hours every day on Facebook and Instagram. RevUp builds Meta Ads campaigns that stop the scroll, reach the right people and turn attention into leads and sales — for small businesses getting started and for large brands ready to scale.",
+    "name": "Facebook & Instagram Ads",
+    "title": "Facebook Ads Agency for Small Business & Contractors | RevUp",
+    "description": "RevUp is a Facebook ads agency for US small businesses, contractors and e-commerce brands: Instagram ads, lead forms and creative that sells. Book a free call.",
+    "eyebrow": "Facebook & Instagram Ads",
+    "h1": "Facebook & Instagram ads agency: campaigns that sell, not just scroll",
+    "intro": "RevUp is a Facebook ads agency for small businesses, contractors, home service companies and e-commerce brands across the United States. Your customers are on Facebook and Instagram every day — we plan, build and manage the ads that stop the scroll, reach the right people in your service area and turn that attention into calls, leads and sales.",
     "included": [
       {
-        "title": "Campaign strategy",
-        "text": "Prospecting, retargeting and retention campaigns mapped to your funnel, including Advantage+ where it fits."
+        "title": "Facebook & Instagram campaign strategy",
+        "text": "Prospecting, retargeting and retention campaigns mapped to your funnel across Facebook, Instagram, Messenger and WhatsApp, including Advantage+ where it fits."
       },
       {
-        "title": "Creative testing",
-        "text": "Structured testing of hooks, formats and offers across images, video and Reels to find what your audience responds to."
+        "title": "Ad creative & testing",
+        "text": "We plan and produce ad copy, images and video concepts, then test hooks, formats and offers across feeds, Stories and Reels to find what your audience responds to."
       },
       {
         "title": "Pixel & Conversions API",
         "text": "Meta Pixel and server-side Conversions API set up so your ads optimize on accurate purchase and lead data."
       },
       {
-        "title": "Audience building",
-        "text": "Custom audiences from your customers and site visitors, lookalikes and broad targeting guided by the data."
+        "title": "Local & lookalike audiences",
+        "text": "Targeting built around your service area by city, radius or ZIP code, plus custom audiences from your customers and site visitors, lookalikes and broad targeting guided by the data."
       },
       {
-        "title": "Lead generation",
-        "text": "Instant forms, WhatsApp and Messenger campaigns with follow-up flows so leads don't go cold."
+        "title": "Lead forms, Messenger & WhatsApp",
+        "text": "Instant forms, Messenger and WhatsApp campaigns for contractors, home services and clinics, with follow-up flows so leads don't go cold."
       },
       {
-        "title": "Reporting",
-        "text": "Clear weekly numbers on spend, cost per result and return on ad spend, plus what we're testing next."
+        "title": "Reporting you can read",
+        "text": "Clear reports on spend, cost per lead, cost per sale and return on ad spend, plus what we're testing next."
       }
     ],
     "process": [
       {
         "title": "Audit & offer",
-        "text": "We look at your account history, your best customers and your offer, and decide what message and audience to lead with."
+        "text": "We review your Facebook ads account history, your best customers and your offer, then decide what message and audience to lead with. New to Meta ads? We build the account from scratch."
       },
       {
         "title": "Tracking & creative",
@@ -356,23 +372,39 @@
       },
       {
         "title": "Test",
-        "text": "We launch controlled tests to find the winning combinations of audience, creative and offer."
+        "text": "We launch controlled tests on Facebook and Instagram to find the winning combinations of audience, creative and offer."
       },
       {
         "title": "Scale",
         "text": "Budget moves to what's working, fresh creative keeps performance from fatiguing and we keep testing new angles."
       }
     ],
-    "small": "For small businesses, Meta Ads is one of the fastest ways to reach local customers and build demand. We keep budgets efficient, focus on offers that convert and set up lead capture that works with how you already sell — including WhatsApp.",
-    "large": "For e-commerce and larger brands, we manage full-funnel Meta accounts with catalog and dynamic product ads, high-volume creative testing and ROAS-based scaling across multiple markets.",
+    "small": "For small businesses, Facebook ads are one of the fastest ways to reach customers in your service area and build demand before they start searching. As a Meta ads agency for small business, we keep budgets efficient, lead with offers people act on (free estimates, inspections, seasonal specials, booked consultations) and set up lead capture that fits how you already sell, including WhatsApp. We run Facebook ads for contractors like roofers, remodelers and painters, for HVAC, cleaning and landscaping companies, and for med spas and clinics.",
+    "large": "For e-commerce and larger brands, we work as a Facebook and Instagram ads agency for online stores, including Shopify brands: full-funnel Meta accounts with catalog and dynamic product ads, high-volume creative testing and ROAS-based scaling across multiple markets.",
     "faqs": [
       {
-        "q": "Should I advertise on Facebook or Instagram?",
-        "a": "Usually both. Meta Ads runs across Facebook, Instagram, Messenger and the Audience Network from one account, and the algorithm shifts budget to where your results are cheapest."
+        "q": "What is Meta advertising?",
+        "a": "Meta advertising is paid advertising across Meta's apps — Facebook, Instagram, Messenger and WhatsApp, plus the Audience Network — managed from one Meta Ads Manager account. Meta is the company behind Facebook and Instagram, so Meta ads and Facebook ads refer to the same platform."
       },
       {
-        "q": "What budget do I need for Meta Ads?",
-        "a": "You can start with a modest budget, but you need enough spend to let the algorithm learn. We'll recommend a starting budget in your free call based on your goals and average order or lead value."
+        "q": "Are Facebook ads worth it for small business?",
+        "a": "They can be, when the offer is clear, the targeting matches your service area and tracking is set up correctly. Facebook ads for small business reach people before they search, so they work best with a strong offer and fast lead follow-up. In your free call we'll tell you honestly whether Meta ads fit your business or whether another channel should come first."
+      },
+      {
+        "q": "Do Facebook ads work for contractors and home service businesses?",
+        "a": "They can. Roofers, remodelers, painters and HVAC, cleaning and landscaping companies use Facebook and Instagram to reach homeowners in their area with offers like free estimates or inspections, collect leads through instant forms or Messenger and retarget people who visited their website. What makes Facebook ads for home services work is tight local targeting, real project photos and video, and calling leads back quickly."
+      },
+      {
+        "q": "How much does Facebook ads management cost?",
+        "a": "Facebook ads management has two costs: a flat monthly management fee to RevUp, and your ad spend, which you pay directly to Meta and is not included in our fee. You can compare our Meta Ads and all-platform plans in the Plans & pricing section on this page."
+      },
+      {
+        "q": "How much should a small business spend on Facebook ads?",
+        "a": "You can start with a modest budget, but you need enough spend for the algorithm to learn who is most likely to become a customer. We'll recommend a starting Facebook and Instagram ads budget in your free call based on your goals, your service area and what a lead or sale is worth to you, then scale what works."
+      },
+      {
+        "q": "Should I advertise on Facebook or Instagram?",
+        "a": "Usually both. Meta ads run across Facebook, Instagram, Messenger and the Audience Network from one account, and the algorithm shifts budget to where your results are cheapest. If you're looking for an Instagram ads agency specifically, we also run Instagram-first campaigns with Reels and Stories creative built for the format."
       },
       {
         "q": "Do you create the ads?",
@@ -384,8 +416,8 @@
       }
     ],
     "why": [
-      "On Facebook and Instagram, people aren't searching for you — you're interrupting their feed. That means the creative does most of the work. The same product can succeed or fail depending on the first three seconds of a video, the offer in the headline or whether the ad looks like an ad at all. Meanwhile, privacy changes have made accurate tracking harder, so accounts without a proper Conversions API setup often optimize on incomplete data.",
-      "We tackle both sides. On the creative side, we test hooks, formats and offers in a structured way instead of guessing, and we keep a steady flow of new ads so results don't fade as audiences see the same creative repeatedly. On the data side, we set up the Meta Pixel and Conversions API together so the algorithm learns from real purchases and leads. Better data plus better creative is what lets a Meta account scale profitably."
+      "On Facebook and Instagram, people aren't searching for you — you're interrupting their feed. That means the creative does most of the work. The same offer can succeed or fail depending on the first three seconds of a video, the headline or whether the ad looks like an ad at all. Meanwhile, privacy changes have made accurate tracking harder, so accounts without a proper Conversions API setup often optimize on incomplete data.",
+      "As a Facebook ads agency, we tackle both sides. On the creative side, we test hooks, formats and offers in a structured way instead of guessing, and we keep a steady flow of new ads so results don't fade as audiences see the same creative repeatedly. On the data side, we set up the Meta Pixel and Conversions API together so the algorithm learns from real purchases and leads. Better data plus better creative is what lets a Meta Ads account scale profitably."
     ],
     "plans": [
       "meta",
@@ -396,61 +428,77 @@
   {
     "path": "/tiktok-ads-management",
     "name": "TikTok Ads Management",
-    "title": "TikTok Ads Management Agency for US Brands | RevUp",
-    "description": "TikTok Ads management for US businesses: native creative, Spark Ads, TikTok Pixel tracking and campaigns built to reach new customers and drive sales.",
+    "title": "TikTok Ads Agency & Management for US Businesses | RevUp",
+    "description": "RevUp is a TikTok ads agency for US businesses: native video creative, Spark Ads and TikTok Pixel tracking built to drive leads and sales. Book a free call.",
     "eyebrow": "TikTok Ads",
-    "h1": "TikTok ads that feel native — and drive real sales",
-    "intro": "TikTok is where new customers discover brands. It rewards ads that look and feel like real content, not traditional commercials. RevUp builds TikTok Ads campaigns with native creative and solid tracking so small and large US businesses can turn attention into revenue.",
+    "h1": "TikTok ads agency: native video ads that drive real sales",
+    "intro": "RevUp is a TikTok ads agency for small businesses, local service companies and e-commerce brands across the United States. TikTok rewards ads that look and feel like real content, not traditional commercials, so our TikTok ads management starts with native video creative and solid tracking, then tests and scales what turns attention into leads and sales.",
     "included": [
       {
         "title": "Native creative strategy",
-        "text": "Hooks, scripts and formats designed for TikTok — made to be watched, not skipped."
+        "text": "Hooks, scripts and vertical video formats built for the For You feed and TikTok's ad specs, made to be watched, not skipped."
       },
       {
-        "title": "Spark Ads",
-        "text": "Boosting your best organic posts and creator content as ads to keep social proof and engagement."
+        "title": "Spark Ads & creator content",
+        "text": "Boosting your best organic posts and creator videos as Spark Ads to keep the social proof and engagement they've already earned."
       },
       {
         "title": "TikTok Pixel & Events API",
-        "text": "Accurate tracking of purchases and leads so campaigns optimize toward real results."
+        "text": "Accurate tracking of purchases, form fills and leads so campaigns optimize toward real results, not just views."
       },
       {
-        "title": "Campaign management",
-        "text": "Sales, lead and awareness campaigns, including Smart+ where it fits, managed and optimized weekly."
+        "title": "Campaign management in TikTok Ads Manager",
+        "text": "Account setup, audience and location targeting, and sales, lead and awareness campaigns, including Smart+ where it fits, managed and optimized weekly."
       },
       {
-        "title": "TikTok Shop support",
-        "text": "Guidance for brands selling through TikTok Shop and connecting it with your ad campaigns."
+        "title": "Lead ads & TikTok Shop",
+        "text": "Instant Form lead campaigns for service businesses, and TikTok Shop support for e-commerce brands selling on the platform."
       },
       {
         "title": "Reporting",
-        "text": "Clear reporting on spend, cost per result and return, with the creative insights behind the numbers."
+        "text": "Clear reporting on spend, cost per lead or sale and return on ad spend, with the creative insights behind the numbers."
       }
     ],
     "process": [
       {
         "title": "Research",
-        "text": "We study your audience, competitors and the content already performing in your category on TikTok."
+        "text": "We study your audience, competitors and the TikTok content already performing in your category and market."
       },
       {
         "title": "Creative & tracking",
-        "text": "We develop the first batch of native ad concepts and set up Pixel and Events API tracking."
+        "text": "We develop the first batch of native ad concepts and set up your Ads Manager account, TikTok Pixel and Events API."
       },
       {
         "title": "Test",
-        "text": "We launch creative tests to find the hooks and formats that drive the lowest cost per result."
+        "text": "We launch creative tests to find the hooks and formats that drive the lowest cost per lead or sale."
       },
       {
         "title": "Scale",
-        "text": "Winning creatives get budget, and we keep a steady flow of fresh concepts to avoid creative fatigue."
+        "text": "Winning creatives get more budget, and we keep a steady flow of fresh concepts to avoid creative fatigue."
       }
     ],
-    "small": "For small businesses, TikTok can deliver reach that's hard to get anywhere else at the same cost. We focus on simple, authentic creative that you can produce without a big studio budget.",
-    "large": "For larger brands, we run structured creative testing at volume, integrate creator content and Spark Ads, and connect TikTok with the rest of your paid media plan.",
+    "small": "TikTok ads for small business work best when they look real, not produced. We focus on simple, authentic videos you can film on a phone, like a quick demo, a before-and-after or the owner explaining a service. For local businesses such as contractors, home services, clinics and med spas, we target your service area so your budget reaches people who can actually become customers.",
+    "large": "For larger brands and e-commerce companies, our TikTok ads agency runs structured creative testing at volume, integrates creator content, Spark Ads and TikTok Shop, and connects TikTok with the rest of your paid media plan so budget flows to what performs.",
     "faqs": [
       {
-        "q": "Is TikTok right for my business?",
-        "a": "If your customers are on TikTok and your product can be shown or explained visually, it's worth testing. We'll tell you honestly in your free call whether TikTok should be a priority for you right now."
+        "q": "How much do TikTok ads cost?",
+        "a": "TikTok advertising cost has two parts. Your ad spend is paid directly to TikTok, and you control it with daily or lifetime budgets (TikTok sets minimum budgets per campaign and ad group). Our TikTok ads management is a flat monthly fee that covers strategy, creative direction, tracking, optimization and reporting. You can compare the plans on this page, and in a free call we'll recommend a starting ad budget based on your goals."
+      },
+      {
+        "q": "Are TikTok ads worth it for a small business?",
+        "a": "They can be, if your customers are on TikTok and your product or service can be shown in a short video: a transformation, a demo or a behind-the-scenes look. Authentic creative and a clear offer matter more than production budget. We'll tell you honestly in your free call whether TikTok should be a priority for you right now or whether another channel should come first."
+      },
+      {
+        "q": "Can you advertise a local business on TikTok?",
+        "a": "Yes. TikTok ads for a local business can be targeted by state, city or area, so contractors, home service companies, clinics and med spas reach people inside their service area. We pair local targeting with lead forms or a landing page so you can see which ads bring in real inquiries."
+      },
+      {
+        "q": "What do I need to start running TikTok ads?",
+        "a": "A TikTok for Business account (free to create), a TikTok Ads Manager account with a payment method, a website or lead form to send people to, and vertical videos that follow TikTok's ad specs and policies. We handle the account setup, business verification, TikTok Pixel installation and creative planning so you can launch without guesswork."
+      },
+      {
+        "q": "TikTok Ads Manager vs. Promote: what's the difference?",
+        "a": "Promote boosts a single post from the TikTok app with basic targeting and limited tracking. TikTok Ads Manager gives you full campaigns: audience targeting, conversion tracking with the Pixel, creative testing and lead or sales objectives. Promote is fine for a quick boost; Ads Manager is where we build campaigns designed to bring in leads and sales."
       },
       {
         "q": "Do I need to film content myself?",
@@ -458,16 +506,16 @@
       },
       {
         "q": "What are Spark Ads?",
-        "a": "Spark Ads let you promote organic TikTok posts — yours or a creator's — as ads, keeping the likes, comments and shares that make them more credible."
+        "a": "Spark Ads let you promote organic TikTok posts, yours or a creator's, as ads, keeping the likes, comments and shares that make them more credible."
       },
       {
-        "q": "How do you measure TikTok results?",
-        "a": "With the TikTok Pixel and Events API tracking purchases and leads, plus reporting that compares TikTok against your other channels."
+        "q": "How do I choose the best TikTok marketing agency?",
+        "a": "Start with how the agency approaches creative, because on TikTok the video does much of the targeting work. Then ask how they track leads and sales, whether you keep ownership of your ad account and data, and what reporting you'll get. As a TikTok advertising agency, RevUp works inside your own TikTok Ads Manager account, measures results with the TikTok Pixel and Events API, and reports on cost per result and return, not just views."
       }
     ],
     "why": [
-      "TikTok works differently from other ad platforms. The feed is full-screen, sound-on and driven by entertainment, so ads that look like traditional commercials get skipped in seconds. The brands that win on TikTok make ads that feel like the content people came to watch: real people, quick hooks, honest demonstrations and trends adapted to their product.",
-      "That's why our TikTok work starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many brands, TikTok becomes a powerful way to reach new audiences that other channels miss."
+      "TikTok works differently from other ad platforms. The feed is full-screen, sound-on and driven by entertainment, so ads that look like traditional commercials get skipped in seconds. The businesses that win with TikTok advertising make ads that feel like the content people came to watch: real people, quick hooks, honest demonstrations and trends adapted to their product or service.",
+      "That's why our work as a TikTok ads agency starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many businesses, TikTok becomes a way to reach new audiences that search and other social platforms miss."
     ],
     "plans": [
       "tiktok",
@@ -477,20 +525,20 @@
   },
   {
     "path": "/web-design",
-    "name": "Website Design",
-    "title": "Website Design for Service Businesses & Small Business | RevUp",
-    "description": "Fast, mobile-first websites for US service businesses and small businesses — built for SEO, calls and booked jobs. Get a free website quote.",
+    "name": "Small Business Website Design",
+    "title": "Website Design for Small Business & Contractors | RevUp",
+    "description": "Website design for small business owners, contractors and home services across the US: fast, SEO-ready sites built to bring in calls. Get a free quote.",
     "eyebrow": "Website Design",
-    "h1": "Websites that turn visitors into calls and booked jobs",
-    "intro": "RevUp designs and builds websites for service businesses and small businesses in the USA — contractors, home services, clinics, professional services and local brands. Every site is fast on mobile, easy to find on Google and built around one goal: getting people to call, book or request a quote.",
+    "h1": "Website design for small businesses that brings in calls and booked jobs",
+    "intro": "RevUp offers website design for small business owners across the United States, with a focus on service businesses: contractors, plumbers, electricians, home services, clinics, med spas and professional services. Every site is custom, fast on mobile, easy for Google to understand and built around one goal: getting people to call, book or request a quote.",
     "why": [
-      "For a service business, your website is often the first impression — and the place where a lead decides to call you or your competitor. If it loads slowly, hides your phone number or doesn't explain what you do and where you work, people leave in seconds.",
-      "We build small business websites around how customers actually hire a service: clear services and service areas, visible click-to-call and WhatsApp buttons, quote and booking forms that land in your inbox, and trust signals like reviews and photos of your work. Because we also run Google Ads and Meta Ads, every site is ready for paid traffic and local SEO from day one, with tracking installed so you can see which pages bring in leads."
+      "For a service business, your website is often the first impression, and the place where a lead decides to call you or your competitor. If it loads slowly, hides your phone number or doesn't explain what you do and where you work, people leave in seconds. Good website design for small business isn't about flashy effects; it's about making the next step obvious.",
+      "A service business website has a different job than a brochure site, so we build around how customers actually hire a service: clear services and service areas, visible click-to-call and WhatsApp buttons, quote and booking forms that land in your inbox, and trust signals like reviews and photos of your work. We're a website design company that also runs Google Ads and Meta Ads, so every site is ready for paid traffic and search from day one, with tracking installed so you can see which pages bring in leads."
     ],
     "included": [
       {
         "title": "Custom website design",
-        "text": "A professional design built around your brand, your services and the action you want visitors to take."
+        "text": "Designed around your brand, your services and the action you want visitors to take."
       },
       {
         "title": "Mobile-first and fast",
@@ -498,7 +546,7 @@
       },
       {
         "title": "Service and service-area pages",
-        "text": "A page for each service and the cities you cover, so you show up in local searches."
+        "text": "A page for each service and the areas you cover, whether that's a plumbing website with drain and water heater pages or a construction website with a project gallery."
       },
       {
         "title": "Lead capture",
@@ -506,7 +554,7 @@
       },
       {
         "title": "SEO foundations",
-        "text": "Page titles, descriptions, sitemap, structured data and Google Search Console setup."
+        "text": "Page titles, descriptions, sitemap, structured data and Google Search Console setup, so Google can crawl and understand every page."
       },
       {
         "title": "Tracking and landing pages",
@@ -516,160 +564,184 @@
     "process": [
       {
         "title": "Discovery",
-        "text": "We learn your services, service area and ideal customers, and plan the pages your site needs."
+        "text": "We learn your services, service area and ideal customers, look at website examples you like, and plan the pages your site needs."
       },
       {
         "title": "Design",
-        "text": "We design the key pages and share them with you for feedback before building."
+        "text": "We design the key pages (home, services, service areas, about and contact) and share them with you for feedback before building."
       },
       {
         "title": "Build & launch",
-        "text": "We build, test on every device, connect your domain, forms and tracking, and go live."
+        "text": "We build, test on every device, connect your domain, forms, Google Search Console and tracking, and go live."
       },
       {
         "title": "Grow",
-        "text": "After launch we can run ads and SEO to bring traffic, and keep improving the pages that convert."
+        "text": "After launch we can run Google Ads, Meta Ads and SEO to bring traffic, and keep improving the pages that convert."
       }
     ],
-    "small": "For small businesses, we build a professional website that's quick to launch, easy to update and focused on getting you calls — without paying for features you don't need.",
-    "large": "For larger companies and multi-location businesses, we build sites with many service and location pages, integrations with your CRM and booking tools, and performance work at scale.",
+    "small": "Our small business website design services give you a professional site that's quick to launch, easy to update and focused on getting you calls, without paying for features you don't need. Built for owner-operators and independent contractors who want a site that earns its keep.",
+    "large": "For larger companies, general contractors and multi-location businesses, we build sites with many service and location pages, integrations with your CRM and booking tools, and performance work at scale.",
     "faqs": [
       {
-        "q": "Do you build websites for service businesses like contractors and home services?",
-        "a": "Yes. Service businesses are our main focus. We build sites with service pages, service-area pages, click-to-call and quote forms designed to generate leads."
+        "q": "How much does website design cost for a small business?",
+        "a": "It depends on scope: how many pages you need, how many services and service areas you want covered, whether you need booking or CRM integrations, and whether we write the copy. Website design is quoted per project. After a free call we send you a written quote, so you know the full price before any work starts. If you also want us to manage ads or SEO, those are separate monthly plans listed on our pricing page."
+      },
+      {
+        "q": "Do you build websites for contractors and home service businesses?",
+        "a": "Yes. Contractor website design and web design for home services are at the core of what we do. We build websites for general contractors, construction companies, plumbers, electricians, HVAC, roofing, landscaping and cleaning companies, with service pages, service-area pages, click-to-call and quote forms designed to generate leads."
+      },
+      {
+        "q": "What should a small business website include?",
+        "a": "At minimum: a headline that says what you do and where, a page for each service, your service area, reviews and photos of real work, an easy way to call or request a quote on every page, and fast load times on mobile. That's the structure we start from on every project, adjusted to your business."
+      },
+      {
+        "q": "How do I choose the best website design company for my small business?",
+        "a": "Look for a web design agency for small businesses that understands how your customers buy. Ask how they handle mobile speed, calls and quote forms, SEO basics and tracking, not just how the site looks, and whether they can help you bring traffic after launch. We're happy to walk you through all of that on a free call."
       },
       {
         "q": "Can you redesign my current website?",
         "a": "Yes. We can redesign your existing site and move your content while protecting the SEO value you already have."
       },
       {
-        "q": "Will my website show up on Google?",
-        "a": "Every site includes SEO foundations: fast load times, mobile-friendly design, proper titles and descriptions, a sitemap, structured data and Google Search Console setup. Ranking also depends on competition and ongoing work, which we can help with."
+        "q": "Will my new website show up on Google?",
+        "a": "Every site includes SEO foundations: fast load times, mobile-friendly design, proper titles and descriptions, a sitemap, structured data and Google Search Console setup. Ranking also depends on competition and ongoing work, which we can help with through our local SEO services."
       },
       {
         "q": "Do you also build online stores?",
-        "a": "Yes. For product businesses we build Shopify stores — see our Shopify & Website Development service."
+        "a": "Yes. For product businesses we build Shopify stores. See our Shopify development service."
       },
       {
-        "q": "Can you manage ads to my new website?",
-        "a": "Yes. We run Google Ads, Meta Ads and TikTok Ads, so your website and campaigns are planned together."
+        "q": "Can you run ads to my new website?",
+        "a": "Yes. We run Google Ads, Meta Ads and TikTok Ads, so your website and campaigns are planned together and every page is ready to track leads."
       }
     ]
   },
   {
     "path": "/shopify-web-development",
-    "name": "Shopify & Website Development",
-    "title": "Shopify & Website Development for US Businesses | RevUp",
-    "description": "Custom Shopify stores, landing pages and business websites built for speed, SEO and conversions. Designed to turn your ad traffic into customers.",
-    "eyebrow": "Shopify & Web Development",
-    "h1": "Shopify stores and websites built to convert",
-    "intro": "Great ads only work if the site they send people to is fast, clear and easy to buy from. RevUp designs and builds Shopify stores, landing pages and business websites for small and large US businesses — built from day one for speed, SEO and conversions.",
+    "name": "Shopify Development & Design",
+    "title": "Shopify Development Agency for US Brands | RevUp",
+    "description": "Shopify development agency for US brands: store design, setup, custom development and migrations built to sell. Talk to our Shopify experts — book a free call.",
+    "eyebrow": "Shopify Design & Development",
+    "h1": "Shopify development agency for stores that turn visitors into buyers",
+    "intro": "RevUp is a Shopify development agency that designs, sets up and builds Shopify stores for e-commerce brands across the USA. Whether you need Shopify store design services for a new launch, a redesign of your current store or custom features your theme can't handle, every store we build is fast, easy to shop and ready for the ads that send it traffic.",
     "included": [
       {
-        "title": "Shopify store builds",
-        "text": "New stores or redesigns with a theme tailored to your brand, product pages that sell and a smooth checkout."
+        "title": "Shopify store design & setup",
+        "text": "Shopify store setup from start to finish: a theme designed around your brand, collections, product pages, payments, shipping, taxes and a smooth checkout."
       },
       {
-        "title": "Landing pages",
-        "text": "High-converting pages for your ad campaigns, built to match each offer and audience."
+        "title": "Custom Shopify development",
+        "text": "Theme customization, custom sections and features, and app integrations for when an off-the-shelf app won't do the job."
       },
       {
-        "title": "Business websites",
-        "text": "Fast, mobile-first websites that explain what you do and make it easy to contact you."
+        "title": "Redesigns & migrations",
+        "text": "Redesign your current Shopify website or move to Shopify from WooCommerce, Wix, Squarespace or another platform, keeping your products, content and SEO value."
       },
       {
-        "title": "Technical SEO",
-        "text": "Clean structure, page titles, descriptions, sitemaps and structured data so Google understands your site."
+        "title": "Landing pages for your ads",
+        "text": "Product and offer pages built to match your Google, Meta and TikTok campaigns, so ad traffic lands on a page that's ready to sell."
       },
       {
-        "title": "Tracking setup",
-        "text": "Google Analytics 4, Tag Manager, Meta Pixel and TikTok Pixel installed correctly from launch."
+        "title": "Shopify SEO & tracking",
+        "text": "Clean structure, titles, descriptions and structured data, plus Google Analytics 4, Tag Manager, Meta Pixel and TikTok Pixel installed correctly from launch."
       },
       {
-        "title": "Store & site management",
-        "text": "Ongoing updates, speed optimization and conversion improvements after launch."
+        "title": "Ongoing store management",
+        "text": "Updates, new pages and products, speed optimization and conversion improvements after launch."
       }
     ],
     "process": [
       {
         "title": "Discovery",
-        "text": "We learn your business, your customers and your goals, and map the pages and features your site needs."
+        "text": "We learn your products, customers and goals, review your current store or site, and map the pages, apps and features your Shopify store needs."
       },
       {
         "title": "Design",
-        "text": "We design the key pages around your brand and the actions you want visitors to take."
+        "text": "We design your homepage, collection and product pages around your brand and the path from first visit to checkout."
       },
       {
         "title": "Build & launch",
-        "text": "We develop, test on every device, connect tracking and launch without disrupting your business."
+        "text": "We develop and test on every device, connect payments, shipping and tracking, and plan the launch to avoid disrupting your sales."
       },
       {
         "title": "Improve",
-        "text": "After launch we measure how visitors behave and keep improving speed and conversion rate."
+        "text": "After launch we measure how shoppers behave and keep improving speed, conversion rate and average order value."
       }
     ],
-    "small": "For small businesses, we build sites that look professional, load fast and are easy for you to update — without paying for features you don't need.",
-    "large": "For larger brands, we handle complex catalogs, custom Shopify functionality, integrations and performance work at scale, coordinated with your marketing campaigns.",
+    "small": "Launching your first store or outgrowing a DIY theme? We handle Shopify store setup end to end — theme, products, payments, shipping and tracking — so you get a professional store that's easy to update, without paying for custom features you don't need.",
+    "large": "For larger brands, our Shopify experts handle complex catalogs, custom theme development, third-party integrations and performance work at scale, coordinated with your marketing campaigns.",
     "faqs": [
       {
-        "q": "Should I use Shopify for my online store?",
-        "a": "For most product businesses, yes. Shopify is reliable, secure and easy to manage, with a large app ecosystem. We'll confirm it's the right fit for your catalog and operations."
+        "q": "How much does it cost to set up a Shopify store?",
+        "a": "It depends on scope: how many products and pages you have, whether a customized theme is enough or you need custom development, and whether we're migrating an existing site. We quote each Shopify project after a free call, so you know the cost before work starts. Your Shopify subscription and any paid apps or themes are billed directly to you by Shopify and the app developers."
       },
       {
-        "q": "Can you redesign my existing site?",
-        "a": "Yes. We can redesign and migrate existing Shopify stores and websites, keeping your products, content and SEO value."
+        "q": "How much is a Shopify website per month?",
+        "a": "Shopify charges a monthly subscription based on the plan you choose, plus any paid apps you add. Those are paid directly to Shopify and app developers, not to us. If you want our team to keep maintaining and improving the store after launch, ongoing store management is an optional service we scope with you."
       },
       {
-        "q": "Will my site be optimized for Google?",
-        "a": "Yes. Every site includes technical SEO basics: fast load times, mobile-friendly design, proper titles and descriptions, a sitemap and structured data."
+        "q": "What does a Shopify development agency do?",
+        "a": "A Shopify development agency plans, designs, builds and improves Shopify stores. With RevUp that covers store design and setup, theme customization, custom features and app integrations, migrations, technical SEO, tracking and ongoing optimization — plus Google, Meta and TikTok ads to bring shoppers to the store if you want them."
       },
       {
-        "q": "Do you manage the site after launch?",
-        "a": "We offer ongoing website and store management, including updates, speed optimization and conversion rate improvements."
+        "q": "Should I hire a Shopify expert or a freelance Shopify developer?",
+        "a": "A freelance Shopify developer can be a good fit for a small, well-defined fix. When design, development, SEO, tracking and marketing need to work together, a team of Shopify experts keeps everything consistent and accountable. If your project doesn't need an agency, we'll tell you on the free call."
+      },
+      {
+        "q": "Is Shopify a good website builder for my business?",
+        "a": "If you sell products online, usually yes: Shopify is reliable, secure, easy to manage and has a large app ecosystem. If you run a service business that mainly needs calls, quotes or bookings, a standard website is often a better fit, and our website design service covers that. We'll recommend the right platform for your catalog and operations."
+      },
+      {
+        "q": "Can you redesign my Shopify store or migrate my site to Shopify?",
+        "a": "Yes. We redesign existing Shopify stores and migrate stores from other platforms, carrying over your products and content and setting up redirects to protect the search traffic you've already built."
+      },
+      {
+        "q": "Will my Shopify store be optimized for Google?",
+        "a": "Yes. Every store we build includes technical SEO basics: fast load times, mobile-friendly design, clean URLs, proper titles and descriptions, image alt text, a sitemap and product structured data. That gives Google a clear picture of your store; rankings then depend on your content, your competition and time."
       }
     ],
     "why": [
-      "Your website is where your marketing budget either pays off or disappears. A slow page, a confusing menu or a checkout with too many steps can undo the work of even the best ad campaign. Most visitors arrive on their phone, decide in seconds whether to stay and leave the moment something feels hard.",
-      "We build sites with that reality in mind. Every page has one clear job, loads quickly on mobile and guides visitors to the next step — buying, booking or getting in touch. Because we also run paid advertising, we design landing pages and product pages around how ad traffic actually behaves, and we install tracking from day one so you can see which campaigns and pages drive sales. Your site becomes a tool that grows with your marketing, not a brochure that sits still."
+      "Your store is where your marketing budget either pays off or disappears. A slow product page, a confusing menu or a checkout with too many steps can undo the work of even the best ad campaign. Most shoppers arrive on their phone, decide in seconds whether to stay and leave the moment something feels hard — and a good-looking theme alone doesn't fix that.",
+      "That's why we treat Shopify website design as a sales problem, not just a visual one. As a Shopify development agency that also runs paid advertising, we design product pages, collections and landing pages around how ad traffic actually behaves, keep every page fast on mobile and install tracking from day one, so you can see which campaigns and products drive sales. Your store becomes a tool that grows with your marketing, not a template that sits still."
     ]
   },
   {
     "path": "/agencia-google-ads",
     "lang": "es",
-    "name": "Agencia de Google Ads en Español",
-    "title": "Agencia de Google Ads en Español para Negocios en USA | RevUp",
-    "description": "Administración de Google Ads en español para negocios hispanos en Estados Unidos. Publicidad en Google para conseguir más clientes. Llamada gratis.",
+    "name": "Agencia de Google Ads",
+    "title": "Agencia de Google Ads en Español en Estados Unidos | RevUp",
+    "description": "Agencia de Google Ads en español para negocios en Estados Unidos: publicidad en Google enfocada en llamadas y resultados medibles. Agenda tu llamada gratis.",
     "eyebrow": "Google Ads en Español",
     "h1": "Agencia de Google Ads en español para negocios en Estados Unidos",
-    "intro": "¿Tienes un negocio en Estados Unidos y quieres más clientes? En RevUp somos una agencia de Google Ads que trabaja en español. Nuestros expertos en Google Ads crean y administran tus anuncios en Google para que tu negocio aparezca cuando la gente busca lo que ofreces — y para que cada dólar se convierta en llamadas, citas y ventas que puedes medir.",
+    "intro": "En RevUp somos una agencia de Google Ads que trabaja en español con negocios hispanos y de servicios en todo Estados Unidos. Nuestros expertos en Google Ads crean y administran tus anuncios para que tu negocio aparezca justo cuando la gente busca lo que ofreces, y para que sepas en qué llamadas, citas y ventas se convierte cada dólar que inviertes en publicidad en Google.",
     "why": [
-      "La mayoría de los clientes empiezan buscando en Google: \"plomero cerca de mí\", \"abogado de accidentes\", \"limpieza de casas\". Si tu negocio no aparece en ese momento, esa llamada se la lleva la competencia. La publicidad en Google es la forma más directa de estar ahí justo cuando el cliente está listo para contratar.",
-      "Muchos dueños de negocios hispanos en Estados Unidos han probado anuncios sin buenos resultados, o no han tenido una agencia que les explique todo en su idioma. Nosotros hablamos tu idioma y conocemos el mercado: elegimos las palabras clave correctas en inglés y en español, mostramos tus anuncios solo en tu zona de servicio y medimos cada llamada y formulario. Así sabes exactamente cuánto te cuesta cada cliente nuevo."
+      "La mayoría de los clientes empiezan buscando en Google: \"plomero de emergencia\", \"abogado de accidentes\", \"limpieza de casas\". Si tu negocio no aparece en ese momento, esa llamada se la lleva la competencia. La publicidad en Google es la forma más directa de estar ahí justo cuando el cliente está listo para contratar: tus anuncios pueden salir arriba de los resultados de búsqueda y también en Google Maps, y en la mayoría de las campañas de búsqueda solo pagas cuando alguien hace clic.",
+      "Muchos dueños de negocios hispanos en Estados Unidos han probado anuncios sin buenos resultados, o nunca tuvieron una agencia de marketing digital en español que les explicara con claridad en qué se estaba yendo su dinero. Como agencia de Google Ads hispana, hablamos tu idioma y conocemos cómo buscan tus clientes: elegimos las palabras clave correctas en inglés y en español, mostramos tus anuncios solo en tu zona de servicio y medimos cada llamada y formulario. Así sabes exactamente cuánto te cuesta cada cliente nuevo."
     ],
     "included": [
       {
         "title": "Administración de Google Ads",
-        "text": "Creamos, lanzamos y optimizamos tus campañas cada semana para bajar el costo por cliente."
+        "text": "Creamos, lanzamos y optimizamos tus campañas cada semana, y eliminamos las búsquedas que gastan dinero sin traer clientes."
       },
       {
-        "title": "Anuncios en inglés y en español",
-        "text": "Llegamos a tus clientes en el idioma en que buscan, para negocios hispanos y mercados bilingües."
+        "title": "Palabras clave en inglés y en español",
+        "text": "Investigamos cómo buscan tu servicio en cada ciudad donde trabajas, para negocios hispanos y mercados bilingües."
       },
       {
-        "title": "Anuncios locales",
-        "text": "Tus anuncios aparecen solo en las ciudades y zonas donde trabajas, en el horario en que puedes atender."
+        "title": "Anuncios en Google Search y Google Maps",
+        "text": "Campañas de Búsqueda, Local Services, Performance Max y YouTube, mostradas solo en tus zonas y en el horario en que puedes atender."
       },
       {
-        "title": "Página de aterrizaje",
-        "text": "Una página rápida y clara para que quien haga clic te llame o te escriba de inmediato."
+        "title": "Anuncios y página de destino",
+        "text": "Escribimos tus anuncios y te damos recomendaciones concretas para tu página, para que quien haga clic te llame o te escriba de inmediato."
       },
       {
         "title": "Medición de llamadas y formularios",
-        "text": "Sabes cuántas llamadas, mensajes y clientes trae cada campaña — no solo clics."
+        "text": "Sabes cuántas llamadas, mensajes y clientes trae cada campaña, no solo cuántos clics."
       },
       {
         "title": "Reportes claros en español",
-        "text": "Te explicamos los resultados en palabras simples y qué vamos a mejorar el próximo mes."
+        "text": "Cada mes te explicamos los resultados en palabras simples y qué vamos a mejorar el mes siguiente."
       }
     ],
     "process": [
@@ -679,7 +751,7 @@
       },
       {
         "title": "Estrategia y configuración",
-        "text": "Elegimos palabras clave, escribimos los anuncios y configuramos la medición de llamadas y formularios."
+        "text": "Elegimos las palabras clave, escribimos tus anuncios y configuramos la medición de llamadas y formularios."
       },
       {
         "title": "Lanzamiento",
@@ -687,7 +759,7 @@
       },
       {
         "title": "Optimización y crecimiento",
-        "text": "Cada semana ajustamos para conseguir más clientes al menor costo, y crecemos cuando los números funcionan."
+        "text": "Cada semana ajustamos para conseguir más clientes al menor costo, y aumentamos la inversión solo cuando los números funcionan."
       }
     ],
     "industries": [
@@ -698,34 +770,48 @@
       "Jardinería y landscaping",
       "Limpieza",
       "Talleres mecánicos",
-      "Clínicas y consultorios",
+      "Clínicas dentales y médicas",
+      "Med spas y estética",
       "Abogados",
       "Seguros",
       "Bienes raíces",
-      "Restaurantes"
+      "Restaurantes",
+      "Tiendas en línea (e-commerce)"
     ],
-    "small": "La publicidad para negocios pequeños no tiene que ser cara. Empezamos con tu servicio más rentable y tu zona principal, con un presupuesto que tenga sentido para ti, y crecemos solo cuando los resultados lo justifican.",
-    "large": "Para empresas con varias sedes o varias líneas de servicio, manejamos campañas por ubicación y por servicio, en inglés y en español, con reportes que muestran el costo por cliente en cada mercado.",
+    "small": "La publicidad en Google para pequeñas empresas no tiene que ser cara. Nuestra estrategia para pymes es simple: empezamos con tu servicio más rentable y tu zona principal, con un presupuesto que tenga sentido para ti, y crecemos solo cuando los resultados lo justifican.",
+    "large": "Para empresas con varias sedes o varias líneas de servicio, manejamos la publicidad en Google por ubicación y por servicio, en inglés y en español, con reportes que muestran el costo por cliente en cada mercado.",
     "faqs": [
       {
-        "q": "¿Cómo consigo más clientes para mi negocio en Estados Unidos?",
-        "a": "Aparece donde tus clientes buscan: anuncios en Google, un perfil de Google Business completo y una página web clara. Luego responde rápido a cada llamada y mensaje. Nosotros armamos ese sistema completo para tu negocio."
+        "q": "¿Cuánto cuesta anunciarse en Google Ads?",
+        "a": "Tiene dos partes. La primera es tu presupuesto de anuncios, que tú decides y pagas directamente a Google; en la mayoría de las campañas de búsqueda pagas por clic, y el costo varía según tu industria y tu ciudad. La segunda es nuestra tarifa mensual fija de administración. Los precios están en los planes de esta página; si eliges el Paquete Búsqueda o Crecimiento Total, se suma un arranque SEO de pago único."
       },
       {
-        "q": "¿Cuánto cuesta la administración de Google Ads?",
-        "a": "Tiene dos partes: tu presupuesto de anuncios, que pagas directamente a Google, y nuestra tarifa de administración, que depende de cuántas campañas y servicios manejemos. Te damos una cotización clara después de una llamada gratis."
+        "q": "¿Cómo funciona la publicidad en Google?",
+        "a": "Eliges las búsquedas en las que quieres aparecer, por ejemplo \"reparación de aire acondicionado\", y Google muestra tu anuncio a las personas de tu zona que buscan eso. En las campañas de búsqueda pagas cuando alguien hace clic; en Local Services pagas por cada contacto. Google decide qué anuncio sale primero según la oferta y la calidad del anuncio y de tu página, por eso la configuración importa tanto como el presupuesto."
       },
       {
-        "q": "¿Trabajan con negocios hispanos?",
-        "a": "Sí. Hacemos marketing para negocios hispanos en Estados Unidos, con atención en español de principio a fin y anuncios en inglés y en español según tus clientes."
+        "q": "¿Mis anuncios pueden aparecer en Google Maps?",
+        "a": "Sí. Cuando conectamos tu Perfil de Empresa de Google a tu cuenta de Google Ads, tus anuncios pueden mostrarse en Google Maps a personas que buscan tu servicio cerca de donde trabajas. No es una campaña aparte con otro precio: forma parte de tu presupuesto de Google Ads."
       },
       {
-        "q": "¿Necesito un presupuesto grande para anunciarme en Google?",
-        "a": "No. Muchos negocios empiezan con un presupuesto moderado enfocado en su servicio principal. Lo importante es que la campaña esté bien configurada y medida para no desperdiciar dinero."
+        "q": "¿Qué es mejor: anuncios en Google o en Meta?",
+        "a": "Depende de tu negocio. Los anuncios en Google llegan a personas que ya están buscando tu servicio, por eso suelen funcionar muy bien para negocios de servicios. Meta (Facebook e Instagram) sirve para darte a conocer y volver a impactar a quien ya te vio. Muchos negocios empiezan con Google y suman Meta después; el plan Crecimiento Total incluye ambas plataformas."
+      },
+      {
+        "q": "¿Cómo invertir en publicidad en Google si mi negocio es pequeño?",
+        "a": "No necesitas un presupuesto grande. Empieza con tu servicio más rentable y tu zona principal, mide cada llamada y formulario, y aumenta la inversión solo en lo que trae clientes. Lo importante es que la campaña esté bien configurada desde el inicio para no desperdiciar dinero."
+      },
+      {
+        "q": "¿Por qué contratar una agencia de Google Ads en vez de hacerlo yo mismo?",
+        "a": "Google Ads es fácil de encender y fácil de desperdiciar. Un experto en Google Ads revisa cada semana en qué búsquedas se va tu dinero, elimina las que no traen clientes y mide las llamadas reales, mientras tú te enfocas en atender tu negocio. Y con nosotros todo es en español."
+      },
+      {
+        "q": "¿Trabajan con negocios hispanos en todo Estados Unidos?",
+        "a": "Sí. Somos una agencia de marketing digital en español que trabaja con negocios en todo Estados Unidos, con atención en español de principio a fin y anuncios en inglés y en español según cómo buscan tus clientes. Trabajamos contigo por llamada, videollamada y WhatsApp, estés donde estés."
       },
       {
         "q": "¿La cuenta de Google Ads es mía?",
-        "a": "Sí. Tu cuenta, tus datos y tus anuncios siempre te pertenecen. Nosotros trabajamos dentro de tu cuenta con acceso de administrador."
+        "a": "Sí. Tu cuenta, tus datos y tus anuncios siempre te pertenecen. Trabajamos dentro de tu cuenta con acceso de administrador, y si algún día decides irte, todo se queda contigo."
       }
     ],
     "plans": [
@@ -738,27 +824,27 @@
     "path": "/agencia-seo",
     "lang": "es",
     "name": "Agencia SEO en Español",
-    "title": "Agencia SEO en Español para Negocios de Servicios | RevUp",
-    "description": "Agencia SEO en español para negocios de servicios en USA. SEO local para aparecer en Google Maps cuando te buscan en tu ciudad. Agenda una llamada gratis.",
+    "title": "Agencia SEO en Español: Posicionamiento en Google | RevUp",
+    "description": "Agencia SEO en español para negocios en USA: SEO local, Perfil de Empresa de Google y posicionamiento en Google Maps. Agenda tu llamada gratis.",
     "eyebrow": "SEO Local en Español",
-    "h1": "Agencia SEO en español para que tu negocio de servicios aparezca en Google y Google Maps",
-    "intro": "¿Tus clientes llegan solo por recomendación o porque pagas anuncios cada mes? En RevUp somos una agencia de marketing digital en español que hace SEO para negocios de servicios en USA: plomeros, técnicos de aire acondicionado, contratistas de techos y remodelación, empresas de limpieza, clínicas y más. Trabajamos tu Perfil de Empresa de Google, tu página web y tu presencia local para que aparezcas en Google Maps y en las búsquedas de tu ciudad cuando alguien necesita lo que haces — en inglés y en español.",
+    "h1": "Agencia SEO en español: posicionamiento en Google y Google Maps",
+    "intro": "En RevUp somos una agencia SEO en español que ayuda a negocios de servicios y pequeñas empresas en Estados Unidos a aparecer en Google cuando sus clientes los buscan. Trabajamos tu Perfil de Empresa de Google, tu página web y tu presencia local para que salgas en Google Maps y en las búsquedas de las ciudades que atiendes, en inglés y en español. Plomeros, técnicos de aire acondicionado, contratistas de techos y remodelación, empresas de limpieza, clínicas, abogados: si hoy tus clientes llegan solo por recomendación o porque pagas anuncios cada mes, el posicionamiento SEO te da otra fuente de llamadas que no te cobra por clic.",
     "why": [
-      "Cuando se rompe el aire acondicionado o hay una fuga en la cocina, la gente saca el teléfono y busca \"AC repair near me\" o \"plomero cerca de mí\". Y suele llamar a uno de los negocios que ve en el mapa de Google o en los primeros resultados. Los lugares orgánicos del mapa y de los resultados no se pagan por clic: se ganan con SEO local. Si tu perfil está incompleto, tu web no dice qué haces ni en qué ciudades, o tus datos no coinciden en internet, lo más probable es que esa llamada se la lleve otro.",
-      "Muchos negocios hispanos en Estados Unidos hacen un trabajo excelente pero son casi invisibles en Google: el perfil está a medias, la web está solo en un idioma y nadie les ha explicado qué hacer. Nosotros hacemos SEO local pensado para negocios de servicios, en tu idioma, y trabajamos las búsquedas en inglés y en español porque así buscan tus clientes. Te hablamos claro: el posicionamiento en Google no es de un día para otro y nadie puede garantizarte el primer lugar. Toma meses de trabajo constante, pero tu perfil, tus reseñas y tus páginas siguen trabajando para ti sin cobrarte por clic — por eso, si necesitas llamadas ya, lo combinamos con Google Ads mientras el SEO crece."
+      "Cuando se rompe el aire acondicionado o hay una fuga en la cocina, la gente saca el teléfono, busca \"plomero de urgencia\" o \"AC repair\" y suele llamar a uno de los negocios que ve en el mapa de Google o en los primeros resultados. Esos lugares orgánicos no se compran: se ganan con SEO local. Si tu Perfil de Empresa de Google está incompleto, tu web no dice qué haces ni en qué ciudades, o tus datos no coinciden en internet, lo más probable es que esa llamada se la lleve otro.",
+      "Muchos negocios hispanos en Estados Unidos hacen un trabajo excelente pero son casi invisibles en Google, y se preguntan cómo posicionar su negocio en Google sin depender de anuncios para siempre. Como agencia SEO, hacemos un posicionamiento pensado para negocios de servicios, en tu idioma, y trabajamos las búsquedas en inglés y en español porque así buscan tus clientes. Te hablamos claro: el posicionamiento en Google no es de un día para otro y nadie puede garantizarte el primer lugar. Toma meses de trabajo constante, pero tu perfil, tus reseñas y tus páginas siguen trabajando para ti mes tras mes. Por eso, si necesitas llamadas ya, lo combinamos con Google Ads mientras el SEO crece."
     ],
     "included": [
       {
         "title": "Arranque SEO y auditoría",
-        "text": "Revisamos tu web, tu competencia local y las palabras clave que usan tus clientes en tu ciudad, en inglés y en español, y armamos el plan."
+        "text": "Revisamos tu web, tu competencia local y las palabras clave que usan tus clientes en inglés y en español, y armamos tu plan de posicionamiento SEO."
       },
       {
         "title": "Perfil de Empresa de Google",
-        "text": "Optimizamos tu perfil (antes Google My Business): categorías, servicios, zonas que atiendes, fotos y horario, con actualizaciones cada mes."
+        "text": "Si aún no lo tienes, te guiamos para crearlo y verificarlo; si ya existe, lo optimizamos (antes Google My Business): categorías, servicios, zonas que atiendes, fotos y horario, con actualizaciones cada mes."
       },
       {
         "title": "SEO para tus servicios y ciudades",
-        "text": "Ajustamos títulos, textos y estructura de tus páginas para que Google entienda qué haces y dónde, y te decimos qué páginas te faltan."
+        "text": "Ajustamos títulos, textos y estructura de tus páginas para que Google entienda qué haces y en qué ciudades, y te decimos qué páginas te faltan."
       },
       {
         "title": "Directorios y datos consistentes",
@@ -766,21 +852,21 @@
       },
       {
         "title": "Estrategia de reseñas",
-        "text": "Un sistema simple para pedirles reseñas a todos tus clientes reales después de cada trabajo y responderlas bien, siempre dentro de las reglas de Google."
+        "text": "Un sistema simple para pedirles reseñas a tus clientes reales después de cada trabajo y responderlas bien, siempre dentro de las reglas de Google."
       },
       {
         "title": "Reporte mensual en español",
-        "text": "Ves tus posiciones, llamadas y visitas desde Google cada mes, explicadas en palabras simples, con lo que vamos a mejorar después."
+        "text": "Ves tus posiciones, llamadas y visitas desde Google y Google Maps cada mes, explicadas en palabras simples, con lo que vamos a mejorar después."
       }
     ],
     "process": [
       {
         "title": "Llamada gratis",
-        "text": "Conocemos tu negocio, tus servicios más rentables, las ciudades que atiendes y a quién tienes de competencia."
+        "text": "Conocemos tu negocio, tus servicios más rentables, las ciudades que atiendes y a quién tienes de competencia en Google."
       },
       {
         "title": "Arranque SEO",
-        "text": "Hacemos la auditoría, elegimos las palabras clave y dejamos tu Perfil de Empresa y tus directorios en orden."
+        "text": "Hacemos la auditoría, elegimos las palabras clave y dejamos tu Perfil de Empresa de Google y tus directorios en orden."
       },
       {
         "title": "Optimización de tu web",
@@ -801,36 +887,41 @@
       "Jardinería y landscaping",
       "Control de plagas",
       "Talleres mecánicos",
-      "Clínicas y consultorios",
+      "Clínicas y consultorios médicos",
+      "Dentistas",
       "Med spas y estética",
       "Abogados y servicios profesionales"
     ],
-    "small": "Si trabajas con tu camioneta, tu equipo y tu teléfono, el SEO local es una de las formas más sensatas de conseguir clientes sin pagar por cada clic. Empezamos por tu Perfil de Empresa de Google y tu servicio principal en tu ciudad, y crecemos a más servicios y zonas a medida que ves resultados.",
-    "large": "Para empresas con varias sedes, ciudades o líneas de servicio, manejamos un Perfil de Empresa por cada ubicación real, páginas por servicio y ciudad en inglés y en español, y reportes por mercado. Si quieres el paquete completo, unimos SEO y anuncios en Google, Meta y TikTok en una sola estrategia.",
+    "small": "Si trabajas con tu camioneta, tu equipo y tu teléfono, el SEO para pequeñas empresas es una de las formas más sensatas de conseguir clientes a largo plazo. Empezamos por lo que más pesa en tu zona, tu Perfil de Empresa de Google y tu servicio principal en tu ciudad, y crecemos a más servicios y zonas a medida que ves resultados.",
+    "large": "Para empresas con varias sedes, ciudades o líneas de servicio, manejamos un Perfil de Empresa por cada ubicación real, páginas por servicio y ciudad en inglés y en español, y reportes de posicionamiento por mercado. Si quieres el paquete completo, unimos SEO y anuncios en Google, Meta y TikTok en una sola estrategia.",
     "faqs": [
       {
-        "q": "¿Qué es el SEO local y por qué lo necesita mi negocio de servicios?",
-        "a": "El SEO local es el trabajo que hace que tu negocio aparezca en Google Maps y en Google cuando alguien busca tu servicio en tu zona, por ejemplo \"electricista en Houston\" o \"roofing near me\". Para un negocio de servicios es clave, porque quien busca así normalmente necesita contratar pronto."
+        "q": "¿Qué es el posicionamiento SEO y para qué sirve?",
+        "a": "El posicionamiento SEO es el trabajo que hace que tu página web y tu negocio aparezcan en los resultados orgánicos de Google, los que no se pagan por clic. El SEO local es la parte que te muestra en Google Maps y en las búsquedas de tu zona, por ejemplo \"electricista en Houston\". Para un negocio de servicios o una pequeña empresa sirve para recibir llamadas de gente que ya está buscando lo que haces."
+      },
+      {
+        "q": "¿Cómo aparecer en Google Maps con mi negocio?",
+        "a": "Necesitas un Perfil de Empresa de Google (antes Google My Business). Crearlo es gratis, pero Google te pide verificar que el negocio es tuyo. Después hay que completarlo bien: categoría correcta, servicios, zonas que atiendes, horario, fotos y reseñas de clientes reales. Nosotros te guiamos en la creación y verificación, y lo optimizamos y actualizamos cada mes."
+      },
+      {
+        "q": "¿Cómo aparecer primero en Google Maps? ¿Me lo garantizan?",
+        "a": "No, y desconfía de cualquier agencia SEO que te lo garantice: nadie controla los resultados de Google. Google explica que ordena los resultados locales según la relevancia, la distancia y qué tan conocido es el negocio. Nosotros trabajamos lo que sí depende de ti: un perfil completo, tu web, tus directorios y tus reseñas, con un reporte mensual para que veas cómo avanzan tus posiciones y llamadas."
+      },
+      {
+        "q": "¿Cuánto cuesta el posicionamiento SEO?",
+        "a": "Tiene dos partes: un arranque SEO de pago único, donde hacemos la auditoría y dejamos todo configurado, y una tarifa mensual fija de administración. Los precios están en los planes de esta página. Si también quieres anuncios, el Paquete Búsqueda suma Google Ads, y Crecimiento Total une SEO con Google, Meta y TikTok Ads por menos de lo que costarían por separado. El presupuesto de anuncios se paga directo a cada plataforma."
       },
       {
         "q": "¿En cuánto tiempo veo resultados con el posicionamiento SEO?",
         "a": "El SEO es una inversión de mediano plazo. Algunas mejoras, como un Perfil de Empresa bien optimizado, se pueden notar en las primeras semanas o meses, pero un posicionamiento sólido toma varios meses de trabajo constante. Depende de tu ciudad, tu competencia y cómo está tu web hoy. Te lo decimos con honestidad desde la primera llamada."
       },
       {
-        "q": "¿Me garantizan el primer lugar en Google?",
-        "a": "No, y desconfía de quien te lo garantice: nadie controla los resultados de Google. Lo que sí hacemos es el trabajo que Google toma en cuenta: tu perfil, tu web y tus directorios optimizados cada mes, y un reporte claro para que veas cómo avanzan tus posiciones, llamadas y visitas."
+        "q": "¿Cuál es la diferencia entre SEO y SEM? ¿Qué me conviene más?",
+        "a": "El SEO trabaja tus resultados orgánicos en Google y Google Maps; el SEM son los anuncios pagados, como Google Ads. Los anuncios pueden traer llamadas desde los primeros días, pero se detienen cuando dejas de pagar. El SEO tarda más, pero construye visitas que no te cobran por clic. Por eso muchos negocios de servicios usan los dos: los anuncios traen clientes ya mientras el SEO crece."
       },
       {
-        "q": "¿Cuánto cuesta el servicio de SEO?",
-        "a": "Tiene dos partes: un arranque SEO de pago único, donde hacemos la auditoría y dejamos todo configurado, y una tarifa mensual de administración. Los precios están en los planes de esta página. Si también quieres anuncios, el Paquete Búsqueda suma Google Ads, y Crecimiento Total une SEO con Google, Meta y TikTok Ads por menos de lo que costarían por separado. El presupuesto de anuncios se paga directo a cada plataforma."
-      },
-      {
-        "q": "¿Qué es mejor, SEO o Google Ads?",
-        "a": "Se complementan. Google Ads (SEM) puede traer llamadas desde los primeros días, pero se detiene cuando dejas de pagar. El SEO tarda más, pero construye visitas que no te cobran por clic. Por eso muchos negocios de servicios usan los dos: los anuncios traen clientes ya mientras el SEO crece."
-      },
-      {
-        "q": "¿Pueden hacer SEO en inglés y en español?",
-        "a": "Sí. Muchos negocios de servicios en USA atienden a clientes que hablan inglés y otros que hablan español, así que trabajamos las palabras clave, tus páginas y tu Perfil de Empresa pensando en cómo busca cada uno. Y toda la comunicación contigo es en español."
+        "q": "¿Pueden hacer posicionamiento SEO en inglés y en español?",
+        "a": "Sí. Muchos negocios en Estados Unidos atienden a clientes que buscan en inglés y a otros que buscan en español, así que trabajamos las palabras clave, tus páginas y tu Perfil de Empresa pensando en cómo busca cada uno. Y toda la comunicación contigo es en español."
       },
       {
         "q": "Atiendo a domicilio y no tengo local. ¿Puedo aparecer en Google Maps?",

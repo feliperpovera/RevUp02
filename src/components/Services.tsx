@@ -26,7 +26,7 @@ const services: { icon: typeof Search; title: string; description: string; to?: 
   },
   {
     icon: Search,
-    title: "SEO for Service Businesses",
+    title: "Local SEO Services",
     description: "Local SEO that gets your business found on Google Search and Google Maps — on its own or combined with paid ads as a complete SEO + SEM package that brings calls now and free traffic over time.",
     to: "/seo-for-service-businesses",
     wide: true,

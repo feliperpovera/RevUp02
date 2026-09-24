@@ -13,7 +13,7 @@ export type BlogPost = (typeof posts)[number];
 
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
   const more = posts.filter((p) => p.slug !== post.slug);
-  const serviceBusiness = servicePages.find((p) => p.path === "/service-business-marketing");
+  const related = servicePages.find((p) => p.path === post.service) ?? servicePages.find((p) => p.path === "/service-business-marketing");
 
   return (
     <div className="min-h-screen bg-transparent">
@@ -69,9 +69,9 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                 Book a free call
                 <ArrowUpRight className="ml-2 h-5 w-5" />
               </Button>
-              {serviceBusiness ? (
+              {related ? (
                 <Button asChild size="lg" variant="outline" className="h-12 rounded-full border-cream/30 bg-transparent px-7 text-cream hover:bg-cream/10 hover:text-cream">
-                  <Link to={serviceBusiness.path}>How we help service businesses</Link>
+                  <Link to={related.path}>Explore our {related.name}</Link>
                 </Button>
               ) : null}
             </div>
