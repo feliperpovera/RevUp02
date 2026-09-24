@@ -8,7 +8,6 @@ import { toast } from "sonner";
 import { submitForm } from "@/lib/submitForm";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
 import { CalendlyButton } from "@/components/CalendlyButton";
-import { PHONE_URL, WHATSAPP_NUMBER } from "@/config/links";
 import { pagePath, useLang } from "@/config/i18n";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,7 +41,6 @@ const COPY = {
     titleB: "Together",
     lede: "Whether you run a local shop or a national brand, tell us about your goals. We'll reply within 24 hours with honest, practical ideas — free.",
     talk: "Prefer to talk it through? Pick a time that works for you.",
-    call: "Or call us",
     formLabel: "Contact form",
     name: "Full Name",
     namePlaceholder: "John Smith",
@@ -70,7 +68,6 @@ const COPY = {
     titleB: "juntos",
     lede: "Ya sea que tengas un negocio local o una marca nacional, cuéntanos tus metas. Te respondemos en menos de 24 horas con ideas honestas y prácticas, gratis.",
     talk: "¿Prefieres conversarlo? Elige el horario que mejor te funcione.",
-    call: "O llámanos",
     formLabel: "Formulario de contacto",
     name: "Nombre completo",
     namePlaceholder: "Juan Pérez",
@@ -189,12 +186,6 @@ export const Contact = () => {
                 {t.talk}
               </p>
               <CalendlyButton />
-              <p className="mt-4 text-sm text-stone">
-                {t.call}:{" "}
-                <a href={PHONE_URL} className="font-semibold text-foreground underline-offset-4 hover:text-performance hover:underline">
-                  {WHATSAPP_NUMBER}
-                </a>
-              </p>
             </Reveal>
           </div>
 
