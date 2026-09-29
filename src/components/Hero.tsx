@@ -255,14 +255,6 @@ export const Hero = () => {
                 {t.book}
                 <ArrowUpRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={goToForm}
-                className="h-14 rounded-full border-foreground/20 px-8 text-base font-medium hover:border-performance hover:bg-transparent hover:text-performance"
-              >
-                {t.quoteCta}
-              </Button>
             </motion.div>
 
             {/* Stats row — real client numbers */}
