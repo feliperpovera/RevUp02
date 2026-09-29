@@ -258,9 +258,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() =>
-                  document.getElementById("hero-quote-form")?.scrollIntoView({ behavior: "smooth", block: "center" })
-                }
+                onClick={goToForm}
                 className="h-14 rounded-full border-foreground/20 px-8 text-base font-medium hover:border-performance hover:bg-transparent hover:text-performance"
               >
                 {t.quoteCta}
