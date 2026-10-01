@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Real 404s (e.g. unknown /blog/slug) keep the 404 status but render the branded React 404
+ErrorDocument 404 /index.html
+
+# Spanish pages that moved under /es
+RewriteRule ^agencia-google-ads/?$ /es/agencia-google-ads [R=301,L]
+RewriteRule ^agencia-seo/?$ /es/agencia-seo [R=301,L]
+RewriteRule ^precios/?$ /es/precios [R=301,L]
+
+# Per-route static HTML with page-specific SEO tags: /services -> services.html, /es -> es.html
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([a-z0-9-]+)$ $1.html [L]
+
+# Spanish pages: /es/servicios -> es--servicios.html
+RewriteCond %{DOCUMENT_ROOT}/es--$1.html -f
+RewriteRule ^es/([a-z0-9-]+)$ es--$1.html [L]
+
+# Blog articles: /blog/slug -> blog--slug.html, /es/blog/slug -> es--blog--slug.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^blog/([a-z0-9-]+)$ blog--$1.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^es/blog/([a-z0-9-]+)$ es--blog--$1.html [L]
+
+# SPA fallback: serve index.html for app routes (/gracias, /services, ...)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
