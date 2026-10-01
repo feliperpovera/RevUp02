@@ -43,14 +43,15 @@ const CORE_PAGES: [PageKey, ReactElement][] = [
   ["testimonials", <TestimonialsPage />],
   ["roas", <ROASCalculatorPage />],
   ["blog", <BlogPage />],
-  ["pricing", <PricingPage />],
   ["thanks", <GraciasPage />],
 ];
 
 /** Old URLs that moved; .htaccess also answers these with a 301. */
 const REDIRECTS: [string, string][] = [
   ["/thank-you", "/gracias"],
-  ["/precios", "/es/precios"],
+  ["/precios", "/es"],
+  ["/pricing", "/"],
+  ["/es/precios", "/es"],
   ["/agencia-google-ads", "/es/agencia-google-ads"],
   ["/agencia-seo", "/es/agencia-seo"],
 ];

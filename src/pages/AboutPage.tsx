@@ -184,7 +184,6 @@ const AboutPage = () => {
               </button>
             </div>
 
-            <PricingSummary lang={lang} />
           </div>
         </div>
       </section>

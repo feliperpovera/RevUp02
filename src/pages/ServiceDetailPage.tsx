@@ -36,7 +36,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
   const lang = "lang" in page && page.lang === "es" ? "es" : "en";
   const t = LABELS[lang];
   const industries = "industries" in page ? (page.industries as string[]) : [];
-  const plans = "plans" in page ? (page.plans as PlanId[]) : [];
+  const plans: PlanId[] = []; // prices hidden from the site
   const others = servicePages.filter((p) => p.path !== page.path && ("lang" in p ? p.lang : "en") === lang);
 
   return (

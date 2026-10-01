@@ -205,9 +205,6 @@ const ServicesPage = () => {
                 {t.cta}
                 <ArrowRight className="ml-2" />
               </Button>
-              <Link to={pagePath("pricing", lang)} className="text-sm text-stone underline-offset-4 hover:text-performance hover:underline">
-                {t.pricing}
-              </Link>
             </div>
           </div>
         </div>
