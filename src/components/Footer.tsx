@@ -19,7 +19,7 @@ const QUICK_LINKS = [
   { label: { en: "Google Ads", es: "Google Ads" }, to: "/google-ads-management" },
   { label: { en: "Meta Ads", es: "Meta Ads" }, to: "/meta-ads-management" },
   { label: { en: "TikTok Ads", es: "TikTok Ads" }, to: "/tiktok-ads-management" },
-  { label: { en: "Shopify & Web", es: "Shopify y Web" }, to: "/shopify-web-development" },
+  { label: { en: "Website Design", es: "Diseño web" }, to: "/web-design" },
 ];
 
 const COPY = {

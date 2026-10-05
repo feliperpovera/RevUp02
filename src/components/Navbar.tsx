@@ -6,7 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
 import servicePages from "@/config/service-pages.json";
-import { alternatePath, pagePath, serviceLang, useLang, type PageKey } from "@/config/i18n";
+import { alternatePath, listedServices, pagePath, useLang, type PageKey } from "@/config/i18n";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import revupLogoLight from "@/assets/revup-logo-light.png";
 
@@ -44,7 +44,7 @@ export const Navbar = () => {
   const lang = useLang();
   const t = COPY[lang];
   const home = pagePath("home", lang);
-  const langServices = servicePages.filter((page) => serviceLang(page) === lang);
+  const langServices = listedServices(lang);
 
   /** The quote form lives at the bottom of the home page ("Let's Work Together"). */
   const goToQuoteForm = () => {

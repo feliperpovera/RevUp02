@@ -15,6 +15,8 @@ type ServicePage = (typeof servicePages)[number];
 type BlogPost = (typeof blogPosts)[number];
 
 export const serviceLang = (page: ServicePage): Lang => ("lang" in page && page.lang === "es" ? "es" : "en");
+/** Service pages shown in menus and lists for `lang` (pages marked "hidden" stay live but unlisted). */
+export const listedServices = (lang: Lang) => servicePages.filter((p) => serviceLang(p) === lang && !("hidden" in p && p.hidden));
 export const postLang = (post: BlogPost): Lang => ("lang" in post && post.lang === "es" ? "es" : "en");
 export const postPath = (post: BlogPost): string => (postLang(post) === "es" ? `/es/blog/${post.slug}` : `/blog/${post.slug}`);
 

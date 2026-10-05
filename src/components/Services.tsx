@@ -1,7 +1,7 @@
 import { ShoppingCart, Code, Settings, Zap, Search, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import servicePages from "@/config/service-pages.json";
-import { localizePath, pagePath, serviceLang, useLang, type Lang } from "@/config/i18n";
+import { listedServices, localizePath, pagePath, useLang, type Lang } from "@/config/i18n";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
 
 type Text = Record<Lang, string>;
@@ -17,10 +17,10 @@ const services: { icon: typeof Search; title: Text; description: Text; to?: stri
   },
   {
     icon: Code,
-    title: { en: "Website & E-commerce Development", es: "Desarrollo de sitios web y e-commerce" },
+    title: { en: "Websites for Service Businesses", es: "Páginas web para negocios de servicios" },
     description: {
-      en: "Custom Shopify stores, high-converting landing pages, and responsive websites designed to turn visitors into customers and drive online sales.",
-      es: "Tiendas Shopify a la medida, landing pages que convierten y sitios web responsivos diseñados para convertir visitantes en clientes e impulsar tus ventas en línea.",
+      en: "Fast, mobile-first websites and landing pages for service businesses, built to turn visitors into calls, quote requests and booked jobs.",
+      es: "Sitios web y landing pages rápidos y pensados para celular, hechos para que tus visitas se conviertan en llamadas, cotizaciones y trabajos agendados.",
     },
   },
   {
@@ -145,7 +145,7 @@ export const Services = () => {
           </div>
           <nav aria-label={t.navLabel} className="mt-12 flex flex-wrap items-center gap-3">
             <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">{t.explore}</span>
-            {servicePages.filter((p) => serviceLang(p) === lang).map((p) => (
+            {listedServices(lang).map((p) => (
               <Link
                 key={p.path}
                 to={p.path}

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
 import { goToForm, WHATSAPP_URL } from "@/config/links";
 import servicePages from "@/config/service-pages.json";
-import { pagePath } from "@/config/i18n";
+import { listedServices, pagePath } from "@/config/i18n";
 import { PricingPlans, type PlanId } from "@/components/PricingPlans";
 
 export type ServicePage = (typeof servicePages)[number];
@@ -37,7 +37,7 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
   const t = LABELS[lang];
   const industries = "industries" in page ? (page.industries as string[]) : [];
   const plans: PlanId[] = []; // prices hidden from the site
-  const others = servicePages.filter((p) => p.path !== page.path && ("lang" in p ? p.lang : "en") === lang);
+  const others = listedServices(lang).filter((p) => p.path !== page.path);
 
   return (
     <div className="min-h-screen bg-transparent" lang={lang === "es" ? "es" : undefined}>

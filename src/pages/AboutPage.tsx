@@ -27,7 +27,7 @@ const COPY = {
     intro: (
       <>
         <p>
-          RevUp is a <strong>modern digital marketing and automation agency</strong> helping businesses grow smarter and faster through data-driven strategy and AI-powered solutions. We specialize in <strong>Google Ads</strong>, <strong>Meta advertising</strong>, <strong>TikTok marketing</strong>, high-performance <strong>Shopify and website development</strong>, and custom <strong>automations</strong> that streamline operations and boost efficiency.
+          RevUp is a <strong>modern digital marketing and automation agency</strong> helping businesses grow smarter and faster through data-driven strategy and AI-powered solutions. We specialize in <strong>Google Ads</strong>, <strong>Meta advertising</strong>, <strong>TikTok marketing</strong>, high-performance <strong>website development</strong>, and custom <strong>automations</strong> that streamline operations and boost efficiency.
         </p>
 
         <p>
@@ -55,7 +55,7 @@ const COPY = {
     intro: (
       <>
         <p>
-          RevUp es una <strong>agencia moderna de marketing digital y automatización</strong> que ayuda a los negocios a crecer de forma más inteligente y rápida con estrategias basadas en datos y soluciones con IA. Nos especializamos en <strong>Google Ads</strong>, <strong>publicidad en Meta</strong>, <strong>marketing en TikTok</strong>, <strong>desarrollo de sitios web y tiendas Shopify</strong> de alto rendimiento y <strong>automatizaciones</strong> a la medida que simplifican tu operación y aumentan la eficiencia.
+          RevUp es una <strong>agencia moderna de marketing digital y automatización</strong> que ayuda a los negocios a crecer de forma más inteligente y rápida con estrategias basadas en datos y soluciones con IA. Nos especializamos en <strong>Google Ads</strong>, <strong>publicidad en Meta</strong>, <strong>marketing en TikTok</strong>, <strong>desarrollo de sitios web</strong> de alto rendimiento y <strong>automatizaciones</strong> a la medida que simplifican tu operación y aumentan la eficiencia.
         </p>
 
         <p>

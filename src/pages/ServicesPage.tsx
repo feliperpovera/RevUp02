@@ -6,7 +6,7 @@ import { goToForm } from "@/config/links";
 import { Footer } from "@/components/Footer";
 import { ShoppingCart, Code, Settings, Zap, Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { localizePath, pagePath, serviceLang, useLang } from "@/config/i18n";
+import { listedServices, localizePath, pagePath, useLang } from "@/config/i18n";
 
 /** Card icons, in the same order as COPY[lang].cards. The last card (SEO) also links to its service page. */
 const ICONS = [ShoppingCart, Code, Settings, Zap, Search];
@@ -31,7 +31,7 @@ const COPY = {
         title: "Website & Store Development",
         text: "We build high-performing websites, e-commerce stores, and landing pages designed to convert visitors into customers.",
         bullets: [
-          "Custom Shopify stores optimized for conversions and user experience",
+          "Websites for service businesses with a page for each service and area",
           "Landing pages built for specific campaigns with clear CTAs",
           "Responsive design that looks great on all devices",
           "Speed optimization for better user experience and SEO",
@@ -93,7 +93,7 @@ const COPY = {
         title: "Desarrollo de sitios web y tiendas",
         text: "Creamos sitios web, tiendas en línea y landing pages de alto rendimiento, diseñados para convertir visitantes en clientes.",
         bullets: [
-          "Tiendas Shopify a la medida, optimizadas para conversiones y experiencia de usuario",
+          "Sitios web para negocios de servicios con una página por servicio y zona",
           "Landing pages para campañas específicas, con llamados a la acción claros",
           "Diseño responsive que se ve muy bien en todos los dispositivos",
           "Optimización de velocidad para mejorar la experiencia de usuario y el SEO",
@@ -211,7 +211,7 @@ const ServicesPage = () => {
 
         <nav aria-label={t.navLabel} className="container mx-auto mt-16 flex max-w-6xl justify-center px-4 md:px-6 flex-wrap items-center gap-3">
           <span className="mr-2 text-xs font-medium uppercase tracking-[0.3em] text-stone">{t.explore}</span>
-          {servicePages.filter((p) => serviceLang(p) === lang).map((p) => (
+          {listedServices(lang).map((p) => (
             <Link
               key={p.path}
               to={p.path}

@@ -710,7 +710,8 @@
     "why": [
       "Your store is where your marketing budget either pays off or disappears. A slow product page, a confusing menu or a checkout with too many steps can undo the work of even the best ad campaign. Most shoppers arrive on their phone, decide in seconds whether to stay and leave the moment something feels hard — and a good-looking theme alone doesn't fix that.",
       "That's why we treat Shopify website design as a sales problem, not just a visual one. As a Shopify development agency that also runs paid advertising, we design product pages, collections and landing pages around how ad traffic actually behaves, keep every page fast on mobile and install tracking from day one, so you can see which campaigns and products drive sales. Your store becomes a tool that grows with your marketing, not a template that sits still."
-    ]
+    ],
+    "hidden": true
   },
   {
     "path": "/es/marketing-para-negocios-de-servicios",
@@ -1512,6 +1513,7 @@
         "q": "¿Puedo tener mi tienda Shopify en inglés y en español?",
         "a": "Sí. Shopify permite vender en varios idiomas, así que tu tienda puede tener una versión en inglés y otra en español para que cada cliente compre en el idioma que prefiere. Nosotros la configuramos, te acompañamos en español durante todo el proyecto, y puedes usar el panel de administración de Shopify en español."
       }
-    ]
+    ],
+    "hidden": true
   }
 ]

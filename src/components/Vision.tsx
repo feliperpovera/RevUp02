@@ -85,7 +85,7 @@ const COPY: Record<Lang, { eyebrow: string; titleA: string; p1: ReactNode; p2: R
         <strong className="font-semibold text-foreground">TikTok marketing</strong>,
         high-performance{" "}
         <strong className="font-semibold text-foreground">
-          Shopify and website development
+          website development
         </strong>
         , and custom <strong className="font-semibold text-foreground">automations</strong>{" "}
         that streamline operations and boost efficiency.
@@ -118,7 +118,7 @@ const COPY: Record<Lang, { eyebrow: string; titleA: string; p1: ReactNode; p2: R
         <strong className="font-semibold text-foreground">Google Ads</strong>,{" "}
         <strong className="font-semibold text-foreground">publicidad en Meta</strong>,{" "}
         <strong className="font-semibold text-foreground">marketing en TikTok</strong>,{" "}
-        <strong className="font-semibold text-foreground">desarrollo de Shopify y sitios web</strong>{" "}
+        <strong className="font-semibold text-foreground">desarrollo de sitios web</strong>{" "}
         de alto rendimiento y{" "}
         <strong className="font-semibold text-foreground">automatizaciones</strong> a la medida que
         simplifican tus operaciones y aumentan la eficiencia.
