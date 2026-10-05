@@ -21,6 +21,7 @@ import googleLogo from "@/assets/google-logo.png";
 import tiktokLogo from "@/assets/tiktok-logo.png";
 import shopifyLogo from "@/assets/shopify-logo.svg";
 import chatgptLogo from "@/assets/chatgpt-logo.svg";
+import { FormConsent } from "@/components/FormConsent";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -390,6 +391,7 @@ export const Hero = () => {
                 <p className="text-center text-[11px] font-light text-stone">
                   {t.note}
                 </p>
+                <FormConsent />
               </form>
             </BrandCard>
           </motion.div>

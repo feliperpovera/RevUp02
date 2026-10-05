@@ -98,6 +98,42 @@
       "description": "Gracias por escribirnos. Nuestro equipo te responderá en menos de 24 horas.",
       "lang": "es",
       "noindex": true
+    },
+    "/privacy-policy": {
+      "title": "Privacy Policy | RevUp Agency Group",
+      "description": "How RevUp Agency Group collects, uses and protects personal information, your U.S. privacy rights, cookies and how to opt out of targeted advertising."
+    },
+    "/es/politica-de-privacidad": {
+      "title": "Política de privacidad | RevUp Agency Group",
+      "description": "Cómo RevUp Agency Group recopila, usa y protege la información personal, tus derechos de privacidad en EE. UU., las cookies y cómo excluirte.",
+      "lang": "es"
+    },
+    "/cookie-policy": {
+      "title": "Cookie Policy | RevUp Agency Group",
+      "description": "The cookies and similar technologies RevUp Agency Group uses for analytics and advertising, and how to accept, reject or change your choices."
+    },
+    "/es/politica-de-cookies": {
+      "title": "Política de cookies | RevUp Agency Group",
+      "description": "Las cookies y tecnologías similares que usa RevUp Agency Group para analítica y publicidad, y cómo aceptarlas, rechazarlas o cambiar tu elección.",
+      "lang": "es"
+    },
+    "/terms": {
+      "title": "Terms of Use | RevUp Agency Group",
+      "description": "The terms that govern the use of the RevUp Agency Group website, including disclaimers, intellectual property and governing law."
+    },
+    "/es/terminos": {
+      "title": "Términos de uso | RevUp Agency Group",
+      "description": "Los términos que rigen el uso del sitio web de RevUp Agency Group, incluidas exenciones, propiedad intelectual y ley aplicable.",
+      "lang": "es"
+    },
+    "/accessibility": {
+      "title": "Accessibility Statement | RevUp Agency Group",
+      "description": "RevUp Agency Group's commitment to an accessible website (WCAG 2.1 AA) and how to get help if you have trouble using it."
+    },
+    "/es/accesibilidad": {
+      "title": "Declaración de accesibilidad | RevUp Agency Group",
+      "description": "El compromiso de RevUp Agency Group con un sitio web accesible (WCAG 2.1 AA) y cómo pedir ayuda si tienes dificultades.",
+      "lang": "es"
     }
   }
 }

@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Instagram, MessageCircle } from "lucide-react";
 import revupLogoMain from "@/assets/revup-logo-main.png";
 import { CALENDLY_URL, WHATSAPP_URL, whatsappUrl } from "@/config/links";
-import { localizePath, useLang } from "@/config/i18n";
+import { localizePath, pagePath, useLang } from "@/config/i18n";
 import { DeviceAsterisk, Reveal } from "@/components/brand/kit";
+import { OPEN_CONSENT_EVENT } from "@/components/CookieConsent";
 
 /** `to` is the English path; localizePath maps it to the Spanish page. */
 const QUICK_LINKS = [
@@ -33,6 +34,8 @@ const COPY = {
     ready: "Ready to transform your digital presence?",
     talk: "Let's talk.",
     rights: "All rights reserved.",
+    legal: [["privacy", "Privacy Policy"], ["cookies", "Cookie Policy"], ["terms", "Terms of Use"], ["accessibility", "Accessibility"]] as const,
+    choices: "Your Privacy Choices",
     whatsapp: WHATSAPP_URL,
   },
   es: {
@@ -46,6 +49,8 @@ const COPY = {
     ready: "¿Listo para transformar tu presencia digital?",
     talk: "Hablemos.",
     rights: "Todos los derechos reservados.",
+    legal: [["privacy", "Política de privacidad"], ["cookies", "Política de cookies"], ["terms", "Términos de uso"], ["accessibility", "Accesibilidad"]] as const,
+    choices: "Tus opciones de privacidad",
     whatsapp: whatsappUrl("¡Hola RevUp! Quiero hacer crecer mi negocio."),
   },
 };
@@ -143,9 +148,21 @@ export const Footer = () => {
           distance={16}
           className="flex flex-col items-center justify-between gap-3 border-t border-cream/15 py-8 sm:flex-row"
         >
-          <p className="text-xs font-light text-cream/50 md:text-sm">
-            © {new Date().getFullYear()} RevUp Agency Group. {t.rights}
-          </p>
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <p className="text-xs font-light text-cream/50 md:text-sm">
+              © {new Date().getFullYear()} RevUp Agency Group. {t.rights}
+            </p>
+            <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-cream/60 sm:justify-start">
+              {t.legal.map(([key, label]) => (
+                <Link key={key} to={pagePath(key, lang)} className="hover:text-accent">
+                  {label}
+                </Link>
+              ))}
+              <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_EVENT))} className="hover:text-accent">
+                {t.choices}
+              </button>
+            </nav>
+          </div>
           <span aria-hidden="true" className="font-heading text-xs tracking-wide text-cream/40">
             /RevUp
           </span>

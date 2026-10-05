@@ -13,6 +13,7 @@ import { postPath, type PageKey } from "@/config/i18n";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { CookieConsent } from "@/components/CookieConsent";
 
 const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -28,6 +29,7 @@ const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const PricingPage = lazy(() => import("./pages/PricingPage"));
+const LegalPage = lazy(() => import("./pages/LegalPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -44,6 +46,10 @@ const CORE_PAGES: [PageKey, ReactElement][] = [
   ["roas", <ROASCalculatorPage />],
   ["blog", <BlogPage />],
   ["thanks", <GraciasPage />],
+  ["privacy", <LegalPage doc="privacy" />],
+  ["cookies", <LegalPage doc="cookies" />],
+  ["terms", <LegalPage doc="terms" />],
+  ["accessibility", <LegalPage doc="accessibility" />],
 ];
 
 /** Old URLs that moved; .htaccess also answers these with a 301. */
@@ -73,6 +79,7 @@ const App = () => (
             <RouteMeta />
             <AnimatedBackground />
             <WhatsAppButton />
+            <CookieConsent />
             <Suspense fallback={<RouteLoadingFallback />}>
               <Routes>
                 {CORE_PAGES.flatMap(([key, element]) =>

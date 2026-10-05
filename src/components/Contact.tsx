@@ -9,6 +9,7 @@ import { submitForm } from "@/lib/submitForm";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal } from "@/components/brand/kit";
 import { CalendlyButton } from "@/components/CalendlyButton";
 import { pagePath, useLang } from "@/config/i18n";
+import { FormConsent } from "@/components/FormConsent";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -54,7 +55,6 @@ const COPY = {
     submitLabel: "Submit contact form",
     sending: "Sending…",
     submit: "Send my message",
-    privacy: "Your information stays private. We never share it.",
   },
   es: {
     trust: ["Te respondemos en menos de 24 horas.", "Tu información es privada. Nunca la compartimos."],
@@ -81,7 +81,6 @@ const COPY = {
     submitLabel: "Enviar formulario de contacto",
     sending: "Enviando…",
     submit: "Enviar mi mensaje",
-    privacy: "Tu información es privada. Nunca la compartimos.",
   },
 };
 
@@ -300,9 +299,7 @@ export const Contact = () => {
                   )}
                 </Button>
 
-                <p className="text-center text-[11px] font-light text-stone">
-                  {t.privacy}
-                </p>
+                <FormConsent />
               </form>
             </BrandCard>
           </Reveal>
