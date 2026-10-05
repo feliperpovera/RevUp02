@@ -1,0 +1,1 @@
+const e=a=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:"lead",lead_source:a,page:"/gracias"}),a==="whatsapp"&&window.dataLayer.push({event:"whatsapp_lead",lead_source:a,page:"/gracias"})},t=a=>{window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:"plan_interest",plan:a})};export{t as a,e as t};
