@@ -150,7 +150,7 @@ export const Footer = () => {
         >
           <div className="flex flex-col items-center gap-2 sm:items-start">
             <p className="text-xs font-light text-cream/50 md:text-sm">
-              © {new Date().getFullYear()} RevUp Agency Group. {t.rights}
+              © {new Date().getFullYear()} RevUp Agency Group LLC. {t.rights}
             </p>
             <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-cream/60 sm:justify-start">
               {t.legal.map(([key, label]) => (
