@@ -8,6 +8,9 @@ RewriteRule ^agencia-google-ads/?$ /es/agencia-google-ads [R=301,L]
 RewriteRule ^agencia-seo/?$ /es/agencia-seo [R=301,L]
 RewriteRule ^precios/?$ /es/precios [R=301,L]
 
+# Old Lovable admin URL still shown in Google
+RewriteRule ^portal/?$ / [R=301,L]
+
 # Per-route static HTML with page-specific SEO tags: /services -> services.html, /es -> es.html
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([a-z0-9-]+)$ $1.html [L]
