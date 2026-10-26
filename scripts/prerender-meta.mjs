@@ -35,6 +35,11 @@ const serviceJsonLd = (page) => {
       serviceType: page.name,
       provider: { "@id": `${seo.site}/#organization` },
       areaServed: { "@type": "Country", name: "United States" },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: page.name,
+        itemListElement: page.included.map((i) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: i.title, description: i.text } })),
+      },
       inLanguage: lang === "es" ? "es-US" : "en-US",
     },
     {
@@ -52,6 +57,36 @@ const serviceJsonLd = (page) => {
       ],
     },
   ];
+};
+
+// Static copy of a service page's content inside #root, so crawlers get the
+// H1, sections, FAQ and internal links without running JS. React's createRoot
+// replaces it on mount; the text comes from the same service-pages.json.
+const BODY_LABELS = {
+  en: { why: "Why it works", included: "What's included", how: "How we work", industries: "Industries we serve", small: "For small businesses", large: "For large brands", faq: "Frequently asked questions", others: "Other services" },
+  es: { why: "Por qué funciona", included: "Qué incluye", how: "Cómo trabajamos", industries: "Industrias que atendemos", small: "Para negocios pequeños", large: "Para empresas grandes", faq: "Preguntas frecuentes", others: "Otros servicios" },
+};
+const serviceBody = (page) => {
+  const lang = langOf(page);
+  const t = BODY_LABELS[lang];
+  const e = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const others = servicePages.filter((p) => langOf(p) === lang && p.path !== page.path && !p.hidden);
+  return [
+    `<main class="container mx-auto max-w-5xl px-4 pb-24 pt-36 md:px-8">`,
+    `<nav aria-label="Breadcrumb"><a href="${pages.home[lang]}">${LABELS[lang].home}</a> / <a href="${pages.services[lang]}">${LABELS[lang].services}</a> / ${e(page.name)}</nav>`,
+    `<h1>${e(page.h1)}</h1>`,
+    `<p>${e(page.intro)}</p>`,
+    `<h2>${t.why}</h2>`,
+    ...page.why.map((p) => `<p>${e(p)}</p>`),
+    `<h2>${t.included}</h2><ul>${page.included.map((i) => `<li><h3>${e(i.title)}</h3><p>${e(i.text)}</p></li>`).join("")}</ul>`,
+    `<h2>${t.how}</h2><ol>${page.process.map((s) => `<li><h3>${e(s.title)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`,
+    page.industries?.length ? `<h2>${t.industries}</h2><ul>${page.industries.map((i) => `<li>${e(i)}</li>`).join("")}</ul>` : "",
+    `<h2>${t.small}</h2><p>${e(page.small)}</p>`,
+    `<h2>${t.large}</h2><p>${e(page.large)}</p>`,
+    `<h2>${t.faq}</h2>${page.faqs.map((f) => `<h3>${e(f.q)}</h3><p>${e(f.a)}</p>`).join("")}`,
+    `<nav aria-label="${t.others}"><p>${t.others}</p><ul>${others.map((p) => `<li><a href="${p.path}">${e(p.name)}</a></li>`).join("")}</ul></nav>`,
+    `</main>`,
+  ].join("");
 };
 
 const blogJsonLd = (post) => {
@@ -86,7 +121,7 @@ const blogJsonLd = (post) => {
 
 const routes = {
   ...seo.routes,
-  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description, lang: langOf(p), jsonLd: serviceJsonLd(p) }])),
+  ...Object.fromEntries(servicePages.map((p) => [p.path, { title: p.title, description: p.description, lang: langOf(p), jsonLd: serviceJsonLd(p), body: serviceBody(p) }])),
   ...Object.fromEntries(blogPosts.map((p) => [postPath(p), { title: p.title, description: p.description, lang: langOf(p), jsonLd: blogJsonLd(p) }])),
 };
 
@@ -140,6 +175,11 @@ for (const [path, meta] of Object.entries(routes)) {
   if (meta.jsonLd) {
     const ld = meta.jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`).join("\n    ");
     html = html.replace("</head>", `    ${ld}\n  </head>`);
+  }
+
+  if (meta.body) {
+    if (!html.includes('<div id="root"></div>')) throw new Error("Empty #root not found in template");
+    html = html.replace('<div id="root"></div>', `<div id="root">${meta.body}</div>`);
   }
 
   const out = path === "/" ? join(root, "dist/index.html") : join(root, "dist", `${path.slice(1).replace(/\//g, "--")}.html`);

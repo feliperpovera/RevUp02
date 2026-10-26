@@ -433,11 +433,11 @@
     "path": "/tiktok-ads-management",
     "alt": "/es/agencia-tiktok-ads",
     "name": "TikTok Ads Management",
-    "title": "TikTok Ads Agency & Management for US Businesses | RevUp",
-    "description": "RevUp is a TikTok ads agency for US businesses: native video creative, Spark Ads and TikTok Pixel tracking built to drive leads and sales. Book a free call.",
+    "title": "TikTok Ads Agency & Marketing Services in the US | RevUp",
+    "description": "TikTok ads agency for US businesses: native video creative, Spark Ads, lead ads and TikTok Pixel tracking, managed in English or Spanish. Book a free call.",
     "eyebrow": "TikTok Ads",
-    "h1": "TikTok ads agency: native video ads that drive real sales",
-    "intro": "RevUp is a TikTok ads agency for small businesses, local service companies and e-commerce brands across the United States. TikTok rewards ads that look and feel like real content, not traditional commercials, so our TikTok ads management starts with native video creative and solid tracking, then tests and scales what turns attention into leads and sales.",
+    "h1": "TikTok ads agency for US businesses: native video ads that drive real sales",
+    "intro": "RevUp is a TikTok ads agency and TikTok advertising partner for small businesses, local service companies and e-commerce brands across the United States. TikTok rewards ads that look and feel like real content, not traditional commercials, so our TikTok marketing services start with native video creative and solid tracking, then test and scale what turns attention into leads and sales.",
     "included": [
       {
         "title": "Native creative strategy",
@@ -487,7 +487,15 @@
     "faqs": [
       {
         "q": "How much do TikTok ads cost?",
-        "a": "TikTok advertising cost has two parts. Your ad spend is paid directly to TikTok, and you control it with daily or lifetime budgets (TikTok sets minimum budgets per campaign and ad group). Our TikTok ads management is a flat monthly fee that covers strategy, creative direction, tracking, optimization and reporting. You can compare the plans on this page, and in a free call we'll recommend a starting ad budget based on your goals."
+        "a": "TikTok advertising cost has two parts. Your ad spend is paid directly to TikTok, and you control it with daily or lifetime budgets (TikTok sets minimum budgets per campaign and ad group). Our TikTok ads management is a flat monthly fee that covers strategy, creative direction, tracking, optimization and reporting. In a free call we'll quote the management fee and recommend a starting ad budget based on your goals."
+      },
+      {
+        "q": "What do your TikTok marketing services include?",
+        "a": "TikTok campaign setup and targeting, creative direction for native-style videos, Spark Ads and lead generation campaigns, TikTok Pixel and Events API tracking, ongoing testing and optimization, and a monthly results report. For e-commerce brands we also support TikTok Shop."
+      },
+      {
+        "q": "Do you run TikTok ads in Spanish?",
+        "a": "Yes. RevUp is a bilingual team, so we can plan, script and target TikTok ads in English, in Spanish for Hispanic customers in the US, or both. Reports and calls can be in either language too."
       },
       {
         "q": "Are TikTok ads worth it for a small business?",
@@ -516,16 +524,41 @@
       {
         "q": "How do I choose the best TikTok marketing agency?",
         "a": "Start with how the agency approaches creative, because on TikTok the video does much of the targeting work. Then ask how they track leads and sales, whether you keep ownership of your ad account and data, and what reporting you'll get. As a TikTok advertising agency, RevUp works inside your own TikTok Ads Manager account, measures results with the TikTok Pixel and Events API, and reports on cost per result and return, not just views."
+      },
+      {
+        "q": "How soon will I see results from TikTok ads?",
+        "a": "Paid ads can bring leads and sales in the first weeks once tracking is in place. The first stretch is a testing period: we launch several creative concepts, keep the ones with the lowest cost per lead or sale and replace the rest. We report on results every month."
+      },
+      {
+        "q": "Do I keep ownership of my TikTok ad account?",
+        "a": "Yes. We work inside your own TikTok Ads Manager account, so the account, the Pixel data and the audiences stay yours. Ad spend is paid directly to TikTok from your payment method."
+      },
+      {
+        "q": "TikTok Ads or Facebook Ads: which is better for my business?",
+        "a": "It depends on where your customers are and what kind of content you can produce. Facebook and Instagram offer lead forms and click-to-WhatsApp ads that work well for local businesses; TikTok stands out when your product or service shines on video and you want to reach new audiences. Many businesses use both, and our All-Platform Ads plan manages Google, Meta and TikTok under one strategy and one monthly fee."
       }
     ],
     "why": [
       "TikTok works differently from other ad platforms. The feed is full-screen, sound-on and driven by entertainment, so ads that look like traditional commercials get skipped in seconds. The businesses that win with TikTok advertising make ads that feel like the content people came to watch: real people, quick hooks, honest demonstrations and trends adapted to their product or service.",
-      "That's why our work as a TikTok ads agency starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many businesses, TikTok becomes a way to reach new audiences that search and other social platforms miss."
+      "That's why our work as a TikTok ads agency starts with creative, not settings. We study what's already performing in your category, turn those insights into concepts your team or creators can film, and test many variations quickly to find the few that break through. Then we connect the TikTok Pixel and Events API so the platform optimizes toward customers, not just views. For many businesses, TikTok becomes a way to reach new audiences that search and other social platforms miss.",
+      "Our team works in English and Spanish, with operations in the United States and Colombia. That means we can run TikTok ads for the general US market, for Spanish-speaking customers in the US, or for both from the same account, with creative, targeting and reporting in the language your customers and your team actually use."
     ],
     "plans": [
       "tiktok",
       "all-ads",
       "complete"
+    ],
+    "industries": [
+      "E-commerce & online stores",
+      "Restaurants & food",
+      "Med spas & aesthetics",
+      "Beauty salons & barbershops",
+      "Dental clinics",
+      "Gyms & personal trainers",
+      "Construction & remodeling",
+      "Cleaning services",
+      "Landscaping & lawn care",
+      "Auto repair"
     ]
   },
   {
@@ -1188,14 +1221,15 @@
     "alt": "/tiktok-ads-management",
     "lang": "es",
     "name": "Agencia de TikTok Ads",
-    "title": "Agencia de TikTok Ads: Publicidad en TikTok en USA | RevUp",
-    "description": "Agencia de TikTok Ads en español para negocios en USA: videos nativos, Spark Ads y medición con TikTok Pixel para traer clientes. Agenda tu llamada gratis.",
+    "title": "Agencia de TikTok Ads en Español para Negocios en USA | RevUp",
+    "description": "Agencia de TikTok Ads en español para negocios en USA: videos nativos, Spark Ads, formularios y medición con TikTok Pixel para traer clientes. Agenda tu llamada.",
     "eyebrow": "TikTok Ads en Español",
     "h1": "Agencia de TikTok Ads en español: anuncios en video que traen clientes reales",
-    "intro": "En RevUp somos una agencia de TikTok Ads que trabaja en español con pequeñas empresas, negocios de servicios locales y tiendas en línea en todo Estados Unidos. En TikTok ganan los anuncios que se ven y se sienten como contenido real, no como comerciales de televisión. Por eso nuestra publicidad en TikTok empieza con videos nativos y una medición bien hecha, y después prueba y escala lo que convierte la atención en clientes y ventas.",
+    "intro": "En RevUp somos una agencia de TikTok Ads (agencia de publicidad en TikTok) que trabaja en español e inglés con pequeñas empresas, negocios de servicios locales y tiendas en línea en todo Estados Unidos. En TikTok ganan los anuncios que se ven y se sienten como contenido real, no como comerciales de televisión. Por eso nuestra publicidad en TikTok empieza con videos nativos y una medición bien hecha, y después prueba y escala lo que convierte la atención en clientes y ventas.",
     "why": [
       "TikTok funciona distinto a las demás plataformas de anuncios. El video ocupa toda la pantalla, se ve con sonido y está hecho para entretener, así que los anuncios que parecen comerciales tradicionales se saltan en segundos. Los negocios a los que les va bien con la publicidad en TikTok hacen anuncios que se sienten como el contenido que la gente vino a ver: personas reales, ganchos rápidos, demostraciones honestas y tendencias adaptadas a su producto o servicio.",
-      "Por eso nuestro trabajo como agencia de TikTok Ads empieza por el video, no por la configuración. Estudiamos lo que ya funciona en tu categoría, lo convertimos en ideas que tú, tu equipo o creadores de contenido pueden grabar con el celular, y probamos muchas variaciones rápido para encontrar las pocas que de verdad destacan. Después conectamos el TikTok Pixel y la Events API para que la plataforma optimice hacia clientes y ventas, no solo hacia vistas. Para muchos negocios, TikTok se vuelve una forma de llegar a públicos nuevos que Google y otras redes no alcanzan, en inglés o en español."
+      "Por eso nuestro trabajo como agencia de TikTok Ads empieza por el video, no por la configuración. Estudiamos lo que ya funciona en tu categoría, lo convertimos en ideas que tú, tu equipo o creadores de contenido pueden grabar con el celular, y probamos muchas variaciones rápido para encontrar las pocas que de verdad destacan. Después conectamos el TikTok Pixel y la Events API para que la plataforma optimice hacia clientes y ventas, no solo hacia vistas. Para muchos negocios, TikTok se vuelve una forma de llegar a públicos nuevos que Google y otras redes no alcanzan, en inglés o en español.",
+      "Somos un equipo bilingüe con operaciones en Estados Unidos y Colombia. Podemos manejar tus anuncios de TikTok para el público general de Estados Unidos, para clientes hispanos que prefieren el español, o para ambos desde la misma cuenta, con videos, segmentación y reportes en el idioma que usan tus clientes y tu equipo."
     ],
     "included": [
       {
@@ -1258,7 +1292,15 @@
     "faqs": [
       {
         "q": "¿Cuánto cuesta la publicidad en TikTok y cuánto cobra una agencia?",
-        "a": "Tiene dos partes. Tu presupuesto de anuncios se paga directo a TikTok y lo controlas con presupuestos diarios o totales (TikTok pide un presupuesto mínimo por campaña y por grupo de anuncios). Nuestra administración de TikTok Ads es una tarifa mensual fija que cubre estrategia, dirección creativa, medición, optimización y reportes. Puedes comparar los planes en esta página, y en una llamada gratis te recomendamos un presupuesto inicial según tus metas."
+        "a": "Tiene dos partes. Tu presupuesto de anuncios se paga directo a TikTok y lo controlas con presupuestos diarios o totales (TikTok pide un presupuesto mínimo por campaña y por grupo de anuncios). Nuestra administración de TikTok Ads es una tarifa mensual fija que cubre estrategia, dirección creativa, medición, optimización y reportes. En una llamada gratis te damos el valor de la administración y te recomendamos un presupuesto inicial según tus metas."
+      },
+      {
+        "q": "¿Qué incluyen sus servicios de marketing en TikTok?",
+        "a": "Configuración de campañas en TikTok y segmentación, dirección creativa para videos nativos, Spark Ads y campañas de generación de clientes, medición con TikTok Pixel y Events API, pruebas y optimización continua, y un reporte mensual de resultados. Para tiendas en línea también apoyamos TikTok Shop."
+      },
+      {
+        "q": "¿Hacen anuncios de TikTok en español y en inglés?",
+        "a": "Sí. Somos un equipo bilingüe: planeamos, escribimos y segmentamos anuncios de TikTok en español para clientes hispanos en Estados Unidos, en inglés para el público general, o en ambos. Los reportes y las llamadas también pueden ser en cualquiera de los dos idiomas."
       },
       {
         "q": "¿Funciona la publicidad en TikTok para un negocio pequeño?",
@@ -1287,6 +1329,14 @@
       {
         "q": "¿TikTok Ads o Facebook Ads: cuál me conviene?",
         "a": "Depende de dónde está tu cliente y del tipo de contenido que puedes producir. Facebook e Instagram ofrecen formularios y anuncios que abren un chat de WhatsApp, muy útiles para negocios locales; TikTok destaca cuando tu producto o servicio se luce en video y quieres llegar a públicos nuevos. Muchos negocios usan los dos: con el plan Todas las plataformas manejamos Google, Meta y TikTok con una sola estrategia y la misma tarifa mensual."
+      },
+      {
+        "q": "¿Cuándo veré resultados con TikTok Ads?",
+        "a": "Los anuncios pueden traer contactos y ventas desde las primeras semanas, una vez la medición está lista. La primera etapa es de pruebas: lanzamos varias ideas de video, nos quedamos con las de menor costo por contacto o por venta y reemplazamos el resto. Te reportamos resultados cada mes."
+      },
+      {
+        "q": "¿La cuenta de anuncios de TikTok es mía?",
+        "a": "Sí. Trabajamos dentro de tu propia cuenta de TikTok Ads Manager, así que la cuenta, los datos del Pixel y los públicos siguen siendo tuyos. La inversión en anuncios se paga directo a TikTok con tu método de pago."
       }
     ],
     "plans": [

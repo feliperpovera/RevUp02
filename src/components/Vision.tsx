@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { DeviceCircles, Eyebrow, Reveal, SectionHeading } from "@/components/brand/kit";
+import { Link } from "react-router-dom";
 import { useLang, type Lang } from "@/config/i18n";
 
 const PILLARS: { index: string; title: Record<Lang, string>; body: Record<Lang, ReactNode> }[] = [
@@ -82,7 +83,9 @@ const COPY: Record<Lang, { eyebrow: string; titleA: string; p1: ReactNode; p2: R
         AI-powered solutions. We specialize in{" "}
         <strong className="font-semibold text-foreground">Google Ads</strong>,{" "}
         <strong className="font-semibold text-foreground">Meta advertising</strong>,{" "}
-        <strong className="font-semibold text-foreground">TikTok marketing</strong>,
+        <Link to="/tiktok-ads-management" className="underline decoration-performance/40 underline-offset-4 hover:text-performance">
+          <strong className="font-semibold text-foreground">TikTok marketing</strong>
+        </Link>,
         high-performance{" "}
         <strong className="font-semibold text-foreground">
           website development
@@ -117,7 +120,9 @@ const COPY: Record<Lang, { eyebrow: string; titleA: string; p1: ReactNode; p2: R
         datos y soluciones con IA. Nos especializamos en{" "}
         <strong className="font-semibold text-foreground">Google Ads</strong>,{" "}
         <strong className="font-semibold text-foreground">publicidad en Meta</strong>,{" "}
-        <strong className="font-semibold text-foreground">marketing en TikTok</strong>,{" "}
+        <Link to="/es/agencia-tiktok-ads" className="underline decoration-performance/40 underline-offset-4 hover:text-performance">
+          <strong className="font-semibold text-foreground">marketing en TikTok</strong>
+        </Link>,{" "}
         <strong className="font-semibold text-foreground">desarrollo de sitios web</strong>{" "}
         de alto rendimiento y{" "}
         <strong className="font-semibold text-foreground">automatizaciones</strong> a la medida que
