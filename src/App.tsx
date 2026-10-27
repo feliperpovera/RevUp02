@@ -2,8 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { lazy, Suspense, type ReactElement } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { lazy, Suspense, useEffect, type ReactElement } from "react";
 import ScrollToTop from "@/components/ScrollToTop";
 import { RouteMeta } from "@/components/RouteMeta";
 import servicePages from "@/config/service-pages.json";
@@ -14,6 +14,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { CookieConsent } from "@/components/CookieConsent";
+import { endPrerender, prerendered } from "@/lib/prerendered";
 
 const Index = lazy(() => import("./pages/Index"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
@@ -62,11 +63,19 @@ const REDIRECTS: [string, string][] = [
   ["/agencia-seo", "/es/agencia-seo"],
 ];
 
-const RouteLoadingFallback = () => (
-  <div className="min-h-screen bg-transparent flex items-center justify-center">
-    <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent/40 border-t-accent" />
-  </div>
-);
+const RouteLoadingFallback = () => {
+  const { pathname } = useLocation();
+  // Keep showing the build-time markup of this route instead of a spinner on first load.
+  useEffect(() => endPrerender, []);
+  if (prerendered?.html && prerendered.path === pathname) {
+    return <div dangerouslySetInnerHTML={{ __html: prerendered.html }} />;
+  }
+  return (
+    <div className="min-h-screen bg-transparent flex items-center justify-center">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent/40 border-t-accent" />
+    </div>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -80,6 +89,7 @@ const App = () => (
             <AnimatedBackground />
             <WhatsAppButton />
             <CookieConsent />
+            <div data-route>
             <Suspense fallback={<RouteLoadingFallback />}>
               <Routes>
                 {CORE_PAGES.flatMap(([key, element]) =>
@@ -100,6 +110,7 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            </div>
           </BrowserRouter>
         </TooltipProvider>
     </ThemeProvider>

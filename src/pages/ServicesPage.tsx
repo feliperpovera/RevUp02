@@ -11,6 +11,13 @@ import { listedServices, localizePath, pagePath, useLang } from "@/config/i18n";
 /** Card icons, in the same order as COPY[lang].cards. The last card (SEO) also links to its service page. */
 const ICONS = [ShoppingCart, Code, Settings, Zap, Search];
 
+/** Paid-media bullets that start with a platform name link to that platform's service page. */
+const PLATFORM_PAGES: [string, string][] = [
+  ["Meta Ads", "/meta-ads-management"],
+  ["Google Ads", "/google-ads-management"],
+  ["TikTok Ads", "/tiktok-ads-management"],
+];
+
 const COPY = {
   en: {
     title: "Our",
@@ -178,7 +185,17 @@ const ServicesPage = () => {
                           {card.bullets.map((bullet) => (
                             <li key={bullet} className="flex items-start gap-2">
                               <span className="text-accent">•</span>
-                              <span>{bullet}</span>
+                              {(() => {
+                                const platform = PLATFORM_PAGES.find(([name]) => bullet.startsWith(`${name} `));
+                                if (!platform) return <span>{bullet}</span>;
+                                const [name, path] = platform;
+                                return (
+                                  <span>
+                                    <Link to={localizePath(path, lang)} className="font-medium text-performance hover:underline">{name}</Link>
+                                    {bullet.slice(name.length)}
+                                  </span>
+                                );
+                              })()}
                             </li>
                           ))}
                         </ul>

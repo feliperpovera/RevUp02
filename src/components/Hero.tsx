@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Send } from "lucide-react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Input } from "@/components/ui/input";
@@ -205,30 +205,32 @@ export const Hero = () => {
             <h1 className="font-heading text-[2.9rem] leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.2rem]">
               <span className="block">
                 {t.line1.map((word, i) => (
-                  <motion.span
-                    key={word}
-                    custom={i}
-                    variants={wordVariants}
-                    initial={prefersReducedMotion ? false : "hidden"}
-                    animate="visible"
-                    className="mr-[0.28em] inline-block text-foreground"
-                  >
-                    {word}
-                  </motion.span>
+                  <Fragment key={word}>
+                    <motion.span
+                      custom={i}
+                      variants={wordVariants}
+                      initial={prefersReducedMotion ? false : "hidden"}
+                      animate="visible"
+                      className="inline-block text-foreground"
+                    >
+                      {word}
+                    </motion.span>{" "}
+                  </Fragment>
                 ))}
               </span>
               <span className="mt-2 block">
                 {t.line2.map((word, i) => (
-                  <motion.span
-                    key={word}
-                    custom={i + 2}
-                    variants={wordVariants}
-                    initial={prefersReducedMotion ? false : "hidden"}
-                    animate="visible"
-                    className="mr-[0.28em] inline-block text-primary"
-                  >
-                    {word}
-                  </motion.span>
+                  <Fragment key={word}>
+                    <motion.span
+                      custom={i + 2}
+                      variants={wordVariants}
+                      initial={prefersReducedMotion ? false : "hidden"}
+                      animate="visible"
+                      className="inline-block text-primary"
+                    >
+                      {word}
+                    </motion.span>{" "}
+                  </Fragment>
                 ))}
               </span>
             </h1>
