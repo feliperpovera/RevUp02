@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Canonical host: www -> apex (one hop, keeps path and query)
+RewriteCond %{HTTP_HOST} ^www\.revupagencygroup\.com$ [NC]
+RewriteRule ^ https://revupagencygroup.com%{REQUEST_URI} [R=301,L]
+
 # Real 404s (e.g. unknown /blog/slug) keep the 404 status but render the branded React 404
 ErrorDocument 404 /index.html
 
