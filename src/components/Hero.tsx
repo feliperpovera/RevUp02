@@ -77,10 +77,10 @@ const COPY = {
     sendError: "Could not send your request. Please try again.",
   },
   es: {
-    eyebrow: "Socio de crecimiento para negocios en EE. UU.",
+    eyebrow: "Agencia de marketing digital para hispanos en EE. UU.",
     line1: ["Crecimiento", "inteligente,"],
     line2: ["mejores", "resultados."],
-    lede: "Desde servicios para el hogar y clínicas hasta marcas nacionales, ayudamos a negocios de servicios en todo EE. UU. a conseguir más llamadas, clientes potenciales y trabajos agendados con anuncios, sitios web e IA. Cuéntanos a dónde quieres llegar y te mostramos cómo.",
+    lede: "Somos una agencia de marketing digital en español para negocios hispanos y de servicios en todo EE. UU. Desde servicios para el hogar y clínicas hasta marcas nacionales, te ayudamos a conseguir más llamadas, clientes potenciales y trabajos agendados con anuncios, sitios web e IA. Cuéntanos a dónde quieres llegar y te mostramos cómo.",
     book: "Agenda una reunión",
     quoteCta: "Quiero mi cotización gratis",
     stats: [

@@ -176,6 +176,39 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
           </div>
         </section>
 
+        {/* Comparison table (optional, from service-pages.json) */}
+        {"compare" in page ? (
+          <section className="container mx-auto px-4 py-16 md:px-8">
+            <div className="mx-auto max-w-5xl">
+              <Reveal>
+                <SectionHeading title={page.compare.title} lede={page.compare.intro} className="mb-8" />
+              </Reveal>
+              <div className="overflow-x-auto rounded-2xl border border-foreground/10">
+                <table className="w-full min-w-[640px] text-left text-sm md:text-base">
+                  <thead className="bg-card">
+                    <tr>
+                      {page.compare.head.map((h) => (
+                        <th key={h} scope="col" className="px-5 py-4 font-heading text-foreground">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-foreground/10">
+                    {page.compare.rows.map((row) => (
+                      <tr key={row[0]} className="align-top">
+                        <th scope="row" className="px-5 py-4 font-medium text-foreground">{row[0]}</th>
+                        {row.slice(1).map((cell) => (
+                          <td key={cell.slice(0, 24)} className="px-5 py-4 font-light leading-relaxed text-stone">{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-6 max-w-3xl font-light leading-relaxed text-stone">{page.compare.note}</p>
+            </div>
+          </section>
+        ) : null}
+
         {/* Plans & pricing */}
         {plans.length ? (
           <section className="container mx-auto px-4 py-16 md:px-8">

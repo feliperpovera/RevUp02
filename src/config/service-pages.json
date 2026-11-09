@@ -73,7 +73,7 @@
       },
       {
         "q": "How much does it cost to hire a marketing agency for a home service business?",
-        "a": "Our pricing has two parts: a flat monthly management fee for the channels we run, and your ad budget, which you pay directly to Google or Meta. Plans that include SEO also have a one-time SEO launch. You can compare the plans for this service in the Plans & pricing section on this page and choose the channels that fit your budget."
+        "a": "Our pricing has two parts: a flat monthly management fee for the channels we run, and your ad budget, which you pay directly to Google or Meta. Plans that include SEO also have a one-time SEO launch. On a free call we quote the management fee for the channels you need and recommend a starting ad budget."
       },
       {
         "q": "Is a marketing agency worth it for contractors?",
@@ -178,7 +178,7 @@
     "faqs": [
       {
         "q": "How much does local SEO cost for a small business?",
-        "a": "Our local SEO services start with a one-time SEO launch that covers the audit, keyword research and initial optimization, followed by a flat monthly management fee — no long list of add-ons. You can also bundle SEO with Google Ads, or with every ad platform in our Complete Growth package, which costs less than hiring each service separately. If you add ads, ad spend is paid directly to the ad platforms. See the plans on this page or ask us on a free call."
+        "a": "Our local SEO services start with a one-time SEO launch that covers the audit, keyword research and initial optimization, followed by a flat monthly management fee — no long list of add-ons. You can also bundle SEO with Google Ads, or with every ad platform in our Complete Growth package, which costs less than hiring each service separately. If you add ads, ad spend is paid directly to the ad platforms. Ask us for a quote on a free call."
       },
       {
         "q": "Is SEO worth it for a small business?",
@@ -289,7 +289,7 @@
     "faqs": [
       {
         "q": "How much does Google Ads management cost?",
-        "a": "There are two separate costs. Your ad spend is paid directly to Google, so you control it and see every charge. Our PPC management fee is a flat monthly fee that covers strategy, campaign builds, tracking, weekly optimization and reporting. You can compare the plans in the Plans & pricing section on this page; packages that add SEO include a one-time SEO launch."
+        "a": "There are two separate costs. Your ad spend is paid directly to Google, so you control it and see every charge. Our PPC management fee is a flat monthly fee that covers strategy, campaign builds, tracking, weekly optimization and reporting. On a free call we quote the management fee and recommend a starting budget; packages that add SEO include a one-time SEO launch."
       },
       {
         "q": "How much should a small business spend on Google Ads?",
@@ -400,7 +400,7 @@
       },
       {
         "q": "How much does Facebook ads management cost?",
-        "a": "Facebook ads management has two costs: a flat monthly management fee to RevUp, and your ad spend, which you pay directly to Meta and is not included in our fee. You can compare our Meta Ads and all-platform plans in the Plans & pricing section on this page."
+        "a": "Facebook ads management has two costs: a flat monthly management fee to RevUp, and your ad spend, which you pay directly to Meta and is not included in our fee. On a free call we quote the management fee and recommend a starting ad budget."
       },
       {
         "q": "How much should a small business spend on Facebook ads?",
@@ -956,7 +956,7 @@
       },
       {
         "q": "¿Cuánto cuesta el posicionamiento SEO?",
-        "a": "Tiene dos partes: un arranque SEO de pago único, donde hacemos la auditoría y dejamos todo configurado, y una tarifa mensual fija de administración. Los precios están en los planes de esta página. Si también quieres anuncios, el Paquete Búsqueda suma Google Ads, y Crecimiento Total une SEO con Google, Meta y TikTok Ads por menos de lo que costarían por separado. El presupuesto de anuncios se paga directo a cada plataforma."
+        "a": "Tiene dos partes: un arranque SEO de pago único, donde hacemos la auditoría y dejamos todo configurado, y una tarifa mensual fija de administración. En una llamada gratis te damos el valor exacto según tu negocio. Si también quieres anuncios, el Paquete Búsqueda suma Google Ads, y Crecimiento Total une SEO con Google, Meta y TikTok Ads por menos de lo que costarían por separado. El presupuesto de anuncios se paga directo a cada plataforma."
       },
       {
         "q": "¿En cuánto tiempo veo resultados con el posicionamiento SEO?",
@@ -1059,12 +1059,8 @@
     "large": "Para empresas con varias sedes o varias líneas de servicio, manejamos la publicidad en Google por ubicación y por servicio, en inglés y en español, con reportes que muestran el costo por cliente en cada mercado.",
     "faqs": [
       {
-        "q": "¿Trabajan con negocios hispanos en Estados Unidos?",
-        "a": "Sí. Ese es nuestro enfoque: manejamos Google Ads para negocios hispanos en Estados Unidos, con campañas en inglés, en español o en ambos idiomas según cómo buscan tus clientes, y toda la comunicación contigo es en español."
-      },
-      {
         "q": "¿Cuánto cuesta anunciarse en Google Ads?",
-        "a": "Tiene dos partes. La primera es tu presupuesto de anuncios, que tú decides y pagas directamente a Google; en la mayoría de las campañas de búsqueda pagas por clic, y el costo varía según tu industria y tu ciudad. La segunda es nuestra tarifa mensual fija de administración. Los precios están en los planes de esta página; si eliges el Paquete Búsqueda o Crecimiento Total, se suma un arranque SEO de pago único."
+        "a": "Tiene dos partes. La primera es tu presupuesto de anuncios, que tú decides y pagas directamente a Google; en la mayoría de las campañas de búsqueda pagas por clic, y el costo varía según tu industria y tu ciudad. La segunda es nuestra tarifa mensual fija de administración. En una llamada gratis te damos el valor exacto de la administración y te recomendamos un presupuesto inicial según tu zona y tus servicios; si sumas SEO (Paquete Búsqueda o Crecimiento Total), se agrega un arranque SEO de pago único."
       },
       {
         "q": "¿Cómo funciona la publicidad en Google?",
@@ -1087,6 +1083,22 @@
         "a": "Google Ads es fácil de encender y fácil de desperdiciar. Un experto en Google Ads revisa cada semana en qué búsquedas se va tu dinero, elimina las que no traen clientes y mide las llamadas reales, mientras tú te enfocas en atender tu negocio. Y con nosotros todo es en español."
       },
       {
+        "q": "¿Qué tipos de campañas de Google Ads manejan?",
+        "a": "Campañas de Búsqueda para aparecer cuando alguien busca tu servicio, Local Services Ads para negocios de servicios (pagas por contacto, no por clic), Performance Max para llegar a Google Search, Maps, YouTube y más desde una sola campaña, y anuncios en YouTube. Elegimos la combinación según tu servicio, tu zona y tu presupuesto; la mayoría de negocios de servicios empieza por Búsqueda."
+      },
+      {
+        "q": "¿Mis anuncios deben estar en inglés o en español?",
+        "a": "Depende de cómo busca tu cliente. Muchos clientes hispanos en Estados Unidos buscan en inglés, en español o mezclando los dos idiomas. Por eso investigamos las búsquedas reales de tu zona en ambos idiomas, separamos las campañas por idioma y medimos cuál trae más llamadas antes de repartir el presupuesto."
+      },
+      {
+        "q": "¿Cuánto tiempo tarda Google Ads en dar resultados?",
+        "a": "Las campañas de búsqueda pueden empezar a traer clics y llamadas a los pocos días de lanzarse. La mayoría de las cuentas necesita algunas semanas de datos de conversiones para que las pujas automáticas se estabilicen y tu costo por cliente se vuelva predecible; mientras tanto optimizamos cada semana."
+      },
+      {
+        "q": "¿Cómo elegir una agencia de Google Ads?",
+        "a": "Revisa cinco cosas: que la cuenta de Google Ads quede a tu nombre, que la agencia mida llamadas y formularios y no solo clics, que te explique qué incluye su tarifa y cómo cobra, que tenga experiencia con negocios como el tuyo en Estados Unidos y que los reportes sean claros y en tu idioma. Si tus clientes buscan en inglés y en español, pregunta cómo maneja las palabras clave en ambos idiomas."
+      },
+      {
         "q": "¿Trabajan con negocios hispanos en todo Estados Unidos?",
         "a": "Sí. Somos una agencia de marketing digital en español que trabaja con negocios en todo Estados Unidos, con atención en español de principio a fin y anuncios en inglés y en español según cómo buscan tus clientes. Trabajamos contigo por llamada, videollamada y WhatsApp, estés donde estés."
       },
@@ -1099,7 +1111,39 @@
       "google",
       "search",
       "complete"
-    ]
+    ],
+    "compare": {
+      "title": "Cuánto cobra una agencia de Google Ads: modelos de precio",
+      "intro": "El costo de trabajar con una agencia de Google Ads siempre tiene dos partes: tu presupuesto de anuncios, que se paga directo a Google, y la tarifa de la agencia por administrar las campañas. Estos son los modelos de cobro más comunes y qué revisar en cada uno antes de firmar.",
+      "head": [
+        "Modelo",
+        "Cómo funciona",
+        "Qué revisar antes de firmar"
+      ],
+      "rows": [
+        [
+          "Tarifa mensual fija (así trabaja RevUp)",
+          "Pagas lo mismo cada mes por estrategia, configuración, optimización semanal y reportes, sin importar cuánto inviertas en anuncios.",
+          "Qué incluye exactamente. Con nosotros la tarifa es fija y el presupuesto de anuncios lo decides tú: subirlo no sube nuestra tarifa."
+        ],
+        [
+          "Porcentaje de la inversión",
+          "La agencia cobra una parte de lo que gastas en Google cada mes, así que su tarifa crece cuando crece tu presupuesto.",
+          "Si hay una tarifa mínima, y si a la agencia le conviene recomendarte gastar más aunque no traiga más clientes."
+        ],
+        [
+          "Pago por resultado",
+          "Pagas por cada contacto o cita que entrega la agencia, según una definición acordada.",
+          "Qué cuenta como un contacto válido, a nombre de quién está la cuenta de Google Ads y qué pasa con tus datos si terminas."
+        ],
+        [
+          "Hacerlo tú mismo",
+          "No pagas administración, pero tú configuras, revisas y optimizas las campañas.",
+          "Cuántas horas a la semana puedes dedicarle y si sabes medir llamadas y formularios para no pagar clics que no traen clientes."
+        ]
+      ],
+      "note": "En cualquier modelo, pide que la cuenta de Google Ads esté a tu nombre y que el presupuesto de anuncios se pague directo a Google con tu método de pago. Así trabajamos en RevUp: tu cuenta, tus datos y tus anuncios siempre son tuyos."
+    }
   },
   {
     "path": "/es/agencia-facebook-ads",
@@ -1329,6 +1373,18 @@
         "a": "Los Spark Ads te permiten promocionar como anuncio una publicación orgánica de TikTok, tuya o de un creador, conservando los likes, comentarios y compartidos que la hacen más creíble. Para usar el video de un creador, esa persona te da una autorización desde su cuenta."
       },
       {
+        "q": "¿Qué formatos de anuncios de TikTok usan?",
+        "a": "Para la mayoría de los negocios trabajamos con anuncios In-Feed (aparecen en la sección Para ti entre los videos), Spark Ads (tus publicaciones orgánicas o las de un creador, impulsadas como anuncio), formularios instantáneos para conseguir contactos sin salir de TikTok y, para tiendas en línea, TikTok Shop. TikTok también vende formatos de alto impacto como TopView, que normalmente usan marcas grandes para campañas de reconocimiento."
+      },
+      {
+        "q": "¿Conviene hacer anuncios de TikTok en español para clientes hispanos en EE. UU.?",
+        "a": "Si una parte de tus clientes prefiere el español, sí vale la pena probarlo. En un estudio de TikTok Marketing Science en Estados Unidos (2023, realizado con NRG), las personas que prefieren el español fueron 57% más propensas a decir que verían más anuncios de una marca después de ver anuncios con voz en español que con anuncios solo en inglés. Nosotros probamos versiones en español, en inglés y bilingües, y dejamos la que trae el menor costo por contacto o por venta."
+      },
+      {
+        "q": "¿Cómo elegir una agencia de TikTok Ads?",
+        "a": "Empieza por cómo trabaja el video, porque en TikTok el anuncio hace gran parte de la segmentación. Después pregunta cómo mide contactos y ventas (TikTok Pixel y Events API), si la cuenta de anuncios queda a tu nombre, cuántas ideas de video nuevas prueba cada mes, cómo cobra y qué reportes vas a recibir. Si vendes a clientes hispanos, confirma que pueda hacer los videos y los reportes en español."
+      },
+      {
         "q": "¿TikTok Ads o Facebook Ads: cuál me conviene?",
         "a": "Depende de dónde está tu cliente y del tipo de contenido que puedes producir. Facebook e Instagram ofrecen formularios y anuncios que abren un chat de WhatsApp, muy útiles para negocios locales; TikTok destaca cuando tu producto o servicio se luce en video y quieres llegar a públicos nuevos. Muchos negocios usan los dos: con el plan Todas las plataformas manejamos Google, Meta y TikTok con una sola estrategia y la misma tarifa mensual."
       },
@@ -1345,7 +1401,39 @@
       "tiktok",
       "all-ads",
       "complete"
-    ]
+    ],
+    "compare": {
+      "title": "Cuánto cobra una agencia de TikTok Ads: modelos de precio",
+      "intro": "La publicidad en TikTok tiene dos costos separados: tu presupuesto de anuncios, que pagas directo a TikTok, y la tarifa de la agencia por administrar las campañas. Así se comparan los modelos de cobro más comunes.",
+      "head": [
+        "Modelo",
+        "Cómo funciona",
+        "Qué revisar antes de firmar"
+      ],
+      "rows": [
+        [
+          "Tarifa mensual fija (así trabaja RevUp)",
+          "Una tarifa fija cada mes cubre estrategia, dirección creativa, medición, optimización y reportes.",
+          "Qué incluye y qué no. Con nosotros la tarifa no depende de cuánto inviertas en anuncios."
+        ],
+        [
+          "Porcentaje de la inversión",
+          "La agencia cobra una parte de tu gasto mensual en TikTok, así que su tarifa sube cuando sube tu presupuesto.",
+          "Si hay un mínimo mensual y cómo se decide cuándo subir el presupuesto."
+        ],
+        [
+          "Producción de videos por separado",
+          "Algunas agencias cobran aparte cada video o cada sesión de grabación con creadores.",
+          "Cuántos videos nuevos recibes al mes: en TikTok los anuncios se desgastan rápido y hay que renovarlos."
+        ],
+        [
+          "Hacerlo tú mismo con Promocionar",
+          "Impulsas publicaciones desde la app de TikTok, sin agencia.",
+          "Promocionar tiene segmentación básica y poca medición; para traer clientes medibles necesitas TikTok Ads Manager y el TikTok Pixel."
+        ]
+      ],
+      "note": "En cualquier modelo, pide que la cuenta de TikTok Ads Manager y el Pixel estén a tu nombre y que la inversión se pague directo a TikTok con tu método de pago. Así trabajamos en RevUp."
+    }
   },
   {
     "path": "/es/diseno-paginas-web",

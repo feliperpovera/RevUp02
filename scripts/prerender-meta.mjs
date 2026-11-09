@@ -83,6 +83,7 @@ const serviceBody = (page) => {
     page.industries?.length ? `<h2>${t.industries}</h2><ul>${page.industries.map((i) => `<li>${e(i)}</li>`).join("")}</ul>` : "",
     `<h2>${t.small}</h2><p>${e(page.small)}</p>`,
     `<h2>${t.large}</h2><p>${e(page.large)}</p>`,
+    page.compare ? `<h2>${e(page.compare.title)}</h2><p>${e(page.compare.intro)}</p><table><thead><tr>${page.compare.head.map((h) => `<th>${e(h)}</th>`).join("")}</tr></thead><tbody>${page.compare.rows.map((r) => `<tr>${r.map((c, i) => (i ? `<td>${e(c)}</td>` : `<th>${e(c)}</th>`)).join("")}</tr>`).join("")}</tbody></table><p>${e(page.compare.note)}</p>` : "",
     `<h2>${t.faq}</h2>${page.faqs.map((f) => `<h3>${e(f.q)}</h3><p>${e(f.a)}</p>`).join("")}`,
     `<nav aria-label="${t.others}"><p>${t.others}</p><ul>${others.map((p) => `<li><a href="${p.path}">${e(p.name)}</a></li>`).join("")}</ul></nav>`,
     `</main>`,
