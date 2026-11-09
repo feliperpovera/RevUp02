@@ -96,7 +96,11 @@ const ServiceDetailPage = ({ page }: { page: ServicePage }) => {
         <section className="container mx-auto px-4 py-16 md:px-8">
           <div className="mx-auto max-w-5xl">
             <Reveal>
-              <SectionHeading title={<>{t.included[0]}<span className="text-primary">{t.included[1]}</span></>} className="mb-10" />
+              <SectionHeading
+                title={"includedTitle" in page ? page.includedTitle : <>{t.included[0]}<span className="text-primary">{t.included[1]}</span></>}
+                lede={"includedIntro" in page ? page.includedIntro : undefined}
+                className="mb-10"
+              />
             </Reveal>
             <ul className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {page.included.map((item, i) => (

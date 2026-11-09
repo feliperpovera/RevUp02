@@ -39,6 +39,20 @@ const COPY = {
   },
 };
 
+// Inline internal links in post copy: "[anchor](/path)".
+const LINK = /\[([^\]]+)\]\((\/[^)\s]*)\)/;
+const withLinks = (text: string) =>
+  text.split(/(\[[^\]]+\]\(\/[^)\s]*\))/).map((part, i) => {
+    const m = part.match(LINK);
+    return m ? (
+      <Link key={i} to={m[2]} className="text-performance underline underline-offset-4 hover:text-foreground">
+        {m[1]}
+      </Link>
+    ) : (
+      part
+    );
+  });
+
 const BlogPostPage = ({ post }: { post: BlogPost }) => {
   const lang = useLang();
   const t = COPY[lang];
@@ -70,13 +84,13 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
                 <h2 className="font-heading text-2xl text-foreground md:text-3xl">{section.h2}</h2>
                 {section.paragraphs.map((paragraph) => (
                   <p key={paragraph.slice(0, 32)} className="mt-4 text-base font-light leading-relaxed text-foreground/80 md:text-lg">
-                    {paragraph}
+                    {withLinks(paragraph)}
                   </p>
                 ))}
                 {"bullets" in section && section.bullets ? (
                   <ul className="mt-4 list-disc space-y-2 pl-6 text-base font-light leading-relaxed text-foreground/80 marker:text-performance md:text-lg">
                     {section.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+                      <li key={bullet}>{withLinks(bullet)}</li>
                     ))}
                   </ul>
                 ) : null}

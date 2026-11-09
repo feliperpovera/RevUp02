@@ -26,6 +26,7 @@ const servicePages = readJson("src/config/service-pages.json");
 const ROUTES = [
   ...["home", "services", "about", "testimonials"].flatMap((k) => [pages[k].en, pages[k].es]),
   ...servicePages.map((p) => p.path),
+  ...readJson("src/config/blog-posts.json").map((p) => (p.lang === "es" ? `/es/blog/${p.slug}` : `/blog/${p.slug}`)),
 ];
 
 const fileOf = (path) => join(root, "dist", path === "/" ? "index.html" : `${path.slice(1).replace(/\//g, "--")}.html`);

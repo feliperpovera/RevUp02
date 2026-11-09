@@ -78,7 +78,7 @@ const serviceBody = (page) => {
     `<p>${e(page.intro)}</p>`,
     `<h2>${t.why}</h2>`,
     ...page.why.map((p) => `<p>${e(p)}</p>`),
-    `<h2>${t.included}</h2><ul>${page.included.map((i) => `<li><h3>${e(i.title)}</h3><p>${e(i.text)}</p></li>`).join("")}</ul>`,
+    `<h2>${e(page.includedTitle ?? t.included)}</h2>${page.includedIntro ? `<p>${e(page.includedIntro)}</p>` : ""}<ul>${page.included.map((i) => `<li><h3>${e(i.title)}</h3><p>${e(i.text)}</p></li>`).join("")}</ul>`,
     `<h2>${t.how}</h2><ol>${page.process.map((s) => `<li><h3>${e(s.title)}</h3><p>${e(s.text)}</p></li>`).join("")}</ol>`,
     page.industries?.length ? `<h2>${t.industries}</h2><ul>${page.industries.map((i) => `<li>${e(i)}</li>`).join("")}</ul>` : "",
     `<h2>${t.small}</h2><p>${e(page.small)}</p>`,
