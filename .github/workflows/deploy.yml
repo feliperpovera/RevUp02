@@ -61,3 +61,4 @@ jobs:
           protocol: ftps
           local-dir: dist/
           server-dir: ${{ vars.FTP_RUTA || './' }}
+          state-name: .ftp-deploy-revup.json
