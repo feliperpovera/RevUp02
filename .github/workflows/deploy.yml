@@ -60,4 +60,4 @@ jobs:
           password: ${{ secrets.FTP_CLAVE }}
           protocol: ftps
           local-dir: dist/
-          server-dir: ./
+          server-dir: ${{ vars.FTP_RUTA || './' }}
