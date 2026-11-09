@@ -1,0 +1,63 @@
+# Construye el sitio y lo publica en Hostinger cada vez que se sube algo a main.
+# 1. npm run build (con Chrome para el prerender: sin él las páginas salen sin texto).
+# 2. Comprueba que la home y /es tengan H1; si no, se detiene sin publicar.
+# 3. Sube dist/ a la rama hostinger (Hostinger la despliega con su conexión Git).
+# 4. Opcional: si existen la variable FTP_SERVIDOR y los secretos FTP_USUARIO y FTP_CLAVE,
+#    sube dist/ por FTPS directo a public_html (no depende de que Hostinger detecte el push).
+name: Deploy a Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', '**.md']
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hostinger
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build con prerender
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run build
+      - name: Verificar que el prerender funcionó
+        run: |
+          for f in dist/index.html dist/es.html; do
+            grep -q '<h1' "$f" || { echo "::error::$f no tiene H1: el prerender falló, no se publica"; exit 1; }
+          done
+      - name: Publicar en la rama hostinger
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git clone --branch hostinger --single-branch --depth 1 \
+            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" /tmp/hostinger
+          find /tmp/hostinger -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R dist/. /tmp/hostinger/
+          cd /tmp/hostinger
+          git add -A
+          git diff --cached --quiet && { echo "Sin cambios en dist"; exit 0; }
+          git commit -m "Deploy $(date -u +%Y-%m-%d) (main ${GITHUB_SHA::7})"
+          git push origin hostinger
+      - name: Subir por FTPS (opcional)
+        if: vars.FTP_SERVIDOR != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ vars.FTP_SERVIDOR }}
+          username: ${{ secrets.FTP_USUARIO }}
+          password: ${{ secrets.FTP_CLAVE }}
+          protocol: ftps
+          local-dir: dist/
+          server-dir: ./

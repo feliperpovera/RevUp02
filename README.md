@@ -22,5 +22,6 @@ cd worker && npx wrangler secret put RESEND_API_KEY    # set the Resend key once
 
 ## Deploy the site
 
-`npm run build`, then publish `dist/` to the `hostinger` branch — Hostinger's
-Git deployment pulls that branch into `public_html`.
+Automatic: every push to `main` runs `.github/workflows/deploy.yml`, which builds with
+prerender, checks the H1s and publishes `dist/` to the `hostinger` branch (Hostinger pulls it
+into `public_html`). Run it by hand from the Actions tab if needed.
