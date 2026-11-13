@@ -1,0 +1,20 @@
+# Avisa a Bing y a los demás buscadores de IndexNow (Yandex, Seznam, Naver) cuando termina un deploy,
+# enviando todas las URLs del sitemap. La clave es pública: https://revupagencygroup.com/b137cf497313917f241aefca58c47edd.txt
+name: Avisar a buscadores (IndexNow)
+
+on:
+  workflow_run:
+    workflows: ['Deploy a Hostinger']
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Esperar a que Hostinger sirva los archivos nuevos
+        run: sleep 60
+      - name: Enviar URLs a IndexNow
+        run: python3 .github/indexnow.py revupagencygroup.com https://revupagencygroup.com/sitemap.xml b137cf497313917f241aefca58c47edd
