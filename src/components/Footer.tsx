@@ -36,6 +36,7 @@ const COPY = {
     rights: "All rights reserved.",
     legal: [["privacy", "Privacy Policy"], ["cookies", "Cookie Policy"], ["terms", "Terms of Use"], ["accessibility", "Accessibility"]] as const,
     choices: "Your Privacy Choices",
+    team: "Team Login",
     whatsapp: WHATSAPP_URL,
   },
   es: {
@@ -51,6 +52,7 @@ const COPY = {
     rights: "Todos los derechos reservados.",
     legal: [["privacy", "Política de privacidad"], ["cookies", "Política de cookies"], ["terms", "Términos de uso"], ["accessibility", "Accesibilidad"]] as const,
     choices: "Tus opciones de privacidad",
+    team: "Acceso equipo",
     whatsapp: whatsappUrl("¡Hola RevUp! Quiero hacer crecer mi negocio."),
   },
 };
@@ -161,6 +163,9 @@ export const Footer = () => {
               <button type="button" onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_EVENT))} className="hover:text-accent">
                 {t.choices}
               </button>
+              <a href="/crm/" rel="nofollow" className="hover:text-accent">
+                {t.team}
+              </a>
             </nav>
           </div>
           <span aria-hidden="true" className="font-heading text-xs tracking-wide text-cream/40">
