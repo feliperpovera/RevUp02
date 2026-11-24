@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Send } from "lucide-react";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, MotionGlobalConfig, useReducedMotion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -119,7 +119,9 @@ const COPY = {
 
 export const Hero = () => {
   const navigate = useNavigate();
-  const prefersReducedMotion = useReducedMotion();
+  // On a prerendered first load the text is already on screen: mount it in place, no fade-in.
+  const [skipEntrance] = useState(() => MotionGlobalConfig.skipAnimations);
+  const prefersReducedMotion = useReducedMotion() || skipEntrance;
   const lang = useLang();
   const t = COPY[lang];
 

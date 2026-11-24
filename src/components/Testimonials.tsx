@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BrandCard, Eyebrow, GiantNumeral, Reveal, SectionHeading } from "@/components/brand/kit";
@@ -34,7 +35,7 @@ const CLIENTS: { company: string; logo: string; ar: number; url?: string }[] = [
   { company: "Hera 23", logo: hera23Logo, ar: 1.29, url: "https://hera23.com" },
   { company: "Invirtiendo", logo: invirtiendoLogo, ar: 5.24, url: "https://invirtiendoo.vercel.app/" },
   { company: "Xpress Foam", logo: xpressfoamLogo, ar: 1.65, url: "https://xpressfoam.com" },
-  { company: "Maylin Mattress", logo: maylinLogo, ar: 1.48, url: "https://www.maylinmattress.com/" },
+  { company: "Maylin Mattress", logo: maylinLogo, ar: 1.48, url: "https://maylinmattress.com/" },
 ];
 
 const CORNERS = ["tl", "tr", "bl", "br"] as const;
@@ -67,6 +68,22 @@ const COPY = {
 // Same ink area for every logo, capped so tall marks don't tower and wide wordmarks fit the card.
 const LOGO_AREA = 5200;
 const logoWidth = (ar: number) => Math.round(Math.min(Math.sqrt(LOGO_AREA * ar), 72 * ar, 165));
+
+/** Plain block until the client's website is confirmed (no <a> without href). */
+const ClientLink = ({ url, label, children }: { url?: string; label: string; children: ReactNode }) =>
+  url ? (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      {children}
+    </a>
+  ) : (
+    <div className="h-full rounded-3xl">{children}</div>
+  );
 
 export const Testimonials = () => {
   const t = COPY[useLang()];
@@ -106,13 +123,7 @@ export const Testimonials = () => {
                 delay={(index % 5) * 0.08}
                 className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)]"
               >
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={client.url ? t.visit(client.company) : undefined}
-                  className="block h-full rounded-3xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                >
+                <ClientLink url={client.url} label={t.visit(client.company)}>
                 <BrandCard
                   corner={CORNERS[index % CORNERS.length]}
                   className="group flex h-full min-h-[180px] flex-col items-center justify-center gap-5 p-6 md:min-h-[200px] md:p-8"
@@ -128,7 +139,7 @@ export const Testimonials = () => {
                     {client.company}
                   </span>
                 </BrandCard>
-                </a>
+                </ClientLink>
               </Reveal>
             ))}
           </ul>

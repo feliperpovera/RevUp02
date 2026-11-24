@@ -11,8 +11,8 @@ import revupLogoMain from "@/assets/revup-logo-main.png";
 import revupLogoLight from "@/assets/revup-logo-light.png";
 
 const COPY = {
-  en: { quote: "Get a Free Quote", allServices: "All services", switchLabel: "Ver en español", menu: { partners: "Partners", testimonials: "Testimonials", services: "Services", about: "About", blog: "Blog" } },
-  es: { quote: "Cotización gratis", allServices: "Todos los servicios", switchLabel: "View in English", menu: { partners: "Aliados", testimonials: "Testimonios", services: "Servicios", about: "Nosotros", blog: "Blog" } },
+  en: { quote: "Get a Free Quote", allServices: "All services", switchLabel: "Ver en español", openMenu: "Open menu", menu: { partners: "Partners", testimonials: "Testimonials", services: "Services", about: "About", blog: "Blog" } },
+  es: { quote: "Cotización gratis", allServices: "Todos los servicios", switchLabel: "View in English", openMenu: "Abrir menú", menu: { partners: "Aliados", testimonials: "Testimonios", services: "Servicios", about: "Nosotros", blog: "Blog" } },
 };
 
 const MENU = ["partners", "testimonials", "services", "about", "blog"] as const satisfies readonly PageKey[];
@@ -149,7 +149,7 @@ export const Navbar = () => {
         {/* Mobile menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon" className="rounded-full" aria-label={t.openMenu}>
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
